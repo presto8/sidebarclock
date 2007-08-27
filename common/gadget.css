@@ -1,0 +1,65 @@
+body#gadget { 
+  width: 130px;
+  height: 67px;
+  color: #ffffff;
+  font-family: Segoe UI;
+  font-weight: 0;
+  font-size: 7.4pt;
+  margin-top: 5px;
+  margin-left: 0;
+  padding: 0;
+}
+
+body#gadget a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+body#settings {
+  width: 250;
+  height: 370;
+  margin-top: 0;
+}
+
+#dateArea {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 4px;
+  margin-left: 5px;
+  width: 100%;
+  font-size: 1.1em;
+  line-height: 1.2em;
+  text-align: center;
+  vertical-align: middle;
+  z-index: 10;
+}
+
+#timeArea {
+  position: absolute;
+  top: 12px;
+  left: 0px;
+  font-weight: default;
+  margin-left: 5px;
+  width: 100%;
+  text-align: center;
+  line-height: 50px;
+  z-index: 0;
+}
+
+#bottomArea {
+  position: absolute;
+  top: 45px;
+  left: 0;
+  margin-top: 5px;
+  margin-left: 5px;
+  width: 100%;
+  font-size: 1.1em;
+  line-height: 1.2em;
+  text-align: center;
+}
+
+.bigger {
+  font-weight: bold;
+  margin-bottom: 2px;
+}

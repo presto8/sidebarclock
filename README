@@ -1,0 +1,13 @@
+For more information about this gadget: www.prestonhunt.com/story/110
+
+RELEASE HISTORY
+
+1.04  2007-08-02: Automatically shrink font size a little bit on the date area line if the user specifies a really long date format string (thanks Edwin Walstra!)
+
+1.03  2007-08-01: Added Dutch language support (thanks Edwin Walstra!)
+
+1.02  2007-07-26: Fixed localization bug that would cause gadget not to work and display a white box on any non-US system
+
+1.01  2007-06-24: Now display midnight as "12:00 am" instead of "0:00 am" (thanks Zach Bogan!)
+
+1.00  Initial release

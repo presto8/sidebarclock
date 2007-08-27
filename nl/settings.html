@@ -1,0 +1,32 @@
+<html>
+<head>
+<link rel="stylesheet" href="common/gadget.css">
+<script src="common/gadget.js"></script>
+<script>
+System.Gadget.onSettingsClosing = SettingsClosing;
+</script>
+</head>
+
+<body id="settings" onload="init_settings()">
+Datumaanduiding: <input type="text" id="mainDateFormat" size="4" >
+<br>Tijdsaanduiding: <input type="text" id="mainTimeFormat" size="4">
+<br>Tijd zone: <input type="text" id="tzLabel" size="5"> (optioneel)
+<br>Tijdsverschil: <input type="text" id="tzOffset" size="4"> (uren)
+<hr>
+<span class="bigger">Datum voorbeelden:</span>
+<br>"D d M" = "Za 07 Apr"
+<br>"l j/n" = "Zaterdag 7/4"
+<br><span class="bigger">Voorbeelden tijdsaanduiding:</span>
+<br>"g:i a" = "5:44 pm"
+<br>"H:i" = "17:44"
+<br><span class="bigger">Voorbeelden Label:</span>
+<br>"PDT", "Portland", "Tokyo", "GMT+2"
+<br><span class="bigger">Voorbeelden Tijdzone Verschil:</span>
+<br>"-3", "+9", "+4.5"
+<p><a href="http://php.net/date">Formaat help</a> (niet gebruikt: T, e, o)</li>
+<hr>
+Versie 1.04 (2007-08-27)
+<br><a href="http://prestonhunt.com/go/sidebarclock">Informatie over deze gadget</a>
+<br>Nederlandse vertaling door Edwin Walstra.
+</body>
+</html>
