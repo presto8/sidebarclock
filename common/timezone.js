@@ -14,6 +14,13 @@
  * limitations under the License.
  *
 */
+
+/*
+NOTE: Some small modifications were made to the original source code by 
+Preston Hunt.  In particular, the getAllZones() method was added to the 
+base class, and a small bug fix was added to the getRule() method.
+*/
+
 if (typeof fleegix == 'undefined') { var fleegix = {}; }
 if (typeof fleegix.date == 'undefined') { fleegix.date = {}; }
 fleegix.date.timezone = new function() {
