@@ -20,10 +20,16 @@ function readSettings() {
   displayGadget()
 }
 
+function loadTimeZones() {
+  fleegix.date.timezone.parseZones( tzZoneData )
+}
+
 function startup() {
   System.Gadget.settingsUI = "settings.html"
   System.Gadget.onSettingsClosed = readSettings
   System.Gadget.visibilityChanged = checkVisibility
+
+  loadTimeZones()
 
   readSettings()
   window.setInterval(updateGadget, 1000)
@@ -56,6 +62,16 @@ function displayGadget() {
   if ( ! isNaN(tzOffset) ) {
     now.setTime( now.getTime() + 1000*60*60*document.tzOffset )
     bottomArea.innerText = document.tzLabel
+  }
+
+  var tzName = "Europe/London"
+  if ( tzName.length > 0 ) {
+    var utc = now.getTime() + now.getTimezoneOffset()*60*1000
+    var utcDate = new Date( utc )
+    var otherOffset = fleegix.date.timezone.getOffset( utcDate, tzName )
+    var otherTime = utc - otherOffset*60*1000
+
+    now = new Date( otherTime )
   }
 
   dateArea.innerHTML = '<a href="http://www.timeanddate.com/calendar/">' + formatDate( document.mainDateFormat, now ) + '</a>'
