@@ -31,6 +31,13 @@ fleegix.date.timezone = new function() {
     hms[3] = hms[3] ? parseInt(hms[3]) : 0;
     return hms;
   }
+  this.getAllZones = function() {
+    var zonesArray = new Array()
+    for ( z in this.zones ) {
+      zonesArray.push( z )
+    }
+    return zonesArray
+  }
   function getZone(dt, tz) {
     var timezone = tz;
     var zones = self.zones[timezone];
