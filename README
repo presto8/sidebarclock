@@ -2,6 +2,8 @@ For more information about this gadget: www.prestonhunt.com/story/110
 
 RELEASE HISTORY
 
+1.05  2007-08-27: Offset for other timezone is now relative to UTC (GMT)
+
 1.04  2007-08-02: Automatically shrink font size a little bit on the date area line if the user specifies a really long date format string (thanks Edwin Walstra!)
 
 1.03  2007-08-01: Added Dutch language support (thanks Edwin Walstra!)
