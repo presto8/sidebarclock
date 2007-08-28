@@ -173,7 +173,7 @@ fleegix.date.timezone = new function() {
       }
     }
     f = function(a, b) { return (a.date.getTime() >= b.date.getTime()) ?  1 : -1; }
-		if ( ruleHits.length == 0 ) return null
+    if ( ruleHits.length == 0 ) return null
 
     ruleHits.sort(f);
     currRule = ruleHits.pop().rule;
