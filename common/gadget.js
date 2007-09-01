@@ -12,16 +12,18 @@ function readSetting( settingName, defaultValue ) {
 
 function readSettings() {
   System.Gadget.background = "images/background-black.png"
+
   document.mainDateFormat = readSetting( "mainDateFormat", defaultDateFormat )
   document.mainTimeFormat = readSetting( "mainTimeFormat", defaultTimeFormat )
   document.tzLabel = readSetting( "tzLabel", "" )
   document.tzOffset = readSetting( "tzOffset", "0" )
+  document.tzName = readSetting( "tzName", "" )
 
   displayGadget()
 }
 
 function loadTimeZones() {
-  fleegix.date.timezone.parseZones( tzZoneData )
+  fleegix.date.timezone.loadZoneInfo( zones_json, rules_json )
 }
 
 function startup() {
@@ -64,11 +66,10 @@ function displayGadget() {
     bottomArea.innerText = document.tzLabel
   }
 
-  var tzName = "Europe/London"
-  if ( tzName.length > 0 ) {
+  if ( document.tzName.length > 0 ) {
     var utc = now.getTime() + now.getTimezoneOffset()*60*1000
     var utcDate = new Date( utc )
-    var otherOffset = fleegix.date.timezone.getOffset( utcDate, tzName )
+    var otherOffset = fleegix.date.timezone.getOffset( utcDate, document.tzName )
     var otherTime = utc - otherOffset*60*1000
 
     now = new Date( otherTime )
@@ -121,11 +122,26 @@ function CheckAndSet( variablename ) {
   System.Gadget.Settings.write( variablename, varVal )
 }
 
+function addOptions() {
+  loadTimeZones()
+
+  var zones = fleegix.date.timezone.getAllZones()
+  var selectId = document.getElementById( "tzName" )
+
+  for ( var z in zones ) {
+    selectId.add( new Option( zones[z], zones[z] ) )
+  } 
+}
+
+
 function init_settings() {
   document.getElementById("mainDateFormat").value = readSetting( "mainDateFormat", "D M d" );
   document.getElementById("mainTimeFormat").value = readSetting( "mainTimeFormat", "h:i a" );
   document.getElementById("tzLabel").value = readSetting( "tzLabel", "" )
   document.getElementById("tzOffset").value = readSetting( "tzOffset", "" )
+  
+  addOptions()
+  document.getElementById("tzName").value = readSetting( "tzName", "" )
 }
 
 function SettingsClosing(event) {
@@ -134,6 +150,7 @@ function SettingsClosing(event) {
     CheckAndSet( "mainTimeFormat" )
     CheckAndSet( "tzLabel" )
     CheckAndSet( "tzOffset" )
+    CheckAndSet( "tzName" )
   }
 		
   event.cancel = false;
