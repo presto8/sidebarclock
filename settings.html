@@ -1,6 +1,8 @@
 <html>
 <head>
 <link rel="stylesheet" href="common/gadget.css">
+<script src="common/tzdata2007g_json.js"></script>
+<script src="common/timezone.js"></script>
 <script src="common/gadget.js"></script>
 <script>
 System.Gadget.onSettingsClosing = SettingsClosing;
@@ -11,7 +13,7 @@ System.Gadget.onSettingsClosing = SettingsClosing;
 Date format: <input type="text" id="mainDateFormat" size="4" >
 <br>Time format: <input type="text" id="mainTimeFormat" size="4">
 <br>Time zone label: <input type="text" id="tzLabel" size="5"> (optional)
-<br>Time zone offset: <input type="text" id="tzOffset" size="4"> (hours)
+<br>Time zone name: <select id="tzName"></select>
 <hr>
 <span class="bigger">Date Examples:</span>
 <br>"D M d" = "Sat Apr 07"
@@ -21,8 +23,6 @@ Date format: <input type="text" id="mainDateFormat" size="4" >
 <br>"H:i" = "17:44"
 <br><span class="bigger">Label Examples:</span>
 <br>"PDT", "Portland", "Tokyo", "GMT+2"
-<br><span class="bigger">Time Zone Offset Examples:</span>
-<br>"-3", "+9", "+4.5"
 <p><a href="http://php.net/date">Format help</a> (unsupported: T, e, o)</li>
 <hr>
 Version 1.04 (2007-08-02)
