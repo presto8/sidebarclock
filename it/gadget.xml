@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<gadget>
+    <name>Presto's Clock</name>
+    <namespace>gadgets.prestonhunt.com</namespace>
+    <version>1.04</version>
+
+    <author name="Preston Hunt">
+    <info url="http://prestonhunt.com" />
+    <logo src="images/prestoclear-128.png" />
+    </author>
+
+    <description>Elegante gadget che mostra l’orario e la data.</description>
+    <icons>
+    <icon height="128" width="128" src="images/prestosidebarclock_icon.png"/>
+    </icons>    
+
+    <hosts>
+        <host name="sidebar">
+            <base type="HTML" apiVersion="1.0.0" src="gadget.html" />
+            <permissions>full</permissions>
+            <platform minPlatformVersion="0.3" />
+        </host>
+    </hosts>
+</gadget>
