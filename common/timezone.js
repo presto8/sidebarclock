@@ -16,7 +16,10 @@
 */
 
 /*
-NOTE: Some small modifications were made to the original source code by 
+The following text is provided to comply with section 4(b) of the 
+Apache 2.0 license:
+
+Some small modifications were made to the original source code by 
 Preston Hunt.  In particular, the getAllZones() method was added to the 
 base class, and a small bug fix was added to the getRule() method.
 */
@@ -43,7 +46,11 @@ fleegix.date.timezone = new function() {
     for ( z in this.zones ) {
       zonesArray.push( z )
     }
-    return zonesArray
+    return zonesArray.sort()
+  }
+  this.loadZoneInfo = function( zones, rules ) {
+    this.zones = zones
+    this.rules = rules
   }
   function getZone(dt, tz) {
     var timezone = tz;
