@@ -16,12 +16,15 @@
 */
 
 /*
+
 The following text is provided to comply with section 4(b) of the 
 Apache 2.0 license:
 
-Some small modifications were made to the original source code by 
-Preston Hunt.  In particular, the getAllZones() method was added to the 
-base class, and a small bug fix was added to the getRule() method.
+Some small modifications were made to the original source code by Preston Hunt.
+In particular, the getAllZones() method was added to the base class, and a
+small bug fix was added to the getRule() method.  The loadZoneInfo() function
+was also added to improve performance when dealing with large zone databases.
+
 */
 
 if (typeof fleegix == 'undefined') { var fleegix = {}; }
