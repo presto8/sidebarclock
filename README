@@ -2,6 +2,8 @@ For more information about this gadget: www.prestonhunt.com/story/110
 
 RELEASE HISTORY
 
+1.10  2007-09-01: Major overhaul and extension for timezone support (thanks to Matthew Eernisse for the Javascript timezone library and to the administrators of the zoneinfo database).  Added Italian language support (thanks Mirko Mazzacano!).  
+
 1.05  2007-08-27: Offset for other timezone is now relative to UTC (GMT)
 
 1.04  2007-08-02: Automatically shrink font size a little bit on the date area line if the user specifies a really long date format string (thanks Edwin Walstra!)
