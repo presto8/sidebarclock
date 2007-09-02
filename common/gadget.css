@@ -16,7 +16,7 @@ body#gadget a {
 }
 
 body#settings {
-  width: 250;
+  width: 280;
   height: 370;
   margin-top: 0;
 }
@@ -62,4 +62,8 @@ body#settings {
 .bigger {
   font-weight: bold;
   margin-bottom: 2px;
+}
+
+#tzLabel {
+  width: 7em;
 }
