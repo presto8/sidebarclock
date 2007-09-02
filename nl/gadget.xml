@@ -2,7 +2,7 @@
 <gadget>
     <name>Presto's Klok</name>
     <namespace>gadgets.prestonhunt.com</namespace>
-    <version>1.04</version>
+    <version>1.10</version>
 
     <author name="Preston Hunt">
     <info url="http://prestonhunt.com" />
