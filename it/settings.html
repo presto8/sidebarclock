@@ -7,10 +7,14 @@
 </head>
 
 <body id="settings" onload="init_settings()">
+<div id="userInputArea">
 Formato data: <input type="text" id="mainDateFormat" size="4" >
 <br>Formato orario: <input type="text" id="mainTimeFormat" size="4">
+<br>Nome orologio: <select id="tzName">
+<option value="">Local time</option>
+</select>
 <br>Tijd zone label: <input type="text" id="tzLabel" size="5"> (optioneel)
-<br>Nome orologio: <select id="tzName"></select>
+</div>
 <hr>
 <span class="bigger">Esempi sulla data:</span>
 <br>"D d M" = "Za 07 Apr"
@@ -20,12 +24,10 @@ Formato data: <input type="text" id="mainDateFormat" size="4" >
 <br>"H:i" = "17:44"
 <br><span class="bigger">Esempi di nomi:</span>
 <br>"PDT", "Portland", "Tokyo", "GMT+2"
-<br><span class="bigger">Fuso orario</span>
-<br>"-3", "+9", "+4.5"
-<p><a href="http://php.net/date">Aiuto formato</a> (non supportato: T, e, o)</li>
+<p><a href="http://www.php.net/manual/it/function.date.php">Aiuto formato</a> (non supportato: T, e, o)</li>
 <hr>
 Versione 1.10 (2007-09-01)
-<br><a href="http://prestonhunt.com/go/sidebarclock">Traduzione italiana  by Mirko Mazzacano</a>
+<br><a href="http://prestonhunt.com/go/sidebarclock">About this gadget</a>
 <br>Traduzione italiana by Mirko Mazzacano.
 </body>
 </html>
