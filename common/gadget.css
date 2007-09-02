@@ -67,3 +67,7 @@ body#settings {
 #tzLabel {
   width: 7em;
 }
+
+#userInputArea {
+  line-height: 2.2em;
+}
