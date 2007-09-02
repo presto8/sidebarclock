@@ -16,7 +16,6 @@ function readSettings() {
   document.mainDateFormat = readSetting( "mainDateFormat", defaultDateFormat )
   document.mainTimeFormat = readSetting( "mainTimeFormat", defaultTimeFormat )
   document.tzLabel = readSetting( "tzLabel", "" )
-  document.tzOffset = readSetting( "tzOffset", "0" )
   document.tzName = readSetting( "tzName", "" )
 
   displayGadget()
@@ -59,12 +58,8 @@ function displayGadget() {
   var dateArea = document.getElementById( "dateArea" )
   var timeArea = document.getElementById( "timeArea" )
   var bottomArea = document.getElementById( "bottomArea" )
-  var tzOffset = Number( document.tzOffset )
 
-  if ( ! isNaN(tzOffset) ) {
-    now.setTime( now.getTime() + 1000*60*60*document.tzOffset )
-    bottomArea.innerText = document.tzLabel
-  }
+  bottomArea.innerText = document.tzLabel
 
   if ( document.tzName.length > 0 ) {
     var utc = now.getTime() + now.getTimezoneOffset()*60*1000
@@ -135,10 +130,11 @@ function addOptions() {
 
 
 function init_settings() {
+  System.Gadget.onSettingsClosing = SettingsClosing;
+
   document.getElementById("mainDateFormat").value = readSetting( "mainDateFormat", "D M d" );
   document.getElementById("mainTimeFormat").value = readSetting( "mainTimeFormat", "h:i a" );
   document.getElementById("tzLabel").value = readSetting( "tzLabel", "" )
-  document.getElementById("tzOffset").value = readSetting( "tzOffset", "" )
   
   addOptions()
   document.getElementById("tzName").value = readSetting( "tzName", "" )
@@ -149,7 +145,6 @@ function SettingsClosing(event) {
     CheckAndSet( "mainDateFormat" )
     CheckAndSet( "mainTimeFormat" )
     CheckAndSet( "tzLabel" )
-    CheckAndSet( "tzOffset" )
     CheckAndSet( "tzName" )
   }
 		
