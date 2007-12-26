@@ -20,21 +20,21 @@ fi
 #
 # Refuse to run if we're in our source directory
 #
-if [ -e .remove_before_publishing ];
+if [ -e .remove_before_publishing ]; then
   echo Refusing to run from repository directory
   pwd
-  exit -1
+  exit 2
 fi
 
+#
+# Clone repository to tempdir
+# 
+hg clone . $TMPDIR
+cd $TMPDIR
+
+echo Removing .hg and .hgtags
 exit
-
-	VER=$(version)
-	DATE=$(date)
-
-	# check for file .remove_for_production and abort if present
-	
-	echo Removing .hg and .hgtags
-	rm -rf .hg .hgtags 
+rm -rf .hg .hgtags 
 	
 	echo Setting version and date in files
 	find . -type f -name gadget.xml -exec sed -i -e 's/xxVER/$VER/g' -e 's/xxDATE/$DATE/g' "{}" \;
