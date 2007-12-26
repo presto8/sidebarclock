@@ -14,37 +14,44 @@ MODIFIED=$(hg status | wc -l)
 if [ $MODIFIED -ne 0 ]; then
   echo Uncommitted changes exist, cowardly refusing to proceed
   hg status $FILES
-  exit 1
+#  exit 1
 fi
 
 #
 # Refuse to run if we're in our source directory
 #
-if [ -e .remove_before_publishing ]; then
-  echo Refusing to run from repository directory
-  pwd
-  exit 2
-fi
+#if [ -e .remove_before_publishing ]; then
+#  echo Refusing to run from repository directory
+#  pwd
+#  exit 2
+#fi
 
-#
-# Clone repository to tempdir
-# 
+# =====
+echo Cloning repository to temp directory
 hg clone . $TMPDIR
 cd $TMPDIR
+pwd
 
+# =====
 echo Removing .hg and .hgtags
-exit
 rm -rf .hg .hgtags 
-	
-	echo Setting version and date in files
-	find . -type f -name gadget.xml -exec sed -i -e 's/xxVER/$VER/g' -e 's/xxDATE/$DATE/g' "{}" \;
-	find . -type f -name settings.html -exec sed -i -e 's/xxVER/$VER/g' -e 's/xxDATE/$DATE/g' "{}" \;
 
-	echo Minifying javascript
-	yuicompressor common/gadget.js >gadget.min.js
-	mv -f js/gadget.min.js js/gadget.js
+# =====
+echo Setting version and date in files
+find . -type f -name gadget.xml -exec sed -i -e 's/xxVER/$VERSION/g' -e 's/xxDATE/$DATE/g' "{}" \;
+find . -type f -name settings.html -exec sed -i -e 's/xxVER/$VERSION/g' -e 's/xxDATE/$DATE/g' "{}" \;
 
-	echo Creating zip/gadget file
-	ZIP=prestosidebarclock-$VERSION.gadget
-	7z a -tzip $ZIP *
+# =====
+echo Minifying javascript
+yuicompressor common/gadget.js >gadget.min.js
+mv -f js/gadget.min.js js/gadget.js
+
+# =====
+echo Creating final zip/gadget file
+ZIP=prestosidebarclock-$VERSION.gadget
+7z a -tzip $ZIP *
+
+# =====
+PWD=$(pwd)
+echo Final gadget is at: $PWD/$ZIP
 
