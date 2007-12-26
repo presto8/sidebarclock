@@ -1,0 +1,50 @@
+# 
+# Replace xxVER and xxDATE
+#
+VERSION=1.11
+DATE=2007-12-26
+TMPDIR=/tmp/prestosidebarclock-$DATE-$VERSION-$$
+TAG=live_push_$DATE
+
+# 
+# First check if any diffs need to be committed.  If so, cowardly
+# refuse to push any changes
+# 
+MODIFIED=$(hg status | wc -l)
+if [ $MODIFIED -ne 0 ]; then
+  echo Uncommitted changes exist, cowardly refusing to proceed
+  hg status $FILES
+  exit 1
+fi
+
+#
+# Refuse to run if we're in our source directory
+#
+if [ -e .remove_before_publishing ];
+  echo Refusing to run from repository directory
+  pwd
+  exit -1
+fi
+
+exit
+
+	VER=$(version)
+	DATE=$(date)
+
+	# check for file .remove_for_production and abort if present
+	
+	echo Removing .hg and .hgtags
+	rm -rf .hg .hgtags 
+	
+	echo Setting version and date in files
+	find . -type f -name gadget.xml -exec sed -i -e 's/xxVER/$VER/g' -e 's/xxDATE/$DATE/g' "{}" \;
+	find . -type f -name settings.html -exec sed -i -e 's/xxVER/$VER/g' -e 's/xxDATE/$DATE/g' "{}" \;
+
+	echo Minifying javascript
+	yuicompressor common/gadget.js >gadget.min.js
+	mv -f js/gadget.min.js js/gadget.js
+
+	echo Creating zip/gadget file
+	ZIP=prestosidebarclock-$VERSION.gadget
+	7z a -tzip $ZIP *
+
