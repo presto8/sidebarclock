@@ -33,25 +33,25 @@ cd $TMPDIR
 pwd
 
 # =====
-echo Removing .hg and .hgtags
+echo Removing .hg and .hgtags and other unnecessary files
 rm -rf .hg .hgtags 
+rm live-push
 
 # =====
 echo Setting version and date in files
-find . -type f -name gadget.xml -exec sed -i -e 's/xxVER/$VERSION/g' -e 's/xxDATE/$DATE/g' "{}" \;
-find . -type f -name settings.html -exec sed -i -e 's/xxVER/$VERSION/g' -e 's/xxDATE/$DATE/g' "{}" \;
+find . -type f -name gadget.xml -exec sed -i -e "s/xxVER/$VERSION/g" -e "s/xxDATE/$DATE/g" "{}" \;
+find . -type f -name settings.html -exec sed -i -e "s/xxVER/$VERSION/g" -e "s/xxDATE/$DATE/g" "{}" \;
 
 # =====
 echo Minifying javascript
-yuicompressor common/gadget.js >gadget.min.js
+yuicompressor common/gadget.js >js/gadget.min.js
 mv -f js/gadget.min.js js/gadget.js
 
 # =====
 echo Creating final zip/gadget file
-ZIP=prestosidebarclock-$VERSION.gadget
+ZIP=../prestosidebarclock-$VERSION.gadget
 7z a -tzip $ZIP *
 
 # =====
 PWD=$(pwd)
 echo Final gadget is at: $PWD/$ZIP
-
