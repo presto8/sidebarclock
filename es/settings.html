@@ -1,0 +1,49 @@
+<html>
+<head>
+<link rel="stylesheet" href="common/gadget.css">
+<script src="common/tzdata2007g_json.js"></script>
+<script src="common/timezone.js"></script>
+<script src="common/gadget.js"></script>
+</head>
+
+<body id="settings" onload="init_settings()">
+<div id="userInputArea">
+Formato de fecha:
+<input type="text" id="mainDateFormat" size="4" >
+<br>
+Formato de hora:
+<input type="text" id="mainTimeFormat" size="4">
+<br>
+Zona horaria:
+<select id="tzName">
+<option value="">
+Hora local
+</option>
+</select>
+<br>
+Etiqueta de zona horaria:
+<input type="text" id="tzLabel">
+(opcional)
+</div>
+<hr>
+<span class="bigger">
+Ejemplos de fecha:
+</span>
+<br>
+"D M d" = "L abr 07"
+<br>
+"n/j l" = "4/7 sábado"
+<br><span class="bigger">
+Ejemplos de hora:
+</span>
+<br>"H:i" = "17:44"
+<br><span class="bigger">Ejemplos de etiquetas:</span>
+<br>"CET", "Madrid", "Paris", "GMT+1"
+<p><a href="http://php.net/date">Ayuda con el formato</a> (no posibles: T, e, o)</li>
+<hr>
+versión xxVER (xxDATE)
+<br><a href="http://prestonhunt.com/go/sidebarclock">Acerca de este gadget</a>
+<br>
+Traducción en español por Lucía y Tom
+</body>
+</html>

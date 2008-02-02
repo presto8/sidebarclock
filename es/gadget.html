@@ -1,0 +1,23 @@
+<html>
+<head>
+<link rel="stylesheet" href="common/gadget.css">
+<script src="common/formatDate.js"></script>
+<script src="common/tzdata2007g_json.js"></script>
+<script src="common/timezone.js"></script>
+<script src="common/gadget.js"></script>
+<script>
+var daysLong =    ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"];
+var daysShort =   ["D", "L", "M", "X", "J", "V", "S"];
+var monthsShort = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
+var monthsLong =  ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
+var defaultDateFormat = "D M d";
+var defaultTimeFormat = "H:i";
+</script>
+</head>
+
+<body onload="startup()" id="gadget">
+<div id="dateArea"></div>
+<div id="timeArea"></div>
+<div id="bottomArea"></div>
+</body>
+</html>
