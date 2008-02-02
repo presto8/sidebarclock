@@ -2,6 +2,10 @@ For more information about this gadget: www.prestonhunt.com/story/110
 
 RELEASE HISTORY
 
+1.12  2008-02-02: Added Spanish.
+
+1.11  2007-12-26: Added French.
+
 1.10  2007-09-01: Major overhaul and extension for timezone support (thanks to Matthew Eernisse for his Javascript XDate timezone library (please see http://tinyurl.com/2eqk4c) and to the administrators of the zoneinfo database).  Added Italian language support (thanks Mirko Mazzacano!).  
 
 1.05  2007-08-27: Offset for other timezone is now relative to UTC (GMT)
