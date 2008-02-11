@@ -71,7 +71,8 @@ function displayGadget() {
   if ( document.tzName.length > 0 ) {
     var utc = now.getTime() + now.getTimezoneOffset()*60*1000;
     var utcDate = new Date( utc );
-    var otherOffset = fleegix.date.timezone.getOffset( utcDate, document.tzName );
+    var tzInfo = fleegix.date.timezone.getTzInfo( utcDate, document.tzName );
+    var otherOffset = tzInfo.tzOffset;
     var otherTime = utc - otherOffset*60*1000;
 
     now = new Date( otherTime );
