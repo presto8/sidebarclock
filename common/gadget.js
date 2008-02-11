@@ -22,7 +22,14 @@ function readSettings() {
 }
 
 function loadTimeZones() {
-  fleegix.date.timezone.loadZoneInfo( zones_json, rules_json );
+	var _tz = fleegix.date.timezone;
+	_tz.loadingScheme = _tz.loadingSchemes.MANUAL_LOAD;
+	for (var z in tzdata2007k.zones) {
+		_tz.zones[z] = tzdata2007k.zones[z];
+	}
+	for (var r in tzdata2007k.rules) {
+		_tz.rules[r] = tzdata2007k.rules[r];
+	}
 }
 
 function startup() {
@@ -149,4 +156,33 @@ function SettingsClosing(event) {
   }
 		
   event.cancel = false;
+}
+
+function getSystemFontsList() {
+  // http://forums.microsoft.com/MSDN/ShowPost.aspx?PostID=1959226&SiteID=1
+  var HKLM = 2147483650;
+  var rPath = "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Fonts\\";
+  var rValue;
+
+  // connect to the registry
+  var oSwbem = new ActiveXObject("WbemScripting.SwbemLocator");
+  var oSvc = oSwbem.ConnectServer(null, "root\\default");
+  var oReg = oSvc.Get("StdRegProv");
+
+  // enumerate the values 
+  var oMethod = oReg.Methods_.Item("EnumValues");
+  var oInParam = oMethod.InParameters.SpawnInstance_();
+  oInParam.hDefKey = HKLM;
+  oInParam.sSubKeyName = rPath;
+  var oOutParam = oReg.ExecMethod_(oMethod.Name, oInParam);
+
+  // get the values into an array
+  var sNames = oOutParam.sNames.toArray();
+
+  return sNames;
+
+  for (var i = 0; i < sNames.length; i++) {
+    document.write( sNames[i] );
+   // font names are in sNames[i]
+  }
 }

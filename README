@@ -2,6 +2,10 @@ For more information about this gadget: www.prestonhunt.com/story/110
 
 RELEASE HISTORY
 
+1.13  2008-02-10: Updated to latest version of Fleegix date libary
+(current version as of 2008-02-10).  Added minor bug fix for incorrect
+handling of dates such as Asia/Jerusalem.
+
 1.12  2008-02-02: Added Spanish.
 
 1.11  2007-12-26: Added French.
