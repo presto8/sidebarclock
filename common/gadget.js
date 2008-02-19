@@ -41,6 +41,22 @@ function startup() {
 
   readSettings();
   window.setInterval(updateGadget, 1000);
+
+	sunriseTest();
+}
+
+function sunriseTest() {
+var lat = 21.3;
+var lon = 157.85;
+var gmt = -10;
+var jd = calcJD( 2008, 2, 11 );
+var sunriseUTC = calcSunriseUTC( jd, lat, lon );
+var sunsetUTC = calcSunsetUTC( jd, lat, lon );
+
+var h = sunriseUTC + gmt*60;
+var i = sunsetUTC + gmt*60;
+
+document.sunrise.innerHTML = timeStringDate(h,jd);
 }
 
 function updateGadget() {
@@ -132,7 +148,9 @@ function addOptions() {
   var selectId = document.getElementById( "tzName" );
 
   for ( var z in zones ) {
-    selectId.add( new Option( zones[z], zones[z] ) );
+	  if ( zones[z].search(/gmt/i) == -1 ) {
+			selectId.add( new Option( zones[z], zones[z] ) );
+		}
   } 
 }
 
