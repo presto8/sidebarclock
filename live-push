@@ -17,15 +17,6 @@ if [ $MODIFIED -ne 0 ]; then
 #  exit 1
 fi
 
-#
-# Refuse to run if we're in our source directory
-#
-#if [ -e .remove_before_publishing ]; then
-#  echo Refusing to run from repository directory
-#  pwd
-#  exit 2
-#fi
-
 # =====
 echo Cloning repository to temp directory
 hg clone . $TMPDIR
@@ -44,8 +35,8 @@ find . -type f -name settings.html -exec sed -i -e "s/xxVER/$VERSION/g" -e "s/xx
 
 # =====
 echo Minifying javascript
-#/usr/local/bin/yuicompressor common/gadget.js >common/gadget.min.js
-#mv -f common/gadget.min.js common/gadget.js
+/usr/local/bin/yuicompressor common/gadget.js >common/gadget.min.js
+mv -f common/gadget.min.js common/gadget.js
 
 # =====
 echo Creating final zip/gadget file
