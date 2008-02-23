@@ -2,7 +2,7 @@ For more information about this gadget: www.prestonhunt.com/story/110
 
 RELEASE HISTORY
 
-1.14  2008-02-22: Removed timezone entries without timezone data.  Fixed problem with multiple clocks not updating.
+1.14  2008-02-22: Removed timezone entries without timezone data.  Fixed problem with multiple clocks not updating (was probably caused by selecting a city with a missing timezone entry (thanks Rob Ryan and HongSheng Zhang).
 
 1.13  2008-02-10: Updated to latest version of Fleegix date libary (current version as of 2008-02-10 - thanks Matthew Eernisse).  Added minor bug fix for incorrect handling of dates such as Asia/Jerusalem and the new US daylight saving rules (thanks Jeffry Ma, Mike Ogden, and Shlomi Bernthal).
 
