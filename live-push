@@ -1,8 +1,8 @@
 # 
 # Replace xxVER and xxDATE
 #
-VERSION=1.13
-DATE=2008-02-10
+VERSION=1.14
+DATE=2008-02-18
 TMPDIR=/tmp/prestosidebarclock-$DATE-$VERSION-$$
 TAG=live_push_$DATE
 
@@ -44,8 +44,8 @@ find . -type f -name settings.html -exec sed -i -e "s/xxVER/$VERSION/g" -e "s/xx
 
 # =====
 echo Minifying javascript
-/usr/local/bin/yuicompressor common/gadget.js >common/gadget.min.js
-mv -f common/gadget.min.js common/gadget.js
+#/usr/local/bin/yuicompressor common/gadget.js >common/gadget.min.js
+#mv -f common/gadget.min.js common/gadget.js
 
 # =====
 echo Creating final zip/gadget file

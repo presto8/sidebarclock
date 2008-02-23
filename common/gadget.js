@@ -4,21 +4,17 @@
 
 var isDirty = true;
 
-function readSetting( settingName, defaultValue ) {
-  var val = System.Gadget.Settings.read( settingName );
-  if ( val !== "" ) return val;
-  return defaultValue;
+function readSetting( settingName ) {
+  return System.Gadget.Settings.read( settingName );
 }
 
 function readSettings() {
   System.Gadget.background = "images/background-black.png";
 
-  document.mainDateFormat = readSetting( "mainDateFormat", defaultDateFormat );
-  document.mainTimeFormat = readSetting( "mainTimeFormat", defaultTimeFormat );
-  document.tzLabel = readSetting( "tzLabel", "" );
-  document.tzName = readSetting( "tzName", "" );
-
-  displayGadget();
+  document.mainDateFormat = readSetting( "mainDateFormat" );
+  document.mainTimeFormat = readSetting( "mainTimeFormat" );
+  document.tzLabel = readSetting( "tzLabel" );
+  document.tzName = readSetting( "tzName" );
 }
 
 function loadTimeZones() {
@@ -32,6 +28,11 @@ function loadTimeZones() {
 	}
 }
 
+function setDefaults() {
+  System.Gadget.Settings.write( "mainDateFormat", defaultDateFormat );
+  System.Gadget.Settings.write( "mainTimeFormat", defaultTimeFormat );
+}
+
 function startup() {
   System.Gadget.settingsUI = "settings.html";
   System.Gadget.onSettingsClosed = readSettings;
@@ -39,24 +40,27 @@ function startup() {
 
   loadTimeZones();
 
+  setDefaults();
   readSettings();
-  window.setInterval(updateGadget, 1000);
-
-	sunriseTest();
+  updateGadget();
 }
 
-function sunriseTest() {
-var lat = 21.3;
-var lon = 157.85;
-var gmt = -10;
-var jd = calcJD( 2008, 2, 11 );
-var sunriseUTC = calcSunriseUTC( jd, lat, lon );
-var sunsetUTC = calcSunsetUTC( jd, lat, lon );
+function changeColor( lat, lon, gmt ) {
+  return;
+  var now = new Date();
 
-var h = sunriseUTC + gmt*60;
-var i = sunsetUTC + gmt*60;
+  var jd = calcJD( now.getFullYear(), 1+now.getMonth(), now.getDate() );
+  var sunriseUTC = calcSunriseUTC( jd, lat, lon );
+  var sunsetUTC = calcSunsetUTC( jd, lat, lon );
 
-document.sunrise.innerHTML = timeStringDate(h,jd);
+  var h = sunriseUTC + gmt*60;
+  var i = sunsetUTC + gmt*60;
+
+  var dateArea = document.getElementById( "dateArea" );
+  var sunrise = timeStringDate(h,jd);
+  var sunset = timeStringDate(i,jd);
+
+  dateArea.innerHTML = sunrise + " " + sunset;
 }
 
 function updateGadget() {
@@ -65,6 +69,7 @@ function updateGadget() {
   } else {
     displayGadget();
     isDirty = false;
+    window.setTimeout(updateGadget, 1000);
   }
 }
 
@@ -77,6 +82,7 @@ function checkVisibility() {
 
 function displayGadget() {
   var now = new Date();
+  var gmtOffset = now.getTimezoneOffset();
 
   var dateArea = document.getElementById( "dateArea" );
   var timeArea = document.getElementById( "timeArea" );
@@ -85,13 +91,19 @@ function displayGadget() {
   bottomArea.innerText = document.tzLabel;
 
   if ( document.tzName.length > 0 ) {
-    var utc = now.getTime() + now.getTimezoneOffset()*60*1000;
-    var utcDate = new Date( utc );
-    var tzInfo = fleegix.date.timezone.getTzInfo( utcDate, document.tzName );
-    var otherOffset = tzInfo.tzOffset;
-    var otherTime = utc - otherOffset*60*1000;
+    try {
+      var utc = now.getTime() + gmtOffset*60*1000;
+      var utcDate = new Date( utc );
+      var tzInfo = fleegix.date.timezone.getTzInfo( utcDate, document.tzName );
+      var otherOffset = tzInfo.tzOffset;
+      var otherTime = utc - otherOffset*60*1000;
 
-    now = new Date( otherTime );
+      now = new Date( otherTime );
+      gmtOffset = otherOffset;
+    } catch(err) {
+      document.tzName = '';
+      // no tzdata for this entry, clear it away
+    }
   }
 
   dateArea.innerHTML = '<a href="http://www.timeanddate.com/calendar/">' + formatDate( document.mainDateFormat, now ) + '</a>';
@@ -99,15 +111,30 @@ function displayGadget() {
 
   autoDateSize( dateArea );
   autoTimeSize( timeArea, bottomArea );
+
+  var okToUpdate = now.getMinutes() % 15;
+
+  if ( okToUpdate && document.tzName.length ) {
+    var coords = latlon[ document.tzName ]
+    if ( coords ) {
+      var lat = coords[0];
+      var lon = -coords[1];
+      changeColor( lat, lon, -gmtOffset/60 );
+    }
+  }
 }
 
 function autoDateSize( dateArea ) {
   var maxSize = 18;
   var dateLen = dateArea.innerText.length;
 
-  if ( dateLen > maxSize ) {
+  if ( dateLen === 0 ) {
+    timeArea.style.top = '6px';
+  } else if ( dateLen > maxSize ) {
+    timeArea.style.top = '12px';
     dateArea.style.fontSize = '0.9em';
   } else {
+    timeArea.style.top = '12px';
     dateArea.style.fontSize = '1.1em';
   }
 }
