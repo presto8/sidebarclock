@@ -39,9 +39,12 @@ function startup() {
   System.Gadget.visibilityChanged = checkVisibility;
 
   loadTimeZones();
-
-  setDefaults();
   readSettings();
+
+	if ( ! document.mainTimeFormat ) {
+		setDefaults();
+	}
+
   updateGadget();
 }
 
