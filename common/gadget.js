@@ -15,17 +15,7 @@ function readSettings() {
   document.mainTimeFormat = readSetting( "mainTimeFormat" );
   document.tzLabel = readSetting( "tzLabel" );
   document.tzName = readSetting( "tzName" );
-}
-
-function loadTimeZones() {
-	var _tz = fleegix.date.timezone;
-	_tz.loadingScheme = _tz.loadingSchemes.MANUAL_LOAD;
-	for (var z in tzdata2007k.zones) {
-		_tz.zones[z] = tzdata2007k.zones[z];
-	}
-	for (var r in tzdata2007k.rules) {
-		_tz.rules[r] = tzdata2007k.rules[r];
-	}
+	document.tzOffsets = readSetting( "tzOffsets" );
 }
 
 function setDefaults() {
@@ -38,7 +28,6 @@ function startup() {
   System.Gadget.onSettingsClosed = readSettings;
   System.Gadget.visibilityChanged = checkVisibility;
 
-  loadTimeZones();
   readSettings();
 
 	if ( ! document.mainTimeFormat ) {
@@ -83,6 +72,17 @@ function checkVisibility() {
   }
 }
 
+function getOffsetInMinutes( tzName, utcEpoch ) {
+  var tzOffsets = tzdata2007k[ tzName ];
+	var offset = 0;
+	for ( var cutoff in tzOffsets ) {
+	  if ( utcEpoch > cutoff ) {
+		  offset = tzOffsets[ cutoff ];
+		}
+	}
+	return offset;
+}
+
 function displayGadget() {
   var now = new Date();
   var gmtOffset = now.getTimezoneOffset();
@@ -96,9 +96,8 @@ function displayGadget() {
   if ( document.tzName.length > 0 ) {
     try {
       var utc = now.getTime() + gmtOffset*60*1000;
-      var utcDate = new Date( utc );
-      var tzInfo = fleegix.date.timezone.getTzInfo( utcDate, document.tzName );
-      var otherOffset = tzInfo.tzOffset;
+			var utcEpoch = Math.round(utc/1000.0);
+      var otherOffset = getOffsetInMinutes( document.tzName, utcEpoch );
       var otherTime = utc - otherOffset*60*1000;
 
       now = new Date( otherTime );
@@ -172,36 +171,33 @@ function CheckAndSet( variablename ) {
 }
 
 function addOptions() {
-  loadTimeZones();
-
-  var zones = fleegix.date.timezone.getAllZones();
   var selectId = document.getElementById( "tzName" );
-
+	var zones = tzdata2007k;
   for ( var z in zones ) {
-	  if ( zones[z].search(/gmt/i) == -1 ) {
-			selectId.add( new Option( zones[z], zones[z] ) );
-		}
+		selectId.add( new Option( z, z ) );
   } 
 }
 
-
 function init_settings() {
-  System.Gadget.onSettingsClosing = SettingsClosing;
+  System.Gadget.onSettingsClosing = settingsClosing;
 
-  document.getElementById("mainDateFormat").value = readSetting( "mainDateFormat", "D M d" );
-  document.getElementById("mainTimeFormat").value = readSetting( "mainTimeFormat", "h:i a" );
-  document.getElementById("tzLabel").value = readSetting( "tzLabel", "" );
+  document.getElementById("mainDateFormat").value = readSetting( "mainDateFormat" );
+  document.getElementById("mainTimeFormat").value = readSetting( "mainTimeFormat" );
+  document.getElementById("tzLabel").value = readSetting( "tzLabel" );
   
   addOptions();
-  document.getElementById("tzName").value = readSetting( "tzName", "" );
+  document.getElementById("tzName").value = readSetting( "tzName" );
 }
 
-function SettingsClosing(event) {
-  if (event.closeAction == event.Action.commit) {
+function settingsClosing(event) {
+  if ( event.closeAction == event.Action.commit ) {
     CheckAndSet( "mainDateFormat" );
     CheckAndSet( "mainTimeFormat" );
     CheckAndSet( "tzLabel" );
     CheckAndSet( "tzName" );
+
+    var tzOffsets = tzdata2007k[ document.tzLabel ];
+		System.Gadget.Settings.write( 'tzOffsets', tzOffsets );
   }
 		
   event.cancel = false;
