@@ -15,7 +15,7 @@ function readSettings() {
   document.mainTimeFormat = readSetting( "mainTimeFormat" );
   document.tzLabel = readSetting( "tzLabel" );
   document.tzName = readSetting( "tzName" );
-	document.tzOffsets = readSetting( "tzOffsets" );
+//	document.tzOffsets = readSetting( "tzOffsets" );
 }
 
 function setDefaults() {
@@ -32,6 +32,7 @@ function startup() {
 
 	if ( ! document.mainTimeFormat ) {
 		setDefaults();
+		readSettings();
 	}
 
   updateGadget();
@@ -73,6 +74,7 @@ function checkVisibility() {
 }
 
 function getOffsetInMinutes( tzName, utcEpoch ) {
+//  var tzOffsets = document.tzOffsets;
   var tzOffsets = tzdata2007k[ tzName ];
 	var offset = 0;
 	for ( var cutoff in tzOffsets ) {
@@ -98,7 +100,7 @@ function displayGadget() {
       var utc = now.getTime() + gmtOffset*60*1000;
 			var utcEpoch = Math.round(utc/1000.0);
       var otherOffset = getOffsetInMinutes( document.tzName, utcEpoch );
-      var otherTime = utc - otherOffset*60*1000;
+      var otherTime = utc + otherOffset*60*1000;
 
       now = new Date( otherTime );
       gmtOffset = otherOffset;
@@ -121,7 +123,7 @@ function displayGadget() {
     if ( coords ) {
       var lat = coords[0];
       var lon = -coords[1];
-      changeColor( lat, lon, -gmtOffset/60 );
+      changeColor( lat, lon, gmtOffset/60 );
     }
   }
 }
@@ -196,10 +198,11 @@ function settingsClosing(event) {
     CheckAndSet( "tzLabel" );
     CheckAndSet( "tzName" );
 
-    var tzOffsets = tzdata2007k[ document.tzLabel ];
-		System.Gadget.Settings.write( 'tzOffsets', tzOffsets );
+//		var tzName = document.getElementById('tzName').value;
+//    var tzOffsets = tzdata2007k[ tzName ];
+//		System.Gadget.Settings.write( 'tzOffsets', tzOffsets );
   }
-		
+
   event.cancel = false;
 }
 
