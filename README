@@ -2,6 +2,8 @@ For more information about this gadget: www.prestonhunt.com/story/110
 
 RELEASE HISTORY
 
+1.16 2008-02-28: Fixed Sydney and Nocosia (thanks John Bishop!).  Moved away from Fleegix to home-grown timezone library.
+
 1.15 2008-02-25: Corrected accidental overwrite of settings with defaults on system restart (thanks Mike Ogden)
 
 1.14  2008-02-22: Removed timezone entries without timezone data.  Fixed problem with multiple clocks not updating (was probably caused by selecting a city with a missing timezone entry (thanks Rob Ryan and HongSheng Zhang).
