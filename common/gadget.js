@@ -4,6 +4,11 @@
 
 var isDirty = true;
 
+var mainDateFormat = null;
+var mainTimeFormat = null;
+var tzLabel = null;
+var tzName = null;
+
 function readSetting( settingName ) {
   return System.Gadget.Settings.read( settingName );
 }
@@ -11,10 +16,10 @@ function readSetting( settingName ) {
 function readSettings() {
   System.Gadget.background = "images/background-black.png";
 
-  document.mainDateFormat = readSetting( "mainDateFormat" );
-  document.mainTimeFormat = readSetting( "mainTimeFormat" );
-  document.tzLabel = readSetting( "tzLabel" );
-  document.tzName = readSetting( "tzName" );
+  mainDateFormat = readSetting( "mainDateFormat" );
+  mainTimeFormat = readSetting( "mainTimeFormat" );
+  tzLabel = readSetting( "tzLabel" );
+  tzName = readSetting( "tzName" );
 //	document.tzOffsets = readSetting( "tzOffsets" );
 }
 
@@ -30,11 +35,12 @@ function startup() {
 
   readSettings();
 
-	if ( ! document.mainTimeFormat ) {
+	if ( ! mainTimeFormat ) {
 		setDefaults();
 		readSettings();
 	}
 
+  initialDisplaySetup();
   updateGadget();
 }
 
@@ -85,6 +91,18 @@ function getOffsetInMinutes( tzName, utcEpoch ) {
 	return offset;
 }
 
+function initialDisplaySetup() {
+  var bottomArea = document.getElementById( "bottomArea" );
+  bottomArea.innerText = tzLabel;
+
+	var t = translations.en;
+	for ( var key in t ) {
+	  var el = document.getElementById(key);
+		if ( ! el ) continue;
+		el.innerHTML = t[key];
+	}
+}
+
 function displayGadget() {
   var now = new Date();
   var gmtOffset = now.getTimezoneOffset();
@@ -93,33 +111,31 @@ function displayGadget() {
   var timeArea = document.getElementById( "timeArea" );
   var bottomArea = document.getElementById( "bottomArea" );
 
-  bottomArea.innerText = document.tzLabel;
-
-  if ( document.tzName.length > 0 ) {
+  if ( tzName.length > 0 ) {
     try {
       var utc = now.getTime() + gmtOffset*60*1000;
 			var utcEpoch = Math.round(utc/1000.0);
-      var otherOffset = getOffsetInMinutes( document.tzName, utcEpoch );
+      var otherOffset = getOffsetInMinutes( tzName, utcEpoch );
       var otherTime = utc + otherOffset*60*1000;
 
       now = new Date( otherTime );
       gmtOffset = otherOffset;
     } catch(err) {
-      document.tzName = '';
+      tzName = '';
       // no tzdata for this entry, clear it away
     }
   }
 
-  dateArea.innerHTML = '<a href="http://www.timeanddate.com/calendar/">' + formatDate( document.mainDateFormat, now ) + '</a>';
-  timeArea.innerHTML = '<a href="http://www.timeanddate.com/worldclock/">' + formatDate( document.mainTimeFormat, now ) + '</a>';
+  dateArea.innerHTML = '<a href="http://www.timeanddate.com/calendar/">' + formatDate( mainDateFormat, now ) + '</a>';
+  timeArea.innerHTML = '<a href="http://www.timeanddate.com/worldclock/">' + formatDate( mainTimeFormat, now ) + '</a>';
 
   autoDateSize( dateArea );
   autoTimeSize( timeArea, bottomArea );
 
   var okToUpdate = now.getMinutes() % 15;
 
-  if ( okToUpdate && document.tzName.length ) {
-    var coords = latlon[ document.tzName ]
+  if ( okToUpdate && tzName.length ) {
+    var coords = latlon[ tzName ]
     if ( coords ) {
       var lat = coords[0];
       var lon = -coords[1];
