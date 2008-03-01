@@ -95,12 +95,6 @@ function initialDisplaySetup() {
   var bottomArea = document.getElementById( "bottomArea" );
   bottomArea.innerText = tzLabel;
 
-	var t = translations.en;
-	for ( var key in t ) {
-	  var el = document.getElementById(key);
-		if ( ! el ) continue;
-		el.innerHTML = t[key];
-	}
 }
 
 function displayGadget() {
@@ -205,6 +199,13 @@ function init_settings() {
   
   addOptions();
   document.getElementById("tzName").value = readSetting( "tzName" );
+
+	var t = translations.en;
+	for ( var key in t ) {
+	  var el = document.getElementById(key);
+		if ( ! el ) continue;
+		el.innerHTML = t[key];
+	}
 }
 
 function settingsClosing(event) {
