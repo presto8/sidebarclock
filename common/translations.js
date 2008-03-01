@@ -23,7 +23,7 @@ var translations = {
 		't_labelexample1': 'Portland, Tokyo, GMT+2',
 		't_formathelp':    '<a href="http://php.net/date">Format help</a> (unsupported: T, e, o)',
 		't_version':       'Version xxVER (xxDATE)',
-		't_about':         'About this gadget',
+		't_about':         'About this gadget'
 	},
 
 	'es': {
