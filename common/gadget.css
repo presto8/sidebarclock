@@ -1,13 +1,22 @@
+* {
+  xxfont-size: 7.4pt;
+  font-family: Segoe UI;
+}
+
 body#gadget { 
   width: 130px;
   height: 67px;
   color: #ffffff;
-  font-family: Segoe UI;
-  font-weight: 0;
   font-size: 7.4pt;
   margin-top: 5px;
-  margin-left: 0;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
   padding: 0;
+}
+
+body#gadget div {
+  text-align: center;
 }
 
 body#gadget a {
@@ -16,47 +25,34 @@ body#gadget a {
 }
 
 body#settings {
-  width: 280;
-  height: 370;
+  width: 310;
+  height: 400;
   margin-top: 0;
+  margin-left: 0;
+}
+
+body#settings * {
+  font-size: 10pt;
 }
 
 #dateArea {
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin-top: 4px;
-  margin-left: 5px;
-  width: 100%;
-  font-size: 1.1em;
-  line-height: 1.2em;
-  text-align: center;
-  vertical-align: middle;
-  z-index: 10;
+  height: 12px;
+  /* background-color: blue; */
 }
+.normalDate { font-size: 1.1em; }
+.smallDate  { font-size: 0.9em; }
 
 #timeArea {
-  position: absolute;
-  top: 12px;
-  left: 0px;
-  font-weight: default;
-  margin-left: 5px;
-  width: 100%;
-  text-align: center;
-  line-height: 50px;
-  z-index: 0;
+  white-space: nowrap;
+  /* background-color: red; */
 }
+.normalTime { height: 45px; } // = 67 - 5 - 5 - 12
+.bigTime    { height: 57px; } // = 67 - 5 -5
+.smallTime  { height: 33px; } // = 67 - 5 - 5 - 12 - 12
 
 #bottomArea {
-  position: absolute;
-  top: 45px;
-  left: 0;
-  margin-top: 5px;
-  margin-left: 5px;
-  width: 100%;
+  height: 12px;
   font-size: 1.1em;
-  line-height: 1.2em;
-  text-align: center;
 }
 
 .bigger {
@@ -70,4 +66,8 @@ body#settings {
 
 #userInputArea {
   line-height: 2.2em;
+}
+
+#example_table td {
+  vertical-align: top;
 }

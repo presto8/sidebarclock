@@ -8,47 +8,41 @@
 
 <body id="settings" onload="init_settings()">
 <div id="userInputArea">
-<span id="t_dateformat"/><input type="text" id="mainDateFormat" size="4" >
-<br>
-<span id="t_timeformat"/>
-<input type="text" id="mainTimeFormat" size="4">
-<br>
-Time zone:
-<select id="tzName">
-<option value="">
-Local time
-</option>
+
+<table>
+<tr><td id="t_dateformat"><td><input type="text" id="mainDateFormat" size="4">
+<tr><td id="t_timeformat"><td><input type="text" id="mainTimeFormat" size="4">
+<tr><td id="t_timezone"><td><select id="tzName"><option value="">Local time</option></select>
+<tr><td id="t_bottomlabel"><td><input type="text" id="tzLabel"> <span id="t_optional"></span>
+<tr><td id="t_language"><td>
+<select id="locale" onchange="localizeText(this.value)">
+<option value="dk">Dansk</option>
+<option value="en">English</option>
+<option value="es">español</option>
+<option value="fr">francaise</option>
+<option value="it">italiana</option>
+<option value="nl">Nederlandse</option>
 </select>
-<br>
-Time zone label:
-<input type="text" id="tzLabel">
-(optional)
-</div>
+</table>
+
 <!--
 <br>
 <input id=sunmode type=checkbox>Change colors automatically with sun
 (not implemented yet)
 -->
 <hr>
-<span class="bigger">
-Date Examples:
-</span>
-<br>
-"D M d" = "Sat Apr 07"
-<br>
-"n/j l" = "4/7 Saturday"
-<br><span class="bigger">
-Time Examples:
-</span>
-<br>"g:i a" = "5:44 pm"
-<br>"H:i" = "17:44"
-<br><span class="bigger">Label Examples:</span>
-<br>"PDT", "Portland", "Tokyo", "GMT+2"
-<p><a href="http://php.net/date">Format help</a> (unsupported: T, e, o)</li>
+<span id="t_examples" class="bigger"></span>
+
+<table id=example_table>
+<tr><td id=t_date><td id=t_dateexamples>
+<tr><td id=t_time><td id=t_timeexamples>
+<tr><td id=t_label><td id=t_labelexamples>
+</table>
+
+<span id=t_formathelplong></span>
 <hr>
-Version xxVER (xxDATE)
-<br><a href="http://prestonhunt.com/go/sidebarclock">About this gadget</a>
-<hr>
-<div id=sunrise></div>
+<span id=t_version></span>
+<br><a href="http://prestonhunt.com/go/sidebarclock" id=t_about></a>
+<br><span id=t_translateby></span>
 </body>
 </html>

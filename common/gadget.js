@@ -1,5 +1,6 @@
 /*
  * Non-localized javascript
+ * vim: ts=2 et
  */
 
 var isDirty = true;
@@ -26,6 +27,7 @@ function readSettings() {
 function setDefaults() {
   System.Gadget.Settings.write( "mainDateFormat", defaultDateFormat );
   System.Gadget.Settings.write( "mainTimeFormat", defaultTimeFormat );
+  System.Gadget.Settings.write( "locale", getSystemLanguage() );
 }
 
 function startup() {
@@ -40,12 +42,12 @@ function startup() {
 		readSettings();
 	}
 
-  initialDisplaySetup();
   updateGadget();
 }
 
 function changeColor( lat, lon, gmt ) {
   return;
+/*
   var now = new Date();
 
   var jd = calcJD( now.getFullYear(), 1+now.getMonth(), now.getDate() );
@@ -60,6 +62,7 @@ function changeColor( lat, lon, gmt ) {
   var sunset = timeStringDate(i,jd);
 
   dateArea.innerHTML = sunrise + " " + sunset;
+*/
 }
 
 function updateGadget() {
@@ -91,12 +94,6 @@ function getOffsetInMinutes( tzName, utcEpoch ) {
 	return offset;
 }
 
-function initialDisplaySetup() {
-  var bottomArea = document.getElementById( "bottomArea" );
-  bottomArea.innerText = tzLabel;
-
-}
-
 function displayGadget() {
   var now = new Date();
   var gmtOffset = now.getTimezoneOffset();
@@ -104,6 +101,9 @@ function displayGadget() {
   var dateArea = document.getElementById( "dateArea" );
   var timeArea = document.getElementById( "timeArea" );
   var bottomArea = document.getElementById( "bottomArea" );
+
+//  tzLabel = 'Test';
+  bottomArea.innerText = tzLabel;
 
   if ( tzName.length > 0 ) {
     try {
@@ -123,13 +123,14 @@ function displayGadget() {
   dateArea.innerHTML = '<a href="http://www.timeanddate.com/calendar/">' + formatDate( mainDateFormat, now ) + '</a>';
   timeArea.innerHTML = '<a href="http://www.timeanddate.com/worldclock/">' + formatDate( mainTimeFormat, now ) + '</a>';
 
-  autoDateSize( dateArea );
-  autoTimeSize( timeArea, bottomArea );
+  adjustHeights( dateArea, timeArea, bottomArea );
+  adjustDateFont( dateArea );
+  adjustFontToFit( timeArea );
 
   var okToUpdate = now.getMinutes() % 15;
 
   if ( okToUpdate && tzName.length ) {
-    var coords = latlon[ tzName ]
+    var coords = latlon[ tzName ];
     if ( coords ) {
       var lat = coords[0];
       var lon = -coords[1];
@@ -138,42 +139,77 @@ function displayGadget() {
   }
 }
 
-function autoDateSize( dateArea ) {
-  var maxSize = 18;
-  var dateLen = dateArea.innerText.length;
+function adjustFontToFit( el ) {
+  var fontSize = 100;
+  var maxWidth = 120;
 
-  if ( dateLen === 0 ) {
-    timeArea.style.top = '6px';
-  } else if ( dateLen > maxSize ) {
-    timeArea.style.top = '12px';
-    dateArea.style.fontSize = '0.9em';
+  el.style.fontSize = fontSize + 'px';
+
+  var hscale = maxWidth / el.offsetWidth;
+  fontSize = Math.floor( fontSize * hscale );
+  el.style.fontSize = fontSize + 'px';
+
+  var timeHeight = getProperTimeHeight( timeArea );
+  var vscale = timeHeight / el.offsetHeight;
+  if ( vscale < 1 ) {
+    fontSize = Math.floor( fontSize * vscale );
+    el.style.fontSize = fontSize + 'px';
+  }
+
+  el.style.lineHeight = 1.0;
+  el.style.marginTop = (timeHeight - fontSize)/2;
+  el.style.marginBottom = (timeHeight - fontSize)/2;
+
+//  document.getElementById('dateArea').innerText = vscale;
+}
+
+function getProperTimeHeight( timeArea ) {
+  if ( timeArea.className == 'bigTime' ) return 67;
+  if ( timeArea.className == 'smallTime' ) return 33;
+  return 45;
+}
+
+function adjustHeights( dateArea, timeArea, bottomArea ) {
+  var dateLen = dateArea.innerText.length;
+  var bottomLen = bottomArea.innerText.length;
+
+  dateArea.style.display = dateLen ? 'block' : 'none';
+  bottomArea.style.display = bottomLen ? 'block' : 'none';
+
+  if ( dateLen === 0 && bottomLen === 0 ) {
+    timeArea.className = 'bigTime';
+  } else if ( dateLen > 0 && bottomLen > 0 ) {
+    timeArea.className = 'smallTime';
   } else {
-    timeArea.style.top = '12px';
-    dateArea.style.fontSize = '1.1em';
+    timeArea.className = 'normalTime';
   }
 }
 
-function autoTimeSize( timeArea, bottomArea ) {
-  var maxSize = 11;     // Maximum time ~ 11 characters (10:02:29 AM)
-  var minSize = 5;      // Minimum time ~ 4-5 characters (2302) or (23:02)
-  var timeLen = timeArea.innerText.length;
-  var minEl = 2.0;
-  var maxEl = 4.0;
+function adjustDateFont( dateArea ) {
+  var width = timeArea.offsetWidth;
+  var maxLen = 18;
+  var dateLen = dateArea.innerText.length;
 
-  if ( timeLen < minSize ) timeLen = minSize;
-  var size = 2.0 * maxSize / timeLen;
+  dateArea.className = (dateLen > maxLen) ? 'smallDate' : 'normalDate';
+}
 
-  if ( size < minEl ) size = minEl;
-  if ( size > maxEl ) size = maxEl;
+var shown = false;
+function dd( msg ) {
+  if ( shown ) return;
 
-  if ( bottomArea.innerText.length > 0 ) {
-    if ( size > (maxEl-1.2) ) size = maxEl-1.2;
-    timeArea.style.lineHeight = '40px';
-  } else {
-    timeArea.style.lineHeight = '50px';
-  }
+  shown = true;
+  var shell = new ActiveXObject("WScript.Shell");
+  shell.Popup( msg );
+}
 
-  timeArea.style.fontSize = size + 'em';
+function adjustTimeFont( timeArea ) {
+  var width = timeArea.offsetWidth;
+  var fontem = 10.0;
+
+  do {
+    timeArea.style.fontSize = fontem + 'em';
+    fontem -= 0.5;
+  } while ( timeArea.offsetWidth > 120 );
 }
 
 function CheckAndSet( variablename ) {
@@ -190,17 +226,29 @@ function addOptions() {
   } 
 }
 
+function getSystemLanguage() {
+  var localeCode = navigator.userLanguage;
+  if ( ! localeCode ) return 'en';
+  var lang = localeCode.split( '-', 1 );
+  return lang;
+}
+
 function init_settings() {
   System.Gadget.onSettingsClosing = settingsClosing;
 
   document.getElementById("mainDateFormat").value = readSetting( "mainDateFormat" );
   document.getElementById("mainTimeFormat").value = readSetting( "mainTimeFormat" );
   document.getElementById("tzLabel").value = readSetting( "tzLabel" );
+  var locale = document.getElementById("locale").value = readSetting( "locale" );
   
   addOptions();
   document.getElementById("tzName").value = readSetting( "tzName" );
 
-	var t = translations.en;
+	localizeText( locale );
+}
+
+function localizeText( language ) {
+	var t = translations[language];
 	for ( var key in t ) {
 	  var el = document.getElementById(key);
 		if ( ! el ) continue;
@@ -214,6 +262,7 @@ function settingsClosing(event) {
     CheckAndSet( "mainTimeFormat" );
     CheckAndSet( "tzLabel" );
     CheckAndSet( "tzName" );
+    CheckAndSet( "locale" );
 
 //		var tzName = document.getElementById('tzName').value;
 //    var tzOffsets = tzdata2007k[ tzName ];
@@ -246,8 +295,10 @@ function getSystemFontsList() {
 
   return sNames;
 
+/*
   for (var i = 0; i < sNames.length; i++) {
     document.write( sNames[i] );
    // font names are in sNames[i]
   }
+*/
 }
