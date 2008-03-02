@@ -37,18 +37,16 @@ body#settings * {
 
 #dateArea {
   height: 12px;
-  /* background-color: blue; */
 }
 .normalDate { font-size: 1.1em; }
 .smallDate  { font-size: 0.9em; }
 
 #timeArea {
   white-space: nowrap;
-  /* background-color: red; */
 }
-.normalTime { height: 45px; } // = 67 - 5 - 5 - 12
-.bigTime    { height: 57px; } // = 67 - 5 -5
-.smallTime  { height: 33px; } // = 67 - 5 - 5 - 12 - 12
+.normalTime { height: 45px; } 
+.bigTime    { height: 57px; } 
+.smallTime  { height: 33px; }
 
 #bottomArea {
   height: 12px;

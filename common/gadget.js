@@ -98,11 +98,6 @@ function displayGadget() {
   var now = new Date();
   var gmtOffset = now.getTimezoneOffset();
 
-  var dateArea = document.getElementById( "dateArea" );
-  var timeArea = document.getElementById( "timeArea" );
-  var bottomArea = document.getElementById( "bottomArea" );
-
-//  tzLabel = 'Test';
   bottomArea.innerText = tzLabel;
 
   if ( tzName.length > 0 ) {
@@ -123,9 +118,9 @@ function displayGadget() {
   dateArea.innerHTML = '<a href="http://www.timeanddate.com/calendar/">' + formatDate( mainDateFormat, now ) + '</a>';
   timeArea.innerHTML = '<a href="http://www.timeanddate.com/worldclock/">' + formatDate( mainTimeFormat, now ) + '</a>';
 
-  adjustHeights( dateArea, timeArea, bottomArea );
-  adjustDateFont( dateArea );
-  adjustFontToFit( timeArea );
+  adjustHeights();
+  adjustDateFont();
+  adjustTimeToFit();
 
   var okToUpdate = now.getMinutes() % 15;
 
@@ -139,28 +134,26 @@ function displayGadget() {
   }
 }
 
-function adjustFontToFit( el ) {
+function adjustTimeToFit() {
   var fontSize = 100;
   var maxWidth = 120;
 
-  el.style.fontSize = fontSize + 'px';
+  timeArea.style.fontSize = fontSize + 'px';
 
-  var hscale = maxWidth / el.offsetWidth;
+  var hscale = maxWidth / timeArea.offsetWidth;
   fontSize = Math.floor( fontSize * hscale );
-  el.style.fontSize = fontSize + 'px';
+  timeArea.style.fontSize = fontSize + 'px';
 
   var timeHeight = getProperTimeHeight( timeArea );
-  var vscale = timeHeight / el.offsetHeight;
+  var vscale = timeHeight / timeArea.offsetHeight;
   if ( vscale < 1 ) {
     fontSize = Math.floor( fontSize * vscale );
-    el.style.fontSize = fontSize + 'px';
+    timeArea.style.fontSize = fontSize + 'px';
   }
 
-  el.style.lineHeight = 1.0;
-  el.style.marginTop = (timeHeight - fontSize)/2;
-  el.style.marginBottom = (timeHeight - fontSize)/2;
-
-//  document.getElementById('dateArea').innerText = vscale;
+  var whiteSpace = timeArea.offsetHeight - fontSize;
+  timeArea.style.paddingTop = whiteSpace/2;
+  timeArea.style.lineHeight = 1.0;
 }
 
 function getProperTimeHeight( timeArea ) {
@@ -169,7 +162,7 @@ function getProperTimeHeight( timeArea ) {
   return 45;
 }
 
-function adjustHeights( dateArea, timeArea, bottomArea ) {
+function adjustHeights() {
   var dateLen = dateArea.innerText.length;
   var bottomLen = bottomArea.innerText.length;
 
@@ -185,7 +178,7 @@ function adjustHeights( dateArea, timeArea, bottomArea ) {
   }
 }
 
-function adjustDateFont( dateArea ) {
+function adjustDateFont() {
   var width = timeArea.offsetWidth;
   var maxLen = 18;
   var dateLen = dateArea.innerText.length;
