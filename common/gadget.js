@@ -245,7 +245,7 @@ function localizeText( language ) {
 	for ( var key in t ) {
 	  var el = document.getElementById(key);
 		if ( ! el ) continue;
-		el.innerHTML = t[key];
+		el.innerHTML = t[key] + ' ';
 	}
 }
 

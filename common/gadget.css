@@ -62,10 +62,13 @@ body#settings * {
   width: 7em;
 }
 
-#userInputArea {
-  line-height: 2.2em;
-}
-
 #example_table td {
   vertical-align: top;
+}
+
+#t_dateformat, #t_timeformat {
+  xxwidth: 120px;
+}
+
+ul {
 }

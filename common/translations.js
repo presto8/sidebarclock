@@ -21,16 +21,16 @@ var translations = {
 	't_dateexamples':  'D M d = Sat Apr 07<br>n/j l = 4/7 Saturday',
 	't_timeexamples':  'g:i a = 5:44 pm<br>H:i = 17:44',
 	't_labelexamples': 'Portland, Tokyo, GMT+2',
-	't_formathelp':    '<a href="http://php.net/date">Format help</a>',
-	't_formathelplong':'<a href="http://php.net/date">Format help</a> (unsupported: T, e, o)',
+	't_formathelp':    '<a href="http://us.php.net/manual/en/function.date.php">Format help</a>',
+	't_formathelplong':'<a href="http://us.php.net/manual/en/function.date.php">Format help</a> (unsupported: T, e, o)',
 	't_version':       'Version xxVER (xxDATE)',
 	't_about':         'About this gadget',
 	't_translateby':   '',
-	't_language':      'Language'
+	't_language':      'Language:'
 },
 
 'es': {
-	'daysLong':    ["domingo", "lunes", "martes", "miÃ©rcoles", "jueves", "viernes", "sÃ¡bado"],
+	'daysLong':    	["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"],
 	'daysShort':   ["D", "L", "M", "X", "J", "V", "S"],
 	'monthsShort': ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"],
 	'monthsLong':  ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"],
@@ -47,20 +47,20 @@ var translations = {
 	't_date':          'Fecha:',
 	't_time':          'Hora:',
 	't_label':         'Etiqueta:',
-	't_dateexamples':  'D M d = L abr 07<br>n/j l = 4/7 sÃ¡bado',
+	't_dateexamples':  'D M d = L abr 07<br>n/j l = 4/7 sábado',
 	't_timeexamples':  'H:i = 17:44',
 	't_labelexamples': 'CET, Madrid, Paris, GMT+1',
 	't_formathelp':    '<a href="http://us.php.net/manual/es/function.date.php">Ayuda con el formato</a>',
 	't_formathelplong':'<a href="http://us.php.net/manual/es/function.date.php">Ayuda con el formato</a> (no posibles: T, e, o)',
-	't_version':       'versiÃ³n xxVER (xxDATE)',
+	't_version':       'versión xxVER (xxDATE)',
 	't_about':         'Acerca de este gadget',
-	't_translateby':   'TraducciÃ³n en espaÃ±ol por LucÃ­a y Tom',
-	't_language':      'Idioma'
+	't_translateby':   'Traducción en espaÃ±ol por LucÃ­a y Tom',
+	't_language':      'Idioma:'
 },
 
 'dk': {
-	'daysLong':    ["sÃ¸ndag", "mandag", "tirsdag", "onsdag", "torsdag", "fredag", "lÃ¸rdag"],
-	'daysShort':   ["sÃ¸n", "man", "tir", "ons", "tor", "fre", "lÃ¸r"],
+	'daysLong':    ["søndag", "mandag", "tirsdag", "onsdag", "torsdag", "fredag", "lørdag"],
+	'daysShort':   ["søn", "man", "tir", "ons", "tor", "fre", "lør"],
 	'monthsShort': ["jan", "feb", "mar", "apr", "maj", "jun", "jul", "aug", "sep", "okt", "nov", "dec"],
 	'monthsLong':  ["januar", "februar", "marts", "april", "maj", "juni", "juli", "august", "september", "oktober", "november", "december"],
 	'defaultDateFormat': "D d M",
@@ -76,22 +76,22 @@ var translations = {
 	't_date':          'Dato:',
 	't_time':          'Tid:',
 	't_label':         'Angivelse:',
-	't_dateexamples':  'D d M = lÃ¸r 10 apr<br>l j/n = lÃ¸rdag 4/7',
+	't_dateexamples':  'D d M = lør 10 apr<br>l j/n = lørdag 4/7',
 	't_timeexamples':  'g:i a = 5:44 pm<br>H:i = 17:44',
-	't_labelexamples': 'CET, GMT+1, KÃ¸benhavn, London',
-	't_formathelp':    '<a href="http://php.net/date">HjÃ¦lp til formatering</a>',
-	't_formathelplong':'<a href="http://php.net/date">HjÃ¦lp til formatering</a> (ikke understÃ¸ttet: T, e, o)',
+	't_labelexamples': 'CET, GMT+1, København, London',
+	't_formathelp':    '<a href="http://php.net/date">Hjælp til formatering</a>',
+	't_formathelplong':'<a href="http://php.net/date">Hjælp til formatering</a> (ikke understøttet: T, e, o)',
 	't_version':       'Version xxVER (xxDATE)',
 	't_about':         'Om denne gadget',
-	't_translateby':   'Dansk oversÃ¦ttelse af Dennis Boffy',
-	't_language':      'Language'
+	't_translateby':   'Dansk oversættelse af Dennis Boffy',
+	't_language':      'Language:'
 },
 
 'fr': {
 	'daysLong':    ["Dimanche", "Lundi", "Mardi", "Mercredi","Jeudi", "Vendredi", "Samedi"],
 	'daysShort':   ["Dim", "Lun", "Mar", "Mer","Jeu", "Ven", "Sam"],
-	'monthsShort': ["Jan", "FÃ©v", "Mars", "Avr", "Mai", "Juin", "Juil", "AoÃ»","Oct", "Nov", "DÃ©c"],
-	'monthsLong':  [ "Janvier", "FÃ©vrier", "Mars", "Avril", "Mai", "Juin", "Juillet", "AoÃ»t", "Septembre", "Octobre", "Novembre", "DÃ©cembre" ],
+	'monthsShort': ["Jan", "Fév", "Mars", "Avr", "Mai", "Juin", "Juil", "Aoû","Oct", "Nov", "Déc"],
+	'monthsLong':  [ "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre" ],
 	'defaultDateFormat': "D d M",
 	'defaultTimeFormat': "H:i",
 
@@ -113,7 +113,7 @@ var translations = {
 	't_version':       'Version xxVER (xxDATE)',
 	't_about':         'A propos de ce gadget',
 	't_translateby':   'Traduction française par DionysosV',
-	't_language':      'Language'
+	't_language':      'Language:'
 },
 
 'it': {
@@ -122,7 +122,27 @@ var translations = {
 	'monthsShort': ["Gen","Feb","Mar","Apr", "Mag","Giu","Lug","Agosto","Set","Ott","Nov","Dic"],
 	'monthsLong':  ["Gennaio","Febbraio","Marzo","Aprile","Maggio","Giugno","Luglio","Agosto","Settembre","Ottobre","Novembre","Dicembre"],
 	'defaultDateFormat': "D d M",
-	'defaultTimeFormat': "H:i"
+	'defaultTimeFormat': "H:i",
+
+	't_dateformat':    'Formato data:',
+	't_timeformat':    'Formato orario:',
+	't_timezone':      'Nome orologio:',
+	't_localtime':     'Local time',
+	't_bottomlabel':   'Nomi:',
+	't_optional':      '(optioneel)',
+	't_examples':      'Esempi:',
+	't_date':          'Data:',
+	't_time':          'Orario:',
+	't_label':         'Nomi:',
+	't_dateexamples':  'D d M = Za 07 Apr<br>l j/n = Zaterdag 7/4',
+	't_timeexamples':  'H:i = 17:44',
+	't_labelexamples': 'Roma, Tokyo, GMT+1',
+	't_formathelp':    '<a href="http://us3.php.net/manual/it/function.date.php">Aiuto formato</a>',
+	't_formathelplong':'<a href="http://us3.php.net/manual/it/function.date.php">Aiuto formato</a> (non supportato: T, e, o)',
+	't_version':       'Versione xxVER (xxDATE)',
+	't_about':         'Informazioni su gadget',
+	't_translateby':   'Traduzione italiana by Mirko Mazzacano.',
+	't_language':      'Lingua:'
 },
 
 'nl': {
@@ -131,7 +151,27 @@ var translations = {
 	'monthsShort': ["Jan", "Feb", "Maa", "Apr","Mei", "Jun", "Jul", "Aug", "Sep","Okt", "Nov", "Dec"],
 	'monthsLong':  ["Januari", "Februari", "Maart", "April", "Mei", "Juni", "Juli", "Augustus", "September", "Oktober", "November", "December"],
 	'defaultDateFormat': "D d M",
-	'defaultTimeFormat': "H:i"
+	'defaultTimeFormat': "H:i",
+
+	't_dateformat':    'Date format:',
+	't_timeformat':    'Time format:',
+	't_timezone':      'Time zone:',
+	't_localtime':     'Local time',
+	't_bottomlabel':   'Bottom label:',
+	't_optional':      '(optional)',
+	't_examples':      'Examples:',
+	't_date':          'Date:',
+	't_time':          'Time:',
+	't_label':         'Label:',
+	't_dateexamples':  'D M d = Sat Apr 07<br>n/j l = 4/7 Saturday',
+	't_timeexamples':  'g:i a = 5:44 pm<br>H:i = 17:44',
+	't_labelexamples': 'Portland, Tokyo, GMT+2',
+	't_formathelp':    '<a href="http://php.net/date">Format help</a>',
+	't_formathelplong':'<a href="http://php.net/date">Format help</a> (unsupported: T, e, o)',
+	't_version':       'Version xxVER (xxDATE)',
+	't_about':         'About this gadget',
+	't_translateby':   '',
+	't_language':      'Language'
 }
 
 };

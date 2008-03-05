@@ -7,14 +7,13 @@
 </head>
 
 <body id="settings" onload="init_settings()">
-<div id="userInputArea">
 
-<table>
-<tr><td id="t_dateformat"><td><input type="text" id="mainDateFormat" size="4">
-<tr><td id="t_timeformat"><td><input type="text" id="mainTimeFormat" size="4">
-<tr><td id="t_timezone"><td><select id="tzName"><option value="">Local time</option></select>
-<tr><td id="t_bottomlabel"><td><input type="text" id="tzLabel"> <span id="t_optional"></span>
-<tr><td id="t_language"><td>
+<div id=inputs>
+<span id="t_dateformat" class=firstcol2></span><input type="text" id="mainDateFormat" size="4"><br>
+<span id="t_timeformat" class=firstcol></span><input type="text" id="mainTimeFormat" size="4"><br>
+<span id="t_timezone" class=firstcol></span><select id="tzName"><option value="">Local time</option></select><br>
+<span id="t_bottomlabel" class=firstcol></span><input type="text" id="tzLabel"> <span id="t_optional"></span><br>
+<span id="t_language" class=firstcol></span>
 <select id="locale" onchange="localizeText(this.value)">
 <option value="dk">Dansk</option>
 <option value="en">English</option>
@@ -23,7 +22,7 @@
 <option value="it">italiana</option>
 <option value="nl">Nederlandse</option>
 </select>
-</table>
+</div>
 
 <!--
 <br>
@@ -41,8 +40,11 @@
 
 <span id=t_formathelplong></span>
 <hr>
-<span id=t_version></span>
-<br><a href="http://prestonhunt.com/go/sidebarclock" id=t_about></a>
-<br><span id=t_translateby></span>
+<ul>
+<li id=t_version></li>
+<li><a id=t_about href="http://prestonhunt.com/go/sidebarclock"></a></li>
+<li id=t_translateby></li>
+</ul>
+
 </body>
 </html>

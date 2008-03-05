@@ -35,8 +35,10 @@ find . -type f -name settings.html -exec sed -i -e "s/xxVER/$VERSION/g" -e "s/xx
 
 # =====
 echo Minifying javascript
-#/usr/local/bin/yuicompressor common/gadget.js >common/gadget.min.js
-#mv -f common/gadget.min.js common/gadget.js
+#for i in gadget.js formatDate.js noaa.js; do
+	#/usr/local/bin/yuicompressor common/$i >common/$i.min
+	#mv -f common/$i.min common/$i
+#done
 
 # =====
 echo Creating final zip/gadget file
