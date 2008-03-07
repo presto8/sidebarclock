@@ -41,8 +41,10 @@ rm live-push
 
 # =====
 echo Setting version and date in files
-find . -type f -name gadget.xml -exec sed -i -e "s/xxVER/$VERSION/g" -e "s/xxDATE/$DATE/g" "{}" \;
-find . -type f -name settings.html -exec sed -i -e "s/xxVER/$VERSION/g" -e "s/xxDATE/$DATE/g" "{}" \;
+find . -type f -name gadget.xml -exec \
+  sed -i -e "s/xxVER/$VERSION/g" -e "s/xxDATE/$DATE/g" "{}" -e "s/gadget.all.js/gadget.all.min.js/" \;
+find . -type f -name settings.html -exec \
+  sed -i -e "s/xxVER/$VERSION/g" -e "s/xxDATE/$DATE/g" "{}" -e "s/gadget.all.js/gadget.all.min.js/" \;
 
 # =====
 echo Creating final zip/gadget file
