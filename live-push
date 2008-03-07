@@ -21,7 +21,6 @@ fi
 echo Cloning repository to temp directory
 hg clone . $TMPDIR
 cd $TMPDIR
-pwd
 
 # =====
 echo Removing .hg and .hgtags and other unnecessary files

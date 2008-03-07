@@ -2,7 +2,7 @@
 <gadget>
     <name>Presto's Clock</name>
     <namespace>gadgets.prestonhunt.com</namespace>
-    <version>xxVER</version>
+    <version>1.17</version>
 
     <author name="Preston Hunt">
     <info url="http://prestonhunt.com" />

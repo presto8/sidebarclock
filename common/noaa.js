@@ -1610,14 +1610,14 @@
 
 	function calcSun(riseSetForm, latLongForm, index, index2) 
 	{
-		if(index2 !== 0)
+		if(index2 != 0)
 		{
 			setLatLong(latLongForm, index2);
 		}
 
 		var latitude = getLatitude(latLongForm);
 		var longitude = getLongitude(latLongForm);
-		var indexRS = riseSetForm.mos.selectedIndex;
+		var indexRS = riseSetForm.mos.selectedIndex
 		if (isValidInput(riseSetForm, indexRS, latLongForm)) 
 		{
 			if((latitude >= -90) && (latitude < -89))
@@ -1741,7 +1741,8 @@
 				   ((latitude < -66.4) && ((doy < 83) || (doy > 263))) )
 				{
 					newjd = findRecentSunrise(JD, latitude, longitude);
-					newtime = calcSunriseUTC(newjd, latitude, longitude) - (60 * zone) + daySavings;
+					newtime = calcSunriseUTC(newjd, latitude, longitude)
+						 - (60 * zone) + daySavings;
 					if (newtime > 1440)
 					{
 						newtime -= 1440;
@@ -1765,7 +1766,8 @@
 					((latitude < -66.4) && (doy > 79) && (doy < 267)) )
 				{
 					newjd = findNextSunrise(JD, latitude, longitude);
-					newtime = calcSunriseUTC(newjd, latitude, longitude) - (60 * zone) + daySavings;
+					newtime = calcSunriseUTC(newjd, latitude, longitude)
+						 - (60 * zone) + daySavings;
 					if (newtime > 1440)
 					{
 						newtime -= 1440;
@@ -1803,7 +1805,8 @@
 				   ((latitude < -66.4) && ((doy < 83) || (doy > 263))) )
 				{
 					newjd = findNextSunset(JD, latitude, longitude);
-					newtime = calcSunsetUTC(newjd, latitude, longitude) - (60 * zone) + daySavings;
+					newtime = calcSunsetUTC(newjd, latitude, longitude)
+						 - (60 * zone) + daySavings;
 					if (newtime > 1440)
 					{
 						newtime -= 1440;
@@ -1828,7 +1831,8 @@
 					((latitude < -66.4) && (doy > 79) && (doy < 267)) )
 				{
 					newjd = findRecentSunset(JD, latitude, longitude);
-					newtime = calcSunsetUTC(newjd, latitude, longitude) - (60 * zone) + daySavings;
+					newtime = calcSunsetUTC(newjd, latitude, longitude)
+						 - (60 * zone) + daySavings;
 					if (newtime > 1440)
 					{
 						newtime -= 1440;

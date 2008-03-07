@@ -9,9 +9,16 @@ var mainDateFormat = null;
 var mainTimeFormat = null;
 var tzLabel = null;
 var tzName = null;
+var locale = 'en';
+var L = null;
 
 function readSetting( settingName ) {
   return System.Gadget.Settings.read( settingName );
+}
+
+function readLocaleConfig() {
+  if ( locale === '' ) locale = 'en';
+	L = translations[locale];
 }
 
 function readSettings() {
@@ -21,12 +28,15 @@ function readSettings() {
   mainTimeFormat = readSetting( "mainTimeFormat" );
   tzLabel = readSetting( "tzLabel" );
   tzName = readSetting( "tzName" );
+  locale = readSetting( "locale" );
+
+  readLocaleConfig();
 //	document.tzOffsets = readSetting( "tzOffsets" );
 }
 
 function setDefaults() {
-  System.Gadget.Settings.write( "mainDateFormat", defaultDateFormat );
-  System.Gadget.Settings.write( "mainTimeFormat", defaultTimeFormat );
+  System.Gadget.Settings.write( "mainDateFormat", L.defaultDateFormat );
+  System.Gadget.Settings.write( "mainTimeFormat", L.defaultTimeFormat );
   System.Gadget.Settings.write( "locale", getSystemLanguage() );
 }
 
@@ -98,7 +108,7 @@ function displayGadget() {
   var now = new Date();
   var gmtOffset = now.getTimezoneOffset();
 
-  bottomArea.innerText = tzLabel;
+  window.bottomArea.innerText = tzLabel;
 
   if ( tzName.length > 0 ) {
     try {
@@ -115,8 +125,8 @@ function displayGadget() {
     }
   }
 
-  dateArea.innerHTML = '<a href="http://www.timeanddate.com/calendar/">' + formatDate( mainDateFormat, now ) + '</a>';
-  timeArea.innerHTML = '<a href="http://www.timeanddate.com/worldclock/">' + formatDate( mainTimeFormat, now ) + '</a>';
+  window.dateArea.innerHTML = '<a href="http://www.timeanddate.com/calendar/">' + formatDate( mainDateFormat, now ) + '</a>';
+  window.timeArea.innerHTML = '<a href="http://www.timeanddate.com/worldclock/">' + formatDate( mainTimeFormat, now ) + '</a>';
 
   adjustHeights();
   adjustDateFont();
@@ -138,52 +148,52 @@ function adjustTimeToFit() {
   var fontSize = 100;
   var maxWidth = 120;
 
-  timeArea.style.fontSize = fontSize + 'px';
+  window.timeArea.style.fontSize = fontSize + 'px';
 
-  var hscale = maxWidth / timeArea.offsetWidth;
+  var hscale = maxWidth / window.timeArea.offsetWidth;
   fontSize = Math.floor( fontSize * hscale );
-  timeArea.style.fontSize = fontSize + 'px';
+  window.timeArea.style.fontSize = fontSize + 'px';
 
-  var timeHeight = getProperTimeHeight( timeArea );
-  var vscale = timeHeight / timeArea.offsetHeight;
+  var timeHeight = getProperTimeHeight();
+  var vscale = timeHeight / window.timeArea.offsetHeight;
   if ( vscale < 1 ) {
     fontSize = Math.floor( fontSize * vscale );
-    timeArea.style.fontSize = fontSize + 'px';
+    window.timeArea.style.fontSize = fontSize + 'px';
   }
 
-  var whiteSpace = timeArea.offsetHeight - fontSize;
-  timeArea.style.paddingTop = whiteSpace/2;
-  timeArea.style.lineHeight = 1.0;
+  var whiteSpace = window.timeArea.offsetHeight - fontSize;
+  window.timeArea.style.paddingTop = whiteSpace/2;
+  window.timeArea.style.lineHeight = 1.0;
 }
 
-function getProperTimeHeight( timeArea ) {
-  if ( timeArea.className == 'bigTime' ) return 67;
-  if ( timeArea.className == 'smallTime' ) return 33;
+function getProperTimeHeight() {
+  if ( window.timeArea.className == 'bigTime' ) return 67;
+  if ( window.timeArea.className == 'smallTime' ) return 33;
   return 45;
 }
 
 function adjustHeights() {
-  var dateLen = dateArea.innerText.length;
-  var bottomLen = bottomArea.innerText.length;
+  var dateLen = window.dateArea.innerText.length;
+  var bottomLen = window.bottomArea.innerText.length;
 
-  dateArea.style.display = dateLen ? 'block' : 'none';
-  bottomArea.style.display = bottomLen ? 'block' : 'none';
+  window.dateArea.style.display = dateLen ? 'block' : 'none';
+  window.bottomArea.style.display = bottomLen ? 'block' : 'none';
 
   if ( dateLen === 0 && bottomLen === 0 ) {
-    timeArea.className = 'bigTime';
+    window.timeArea.className = 'bigTime';
   } else if ( dateLen > 0 && bottomLen > 0 ) {
-    timeArea.className = 'smallTime';
+    window.timeArea.className = 'smallTime';
   } else {
-    timeArea.className = 'normalTime';
+    window.timeArea.className = 'normalTime';
   }
 }
 
 function adjustDateFont() {
-  var width = timeArea.offsetWidth;
+  var width = window.timeArea.offsetWidth;
   var maxLen = 18;
-  var dateLen = dateArea.innerText.length;
+  var dateLen = window.dateArea.innerText.length;
 
-  dateArea.className = (dateLen > maxLen) ? 'smallDate' : 'normalDate';
+  window.dateArea.className = (dateLen > maxLen) ? 'smallDate' : 'normalDate';
 }
 
 var shown = false;
@@ -193,16 +203,6 @@ function dd( msg ) {
   shown = true;
   var shell = new ActiveXObject("WScript.Shell");
   shell.Popup( msg );
-}
-
-function adjustTimeFont( timeArea ) {
-  var width = timeArea.offsetWidth;
-  var fontem = 10.0;
-
-  do {
-    timeArea.style.fontSize = fontem + 'em';
-    fontem -= 0.5;
-  } while ( timeArea.offsetWidth > 120 );
 }
 
 function CheckAndSet( variablename ) {
@@ -220,9 +220,10 @@ function addOptions() {
 }
 
 function getSystemLanguage() {
-  var localeCode = navigator.userLanguage;
+  var localeCode = window.navigator.userLanguage;
   if ( ! localeCode ) return 'en';
   var lang = localeCode.split( '-', 1 );
+  if ( ! tzdata2007k[lang] ) return 'en';
   return lang;
 }
 
@@ -232,12 +233,12 @@ function init_settings() {
   document.getElementById("mainDateFormat").value = readSetting( "mainDateFormat" );
   document.getElementById("mainTimeFormat").value = readSetting( "mainTimeFormat" );
   document.getElementById("tzLabel").value = readSetting( "tzLabel" );
-  var locale = document.getElementById("locale").value = readSetting( "locale" );
+  var languageCode = document.getElementById("locale").value = readSetting( "locale" );
   
   addOptions();
   document.getElementById("tzName").value = readSetting( "tzName" );
 
-	localizeText( locale );
+	localizeText( languageCode );
 }
 
 function localizeText( language ) {

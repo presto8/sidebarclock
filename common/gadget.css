@@ -66,9 +66,7 @@ body#settings * {
   vertical-align: top;
 }
 
-#t_dateformat, #t_timeformat {
-  xxwidth: 120px;
-}
-
 ul {
+  list-style: none;
+  margin: 0;
 }

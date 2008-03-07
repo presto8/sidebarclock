@@ -84,12 +84,12 @@ formatDate = function (input,time) {
         
         D : function () {
             // A textual representation of a day, three letters
-            return daysShort[date.getDay()];
+            return L.daysShort[date.getDay()];
         },
         
         F : function () {
             // A full textual representation of a month
-            return monthsLong[date.getMonth()];
+            return L[monthsLong[date.getMonth()]];
         },
         
         g : function () {
@@ -137,7 +137,7 @@ formatDate = function (input,time) {
         
         l : function () {
             // A full textual representation of the day of the week
-            return daysLong[date.getDay()];
+            return L[daysLong[date.getDay()]];
         },
         
         L : function () {
@@ -163,7 +163,7 @@ formatDate = function (input,time) {
         
         M : function () {
             // A short textual representation of a month, three letters
-            return monthsShort[date.getMonth()];
+            return L.monthsShort[date.getMonth()];
         },
         
         n : function () {
