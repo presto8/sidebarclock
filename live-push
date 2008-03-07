@@ -14,8 +14,13 @@ MODIFIED=$(hg status | wc -l)
 if [ $MODIFIED -ne 0 ]; then
   echo Uncommitted changes exist, cowardly refusing to proceed
   hg status $FILES
-#  exit 1
+  exit 1
 fi
+
+#
+# Build jumbo javascript file
+echo Checking javascript files...
+make -C common
 
 # =====
 echo Cloning repository to temp directory

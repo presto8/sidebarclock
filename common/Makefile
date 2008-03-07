@@ -1,7 +1,10 @@
 files = formatDate.js tzdata2007k_json.js noaa.js latlon_json.js \
 translations.js gadget.js
 
-all: gadget.all.min.js
+all: gadget.all.min.js jslint
+
+jslint:
+	jsl -conf jsl.conf
 
 gadget.all.js: $(files)
 	cat $(files) >$@

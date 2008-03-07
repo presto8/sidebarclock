@@ -1,4 +1,5 @@
 <html>
+
 <head>
 <link rel="stylesheet" href="common/gadget.css">
 <script src="common/gadget.all.js"></script>
@@ -6,8 +7,8 @@
 
 <body id="settings" onload="init_settings()">
 
-<div id=inputs>
-<span id="t_language" class=firstcol></span>
+<ul id=inputs>
+<li><span id="t_language" class=firstcol></span>
 <select id="locale" onchange="localizeText(this.value)">
 <option value="dk">Dansk</option>
 <option value="en">English</option>
@@ -15,12 +16,12 @@
 <option value="fr">francaise</option>
 <option value="it">italiana</option>
 <option value="nl">Nederlandse</option>
-</select><br>
-<span id="t_dateformat" class=firstcol2></span><input type="text" id="mainDateFormat" size="4"><br>
-<span id="t_timeformat" class=firstcol></span><input type="text" id="mainTimeFormat" size="4"><br>
-<span id="t_timezone" class=firstcol></span><select id="tzName"></select><br>
-<span id="t_bottomlabel" class=firstcol></span><input type="text" id="tzLabel"> <span id="t_optional"></span><br>
-</div>
+</select>
+<li><span id="t_dateformat" class=firstcol2></span><input type="text" id="mainDateFormat" size="4">
+<li><span id="t_timeformat" class=firstcol></span><input type="text" id="mainTimeFormat" size="4">
+<li><span id="t_timezone" class=firstcol></span><select id="tzName"></select>
+<li><span id="t_bottomlabel" class=firstcol></span><input type="text" id="tzLabel"> <span id="t_optional"></span>
+</ul>
 
 <!--
 <br>
