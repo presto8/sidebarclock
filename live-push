@@ -41,7 +41,7 @@ rm live-push
 
 # =====
 echo Setting version and date in files
-find . -type f -name gadget.xml -o gadget.html -o settings.html -exec \
+find . -type f -name gadget.xml -o -name gadget.html -o -name settings.html -exec \
   sed -i -e "s/xxVER/$VERSION/g" -e "s/xxDATE/$DATE/g" "{}" -e "s/gadget.all.js/gadget.all.min.js/g" \;
 
 # =====
