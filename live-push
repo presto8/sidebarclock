@@ -38,16 +38,11 @@ find . -type f -name gadget.xml -exec sed -i -e "s/xxVER/$VERSION/g" -e "s/xxDAT
 find . -type f -name settings.html -exec sed -i -e "s/xxVER/$VERSION/g" -e "s/xxDATE/$DATE/g" "{}" \;
 
 # =====
-echo Minifying javascript
-#for i in gadget.js formatDate.js noaa.js; do
-	#/usr/local/bin/yuicompressor common/$i >common/$i.min
-	#mv -f common/$i.min common/$i
-#done
-
-# =====
 echo Creating final zip/gadget file
+FILES=$(cat MANIFEST)
 ZIP=../prestosidebarclock-$VERSION.gadget
-7z a -tzip $ZIP *
+#7z a -tzip $ZIP *
+7z a -tzip $ZIP $FILES
 
 # =====
 PWD=$(pwd)
