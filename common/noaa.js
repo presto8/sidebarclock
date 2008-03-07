@@ -1805,8 +1805,7 @@
 				   ((latitude < -66.4) && ((doy < 83) || (doy > 263))) )
 				{
 					newjd = findNextSunset(JD, latitude, longitude);
-					newtime = calcSunsetUTC(newjd, latitude, longitude)
-						 - (60 * zone) + daySavings;
+					newtime = calcSunsetUTC(newjd, latitude, longitude) - (60 * zone) + daySavings;
 					if (newtime > 1440)
 					{
 						newtime -= 1440;
@@ -1831,8 +1830,7 @@
 					((latitude < -66.4) && (doy > 79) && (doy < 267)) )
 				{
 					newjd = findRecentSunset(JD, latitude, longitude);
-					newtime = calcSunsetUTC(newjd, latitude, longitude)
-						 - (60 * zone) + daySavings;
+					newtime = calcSunsetUTC(newjd, latitude, longitude) - (60 * zone) + daySavings;
 					if (newtime > 1440)
 					{
 						newtime -= 1440;

@@ -16,7 +16,7 @@ function readSetting( settingName ) {
   return System.Gadget.Settings.read( settingName );
 }
 
-function readLocaleConfig() {
+function setLocale() {
   if ( locale === '' ) locale = 'en';
 	L = translations[locale];
 }
@@ -30,7 +30,7 @@ function readSettings() {
   tzName = readSetting( "tzName" );
   locale = readSetting( "locale" );
 
-  readLocaleConfig();
+  setLocale();
 //	document.tzOffsets = readSetting( "tzOffsets" );
 }
 
@@ -214,6 +214,9 @@ function CheckAndSet( variablename ) {
 function addOptions() {
   var selectId = document.getElementById( "tzName" );
 	var zones = tzdata2007k;
+
+  selectId.add( new Option( L.t_localtime, '' ) );
+
   for ( var z in zones ) {
 		selectId.add( new Option( z, z ) );
   } 
@@ -234,6 +237,8 @@ function init_settings() {
   document.getElementById("mainTimeFormat").value = readSetting( "mainTimeFormat" );
   document.getElementById("tzLabel").value = readSetting( "tzLabel" );
   var languageCode = document.getElementById("locale").value = readSetting( "locale" );
+
+  setLocale();
   
   addOptions();
   document.getElementById("tzName").value = readSetting( "tzName" );
