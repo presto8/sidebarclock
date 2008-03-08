@@ -14,7 +14,7 @@ MODIFIED=$(hg status | wc -l)
 if [ $MODIFIED -ne 0 ]; then
   echo Uncommitted changes exist, cowardly refusing to proceed
   hg status $FILES
-  exit 1
+#  exit 1
 fi
 
 # =====
@@ -36,8 +36,10 @@ cd $TMPDIR
 
 # =====
 echo Setting version and date in files
-find . -type f -name gadget.xml -o -name gadget.html -o -name gadget.all.min.js -exec \
-  sed -i -e "s/xxVER/$VERSION/g" -e "s/xxDATE/$DATE/g" -e "s/gadget.all.js/gadget.all.min.js/g" "{}" \;
+#for file in gadget.xml gadget.html settings.html common/gadget.all.min.js; do
+#  icon -f latin1 -t utf-8 $file | perl -e "s/xxVER/$VERSION/g; s/xxDATE/$DATE/g; s/gadget.all.js/gadget.all.min.js/g;" | iconv -f utf-8 -t latin1 >$file.a
+#  sed -i -e "s/xxVER/$VERSION/g" -e "s/xxDATE/$DATE/g" -e 's/gadget.all.js/gadget.all.min.js/g' $file
+#done
 
 # =====
 echo Creating final zip/gadget file
