@@ -36,7 +36,7 @@ cd $TMPDIR
 
 # =====
 echo Setting version and date in files
-find . -type f -name gadget.xml -o -name gadget.all.min.js -exec \
+find . -type f -name gadget.xml -o -name gadget.html -o -name gadget.all.min.js -exec \
   sed -i -e "s/xxVER/$VERSION/g" -e "s/xxDATE/$DATE/g" -e "s/gadget.all.js/gadget.all.min.js/g" "{}" \;
 
 # =====
