@@ -6,15 +6,17 @@ DATE=2008-02-28
 TMPDIR=/tmp/prestosidebarclock-$DATE-$VERSION-$$
 TAG=live_push_$DATE
 
+FILES=$(cat MANIFEST)
+
 # 
 # First check if any diffs need to be committed.  If so, cowardly
 # refuse to push any changes
 # 
-MODIFIED=$(hg status | wc -l)
+MODIFIED=$(hg status $FILES | wc -l)
 if [ $MODIFIED -ne 0 ]; then
   echo Uncommitted changes exist, cowardly refusing to proceed
   hg status $FILES
-#  exit 1
+  exit 1
 fi
 
 # =====
@@ -36,14 +38,12 @@ cd $TMPDIR
 
 # =====
 echo Setting version and date in files
-#for file in gadget.xml gadget.html settings.html common/gadget.all.min.js; do
-#  icon -f latin1 -t utf-8 $file | perl -e "s/xxVER/$VERSION/g; s/xxDATE/$DATE/g; s/gadget.all.js/gadget.all.min.js/g;" | iconv -f utf-8 -t latin1 >$file.a
-#  sed -i -e "s/xxVER/$VERSION/g" -e "s/xxDATE/$DATE/g" -e 's/gadget.all.js/gadget.all.min.js/g' $file
-#done
+for file in gadget.xml gadget.html settings.html common/gadget.all.min.js; do
+  perl -pi -e "s/xxVER/$VERSION/g; s/xxDATE/$DATE/g; s/gadget.all.js/gadget.all.min.js/g;" $file
+done
 
 # =====
 echo Creating final zip/gadget file
-FILES=$(cat MANIFEST)
 ZIP=../prestosidebarclock-$VERSION.gadget
 #7z a -tzip $ZIP *
 7z a -tzip $ZIP $FILES
