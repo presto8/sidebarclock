@@ -89,7 +89,7 @@ formatDate = function (input,time) {
         
         F : function () {
             // A full textual representation of a month
-            return L[monthsLong[date.getMonth()]];
+            return L.monthsLong[date.getMonth()];
         },
         
         g : function () {
@@ -137,7 +137,7 @@ formatDate = function (input,time) {
         
         l : function () {
             // A full textual representation of the day of the week
-            return L[daysLong[date.getDay()]];
+            return L.daysLong[date.getDay()];
         },
         
         L : function () {

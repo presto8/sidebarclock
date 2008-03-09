@@ -8,6 +8,10 @@ TAG=live_push_$DATE
 
 FILES=$(cat MANIFEST)
 
+# =====
+echo Checking javascript files and minifying...
+make -C common
+
 # 
 # First check if any diffs need to be committed.  If so, cowardly
 # refuse to push any changes
@@ -18,10 +22,6 @@ if [ $MODIFIED -ne 0 ]; then
   hg status $FILES
   exit 1
 fi
-
-# =====
-echo Checking javascript files and minifying...
-make -C common
 
 # =====
 echo Checking CSS files...

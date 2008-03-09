@@ -89,7 +89,7 @@ formatDate = function (input,time) {
         
         F : function () {
             // A full textual representation of a month
-            return L[monthsLong[date.getMonth()]];
+            return L.monthsLong[date.getMonth()];
         },
         
         g : function () {
@@ -137,7 +137,7 @@ formatDate = function (input,time) {
         
         l : function () {
             // A full textual representation of the day of the week
-            return L[daysLong[date.getDay()]];
+            return L.daysLong[date.getDay()];
         },
         
         L : function () {
@@ -2709,7 +2709,7 @@ var translations = {
 },
 
 'es': {
-	'daysLong':    	["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"],
+	'daysLong':    ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"],
 	'daysShort':   ["D", "L", "M", "X", "J", "V", "S"],
 	'monthsShort': ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"],
 	'monthsLong':  ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"],
@@ -2731,9 +2731,9 @@ var translations = {
 	't_labelexamples': 'CET, Madrid, Paris, GMT+1',
 	't_formathelp':    '<a href="http://us.php.net/manual/es/function.date.php">Ayuda con el formato</a>',
 	't_formathelplong':'<a href="http://us.php.net/manual/es/function.date.php">Ayuda con el formato</a> (no posibles: T, e, o)',
-	't_version':       'versión xxVER (xxDATE)',
+	't_version':       'Versión xxVER (xxDATE)',
 	't_about':         'Acerca de este gadget',
-	't_translateby':   'Traducción en espaÃ±ol por LucÃ­a y Tom',
+	't_translateby':   'Traducción en español por Lucía y Tom',
 	't_language':      'Idioma:'
 },
 
@@ -2820,7 +2820,7 @@ var translations = {
 	't_formathelplong':'<a href="http://us3.php.net/manual/it/function.date.php">Aiuto formato</a> (non supportato: T, e, o)',
 	't_version':       'Versione xxVER (xxDATE)',
 	't_about':         'Informazioni su gadget',
-	't_translateby':   'Traduzione italiana by Mirko Mazzacano.',
+	't_translateby':   'Traduzione italiana di Mirko Mazzacano.',
 	't_language':      'Lingua:'
 },
 
