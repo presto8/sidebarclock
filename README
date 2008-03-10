@@ -2,6 +2,10 @@ For more information about this gadget: www.prestonhunt.com/story/110
 
 RELEASE HISTORY
 
+1.17 2008-03-09: Added ability to switch languages.  Improved auto
+font size algorith.  Can now specify an empty date line for an even
+larger clock. 
+
 1.16 2008-02-28: Fixed Sydney and Nocosia (thanks John Bishop!).  Moved away from Fleegix to home-grown timezone library.
 
 1.15 2008-02-25: Corrected accidental overwrite of settings with defaults on system restart (thanks Mike Ogden)
