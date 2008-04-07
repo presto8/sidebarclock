@@ -2843,9 +2843,9 @@ var translations = {
 
 'pl': {
 	'daysLong':    ["Niedziela", "Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Sobota"],
-	'daysShort':   ["Nie", "Pon", "Wto", "Śro", "Czw", "Pia", "Sob"],
+	'daysShort':   ["Ni", "Pn", "Wt", "Śr", "Cz", "Pt", "So"],
 	'monthsLong':  ["Styczeń", "Luty", "Marzec", "Kwiecień", "Maj", "Czerwiec", "Lipiec", "Sierpień", "Wrzesień", "Październik", "Listopad", "Grudzień"],
-	'monthsShort': ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+	'monthsShort': ["Sty", "Lut", "Mar", "Kwi", "Maj", "Cze", "Lip", "Sie", "Wrz", "Paź", "Lis", "Gru"],
 	'defaultDateFormat': "D d M",
 	'defaultTimeFormat': "l j/n",
 
