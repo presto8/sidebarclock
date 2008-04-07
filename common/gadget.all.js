@@ -2794,7 +2794,7 @@ var translations = {
 	't_dateformat':    'Formato data:',
 	't_timeformat':    'Formato orario:',
 	't_timezone':      'Nome orologio:',
-	't_localtime':     'Local time',
+	't_localtime':     'Czas Lokalny',
 	't_bottomlabel':   'Nomi:',
 	't_optional':      '(optioneel)',
 	't_examples':      'Esempi:',
