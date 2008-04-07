@@ -3,6 +3,10 @@ For more information about this gadget:
 
 RELEASE HISTORY
 
+1.18 2008-04-07: Fixed daylight saving switch bug that was causing a
+delay in many parts of the world (thanks to numerous reporters for
+this bug report!).  Added Polish support (thanks Marcin Michalak!)
+
 1.17 2008-03-09: Added ability to switch languages.  Improved auto
 font size algorith.  Can now specify an empty date line for an even
 larger clock. 
