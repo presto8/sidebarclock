@@ -10,6 +10,6 @@ gadget.all.js: $(files)
 	cat $(files) >$@
 
 gadget.all.min.js: gadget.all.js
-	yuicompressor --charset latin1 $< -o $@
+	yuicompressor --charset utf-8 $< -o $@
 
 debug: gadget.all.js
