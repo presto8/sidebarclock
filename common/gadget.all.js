@@ -3143,7 +3143,7 @@ function init_settings() {
   document.getElementById("tzLabel").value = readSetting( "tzLabel" );
   document.getElementById("locale").value = readSetting( "locale" );
 
-  displaySettings( locale );
+  displaySettings();
 }
 
 function localizeText() {
@@ -3154,7 +3154,8 @@ function localizeText() {
 	}
 }
 
-function displaySettings() {
+function displaySettings( newlocale ) {
+  if ( newlocale !== undefined ) locale = newlocale;
   setLocale();
   setTzOptions();
 	localizeText();
