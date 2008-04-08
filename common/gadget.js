@@ -241,7 +241,6 @@ function init_settings() {
   document.getElementById("tzLabel").value = readSetting( "tzLabel" );
   document.getElementById("locale").value = readSetting( "locale" );
 
-  setLocale();
   displaySettings();
 }
 
@@ -254,6 +253,7 @@ function localizeText() {
 }
 
 function displaySettings() {
+  setLocale();
   setTzOptions();
 	localizeText();
 }
