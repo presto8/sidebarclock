@@ -2794,7 +2794,7 @@ var translations = {
 	't_dateformat':    'Formato data:',
 	't_timeformat':    'Formato orario:',
 	't_timezone':      'Nome orologio:',
-	't_localtime':     'Czas Lokalny',
+	't_localtime':     'Local time',
 	't_bottomlabel':   'Nomi:',
 	't_optional':      '(optioneel)',
 	't_examples':      'Esempi:',
@@ -3113,15 +3113,18 @@ function CheckAndSet( variablename ) {
   System.Gadget.Settings.write( variablename, varVal );
 }
 
-function addOptions() {
+function setTzOptions() {
   var selectId = document.getElementById( "tzName" );
 	var zones = tzdata2007k;
 
+  selectId.length = 0;
   selectId.add( new Option( L.t_localtime, '' ) );
 
   for ( var z in zones ) {
 		selectId.add( new Option( z, z ) );
   } 
+
+  selectId.value = readSetting( "tzName" );
 }
 
 function getSystemLanguage() {
@@ -3138,23 +3141,23 @@ function init_settings() {
   document.getElementById("mainDateFormat").value = readSetting( "mainDateFormat" );
   document.getElementById("mainTimeFormat").value = readSetting( "mainTimeFormat" );
   document.getElementById("tzLabel").value = readSetting( "tzLabel" );
-  var languageCode = document.getElementById("locale").value = readSetting( "locale" );
+  document.getElementById("locale").value = readSetting( "locale" );
 
   setLocale();
-  
-  addOptions();
-  document.getElementById("tzName").value = readSetting( "tzName" );
-
-	localizeText( languageCode );
+  displaySettings();
 }
 
-function localizeText( language ) {
-	var t = translations[language];
-	for ( var key in t ) {
+function localizeText() {
+	for ( var key in L ) {
 	  var el = document.getElementById(key);
 		if ( ! el ) continue;
-		el.innerHTML = t[key] + ' ';
+		el.innerHTML = L[key] + ' ';
 	}
+}
+
+function displaySettings() {
+  setTzOptions();
+	localizeText();
 }
 
 function settingsClosing(event) {
