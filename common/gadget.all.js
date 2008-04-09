@@ -3155,8 +3155,13 @@ function localizeText() {
 }
 
 function displaySettings( newlocale ) {
-  if ( newlocale !== undefined ) locale = newlocale;
-  setLocale();
+  if ( newlocale !== undefined ) {
+    locale = newlocale;
+    setLocale();
+    document.getElementById("mainDateFormat").value = L.defaultDateFormat;
+    document.getElementById("mainTimeFormat").value = L.defaultTimeFormat;
+  }
+
   setTzOptions();
 	localizeText();
 }
