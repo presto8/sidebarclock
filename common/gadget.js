@@ -242,8 +242,9 @@ function init_settings() {
   document.getElementById("mainDateFormat").value = readSetting( "mainDateFormat" );
   document.getElementById("mainTimeFormat").value = readSetting( "mainTimeFormat" );
   document.getElementById("tzLabel").value = readSetting( "tzLabel" );
-  document.getElementById("locale").value = readSetting( "locale" );
+  locale = document.getElementById("locale").value = readSetting( "locale" );
 
+  setLocale();
   displaySettings();
 }
 
@@ -262,8 +263,6 @@ function displaySettings( newlocale ) {
     document.getElementById("mainDateFormat").value = L.defaultDateFormat;
     document.getElementById("mainTimeFormat").value = L.defaultTimeFormat;
   }
-
-  if ( L === undefined ) setLocale();
 
   setTzOptions();
 	localizeText();
