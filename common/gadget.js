@@ -263,6 +263,8 @@ function displaySettings( newlocale ) {
     document.getElementById("mainTimeFormat").value = L.defaultTimeFormat;
   }
 
+  if ( L === undefined ) setLocale();
+
   setTzOptions();
 	localizeText();
 }
