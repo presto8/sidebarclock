@@ -172,7 +172,7 @@ function adjustTimeToFit() {
 function getProperTimeHeight() {
   if ( window.timeArea.className == 'bigTime' ) return 67;
   if ( window.timeArea.className == 'smallTime' ) return 33;
-  return 45;
+  return 44; // was 45
 }
 
 function adjustHeights() {
