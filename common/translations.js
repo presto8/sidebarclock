@@ -182,7 +182,7 @@ var translations = {
 	'monthsLong':  ["Styczeń", "Luty", "Marzec", "Kwiecień", "Maj", "Czerwiec", "Lipiec", "Sierpień", "Wrzesień", "Październik", "Listopad", "Grudzień"],
 	'monthsShort': ["Sty", "Lut", "Mar", "Kwi", "Maj", "Cze", "Lip", "Sie", "Wrz", "Paź", "Lis", "Gru"],
 	'defaultDateFormat': "D d M",
-	'defaultTimeFormat': "l j/n",
+	'defaultTimeFormat': "H:i",
 
 	't_dateformat':    'Format daty:',
 	't_timeformat':    'Format godziny:',
