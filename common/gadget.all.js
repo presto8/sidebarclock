@@ -2937,9 +2937,12 @@ function readSettings() {
 }
 
 function setDefaults() {
+  var lang = getSystemLanguage();
+  setLocale(lang);
+  
   System.Gadget.Settings.write( "mainDateFormat", L.defaultDateFormat );
   System.Gadget.Settings.write( "mainTimeFormat", L.defaultTimeFormat );
-  System.Gadget.Settings.write( "locale", getSystemLanguage() );
+  System.Gadget.Settings.write( "locale", lang );
 }
 
 function startup() {
