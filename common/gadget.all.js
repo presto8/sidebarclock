@@ -3047,17 +3047,17 @@ function adjustTimeToFit() {
   var fontSize = 100;
   var maxWidth = 120;
 
-  window.timeArea.style.fontSize = fontSize + 'px';
+  window.timeArea.style.fontSize = fontSize + 'pt';
 
   var hscale = maxWidth / window.timeArea.offsetWidth;
   fontSize = Math.floor( fontSize * hscale );
-  window.timeArea.style.fontSize = fontSize + 'px';
+  window.timeArea.style.fontSize = fontSize + 'pt';
 
   var timeHeight = getProperTimeHeight();
   var vscale = timeHeight / window.timeArea.offsetHeight;
   if ( vscale < 1 ) {
     fontSize = Math.floor( fontSize * vscale );
-    window.timeArea.style.fontSize = fontSize + 'px';
+    window.timeArea.style.fontSize = fontSize + 'pt';
   }
 
   var whiteSpace = window.timeArea.offsetHeight - fontSize;
