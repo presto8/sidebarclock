@@ -3044,24 +3044,49 @@ function displayGadget() {
 }
 
 function adjustTimeToFit() {
+  var el = window.timeArea;
+  var maxWidth = 120;
+  var maxHeight = getProperTimeHeight();
+  var maxIters = 20;
+  var stepSize = 1.05;
+  var lastEm;
+
+  // This will increase the size slowly until it is too big
+  for ( var iters=0; iters<maxIters && el.offsetWidth <= maxWidth && el.offsetHeight <= maxHeight; iters++ ) {
+    lastEm = el.style.fontSize;
+    var newSize = lastEm.split('em')[0] * stepSize;
+    el.style.fontSize = newSize + 'em';
+  }
+
+  // Now we back off to the penultimate setting
+  el.style.fontSize = lastEm;
+
+  /*
+  var whiteSpace = window.timeArea.offsetHeight - fontSize;
+  window.timeArea.style.paddingTop = whiteSpace/2 + 'px';
+  window.timeArea.style.lineHeight = 1.0;
+  */
+}
+
+function oldadjustTimeToFit() {
   var fontSize = 100;
   var maxWidth = 120;
 
-  window.timeArea.style.fontSize = fontSize + 'pt';
+  window.timeArea.style.fontSize = fontSize + 'px';
 
   var hscale = maxWidth / window.timeArea.offsetWidth;
   fontSize = Math.floor( fontSize * hscale );
-  window.timeArea.style.fontSize = fontSize + 'pt';
+  window.timeArea.style.fontSize = fontSize + 'px';
 
   var timeHeight = getProperTimeHeight();
   var vscale = timeHeight / window.timeArea.offsetHeight;
   if ( vscale < 1 ) {
     fontSize = Math.floor( fontSize * vscale );
-    window.timeArea.style.fontSize = fontSize + 'pt';
+    window.timeArea.style.fontSize = fontSize + 'px';
   }
 
   var whiteSpace = window.timeArea.offsetHeight - fontSize;
-  window.timeArea.style.paddingTop = whiteSpace/2;
+  window.timeArea.style.paddingTop = whiteSpace/2 + 'px';
   window.timeArea.style.lineHeight = 1.0;
 }
 

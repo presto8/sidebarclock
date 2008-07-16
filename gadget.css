@@ -1,5 +1,4 @@
 * {
-  /*font-size: 7.4pt;*/
   font-family: Segoe UI;
 }
 
@@ -7,7 +6,7 @@ body#gadget {
   width: 130px;
   height: 67px;
   color: #ffffff;
-  font-size: 7.4pt;
+  font-size: 10px;
   margin-top: 5px;
   margin-left: 5px;
   margin-right: 5px;
@@ -32,7 +31,7 @@ body#settings {
 }
 
 body#settings * {
-  font-size: 10pt;
+  font-size: 12px;
 }
 
 #dateArea {
