@@ -12,6 +12,10 @@ var tzName = null;
 var locale = 'en';
 var L = null;
 
+var gTime = null;
+var gDate = null;
+var gLabel = null;
+
 function readSetting( settingName ) {
   return System.Gadget.Settings.read( settingName );
 }
@@ -22,8 +26,6 @@ function setLocale() {
 }
 
 function readSettings() {
-  System.Gadget.background = "images/background-black.png";
-
   mainDateFormat = readSetting( "mainDateFormat" );
   mainTimeFormat = readSetting( "mainTimeFormat" );
   tzLabel = readSetting( "tzLabel" );
@@ -54,6 +56,13 @@ function startup() {
 		setDefaults();
 		readSettings();
 	}
+
+  var background = document.getElementById('imgBackground');
+  background.src = 'images/background-black.png';
+
+  gDate = background.addTextObject("", "Segoe UI", 11, "white", 0, 0 );
+  gTime = background.addTextObject("", "Segoe UI", 12, "white", 0, 0 );
+  gLabel = background.addTextObject("", "Segoe UI", 11, "white", 0, 0 );
 
   updateGadget();
 }
@@ -111,7 +120,9 @@ function displayGadget() {
   var now = new Date();
   var gmtOffset = now.getTimezoneOffset();
 
-  window.bottomArea.innerText = tzLabel;
+  gLabel.opacity = tzLabel ? 100 : 0; // this has to be done BEFORE changing the text!
+  gLabel.value = tzLabel;
+  gLabel.width = gLabel.height = 0; // force recalculation of width
 
   if ( tzName.length > 0 ) {
     try {
@@ -128,12 +139,18 @@ function displayGadget() {
     }
   }
 
-  window.dateArea.innerHTML = '<a href="http://www.timeanddate.com/calendar/">' + formatDate( mainDateFormat, now ) + '</a>';
-  window.timeArea.innerHTML = '<a href="http://www.timeanddate.com/worldclock/">' + formatDate( mainTimeFormat, now ) + '</a>';
+// window.dateArea.innerHTML = '<a href="http://www.timeanddate.com/calendar/">' + formatDate( mainDateFormat, now ) + '</a>';
+//  gTime.value = '<a href="http://www.timeanddate.com/worldclock/">' + formatDate( mainTimeFormat, now ) + '</a>';
 
-  adjustHeights();
-  adjustDateFont();
+  gDate.opacity = mainDateFormat ? 100 : 0;
+  gDate.value = mainDateFormat ? formatDate( mainDateFormat, now ) : '';
+  gDate.height = gDate.width = 0;
+
+  gTime.value = formatDate( mainTimeFormat, now );
+
+  //adjustDateFont();
   adjustTimeToFit();
+  adjustPositions();
 
   var okToUpdate = now.getMinutes() % 15;
 
@@ -147,29 +164,46 @@ function displayGadget() {
   }
 }
 
-function adjustTimeToFit() {
-  var el = window.timeArea;
-  var maxWidth = 120;
-  var maxHeight = getProperTimeHeight();
-  var maxIters = 20;
-  var stepSize = 1.05;
-  var lastEm;
+function adjustPositions() {
+  var maxWidth = 130;
+  var maxHeight = 67;
 
-  // This will increase the size slowly until it is too big
-  for ( var iters=0; iters<maxIters && el.offsetWidth <= maxWidth && el.offsetHeight <= maxHeight; iters++ ) {
-    lastEm = el.style.fontSize;
-    var newSize = lastEm.split('em')[0] * stepSize;
-    el.style.fontSize = newSize + 'em';
+  // Horizontal center
+  gDate.left = ( maxWidth - gDate.width ) / 2;
+  gLabel.left = ( maxWidth - gLabel.width ) / 2;
+  gTime.left = ( maxWidth - gTime.width ) / 2;
+
+  // Adjust tops
+  gDate.top = 5;
+  gLabel.top = 47;
+
+  // Now the trickiest to adjust, the time position
+  // Start off directly in the middle
+  gTime.top = ( maxHeight - gTime.height ) / 2;
+
+  if ( gDate.value.length && ! gLabel.value.length ) {
+    // Adjust down if there is date only
+    gTime.top += ( gDate.height - 5 ) / 2;
+  } else if ( ! gDate.value.length && gLabel.value.length ) {
+    // Adjust up if there is label only
+    gTime.top -= ( gLabel.height - 5 ) / 2;
   }
+}
 
-  // Now we back off to the penultimate setting
-  el.style.fontSize = lastEm;
+function adjustTimeToFit() {
+  var maxWidth = 130;
+  var maxHeight = getProperTimeHeight();
 
-  /*
-  var whiteSpace = window.timeArea.offsetHeight - fontSize;
-  window.timeArea.style.paddingTop = whiteSpace/2 + 'px';
-  window.timeArea.style.lineHeight = 1.0;
-  */
+//  gLabel.value = gTime.fontsize * maxWidth / gTime.width;
+//gLabel.value = maxHeight;
+//  gLabel.opacity = 100;
+
+  var newFontSize = Math.floor( gTime.fontSize * maxWidth / gTime.width );
+  gTime.fontsize = newFontSize;
+
+  if ( gTime.height > maxHeight ) {
+    gTime.fontsize *= maxHeight / gTime.height;
+  }
 }
 
 function oldadjustTimeToFit() {
@@ -195,25 +229,14 @@ function oldadjustTimeToFit() {
 }
 
 function getProperTimeHeight() {
-  if ( window.timeArea.className == 'bigTime' ) return 67;
-  if ( window.timeArea.className == 'smallTime' ) return 33;
-  return 44; // was 45
-}
+  var height = 67;
+  if ( gLabel.value.length ) height -= gLabel.height - 5;
+  if ( gDate.value.length ) height -= gDate.height - 5;
+  return height;
 
-function adjustHeights() {
-  var dateLen = window.dateArea.innerText.length;
-  var bottomLen = window.bottomArea.innerText.length;
-
-  window.dateArea.style.display = dateLen ? 'block' : 'none';
-  window.bottomArea.style.display = bottomLen ? 'block' : 'none';
-
-  if ( dateLen === 0 && bottomLen === 0 ) {
-    window.timeArea.className = 'bigTime';
-  } else if ( dateLen > 0 && bottomLen > 0 ) {
-    window.timeArea.className = 'smallTime';
-  } else {
-    window.timeArea.className = 'normalTime';
-  }
+  //if ( window.timeArea.className == 'bigTime' ) return 67;
+  //if ( window.timeArea.className == 'smallTime' ) return 33;
+  //return 44; // was 45
 }
 
 function adjustDateFont() {

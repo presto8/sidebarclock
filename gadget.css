@@ -14,10 +14,6 @@ body#gadget {
   padding: 0;
 }
 
-body#gadget div {
-  text-align: center;
-}
-
 body#gadget a {
   text-decoration: none;
   color: #ffffff;
@@ -34,31 +30,15 @@ body#settings * {
   font-size: 12px;
 }
 
-#dateArea {
-  height: 12px;
-}
-.normalDate { font-size: 1.1em; }
-.smallDate  { font-size: 0.9em; }
-
-#timeArea {
-  white-space: nowrap;
-}
-.normalTime { height: 45px; } 
-.bigTime    { height: 57px; } 
-.smallTime  { height: 33px; }
-
-#bottomArea {
-  height: 12px;
-  font-size: 1.1em;
+#imgBackground {
+  position: absolute;
+  top: -6;
+  left: -6;
 }
 
 .bigger {
   font-weight: bold;
   margin-bottom: 2px;
-}
-
-#tzLabel {
-  width: 7em;
 }
 
 #example_table td {
