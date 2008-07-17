@@ -3,6 +3,11 @@ For more information about this gadget:
 
 RELEASE HISTORY
 
+1.20 2008-07-18 Switched to using g:background and g:text to try and
+fix gadget problems that some people were experiencing.  Discovered
+many, many bugs with Vista's sidebar implementation of these two
+elements!
+
 1.19 2008-06-14 Upgraded to latest tzdata database to fix Baghdad time
 zone problem (thanks Tom Hamlyn)
 
