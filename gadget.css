@@ -32,8 +32,8 @@ body#settings * {
 
 #imgBackground {
   position: absolute;
-  top: -6;
-  left: -6;
+  top: -6px;
+  left: -6px;
 }
 
 .bigger {
