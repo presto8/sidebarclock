@@ -9,6 +9,7 @@ var mainDateFormat = null;
 var mainTimeFormat = null;
 var tzLabel = null;
 var tzName = null;
+var fontFamily = null;
 var locale = 'en';
 var L = null;
 
@@ -31,6 +32,7 @@ function readSettings() {
   tzLabel = readSetting( "tzLabel" );
   tzName = readSetting( "tzName" );
   locale = readSetting( "locale" );
+  fontFamily = readSetting( "fontFamily" );
 
   setLocale();
 //	document.tzOffsets = readSetting( "tzOffsets" );
@@ -43,6 +45,7 @@ function setDefaults() {
   System.Gadget.Settings.write( "mainDateFormat", L.defaultDateFormat );
   System.Gadget.Settings.write( "mainTimeFormat", L.defaultTimeFormat );
   System.Gadget.Settings.write( "locale", lang );
+  System.Gadget.Settings.write( "fontFamily", "Segoe UI" );
 }
 
 function startup() {
@@ -148,7 +151,7 @@ function displayGadget() {
 
   gTime.value = formatDate( mainTimeFormat, now );
 
-  //adjustDateFont();
+  updateFonts();
   adjustTimeToFit();
   adjustPositions();
 
@@ -239,13 +242,6 @@ function getProperTimeHeight() {
   //return 44; // was 45
 }
 
-function adjustDateFont() {
-  var width = window.timeArea.offsetWidth;
-  var maxLen = 18;
-  var dateLen = window.dateArea.innerText.length;
-
-  window.dateArea.className = (dateLen > maxLen) ? 'smallDate' : 'normalDate';
-}
 
 var shown = false;
 function dd( msg ) {
@@ -314,6 +310,9 @@ function displaySettings( newlocale ) {
 
   setTzOptions();
 	localizeText();
+
+  document.getElementById('fontList').innerHTML = createFontSelect();
+  document.getElementById('fontFamily').value = readSetting('fontFamily');
 }
 
 function settingsClosing(event) {
@@ -323,6 +322,7 @@ function settingsClosing(event) {
     CheckAndSet( "tzLabel" );
     CheckAndSet( "tzName" );
     CheckAndSet( "locale" );
+    CheckAndSet( "fontFamily" );
 
 //		var tzName = document.getElementById('tzName').value;
 //    var tzOffsets = tzdata2007k[ tzName ];
@@ -332,7 +332,43 @@ function settingsClosing(event) {
   event.cancel = false;
 }
 
+function updateFonts() {
+  if ( ! gTime ) return;
+  if ( gTime.font == fontFamily ) return;
+
+  gDate.font = gTime.font = gLabel.font = fontFamily;
+}
+
 function getSystemFontsList() {
+ // http://msdn.microsoft.com/en-us/library/ms537454.aspx
+
+  var fontNames = new Array();
+
+  for (var i=1; i < dlgHelper.fonts.count; i++) {
+    fontNames.push( dlgHelper.fonts(i) );
+  }
+ 
+ return fontNames.sort();
+}
+
+function createFontSelect() {
+  var values = createSelectOptions( getSystemFontsList() );
+  return '<select id=fontFamily>' + values + '</select>';
+}
+
+function createSelectOptions( values ) {
+  var out = null;
+
+  for ( var el in values ) {
+    var name = values[el];
+    out += '<option value="' + name + '">' + name + '</option>';
+  }
+
+  return out;
+}
+
+/*
+function oldgetSystemFontsList() {
   // http://forums.microsoft.com/MSDN/ShowPost.aspx?PostID=1959226&SiteID=1
   var HKLM = 2147483650;
   var rPath = "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Fonts\\";
@@ -355,10 +391,11 @@ function getSystemFontsList() {
 
   return sNames;
 
-/*
-  for (var i = 0; i < sNames.length; i++) {
-    document.write( sNames[i] );
-   // font names are in sNames[i]
-  }
-*/
+//  for (var i = 0; i < sNames.length; i++) {
+//    document.write( sNames[i] );
+//   // font names are in sNames[i]
+//  }
 }
+*/
+
+

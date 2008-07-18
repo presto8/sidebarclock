@@ -7,6 +7,8 @@
 
 <body id="settings" onload="init_settings()">
 
+<OBJECT id=dlgHelper CLASSID="clsid:3050f819-98b5-11cf-bb82-00aa00bdce0b" width="0px" height="0px"></OBJECT> 
+
 <ul id=inputs>
 <li><span id="t_language" class=firstcol></span>
 <select id="locale" onchange="displaySettings(this.value)">
@@ -18,10 +20,11 @@
 <option value="nl">Nederlands</option>
 <option value="pl">Polski</option>
 </select>
-<li><span id="t_dateformat" class=firstcol2></span><input type="text" id="mainDateFormat" size="4">
-<li><span id="t_timeformat" class=firstcol></span><input type="text" id="mainTimeFormat" size="4">
-<li><span id="t_timezone" class=firstcol></span><select id="tzName"></select>
-<li><span id="t_bottomlabel" class=firstcol></span><input type="text" id="tzLabel"> <span id="t_optional"></span>
+<li><span id="t_dateformat" class=firstcol2></span><input type="text" id="mainDateFormat" size="4"></li>
+<li><span id="t_timeformat" class=firstcol></span><input type="text" id="mainTimeFormat" size="4"></li>
+<li><span id="t_timezone" class=firstcol></span><select id="tzName"></select></li>
+<li><span id="t_bottomlabel" class=firstcol></span><input type="text" id="tzLabel"> <span id="t_optional"></span></li>
+<li><span id="t_fontfamily" class=firstcol></span><span id="fontList"></span></li>
 </ul>
 
 <!--
@@ -43,8 +46,7 @@
 <ul>
 <li id=t_version></li>
 <li><a id=t_about href="http://prestonhunt.com/go/sidebarclock"></a></li>
-<li>Presto's Clock is charityware. If you like it, please consider a
-donation to the less fortunate of the world.</li>
+<li id=t_charity></li>
 <li id=t_translateby></li>
 </ul>
 
