@@ -21,7 +21,7 @@ body#gadget a {
 
 body#settings {
   width: 310px;
-  height: 400px;
+  height: 450px;
   margin-top: 0;
   margin-left: 0;
 }
@@ -55,10 +55,11 @@ ul {
   margin-bottom: 5px;
 }
 
-/*
- * #fontColor {
+#fontColor {
+	background-color: black;
+	/*
 	width: 20px;
   height: 8px;
 	border: 1px solid black;
-}
 	*/
+}

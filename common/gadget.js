@@ -198,6 +198,11 @@ function adjustPositions() {
 }
 
 function adjustTimeToFit() {
+  if ( G.fontSize != 'Auto' ) {
+    gTime.fontsize = G.fontSize;
+    return;
+  }
+
   var maxWidth = 130;
   var maxHeight = getProperTimeHeight();
 
