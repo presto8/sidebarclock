@@ -32,7 +32,7 @@ var translations = {
 	't_charity':       "Presto's Clock is Charityware. If you like it, please consider a donation to the less fortunate of the world. See the project page for <a href=\"http://prestonhunt.com/story/110\">information on how to donate</a>.",
 	't_fontfamily':    'Font:',
 	't_fontsize':      'Font size:',
-	't_fontsize':      'Font color:'
+	't_fontcolor':     'Font color:'
 },
 
 'es': {

@@ -2691,7 +2691,7 @@ var translations = {
 	't_charity':       "Presto's Clock is Charityware. If you like it, please consider a donation to the less fortunate of the world. See the project page for <a href=\"http://prestonhunt.com/story/110\">information on how to donate</a>.",
 	't_fontfamily':    'Font:',
 	't_fontsize':      'Font size:',
-	't_fontsize':      'Font color:'
+	't_fontcolor':     'Font color:'
 },
 
 'es': {
@@ -2948,7 +2948,8 @@ function setDefaults() {
   System.Gadget.Settings.write( "mainTimeFormat", L.defaultTimeFormat );
   System.Gadget.Settings.write( "locale", lang );
   System.Gadget.Settings.write( "fontFamily", "Segoe UI" );
-  System.Gadget.Settings.write( "fontColor", parseInt( 'ffffff', 16 ) );
+  System.Gadget.Settings.write( "fontSize", "Auto" );
+  System.Gadget.Settings.write( "fontColor", "White" );
 }
 
 function startup() {
@@ -3216,8 +3217,11 @@ function displaySettings( newlocale ) {
 	localizeText();
 
   document.getElementById('fontList').innerHTML = createFontSelect();
+  document.getElementById('fontSizeList').innerHTML = createFontSizeSelect();
   document.getElementById('fontColorList').innerHTML = createFontColorSelect();
   document.getElementById('fontFamily').value = readSetting('fontFamily');
+  document.getElementById('fontSize').value = readSetting('fontSize');
+  document.getElementById('fontColor').value = readSetting('fontColor');
 }
 
 function settingsClosing(event) {
@@ -3228,6 +3232,7 @@ function settingsClosing(event) {
     CheckAndSet( "tzName" );
     CheckAndSet( "locale" );
     CheckAndSet( "fontFamily" );
+    CheckAndSet( "fontSize" );
     CheckAndSet( "fontColor" );
 
 //		var tzName = document.getElementById('tzName').value;
@@ -3246,8 +3251,7 @@ function updateFonts() {
   }
 
   if ( gTime.color != G.fontColor ) {
-//    gTime.color = G.fontColor;
-    gTime.color = '#ffffff';
+    gDate.color = gTime.color = gLabel.color = G.fontColor;
   }
 }
 
@@ -3269,7 +3273,7 @@ function createFontSelect() {
 }
 
 function createSelectOptions( values ) {
-  var out = null;
+  var out = '';
 
   for ( var el in values ) {
     var name = values[el];
@@ -3287,7 +3291,7 @@ function getFontColor() {
 
 function createFontColorSelect() {
   var colors = getMicrosoftColors();
-  var out = null;
+  var out = '';
   for ( var c in colors ) {
     out += '<option value="' + colors[c] + '" style="color: ' +
       colors[c] + '">' + colors[c] + '</option>';
@@ -3295,6 +3299,12 @@ function createFontColorSelect() {
   }
   
   return '<select id=fontColor>' + out + '</select>';
+}
+
+function createFontSizeSelect() {
+  var sizes = [ 'Auto', '8', '10', '12', '14', '16', '18'] ;
+  var values = createSelectOptions( sizes );
+  return '<select id=fontsize>' + values + '</select>';
 }
 
 function getMicrosoftColors() {
