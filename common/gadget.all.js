@@ -2690,7 +2690,8 @@ var translations = {
 	't_language':      'Language:',
 	't_charity':       "Presto's Clock is Charityware. If you like it, please consider a donation to the less fortunate of the world. See the project page for <a href=\"http://prestonhunt.com/story/110\">information on how to donate</a>.",
 	't_fontfamily':    'Font:',
-	't_fontsize':      'Font size:'
+	't_fontsize':      'Font size:',
+	't_fontsize':      'Font color:'
 },
 
 'es': {
@@ -2899,17 +2900,28 @@ var translations = {
 };
 /*
  * Non-localized javascript
- * vim: ts=2 et
+ * vim: ts=2 et nospell
  */
 
 var isDirty = true;
 
-var mainDateFormat = null;
-var mainTimeFormat = null;
-var tzLabel = null;
-var tzName = null;
-var fontFamily = null;
-var locale = 'en';
+var G = {
+  'mainDateFormat': null,
+  'mainTimeFormat': null,
+  'tzLabel': null,
+  'tzName': null,
+  'fontFamily': null,
+  'fontColor': null,
+  'locale': 'en'
+};
+
+//var mainDateFormat = null;
+//var mainTimeFormat = null;
+//var tzLabel = null;
+//var tzName = null;
+//var fontFamily = null;
+//var fontColor = null;
+//var locale = 'en';
 var L = null;
 
 var gTime = null;
@@ -2921,17 +2933,22 @@ function readSetting( settingName ) {
 }
 
 function setLocale() {
-  if ( locale === '' ) locale = 'en';
-	L = translations[locale];
+  if ( G.locale === '' ) G.locale = 'en';
+	L = translations[ G.locale ];
 }
 
 function readSettings() {
-  mainDateFormat = readSetting( "mainDateFormat" );
-  mainTimeFormat = readSetting( "mainTimeFormat" );
-  tzLabel = readSetting( "tzLabel" );
-  tzName = readSetting( "tzName" );
-  locale = readSetting( "locale" );
-  fontFamily = readSetting( "fontFamily" );
+  for ( var key in G ) {
+    G[key] = readSetting( key );
+  }
+
+//  mainDateFormat = readSetting( "mainDateFormat" );
+//  mainTimeFormat = readSetting( "mainTimeFormat" );
+//  tzLabel = readSetting( "tzLabel" );
+//  tzName = readSetting( "tzName" );
+//  fontFamily = readSetting( "fontFamily" );
+//  fontColor = readSetting( "fontColor" );
+//  locale = readSetting( "locale" );
 
   setLocale();
 //	document.tzOffsets = readSetting( "tzOffsets" );
@@ -2945,6 +2962,7 @@ function setDefaults() {
   System.Gadget.Settings.write( "mainTimeFormat", L.defaultTimeFormat );
   System.Gadget.Settings.write( "locale", lang );
   System.Gadget.Settings.write( "fontFamily", "Segoe UI" );
+  System.Gadget.Settings.write( "fontColor", "0" );
 }
 
 function startup() {
@@ -2954,7 +2972,7 @@ function startup() {
 
   readSettings();
 
-	if ( ! mainTimeFormat ) {
+	if ( ! G.mainTimeFormat ) {
 		setDefaults();
 		readSettings();
 	}
@@ -3022,21 +3040,21 @@ function displayGadget() {
   var now = new Date();
   var gmtOffset = now.getTimezoneOffset();
 
-  gLabel.opacity = tzLabel ? 100 : 0; // this has to be done BEFORE changing the text!
-  gLabel.value = tzLabel;
+  gLabel.opacity = G.tzLabel ? 100 : 0; // this has to be done BEFORE changing the text!
+  gLabel.value = G.tzLabel;
   gLabel.width = gLabel.height = 0; // force recalculation of width
 
-  if ( tzName.length > 0 ) {
+  if ( G.tzName.length > 0 ) {
     try {
       var utc = now.getTime() + gmtOffset*60*1000;
 			var utcEpoch = Math.round(utc/1000.0);
-      var otherOffset = getOffsetInMinutes( tzName, utcEpoch );
+      var otherOffset = getOffsetInMinutes( G.tzName, utcEpoch );
       var otherTime = utc + otherOffset*60*1000;
 
       now = new Date( otherTime );
       gmtOffset = otherOffset;
     } catch(err) {
-      tzName = '';
+      G.tzName = '';
       // no tzdata for this entry, clear it away
     }
   }
@@ -3044,11 +3062,11 @@ function displayGadget() {
 // window.dateArea.innerHTML = '<a href="http://www.timeanddate.com/calendar/">' + formatDate( mainDateFormat, now ) + '</a>';
 //  gTime.value = '<a href="http://www.timeanddate.com/worldclock/">' + formatDate( mainTimeFormat, now ) + '</a>';
 
-  gDate.opacity = mainDateFormat ? 100 : 0;
-  gDate.value = mainDateFormat ? formatDate( mainDateFormat, now ) : '';
+  gDate.opacity = G.mainDateFormat ? 100 : 0;
+  gDate.value = G.mainDateFormat ? formatDate( G.mainDateFormat, now ) : '';
   gDate.height = gDate.width = 0;
 
-  gTime.value = formatDate( mainTimeFormat, now );
+  gTime.value = formatDate( G.mainTimeFormat, now );
 
   updateFonts();
   adjustTimeToFit();
@@ -3056,8 +3074,8 @@ function displayGadget() {
 
   var okToUpdate = now.getMinutes() % 15;
 
-  if ( okToUpdate && tzName.length ) {
-    var coords = latlon[ tzName ];
+  if ( okToUpdate && G.tzName.length ) {
+    var coords = latlon[ G.tzName ];
     if ( coords ) {
       var lat = coords[0];
       var lon = -coords[1];
@@ -3185,7 +3203,7 @@ function init_settings() {
   document.getElementById("mainDateFormat").value = readSetting( "mainDateFormat" );
   document.getElementById("mainTimeFormat").value = readSetting( "mainTimeFormat" );
   document.getElementById("tzLabel").value = readSetting( "tzLabel" );
-  locale = document.getElementById("locale").value = readSetting( "locale" );
+  G.locale = document.getElementById("locale").value = readSetting( "locale" );
 
   setLocale();
   displaySettings();
@@ -3201,7 +3219,7 @@ function localizeText() {
 
 function displaySettings( newlocale ) {
   if ( newlocale !== undefined ) {
-    locale = newlocale;
+    G.locale = newlocale;
     setLocale();
     document.getElementById("mainDateFormat").value = L.defaultDateFormat;
     document.getElementById("mainTimeFormat").value = L.defaultTimeFormat;
@@ -3222,6 +3240,7 @@ function settingsClosing(event) {
     CheckAndSet( "tzName" );
     CheckAndSet( "locale" );
     CheckAndSet( "fontFamily" );
+    CheckAndSet( "fontColor" );
 
 //		var tzName = document.getElementById('tzName').value;
 //    var tzOffsets = tzdata2007k[ tzName ];
@@ -3233,9 +3252,14 @@ function settingsClosing(event) {
 
 function updateFonts() {
   if ( ! gTime ) return;
-  if ( gTime.font == fontFamily ) return;
 
-  gDate.font = gTime.font = gLabel.font = fontFamily;
+  if ( gTime.font != G.fontFamily ) {
+    gDate.font = gTime.font = gLabel.font = G.fontFamily;
+  }
+
+  if ( gTime.color != G.fontColor ) {
+    gTime.color = G.fontColor;
+  }
 }
 
 function getSystemFontsList() {
@@ -3265,6 +3289,13 @@ function createSelectOptions( values ) {
 
   return out;
 }
+
+function getFontColor() {
+  var decimalColor = dlgHelper.ChooseColorDlg();
+
+  document.getElementById('fontColor').style.backgroundColor = decimalColor;
+}
+
 
 /*
 function oldgetSystemFontsList() {
