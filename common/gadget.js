@@ -5,6 +5,7 @@
 
 var isDirty = true;
 
+// Global stored settings
 var G = {
   'mainDateFormat': null,
   'mainTimeFormat': null,
@@ -15,13 +16,7 @@ var G = {
   'locale': 'en'
 };
 
-//var mainDateFormat = null;
-//var mainTimeFormat = null;
-//var tzLabel = null;
-//var tzName = null;
-//var fontFamily = null;
-//var fontColor = null;
-//var locale = 'en';
+// Localized text
 var L = null;
 
 var gTime = null;
@@ -42,16 +37,7 @@ function readSettings() {
     G[key] = readSetting( key );
   }
 
-//  mainDateFormat = readSetting( "mainDateFormat" );
-//  mainTimeFormat = readSetting( "mainTimeFormat" );
-//  tzLabel = readSetting( "tzLabel" );
-//  tzName = readSetting( "tzName" );
-//  fontFamily = readSetting( "fontFamily" );
-//  fontColor = readSetting( "fontColor" );
-//  locale = readSetting( "locale" );
-
   setLocale();
-//	document.tzOffsets = readSetting( "tzOffsets" );
 }
 
 function setDefaults() {
@@ -62,7 +48,7 @@ function setDefaults() {
   System.Gadget.Settings.write( "mainTimeFormat", L.defaultTimeFormat );
   System.Gadget.Settings.write( "locale", lang );
   System.Gadget.Settings.write( "fontFamily", "Segoe UI" );
-  System.Gadget.Settings.write( "fontColor", "0" );
+  System.Gadget.Settings.write( "fontColor", parseInt( 'ffffff', 16 ) );
 }
 
 function startup() {
@@ -219,6 +205,7 @@ function adjustTimeToFit() {
 //  gLabel.opacity = 100;
 
   var newFontSize = Math.floor( gTime.fontSize * maxWidth / gTime.width );
+  if ( newFontSize > 100 ) newFontSize = 12;
   gTime.fontsize = newFontSize;
 
   if ( gTime.height > maxHeight ) {
@@ -329,6 +316,7 @@ function displaySettings( newlocale ) {
 	localizeText();
 
   document.getElementById('fontList').innerHTML = createFontSelect();
+  document.getElementById('fontColorList').innerHTML = createFontColorSelect();
   document.getElementById('fontFamily').value = readSetting('fontFamily');
 }
 
@@ -358,7 +346,8 @@ function updateFonts() {
   }
 
   if ( gTime.color != G.fontColor ) {
-    gTime.color = G.fontColor;
+//    gTime.color = G.fontColor;
+    gTime.color = '#ffffff';
   }
 }
 
@@ -394,6 +383,56 @@ function getFontColor() {
   var decimalColor = dlgHelper.ChooseColorDlg();
 
   document.getElementById('fontColor').style.backgroundColor = decimalColor;
+}
+
+function createFontColorSelect() {
+  var colors = getMicrosoftColors();
+  var out = null;
+  for ( var c in colors ) {
+    out += '<option value="' + colors[c] + '" style="color: ' +
+      colors[c] + '">' + colors[c] + '</option>';
+
+  }
+  
+  return '<select id=fontColor>' + out + '</select>';
+}
+
+function getMicrosoftColors() {
+  // list of colors supported by g:text
+  // http://msdn.microsoft.com/en-us/library/aa359339(VS.85).aspx
+
+  var MicrosoftColors = [ 'AliceBlue', 'AntiqueWhite', 'Aqua',
+  'Aquamarine', 'Azure', 'Beige', 'Bisque', 'Black', 'BlanchedAlmond',
+  'Blue', 'BlueViolet', 'Brown', 'BurlyWood', 'CadetBlue',
+  'Chartreuse', 'Chocolate', 'Coral', 'CornflowerBlue', 'Cornsilk',
+  'Crimson', 'Cyan', 'DarkBlue', 'DarkCyan', 'DarkGoldenrod',
+  'DarkGray', 'DarkGreen', 'DarkKhaki', 'DarkMagenta',
+  'DarkOliveGreen', 'DarkOrange', 'DarkOrchid', 'DarkRed',
+  'DarkSalmon', 'DarkSeaGreen', 'DarkSlateBlue', 'DarkSlateGray',
+  'DarkTurquoise', 'DarkViolet', 'DeepPink', 'DeepSkyBlue', 'DimGray',
+  'DodgerBlue', 'FireBrick', 'FloralWhite', 'ForestGreen', 'Fuchsia',
+  'Gainsboro', 'GhostWhite', 'Gold', 'Goldenrod', 'Gray', 'Green',
+  'GreenYellow', 'Honeydew', 'HotPink', 'IndianRed', 'Indigo',
+  'Ivory', 'Khaki', 'Lavender', 'LavenderBlush', 'LawnGreen',
+  'LemonChiffon', 'LightBlue', 'LightCoral', 'LightCyan',
+  'LightGoldenrodYellow', 'LightGreen', 'LightGrey', 'LightPink',
+  'LightSalmon', 'LightSeaGreen', 'LightSkyBlue', 'LightSlateGray',
+  'LightSteelBlue', 'LightYellow', 'Lime', 'LimeGreen', 'Linen',
+  'Magenta', 'Maroon', 'MediumAquamarine', 'MediumBlue',
+  'MediumOrchid', 'MediumPurple', 'MediumSeaGreen', 'MediumSlateBlue',
+  'MediumSpringGreen', 'MediumTurquoise', 'MediumVioletRed',
+  'MidnightBlue', 'MintCream', 'MistyRose', 'Moccasin', 'NavajoWhite',
+  'Navy', 'OldLace', 'Olive', 'OliveDrab', 'Orange', 'OrangeRed',
+  'Orchid', 'PaleGoldenrod', 'PaleGreen', 'PaleTurquoise',
+  'PaleVioletRed', 'PapayaWhip', 'PeachPuff', 'Peru', 'Pink', 'Plum',
+  'PowderBlue', 'Purple', 'Red', 'RosyBrown', 'RoyalBlue',
+  'SaddleBrown', 'Salmon', 'SandyBrown', 'SeaGreen', 'Seashell',
+  'Sienna', 'Silver', 'SkyBlue', 'SlateBlue', 'SlateGray', 'Snow',
+  'SpringGreen', 'SteelBlue', 'Tan', 'Teal', 'Thistle', 'Tomato',
+  'Turquoise', 'Violet', 'Wheat', 'White', 'WhiteSmoke', 'Yellow',
+  'YellowGreen' ];
+
+  return MicrosoftColors;
 }
 
 
