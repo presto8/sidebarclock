@@ -54,3 +54,8 @@ ul {
   margin-top: 5px;
   margin-bottom: 5px;
 }
+
+#fontColor {
+	width: 20px;
+  height: 8px;
+}

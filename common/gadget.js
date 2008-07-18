@@ -1,6 +1,6 @@
 /*
  * Non-localized javascript
- * vim: ts=2 et
+ * vim: ts=2 et nospell
  */
 
 var isDirty = true;
@@ -46,6 +46,7 @@ function setDefaults() {
   System.Gadget.Settings.write( "mainTimeFormat", L.defaultTimeFormat );
   System.Gadget.Settings.write( "locale", lang );
   System.Gadget.Settings.write( "fontFamily", "Segoe UI" );
+  System.Gadget.Settings.write( "fontColor", "16777215" );
 }
 
 function startup() {
@@ -323,6 +324,7 @@ function settingsClosing(event) {
     CheckAndSet( "tzName" );
     CheckAndSet( "locale" );
     CheckAndSet( "fontFamily" );
+    CheckAndSet( "fontColor" );
 
 //		var tzName = document.getElementById('tzName').value;
 //    var tzOffsets = tzdata2007k[ tzName ];
@@ -366,6 +368,13 @@ function createSelectOptions( values ) {
 
   return out;
 }
+
+function getFontColor() {
+  var decimalColor = dlgHelper.ChooseColorDlg();
+
+  document.getElementById('fontColor').style.backgroundColor = decimalColor;
+}
+
 
 /*
 function oldgetSystemFontsList() {

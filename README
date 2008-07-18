@@ -3,6 +3,8 @@ For more information about this gadget:
 
 RELEASE HISTORY
 
+1.21 2008-07-19 Added font support.
+
 1.20 2008-07-18 Switched to using g:background and g:text to try and
 fix gadget problems that some people were experiencing.  Discovered
 many, many bugs with Vista's sidebar implementation of these two
