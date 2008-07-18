@@ -12,6 +12,7 @@ var G = {
   'tzLabel': null,
   'tzName': null,
   'fontFamily': null,
+  'fontSize': null,
   'fontColor': null,
   'locale': 'en'
 };
