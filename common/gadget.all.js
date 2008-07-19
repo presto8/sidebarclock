@@ -2888,13 +2888,17 @@ var translations = {
 	't_label':         'Label:',
 	't_dateexamples':  'D d M = Za 07 Apr<br>l j/n = Zaterdag 7/4',
 	't_timeexamples':  'g:i a = 5:44 pm<br>H:i = 17:44',
-	't_labelexamples': 'Amsterdaam, CET, GMT+2',
+	't_labelexamples': 'Amsterdam, CET, GMT+2',
 	't_formathelp':    '<a href="http://us.php.net/manual/nl/function.date.php">Formaat help</a>',
 	't_formathelplong':'<a href="http://us.php.net/manual/nl/function.date.php">Formaat help</a> (niet ondersteund: T, e, o)',
 	't_version':       'Versie xxVER (xxDATE)',
 	't_about':         'Informatie over deze gadget',
 	't_translateby':   'Nederlandse vertaling door Edwin Walstra',
-	't_language':      'De taal:'
+	't_language':      'Taal:',
+	't_charity':       "Presto's Clock is Charityware. Vind je die goed, overweeg dan een gift aan de minderbegoeden van deze wereld. Zie de projectpagina voor <a href=\"http://prestonhunt.com/story/110\">informatie over giften</a>.",
+	't_fontfamily':    'Lettertype:',
+	't_fontsize':      'Lettergrootte (time only):',
+	't_fontcolor':     'Letterkleur:'
 }
 
 };
@@ -3221,6 +3225,7 @@ function displaySettings( newlocale ) {
 
   setTzOptions();
 	localizeText();
+  gotoTab( 1 );
 
   document.getElementById('fontList').innerHTML = createFontSelect();
   document.getElementById('fontSizeList').innerHTML = createFontSizeSelect();
@@ -3385,4 +3390,13 @@ function oldgetSystemFontsList() {
 }
 */
 
+function gotoTab( tabNum ) {
+  document.getElementById( 'tab1' ).style.display = 'none';
+  document.getElementById( 'tab2' ).style.display = 'none';
 
+  document.getElementById( 'tabcontrol1' ).className = '';
+  document.getElementById( 'tabcontrol2' ).className = '';
+
+  document.getElementById( 'tab'+tabNum ).style.display = 'block';
+  document.getElementById( 'tabcontrol'+tabNum ).className = 'tab_selected';
+}
