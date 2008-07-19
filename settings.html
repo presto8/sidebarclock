@@ -9,6 +9,17 @@
 
 <OBJECT id=dlgHelper CLASSID="clsid:3050f819-98b5-11cf-bb82-00aa00bdce0b" width="0px" height="0px"></OBJECT> 
 
+<div id="navigation">
+<ul>
+<li id="tabcontrol1" onclick="gotoTab(1)">General</li>
+<li id="tabcontrol2" onclick="gotoTab(2)">Appearance</li>
+</ul>
+</div>
+
+<div class=clear></div>
+
+<div id="tab1" class="tab">
+
 <ul id=inputs>
 <li><span id="t_language" class=firstcol></span>
 <select id="locale" onchange="displaySettings(this.value)">
@@ -24,9 +35,6 @@
 <li><span id="t_timeformat" class=firstcol></span><input type="text" id="mainTimeFormat" size="4"></li>
 <li><span id="t_timezone" class=firstcol></span><select id="tzName"></select></li>
 <li><span id="t_bottomlabel" class=firstcol></span><input type="text" id="tzLabel"> <span id="t_optional"></span></li>
-<li><span id="t_fontfamily" class=firstcol></span><span id="fontList"></span></li>
-<li><span id="t_fontsize" class=firstcol></span><span id="fontSizeList"></span></li>
-<li><span id="t_fontcolor" class=firstcol></span> <span id="fontColorList"></span></li>
 </ul>
 
 <!--
@@ -51,6 +59,16 @@
 <li id=t_charity></li>
 <li id=t_translateby></li>
 </ul>
+
+</div>
+
+<div id="tab2" class="tab">
+<ul>
+<li><span id="t_fontfamily" class=firstcol></span><span id="fontList"></span></li>
+<li><span id="t_fontsize" class=firstcol></span><span id="fontSizeList"></span></li>
+<li><span id="t_fontcolor" class=firstcol></span> <span id="fontColorList"></span></li>
+</ul>
+</div>
 
 </body>
 </html>

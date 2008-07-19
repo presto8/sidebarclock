@@ -321,6 +321,7 @@ function displaySettings( newlocale ) {
 
   setTzOptions();
 	localizeText();
+  gotoTab( 1 );
 
   document.getElementById('fontList').innerHTML = createFontSelect();
   document.getElementById('fontSizeList').innerHTML = createFontSizeSelect();
@@ -485,4 +486,13 @@ function oldgetSystemFontsList() {
 }
 */
 
+function gotoTab( tabNum ) {
+  document.getElementById( 'tab1' ).style.display = 'none';
+  document.getElementById( 'tab2' ).style.display = 'none';
 
+  document.getElementById( 'tabcontrol1' ).className = '';
+  document.getElementById( 'tabcontrol2' ).className = '';
+
+  document.getElementById( 'tab'+tabNum ).style.display = 'block';
+  document.getElementById( 'tabcontrol'+tabNum ).className = 'tab_selected';
+}
