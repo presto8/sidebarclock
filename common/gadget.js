@@ -324,8 +324,8 @@ function displaySettings( newlocale ) {
   gotoTab( 1 );
 
   document.getElementById('fontList').innerHTML = createFontSelect();
-  document.getElementById('fontSizeList').innerHTML = createFontSizeSelect();
-  document.getElementById('fontColorList').innerHTML = createFontColorSelect();
+  document.getElementById('fontSizeList').innerHTML = createFontSizeSelect( 'fontsize' );
+  document.getElementById('fontColorList').innerHTML = createFontColorSelect( 'fontcolor' );
   document.getElementById('fontFamily').value = readSetting('fontFamily');
   document.getElementById('fontSize').value = readSetting('fontSize');
   document.getElementById('fontColor').value = readSetting('fontColor');
@@ -396,7 +396,7 @@ function getFontColor() {
   document.getElementById('fontColor').style.backgroundColor = decimalColor;
 }
 
-function createFontColorSelect() {
+function createFontColorSelect( id ) {
   var colors = getMicrosoftColors();
   var out = '';
   for ( var c in colors ) {
@@ -405,15 +405,15 @@ function createFontColorSelect() {
 
   }
   
-  return '<select id=fontColor>' + out + '</select>';
+  return '<select id=' + id + '>' + out + '</select>';
 }
 
-function createFontSizeSelect() {
+function createFontSizeSelect( id ) {
   var sizes = [ 'Auto', '8', '10', '12', '14', '16', '18', '20', '22',
     '24', '26', '28', '30', '32', '34', '36', '38', '40', '42', '44',
     '46', '48', '50' ];
   var values = createSelectOptions( sizes );
-  return '<select id=fontsize>' + values + '</select>';
+  return '<select id=' + id + '>' + values + '</select>';
 }
 
 function getMicrosoftColors() {

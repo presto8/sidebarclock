@@ -30,9 +30,16 @@ var translations = {
 	't_translateby':   '',
 	't_language':      'Language:',
 	't_charity':       "Presto's Clock is Charityware. If you like it, please consider a donation to the less fortunate of the world. See the project page for <a href=\"http://prestonhunt.com/story/110\">information on how to donate</a>.",
-	't_fontfamily':    'Font:',
-	't_fontsize':      'Font size (time only):',
-	't_fontcolor':     'Font color:'
+	't_fontfamily1':    'Font:',
+	't_fontsize1':      'Font size:',
+	't_fontcolor1':     'Font color:',
+	't_fontfamily2':    'Font:',
+	't_fontsize2':      'Font size:',
+	't_fontcolor2':     'Font color:',
+	't_fontfamily3':    'Font:',
+	't_fontsize3':      'Font size:',
+	't_fontcolor3':     'Font color:',
+	't_swap_labels':    'Swap date and bottom label'
 },
 
 'es': {
