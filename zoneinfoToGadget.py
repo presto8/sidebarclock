@@ -53,6 +53,6 @@ output = []
 for label in sorted( zones.keys() ):
   output.append( findDSTRules(zones[label], label) )
 
-print "var tzdata2007k = { "
+print "var tzdata = { "
 print ",\n".join( output )
 print "};"

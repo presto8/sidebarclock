@@ -114,7 +114,7 @@ function checkVisibility() {
 
 function getOffsetInMinutes( tzName, utcEpoch ) {
 //  var tzOffsets = document.tzOffsets;
-  var tzOffsets = tzdata2007k[ tzName ];
+  var tzOffsets = tzdata[ tzName ];
 	var offset = 0;
 	for ( var cutoff in tzOffsets ) {
 	  if ( utcEpoch > cutoff ) {
@@ -271,7 +271,7 @@ function CheckAndSet( variablename ) {
 
 function setTzOptions() {
   var selectId = document.getElementById( "tzName" );
-	var zones = tzdata2007k;
+	var zones = tzdata;
 
   selectId.length = 0;
   selectId.add( new Option( L.t_localtime, '' ) );
@@ -287,7 +287,7 @@ function getSystemLanguage() {
   var localeCode = window.navigator.userLanguage;
   if ( ! localeCode ) return 'en';
   var lang = localeCode.split( '-', 1 );
-  if ( ! tzdata2007k[lang] ) return 'en';
+  if ( ! tzdata[lang] ) return 'en';
   return lang;
 }
 
