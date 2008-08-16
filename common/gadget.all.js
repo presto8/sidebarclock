@@ -3398,11 +3398,10 @@ function oldgetSystemFontsList() {
 */
 
 function gotoTab( tabNum ) {
-  document.getElementById( 'tab1' ).style.display = 'none';
-  document.getElementById( 'tab2' ).style.display = 'none';
-
-  document.getElementById( 'tabcontrol1' ).className = '';
-  document.getElementById( 'tabcontrol2' ).className = '';
+  for ( var i=1; i<=3; i++ ) {
+    document.getElementById( 'tab'+i ).style.display = 'none';
+    document.getElementById( 'tabcontrol'+i ).className = '';
+  }
 
   document.getElementById( 'tab'+tabNum ).style.display = 'block';
   document.getElementById( 'tabcontrol'+tabNum ).className = 'tab_selected';
