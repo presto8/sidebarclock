@@ -323,9 +323,10 @@ function displaySettings( newlocale ) {
 	localizeText();
   gotoTab( 1 );
 
-  document.getElementById('fontList').innerHTML = createFontSelect();
-  document.getElementById('fontSizeList').innerHTML = createFontSizeSelect( 'fontsize' );
-  document.getElementById('fontColorList').innerHTML = createFontColorSelect( 'fontcolor' );
+  document.getElementById('gTime_fontList').innerHTML = createFontSelect();
+  document.getElementById('gTime_fontSizeList').innerHTML = createFontSizeSelect( 'fontsize' );
+  document.getElementById('gTime_fontColorList').innerHTML = createFontColorSelect( 'fontcolor' );
+
   document.getElementById('fontFamily').value = readSetting('fontFamily');
   document.getElementById('fontSize').value = readSetting('fontSize');
   document.getElementById('fontColor').value = readSetting('fontColor');

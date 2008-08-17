@@ -5,7 +5,8 @@ RELEASE HISTORY
 
 1.21 2008-07-20 Added font support (family, size, and color).  Added 
 ability to disable automatic sizing for time.  Added tabs to settings
-user interface.  Fixed Pakistan time zone.
+user interface.  Fixed Pakistan time zone.  Added Swedish translation
+(thanks Jari Tammisto!).
 
 1.20 2008-07-18 Switched to using g:background and g:text to try and
 fix gadget problems that some people were experiencing.  Discovered
