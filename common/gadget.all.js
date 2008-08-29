@@ -2698,6 +2698,10 @@ var translations = {
 	't_fontcolor1':     'Font color:',
 	't_fontcolor2':     'Font color:',
 	't_fontcolor3':     'Font color:',
+	't_background': 		'Background image',
+	't_date2': 					'Date',
+	't_time2': 					'Time',
+	't_label2': 				'Label',
 	't_swap_labels':    'Swap date and bottom label'
 },
 
