@@ -2906,7 +2906,10 @@ var translations = {
 	't_fontfamily':    'Lettertype:',
 	't_fontsize':      'Lettergrootte (time only):',
 	't_fontcolor':     'Letterkleur:'
-}
+},
+
+"se": {
+  "daysLong":["söndag","måndag","tisdag","onsdag","torsdag","fredag","lördag"],"daysShort":["sön","mån","tis","ons","tor","fre","lör"],"monthsShort":["jan","feb","mar","apr","maj","jun","jul","aug","sep","okt","nov","dec"],"monthsLong":["januari","februari","mars","april","maj","juni","juli","augusti","september","oktober","november","december"],"defaultDateFormat":"D d M","defaultTimeFormat":"H:i","t_dateformat":"Formatering av datum:","t_timeformat":"Formatering av tid:","t_timezone":"Tidszon:","t_localtime":"Lokal tid","t_bottomlabel":"Etikett:","t_optional":"(valfri)","t_examples":"Exempel:","t_date":"Datum:","t_time":"Tid:","t_label":"Etikett:","t_dateexamples":"D d M = lör 10 apr<br>l j/n = lördag 4/7","t_timeexamples":"g:i a = 5:44 pm<br>H:i = 17:44","t_labelexamples":"CET, GMT+1, Stockholm, London","t_formathelp":'<a href="http://php.net/date">Hjälp till formatering</a>',"t_formathelplong":'<a href="http://php.net/date">Formateringshjälp</a> (Stöds ej: T, e, o)',"t_version":"Version 1.18 (2008-04-07)","t_about":"Om denna gadget","t_translateby":"Svensk översättning av Jari Tammisto","t_language":"Language:"}
 
 };
 /*
@@ -3234,9 +3237,10 @@ function displaySettings( newlocale ) {
 	localizeText();
   gotoTab( 1 );
 
-  document.getElementById('fontList').innerHTML = createFontSelect();
-  document.getElementById('fontSizeList').innerHTML = createFontSizeSelect( 'fontsize' );
-  document.getElementById('fontColorList').innerHTML = createFontColorSelect( 'fontcolor' );
+  document.getElementById('gTime_fontList').innerHTML = createFontSelect();
+  document.getElementById('gTime_fontSizeList').innerHTML = createFontSizeSelect( 'fontsize' );
+  document.getElementById('gTime_fontColorList').innerHTML = createFontColorSelect( 'fontcolor' );
+
   document.getElementById('fontFamily').value = readSetting('fontFamily');
   document.getElementById('fontSize').value = readSetting('fontSize');
   document.getElementById('fontColor').value = readSetting('fontColor');
