@@ -3392,9 +3392,23 @@ function getSystemLanguage() {
 function init_settings() {
   System.Gadget.onSettingsClosing = settingsClosing;
 
-  document.getElementById("mainDateFormat").value = readSetting( "mainDateFormat" );
-  document.getElementById("mainTimeFormat").value = readSetting( "mainTimeFormat" );
-  document.getElementById("tzLabel").value = readSetting( "tzLabel" );
+  var varsToLoad = [ 'mainDateFormat', 'mainTimeFormat', 'tzLabel', 'swaplabels' ];
+  for ( var v in varsToLoad ) {
+    document.getElementById( varsToLoad[v] ).value = readSetting( varsToLoad[v] );
+  }
+
+  var elements = [ 'gDate', 'gTime', 'gLabel' ];
+  for ( var el in elements ) {
+    var base = elements[el];
+    document.getElementById(base+'_fontList').innerHTML = createFontSelect( base+'fontfamily');
+    document.getElementById(base+'_fontSizeList').innerHTML = createFontSizeSelect( base+'fontsize' );
+    document.getElementById(base+'_fontColorList').innerHTML = createFontColorSelect( base+'fontcolor' );
+
+    document.getElementById(base+'fontfamily').value = readSetting(base+'fontfamily');
+    document.getElementById(base+'fontsize').value = readSetting(base+'fontsize');
+    document.getElementById(base+'fontcolor').value = readSetting(base+'fontcolor');
+  }
+
   G.locale = document.getElementById("locale").value = readSetting( "locale" );
 
   setLocale();
@@ -3418,21 +3432,8 @@ function displaySettings( newlocale ) {
   }
 
   setTzOptions();
-	localizeText();
+  localizeText();
   gotoTab( 1 );
-
-  var elements = [ 'gDate', 'gTime', 'gLabel' ];
-  for ( var el in elements ) {
-    var base = elements[el];
-    document.getElementById(base+'_fontList').innerHTML = createFontSelect( base+'fontfamily');
-    document.getElementById(base+'_fontSizeList').innerHTML = createFontSizeSelect( base+'fontsize' );
-    document.getElementById(base+'_fontColorList').innerHTML = createFontColorSelect( base+'fontcolor' );
-
-    document.getElementById(base+'fontfamily').value = readSetting(base+'fontfamily');
-    document.getElementById(base+'fontsize').value = readSetting(base+'fontsize');
-    document.getElementById(base+'fontcolor').value = readSetting(base+'fontcolor');
-  }
-
 }
 
 function settingsClosing(event) {
@@ -3442,6 +3443,7 @@ function settingsClosing(event) {
     CheckAndSet( "tzLabel" );
     CheckAndSet( "tzName" );
     CheckAndSet( "locale" );
+    CheckAndSet( "swaplabels" );
 
     var elements = [ 'gDate', 'gTime', 'gLabel' ];
     for ( var el in elements ) {
