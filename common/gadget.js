@@ -35,8 +35,10 @@ var gDate = null;
 var gLabel = null;
 
 function alert( mesg ) {
+  /*jsl:ignore*/
   return; // uncomment this line for release app
   System.Debug.outputString( mesg );
+  /*jsl:end*/
   // See: http://keithelder.net/blog/archive/2008/01/31/Debugging-Vista-Sidebar-Gadgets-in-Visual-Studio-2008.aspx
 }
 
@@ -397,7 +399,8 @@ function updateFonts() {
   var elements = [ 'gDate', 'gTime', 'gLabel' ];
   for ( var el in elements ) {
     var base = elements[el];
-    eval( 'var cur = ' + base );
+    var cur; // declaring here to avoid lint warnings
+    eval( 'cur = ' + base );
 
     if ( cur.font != G[base+'fontfamily'] ) {
       eval( base + '.font = G.'+base+'fontfamily' );
