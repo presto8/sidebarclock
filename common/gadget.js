@@ -1,6 +1,6 @@
 /*
  * Non-localized javascript
- * vim: ts=2 et nospell
+ * vim: ts=2 et nospell nowrap
  */
 
 var isDirty = true;
@@ -14,6 +14,9 @@ var G = {
   'fontFamily': null,
   'fontSize': null,
   'fontColor': null,
+  'gDatefontfamily': null,
+  'gDatefontsize': null,
+  'gTimefontsize': null,
   'locale': 'en'
 };
 
@@ -48,9 +51,14 @@ function setDefaults() {
   System.Gadget.Settings.write( "mainDateFormat", L.defaultDateFormat );
   System.Gadget.Settings.write( "mainTimeFormat", L.defaultTimeFormat );
   System.Gadget.Settings.write( "locale", lang );
-  System.Gadget.Settings.write( "fontFamily", "Segoe UI" );
-  System.Gadget.Settings.write( "fontSize", "Auto" );
-  System.Gadget.Settings.write( "fontColor", "White" );
+
+  var elements = [ 'gDate', 'gTime', 'gLabel' ];
+  for ( var el in elements ) {
+    var base = elements[el];
+    System.Gadget.Settings.write( base+"fontfamily", "Segoe UI" );
+    System.Gadget.Settings.write( base+"fontsize", "Auto" );
+    System.Gadget.Settings.write( base+"fontcolor", "White" );
+  }
 }
 
 function startup() {
@@ -323,13 +331,18 @@ function displaySettings( newlocale ) {
 	localizeText();
   gotoTab( 1 );
 
-  document.getElementById('gTime_fontList').innerHTML = createFontSelect();
-  document.getElementById('gTime_fontSizeList').innerHTML = createFontSizeSelect( 'fontsize' );
-  document.getElementById('gTime_fontColorList').innerHTML = createFontColorSelect( 'fontcolor' );
+  var elements = [ 'gDate', 'gTime', 'gLabel' ];
+  for ( var el in elements ) {
+    var base = elements[el];
+    document.getElementById(base+'_fontList').innerHTML = createFontSelect( base+'fontfamily');
+    document.getElementById(base+'_fontSizeList').innerHTML = createFontSizeSelect( base+'fontsize' );
+    document.getElementById(base+'_fontColorList').innerHTML = createFontColorSelect( base+'fontcolor' );
 
-  document.getElementById('fontFamily').value = readSetting('fontFamily');
-  document.getElementById('fontSize').value = readSetting('fontSize');
-  document.getElementById('fontColor').value = readSetting('fontColor');
+    document.getElementById(base+'fontfamily').value = readSetting(base+'fontfamily');
+    document.getElementById(base+'fontsize').value = readSetting(base+'fontsize');
+    document.getElementById(base+'fontcolor').value = readSetting(base+'fontcolor');
+  }
+
 }
 
 function settingsClosing(event) {
@@ -339,9 +352,14 @@ function settingsClosing(event) {
     CheckAndSet( "tzLabel" );
     CheckAndSet( "tzName" );
     CheckAndSet( "locale" );
-    CheckAndSet( "fontFamily" );
-    CheckAndSet( "fontSize" );
-    CheckAndSet( "fontColor" );
+
+    var elements = [ 'gDate', 'gTime', 'gLabel' ];
+    for ( var el in elements ) {
+      var base = elements[el];
+      CheckAndSet( base+"fontfamily" );
+      CheckAndSet( base+"fontsize" );
+      CheckAndSet( base+"fontcolor" );
+    }
 
 //		var tzName = document.getElementById('tzName').value;
 //    var tzOffsets = tzdata2007k[ tzName ];
@@ -375,9 +393,9 @@ function getSystemFontsList() {
  return fontNames.sort();
 }
 
-function createFontSelect() {
+function createFontSelect( id ) {
   var values = createSelectOptions( getSystemFontsList() );
-  return '<select id=fontFamily>' + values + '</select>';
+  return '<select id='+id+'>' + values + '</select>';
 }
 
 function createSelectOptions( values ) {

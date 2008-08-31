@@ -1,4 +1,4 @@
-// vim: encoding=utf-8
+// vim: encoding=utf-8 nospell
 
 var translations = {
 
@@ -39,7 +39,7 @@ var translations = {
 	't_fontcolor1':     'Font color:',
 	't_fontcolor2':     'Font color:',
 	't_fontcolor3':     'Font color:',
-	't_background': 		'Background image',
+//	't_background': 		'Background image',
 	't_date2': 					'Date',
 	't_time2': 					'Time',
 	't_label2': 				'Label',
@@ -254,6 +254,62 @@ var translations = {
 },
 
 "se": {
-  "daysLong":["söndag","måndag","tisdag","onsdag","torsdag","fredag","lördag"],"daysShort":["sön","mån","tis","ons","tor","fre","lör"],"monthsShort":["jan","feb","mar","apr","maj","jun","jul","aug","sep","okt","nov","dec"],"monthsLong":["januari","februari","mars","april","maj","juni","juli","augusti","september","oktober","november","december"],"defaultDateFormat":"D d M","defaultTimeFormat":"H:i","t_dateformat":"Formatering av datum:","t_timeformat":"Formatering av tid:","t_timezone":"Tidszon:","t_localtime":"Lokal tid","t_bottomlabel":"Etikett:","t_optional":"(valfri)","t_examples":"Exempel:","t_date":"Datum:","t_time":"Tid:","t_label":"Etikett:","t_dateexamples":"D d M = lör 10 apr<br>l j/n = lördag 4/7","t_timeexamples":"g:i a = 5:44 pm<br>H:i = 17:44","t_labelexamples":"CET, GMT+1, Stockholm, London","t_formathelp":'<a href="http://php.net/date">Hjälp till formatering</a>',"t_formathelplong":'<a href="http://php.net/date">Formateringshjälp</a> (Stöds ej: T, e, o)',"t_version":"Version 1.18 (2008-04-07)","t_about":"Om denna gadget","t_translateby":"Svensk översättning av Jari Tammisto","t_language":"Language:"}
+  "daysLong":    ["söndag","måndag","tisdag","onsdag","torsdag","fredag","lördag"],
+	"daysShort":   ["sön","mån","tis","ons","tor","fre","lör"],
+	"monthsShort": ["jan","feb","mar","apr","maj","jun","jul","aug","sep","okt","nov","dec"],
+	"monthsLong":  ["januari","februari","mars","april","maj","juni","juli","augusti","september","oktober","november","december"],
+	"defaultDateFormat": "D d M",
+	"defaultTimeFormat": "H:i",
+
+	"t_dateformat":     "Formatering av datum:",
+	"t_timeformat":     "Formatering av tid:",
+	"t_timezone":       "Tidszon:",
+	"t_localtime":      "Lokal tid",
+	"t_bottomlabel":    "Etikett:",
+	"t_optional":       "(valfri)",
+	"t_examples":       "Exempel:",
+	"t_date":           "Datum:",
+	"t_time":           "Tid:",
+	"t_label":          "Etikett:",
+	"t_dateexamples":   "D d M = lör 10 apr<br>l j/n = lördag 4/7",
+	"t_timeexamples":   "g:i a = 5:44 pm<br>H:i = 17:44",
+	"t_labelexamples":  "CET, GMT+1, Stockholm, London",
+	"t_formathelp":     '<a href="http://php.net/date">Hjälp till formatering</a>',
+	"t_formathelplong": '<a href="http://php.net/date">Formateringshjälp</a> (Stöds ej: T, e, o)',
+	"t_version":        "Version 1.18 (2008-04-07)",
+	"t_about":          "Om denna gadget",
+	"t_translateby":    "Svensk översättning av Jari Tammisto",
+	"t_language":       "Language:"
+},
+
+
+"de":{
+  "daysLong":    ["Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag"],
+	"daysShort":   ["So","Mo","Di","Mi","Do","Fr","Sa"],
+	"monthsLong":  ["Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"],
+	"monthsShort": ["Jan","Feb","Mrz","Apr","Mai","Jun","Jul","Aug","Sep","Okt","Nov","Dez"],
+	"defaultDateFormat": "D., d.  F",
+	"defaultTimeFormat": "H:i",
+	
+	"t_dateformat":"Tagesformat:",
+	"t_timeformat":"Zeitformat:",
+	"t_timezone":"Zeitzone:",
+	"t_localtime":"Ortszeit",
+	"t_bottomlabel":"Optional:",
+	"t_optional":"",
+	"t_examples":"Beispiele:",
+	"t_date":"Datum:",
+	"t_time":"Zeit:",
+	"t_label":"Optional:",
+	"t_dateexamples":"D M d = Sa Apr 07<br>n/j l = 4/7 Samstag",
+	"t_timeexamples":"H:i a = 17:44",
+	"t_labelexamples":"Berlin, GMT+1",
+	"t_formathelp":'<a href="http://us.php.net/manual/de/function.date.php">Hilfe zu den Formaten</a>',
+	"t_formathelplong":'<a href="http://us.php.net/manual/de/function.date.php">Hilfe zu den Formaten</a> (Nicht unterstützt: T, e, o)',
+	"t_version":"Version 1.20 (2008-07-18)",
+	"t_about":"Über dieses Gadget",
+	"t_translateby":"Deutsche Übersetzung von Florian Thomsen",
+	"t_language":"Sprache:"
+}
 
 };
