@@ -11,12 +11,19 @@ var G = {
   'mainTimeFormat': null,
   'tzLabel': null,
   'tzName': null,
-  'fontFamily': null,
-  'fontSize': null,
-  'fontColor': null,
+
   'gDatefontfamily': null,
   'gDatefontsize': null,
+  'gDatefontcolor': null,
+
+  'gTimefontfamily': null,
   'gTimefontsize': null,
+  'gTimefontcolor': null,
+
+  'gLabelfontfamily': null,
+  'gLabelfontsize': null,
+  'gLabelfontcolor': null,
+
   'locale': 'en'
 };
 
@@ -26,6 +33,12 @@ var L = null;
 var gTime = null;
 var gDate = null;
 var gLabel = null;
+
+function alert( mesg ) {
+  return; // uncomment this line for release app
+  System.Debug.outputString( mesg );
+  // See: http://keithelder.net/blog/archive/2008/01/31/Debugging-Vista-Sidebar-Gadgets-in-Visual-Studio-2008.aspx
+}
 
 function readSetting( settingName ) {
   return System.Gadget.Settings.read( settingName );
@@ -63,7 +76,7 @@ function setDefaults() {
 
 function startup() {
   System.Gadget.settingsUI = "settings.html";
-  System.Gadget.onSettingsClosed = readSettings;
+  System.Gadget.onSettingsClosed = afterSettingsClosed;
   System.Gadget.visibilityChanged = checkVisibility;
 
   readSettings();
@@ -80,7 +93,13 @@ function startup() {
   gTime = background.addTextObject("", "Segoe UI", 12, "white", 0, 0 );
   gLabel = background.addTextObject("", "Segoe UI", 11, "white", 0, 0 );
 
+  updateFonts();
   updateGadget();
+}
+
+function afterSettingsClosed() {
+  readSettings();
+  updateFonts();
 }
 
 function changeColor( lat, lon, gmt ) {
@@ -164,7 +183,7 @@ function displayGadget() {
 
   gTime.value = formatDate( G.mainTimeFormat, now );
 
-  updateFonts();
+  //updateFonts();
   adjustTimeToFit();
   adjustPositions();
 
@@ -207,8 +226,8 @@ function adjustPositions() {
 }
 
 function adjustTimeToFit() {
-  if ( G.fontSize != 'Auto' ) {
-    gTime.fontsize = G.fontSize;
+  if ( G.gTimefontsize != 'Auto' ) {
+    gTime.fontsize = G.gTimefontsize;
     return;
   }
 
@@ -370,14 +389,22 @@ function settingsClosing(event) {
 }
 
 function updateFonts() {
+  // Only need to run this once, on first gadget startup or when
+  // settings have been changed
+
   if ( ! gTime ) return;
 
-  if ( gTime.font != G.fontFamily ) {
-    gDate.font = gTime.font = gLabel.font = G.fontFamily;
-  }
+  var elements = [ 'gDate', 'gTime', 'gLabel' ];
+  for ( var el in elements ) {
+    var base = elements[el];
+    eval( 'var cur = ' + base );
 
-  if ( gTime.color != G.fontColor ) {
-    gDate.color = gTime.color = gLabel.color = G.fontColor;
+    if ( cur.font != G[base+'fontfamily'] ) {
+      eval( base + '.font = G.'+base+'fontfamily' );
+    }
+    if ( cur.color != G[base+'fontcolor'] ) {
+      eval( base + '.color = G.'+base+'fontcolor' );
+    }
   }
 }
 
@@ -419,8 +446,13 @@ function createFontColorSelect( id ) {
   var colors = getMicrosoftColors();
   var out = '';
   for ( var c in colors ) {
-    out += '<option value="' + colors[c] + '" style="color: ' +
-      colors[c] + '">' + colors[c] + '</option>';
+    var display_color = colors[c];
+    var background_color = 'Black';
+//    if ( display_color == 'White' ) display_color = 'Black';
+    out += '<option value="' + colors[c] + 
+      '" style="color: ' + display_color + 
+      '; background-color: ' + background_color + 
+      '">' + colors[c] + '</option>';
 
   }
   
