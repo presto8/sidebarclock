@@ -2704,7 +2704,7 @@ var translations = {
 	't_label2': 			 	 'Label',
 	't_swap_labels':     'Swap date and bottom label',
   't_tab1':            'General', 
-  't_tab2':            'Apperance',
+  't_tab2':            'Appearance',
   't_tab3':            'About'
 },
 
@@ -2800,7 +2800,7 @@ var translations = {
 	't_label2': 			 	 'Label',
 	't_swap_labels':     'Swap date and bottom label',
   't_tab1':            'General',
-  't_tab2':            'Apperance',
+  't_tab2':            'Appearance',
   't_tab3':            'About'
 },
 
@@ -2848,7 +2848,7 @@ var translations = {
 	't_label2': 			 	 'Label',
 	't_swap_labels':     'Swap date and bottom label',
   't_tab1':            'General',
-  't_tab2':            'Apperance',
+  't_tab2':            'Appearance',
   't_tab3':            'About'
 },
 

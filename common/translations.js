@@ -45,8 +45,9 @@ var translations = {
 	't_label2': 			 	 'Label',
 	't_swap_labels':     'Swap date and bottom label',
   't_tab1':            'General', 
-  't_tab2':            'Apperance',
-  't_tab3':            'About'
+  't_tab2':            'Appearance',
+  't_tab3':            'About',
+  't_copyright':       'Copyright 2008, Preston Hunt'
 },
 
 // Spanish translation by Tom <getkresh@yahoo.ca>
@@ -141,7 +142,7 @@ var translations = {
 	't_label2': 			 	 'Label',
 	't_swap_labels':     'Swap date and bottom label',
   't_tab1':            'General',
-  't_tab2':            'Apperance',
+  't_tab2':            'Appearance',
   't_tab3':            'About'
 },
 
@@ -189,7 +190,7 @@ var translations = {
 	't_label2': 			 	 'Label',
 	't_swap_labels':     'Swap date and bottom label',
   't_tab1':            'General',
-  't_tab2':            'Apperance',
+  't_tab2':            'Appearance',
   't_tab3':            'About'
 },
 
@@ -381,7 +382,7 @@ var translations = {
 	't_label2': 			 	 'Etikett',
 	't_swap_labels':     'Växla datum och etikett',
   't_tab1':            'Allmän',
-  't_tab2':            'Allmän',
+  't_tab2':            'Utseende',
   't_tab3':            'Om'
 },
 
