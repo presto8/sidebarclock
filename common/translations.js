@@ -75,20 +75,23 @@ var translations = {
 	't_translateby':   'Traducción en español por Lucía y Tom',
 	't_language':      'Idioma:',
 	't_charity':        "Presto's Clock is Charityware. If you like it, please consider a donation to the less fortunate of the world. See the project page for <a href=\"http://prestonhunt.com/story/110\">information on how to donate</a>.",
-	't_fontfamily1':     'Font:',
-	't_fontfamily2':     'Font:',
-	't_fontfamily3':     'Font:',
-	't_fontsize1':       'Font size:',
-	't_fontsize2':       'Font size:',
-	't_fontsize3':       'Font size:',
-	't_fontcolor1':      'Font color:',
-	't_fontcolor2':      'Font color:',
-	't_fontcolor3':      'Font color:',
-//	't_background':  		'Background image',
-	't_date2': 				 	 'Date',
-	't_time2': 				 	 'Time',
-	't_label2': 			 	 'Label',
-	't_swap_labels':     'Swap date and bottom label'
+	't_fontfamily1':     'Font:', // TODO
+	't_fontfamily2':     'Font:', // TODO
+	't_fontfamily3':     'Font:', // TODO
+	't_fontsize1':       'Font size:', // TODO
+	't_fontsize2':       'Font size:', // TODO
+	't_fontsize3':       'Font size:', // TODO
+	't_fontcolor1':      'Font color:', // TODO
+	't_fontcolor2':      'Font color:', // TODO
+	't_fontcolor3':      'Font color:', // TODO
+//	't_background':  		'Background image', // TODO
+	't_date2': 				 	 'Datum',
+	't_time2': 				 	 'Hora',
+	't_label2': 			 	 'Etiqueta',
+	't_swap_labels':     'Swap date and bottom label', // TODO
+  't_tab1':            'General', // TODO
+  't_tab2':            'Apariencia', // TODO
+  't_tab3':            'Sobre' // TODO
 },
 
 // Danish translation by Dennis Boffy <adidas.lover2000@yahoo.com>
@@ -133,14 +136,17 @@ var translations = {
 	't_date2': 				 	 'Date',
 	't_time2': 				 	 'Time',
 	't_label2': 			 	 'Label',
-	't_swap_labels':     'Swap date and bottom label'
+	't_swap_labels':     'Swap date and bottom label',
+  't_tab1':            'General',
+  't_tab2':            'Apperance',
+  't_tab3':            'About'
 },
 
 // French translation by Erik Vandevoorde <erik.vdvoorde@gmail.com>
 'fr': {
 	'daysLong':    ["Dimanche", "Lundi", "Mardi", "Mercredi","Jeudi", "Vendredi", "Samedi"],
 	'daysShort':   ["Dim", "Lun", "Mar", "Mer","Jeu", "Ven", "Sam"],
-	'monthsShort': ["Jan", "Fév", "Mars", "Avr", "Mai", "Juin", "Juil", "Aoû","Oct", "Nov", "Déc"],
+	'monthsShort': ["Jan", "Fév", "Mars", "Avr", "Mai", "Juin", "Juil", "Aoû", "Sep", "Oct", "Nov", "Déc"],
 	'monthsLong':  [ "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre" ],
 	'defaultDateFormat': "D d M",
 	'defaultTimeFormat': "H:i",
@@ -178,7 +184,10 @@ var translations = {
 	't_date2': 				 	 'Date',
 	't_time2': 				 	 'Time',
 	't_label2': 			 	 'Label',
-	't_swap_labels':     'Swap date and bottom label'
+	't_swap_labels':     'Swap date and bottom label',
+  't_tab1':            'General',
+  't_tab2':            'Apperance',
+  't_tab3':            'About'
 },
 
 // Italian translation by Mirko Mazzacano <michy91@alice.it>
@@ -223,7 +232,10 @@ var translations = {
 	't_date2': 				 	 'Date',
 	't_time2': 				 	 'Time',
 	't_label2': 			 	 'Label',
-	't_swap_labels':     'Swap date and bottom label'
+	't_swap_labels':     'Swap date and bottom label',
+  't_tab1':            'General',
+  't_tab2':            'Apperance',
+  't_tab3':            'About'
 },
 
 // Polish translation by Marcin Michalak <marcin.michalak@gmail.com>
@@ -268,7 +280,10 @@ var translations = {
 	't_date2': 				 	 'Data',
 	't_time2': 				 	 'Godzina',
 	't_label2': 			 	 'Tekst',
-	't_swap_labels':     'Zamień datę i dolny tekst'
+	't_swap_labels':     'Zamień datę i dolny tekst',
+  't_tab1':            'General',
+  't_tab2':            'Apperance',
+  't_tab3':            'About'
 },
 
 // Dutch translation by Edwin Walstra <ewalstra@xs4all.nl>
@@ -377,40 +392,43 @@ var translations = {
 	"defaultDateFormat": "D., d. F",
 	"defaultTimeFormat": "H:i",
 	
-	"t_dateformat":     "Datumsformat:",
-	"t_timeformat":     "Zeitformat:",
-	"t_timezone":       "Zeitzone:",
-	"t_localtime":      "Ortszeit",
-	"t_bottomlabel":    "Zusätzlicher Text:",
-	"t_optional":       "(Optional)",
-	"t_examples":       "Beispiele:",
-	"t_date":           "Datum:",
-	"t_time":           "Zeit:",
-	"t_label":          "Optional:",
-	"t_dateexamples":   "D M d = Sa Apr 07<br>n/j l = 4/7 Samstag",
-	"t_timeexamples":   "H:i a = 17:44",
-	"t_labelexamples":  "Berlin, GMT+1",
-	"t_formathelp":     '<a href="http://us.php.net/manual/de/function.date.php">Hilfe zu den Formaten</a>',
-	"t_formathelplong": '<a href="http://us.php.net/manual/de/function.date.php">Hilfe zu den Formaten</a> (Nicht unterstützt: T, e, o)',
-	"t_version":        "Version xxVER (xxDATE)",
-	"t_about":          "Über dieses Gadget",
-	"t_translateby":    "Deutsche Übersetzung von Florian Thomsen",
-	"t_language":       "Sprache:",
-	't_charity':        "Presto's Clock ist Charityware. Wenn Ihnen diese Software gefällt, spenden Sie bitte für die hilfsbedürftigen Menschen dieser Welt. Auf meiner Homepage finden Sie weitere Infos, <a href=\"http://prestonhunt.com/story/110\">wie Sie spenden</a>.",
-	't_fontfamily1':    'Schrift:',
-	't_fontfamily2':    'Schrift:',
-	't_fontfamily3':    'Schrift:',
-	't_fontsize1':      'Schriftgröße:',
-	't_fontsize2':      'Schriftgröße:',
-	't_fontsize3':      'Schriftgröße:',
-	't_fontcolor1':     'Schriftfarbe:',
-	't_fontcolor2':     'Schriftfarbe:',
-	't_fontcolor3':     'Schriftfarbe:',
+	"t_dateformat":      "Datumsformat:",
+	"t_timeformat":      "Zeitformat:",
+	"t_timezone":        "Zeitzone:",
+	"t_localtime":       "Ortszeit",
+	"t_bottomlabel":     "Zusätzlicher Text:",
+	"t_optional":        "(Optional)",
+	"t_examples":        "Beispiele:",
+	"t_date":            "Datum:",
+	"t_time":            "Zeit:",
+	"t_label":           "Optional:",
+	"t_dateexamples":    "D M d = Sa Apr 07<br>n/j l = 4/7 Samstag",
+	"t_timeexamples":    "H:i a = 17:44",
+	"t_labelexamples":   "Berlin, GMT+1",
+	"t_formathelp":      '<a href="http://us.php.net/manual/de/function.date.php">Hilfe zu den Formaten</a>',
+	"t_formathelplong":  '<a href="http://us.php.net/manual/de/function.date.php">Hilfe zu den Formaten</a> (Nicht unterstützt: T, e, o)',
+	"t_version":         "Version xxVER (xxDATE)",
+	"t_about":           "Über dieses Gadget",
+	"t_translateby":     "Deutsche Übersetzung von Florian Thomsen",
+	"t_language":        "Sprache:",
+	't_charity':         "Presto's Clock ist Charityware. Wenn Ihnen diese Software gefällt, spenden Sie bitte für die hilfsbedürftigen Menschen dieser Welt. Auf meiner Homepage finden Sie weitere Infos, <a href=\"http://prestonhunt.com/story/110\">wie Sie spenden</a>.",
+	't_fontfamily1':     'Schrift:',
+	't_fontfamily2':     'Schrift:',
+	't_fontfamily3':     'Schrift:',
+	't_fontsize1':       'Schriftgröße:',
+	't_fontsize2':       'Schriftgröße:',
+	't_fontsize3':       'Schriftgröße:',
+	't_fontcolor1':       'Schriftfarbe:',
+	't_fontcolor2':      'Schriftfarbe:',
+	't_fontcolor3':      'Schriftfarbe:',
 //	't_background': 		'Hintergrundbild',
-	't_date2': 					'Datum',
-	't_time2': 					'Zeit',
-	't_label2': 				'Optional',
-	't_swap_labels':    'Datum und zusätzlichen Text vertauschen'
+	't_date2': 					 'Datum',
+	't_time2': 					 'Zeit',
+	't_label2': 				 'Optional',
+	't_swap_labels':     'Datum und zusätzlichen Text vertauschen',
+  't_tab1':            'General',
+  't_tab2':            'Apperance',
+  't_tab3':            'About'
 }
 
 };

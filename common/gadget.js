@@ -294,7 +294,12 @@ function dd( msg ) {
 
 function CheckAndSet( variablename ) {
   var varEl = document.getElementById( variablename );
-  var varVal = varEl.value;
+  var varVal;
+  if ( varEl.type == 'checkbox' ) {
+    varVal = varEl.checked ? true : false;
+  } else {
+    varVal = varEl.value;
+  }
   System.Gadget.Settings.write( variablename, varVal );
 }
 
