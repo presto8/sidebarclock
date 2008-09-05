@@ -3107,6 +3107,7 @@ var G = {
   'mainTimeFormat': null,
   'tzLabel': null,
   'tzName': null,
+  'swaplabels': false,
 
   'gDatefontfamily': null,
   'gDatefontsize': null,
@@ -3281,6 +3282,12 @@ function displayGadget() {
 
   gTime.value = formatDate( G.mainTimeFormat, now );
 
+  //if ( G.swaplabels ) {
+    //var temp = gDate.value;
+    //gDate.value = gLabel.value;
+    //gLabel.value = temp;
+  //}
+
   //updateFonts();
   adjustTimeToFit();
   adjustPositions();
@@ -3307,8 +3314,13 @@ function adjustPositions() {
   gTime.left = ( maxWidth - gTime.width ) / 2;
 
   // Adjust tops
-  gDate.top = 5;
-  gLabel.top = 47;
+  if ( G.swaplabels ) {
+    gDate.top = 5;
+    gLabel.top = 47;
+  } else {
+    gDate.top = 47;
+    gLabel.top = 5;
+  }
 
   // Now the trickiest to adjust, the time position
   // Start off directly in the middle
