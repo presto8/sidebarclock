@@ -3335,10 +3335,10 @@ function adjustPositions() {
 
   if ( topOnly ) {
     // Adjust down if there is no bottom field
-    gTime.top += ( gBottom.height - 5 ) / 2;
+    gTime.top += ( gTop.height - 5 ) / 2;
   } else if ( bottomOnly ) {
     // Adjust up if there is no top field
-    gTime.top -= ( gTop.height - 5 ) / 2;
+    gTime.top -= ( gBottom.height - 5 ) / 2;
   }
 }
 
