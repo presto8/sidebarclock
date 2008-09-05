@@ -3313,14 +3313,18 @@ function adjustPositions() {
   gLabel.left = ( maxWidth - gLabel.width ) / 2;
   gTime.left = ( maxWidth - gTime.width ) / 2;
 
-  // Adjust tops
-  var gTop = gDate.top = 5;
-  var gBottom = gLabel.top = 47;
+  // Normal display
+  var gTop = gDate;
+  var gBottom = gLabel;
 
   if ( G.swaplabels ) {
-    gBottom = gDate.top = 47;
-    gTop = gLabel.top = 5;
+    gTop = gLabel;
+    gBottom = gDate;
   }
+
+  // Adjust tops
+  gTop.top = 5;
+  gBottom.top = 47;
 
   // Now the trickiest to adjust, the time position
   // Start off directly in the middle
@@ -3334,7 +3338,7 @@ function adjustPositions() {
     gTime.top += ( gBottom.height - 5 ) / 2;
   } else if ( bottomOnly ) {
     // Adjust up if there is no top field
-    gTime.top -= ( gLabel.height - 5 ) / 2;
+    gTime.top -= ( gTop.height - 5 ) / 2;
   }
 }
 
