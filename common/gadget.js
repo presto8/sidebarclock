@@ -218,23 +218,26 @@ function adjustPositions() {
   gTime.left = ( maxWidth - gTime.width ) / 2;
 
   // Adjust tops
+  var gTop = gDate.top = 5;
+  var gBottom = gLabel.top = 47;
+
   if ( G.swaplabels ) {
-    gDate.top = 5;
-    gLabel.top = 47;
-  } else {
-    gDate.top = 47;
-    gLabel.top = 5;
+    gBottom = gDate.top = 47;
+    gTop = gLabel.top = 5;
   }
 
   // Now the trickiest to adjust, the time position
   // Start off directly in the middle
   gTime.top = ( maxHeight - gTime.height ) / 2;
 
-  if ( gDate.value.length && ! gLabel.value.length ) {
-    // Adjust down if there is date only
-    gTime.top += ( gDate.height - 5 ) / 2;
-  } else if ( ! gDate.value.length && gLabel.value.length ) {
-    // Adjust up if there is label only
+  var topOnly = gTop.value.length && ! gBottom.value.length;
+  var bottomOnly = ! gTop.value.length && gBottom.value.length;
+
+  if ( topOnly ) {
+    // Adjust down if there is no bottom field
+    gTime.top += ( gBottom.height - 5 ) / 2;
+  } else if ( bottomOnly ) {
+    // Adjust up if there is no top field
     gTime.top -= ( gLabel.height - 5 ) / 2;
   }
 }
