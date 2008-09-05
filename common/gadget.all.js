@@ -3399,6 +3399,18 @@ function CheckAndSet( variablename ) {
   System.Gadget.Settings.write( variablename, varVal );
 }
 
+function LoadVarForSettings( variablename ) {
+  var varEl = document.getElementById( variablename );
+  var varVal = readSetting( variablename );
+
+  if ( varEl.type == 'checkbox' ) {
+    varEl.checked = varVal;
+  } else {
+    varEl.value = varVal;
+  }
+}
+
+
 function setTzOptions() {
   var selectId = document.getElementById( "tzName" );
 	var zones = tzdata;
@@ -3423,11 +3435,7 @@ function getSystemLanguage() {
 
 function init_settings() {
   System.Gadget.onSettingsClosing = settingsClosing;
-
   var varsToLoad = [ 'mainDateFormat', 'mainTimeFormat', 'tzLabel', 'swaplabels' ];
-  for ( var v in varsToLoad ) {
-    document.getElementById( varsToLoad[v] ).value = readSetting( varsToLoad[v] );
-  }
 
   var elements = [ 'gDate', 'gTime', 'gLabel' ];
   for ( var el in elements ) {
@@ -3436,9 +3444,11 @@ function init_settings() {
     document.getElementById(base+'_fontSizeList').innerHTML = createFontSizeSelect( base+'fontsize' );
     document.getElementById(base+'_fontColorList').innerHTML = createFontColorSelect( base+'fontcolor' );
 
-    document.getElementById(base+'fontfamily').value = readSetting(base+'fontfamily');
-    document.getElementById(base+'fontsize').value = readSetting(base+'fontsize');
-    document.getElementById(base+'fontcolor').value = readSetting(base+'fontcolor');
+    varsToLoad.push( base+'fontfamily', base+'fontsize', base+'fontcolor' );
+  }
+
+  for ( var v in varsToLoad ) {
+    LoadVarForSettings( varsToLoad[v] );
   }
 
   G.locale = document.getElementById("locale").value = readSetting( "locale" );

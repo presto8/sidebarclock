@@ -11,6 +11,7 @@ var G = {
   'mainTimeFormat': null,
   'tzLabel': null,
   'tzName': null,
+  'swaplabels': false,
 
   'gDatefontfamily': null,
   'gDatefontsize': null,
@@ -185,6 +186,12 @@ function displayGadget() {
 
   gTime.value = formatDate( G.mainTimeFormat, now );
 
+  //if ( G.swaplabels ) {
+    //var temp = gDate.value;
+    //gDate.value = gLabel.value;
+    //gLabel.value = temp;
+  //}
+
   //updateFonts();
   adjustTimeToFit();
   adjustPositions();
@@ -211,8 +218,13 @@ function adjustPositions() {
   gTime.left = ( maxWidth - gTime.width ) / 2;
 
   // Adjust tops
-  gDate.top = 5;
-  gLabel.top = 47;
+  if ( G.swaplabels ) {
+    gDate.top = 5;
+    gLabel.top = 47;
+  } else {
+    gDate.top = 47;
+    gLabel.top = 5;
+  }
 
   // Now the trickiest to adjust, the time position
   // Start off directly in the middle
@@ -303,6 +315,18 @@ function CheckAndSet( variablename ) {
   System.Gadget.Settings.write( variablename, varVal );
 }
 
+function LoadVarForSettings( variablename ) {
+  var varEl = document.getElementById( variablename );
+  var varVal = readSetting( variablename );
+
+  if ( varEl.type == 'checkbox' ) {
+    varEl.checked = varVal;
+  } else {
+    varEl.value = varVal;
+  }
+}
+
+
 function setTzOptions() {
   var selectId = document.getElementById( "tzName" );
 	var zones = tzdata;
@@ -327,11 +351,7 @@ function getSystemLanguage() {
 
 function init_settings() {
   System.Gadget.onSettingsClosing = settingsClosing;
-
   var varsToLoad = [ 'mainDateFormat', 'mainTimeFormat', 'tzLabel', 'swaplabels' ];
-  for ( var v in varsToLoad ) {
-    document.getElementById( varsToLoad[v] ).value = readSetting( varsToLoad[v] );
-  }
 
   var elements = [ 'gDate', 'gTime', 'gLabel' ];
   for ( var el in elements ) {
@@ -340,9 +360,11 @@ function init_settings() {
     document.getElementById(base+'_fontSizeList').innerHTML = createFontSizeSelect( base+'fontsize' );
     document.getElementById(base+'_fontColorList').innerHTML = createFontColorSelect( base+'fontcolor' );
 
-    document.getElementById(base+'fontfamily').value = readSetting(base+'fontfamily');
-    document.getElementById(base+'fontsize').value = readSetting(base+'fontsize');
-    document.getElementById(base+'fontcolor').value = readSetting(base+'fontcolor');
+    varsToLoad.push( base+'fontfamily', base+'fontsize', base+'fontcolor' );
+  }
+
+  for ( var v in varsToLoad ) {
+    LoadVarForSettings( varsToLoad[v] );
   }
 
   G.locale = document.getElementById("locale").value = readSetting( "locale" );
