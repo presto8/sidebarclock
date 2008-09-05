@@ -43,7 +43,10 @@ var translations = {
 	't_date2': 				 	 'Date',
 	't_time2': 				 	 'Time',
 	't_label2': 			 	 'Label',
-	't_swap_labels':     'Swap date and bottom label'
+	't_swap_labels':     'Swap date and bottom label',
+  't_tab1':            'General', 
+  't_tab2':            'Apperance',
+  't_tab3':            'About'
 },
 
 // Spanish translation by Tom <getkresh@yahoo.ca>
