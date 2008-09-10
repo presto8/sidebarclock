@@ -3128,7 +3128,7 @@ var translations = {
 	't_formathelplong': '<a href="http://us.php.net/manual/en/function.date.php">Format help</a> (Nije podržano: T, e, o)',
 	't_version':        'Verzija xxVER (xxDATE)',
 	't_about':          'Info o gadget-u',
-	't_translateby':    'Milan Nagulić',
+	't_translateby':    'Na srpski preveo Milan Nagulić',
 	't_language':       'Jezik:',
 	't_charity':        "Presto's Clock je zasnovan na dobrovoljnim donacijama. Ako Vam se sviđa, molim Vas razmislite o donaciji manje srećnim ljudima u svetu. Pogledajte projektnu stranicu za <a href=\"http://prestonhunt.com/story/110\">Informaciju kako da date donaciju</a>.",
 	't_fontfamily1':     'Font:',
