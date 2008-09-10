@@ -1,5 +1,13 @@
 // vim: encoding=utf-8 nospell ts=2 et
 
+// Translation instructions:
+// Each line has one phrase that needs translating.  Only edit the 
+// part after the colon.  Try to use a Unicode/UTF-8 editor to 
+// preserve special characters.
+//
+// Example:
+//   't_label':      'Replace this part with the translation'
+
 var translations = {
 
 'en': {
@@ -433,6 +441,55 @@ var translations = {
   't_tab1':            'General',
   't_tab2':            'Apperance',
   't_tab3':            'About'
+},
+
+// Serbian translation by Milan <n.milan.n@gmail.com>
+'sr': {
+	'daysLong':    ["Nedelja", "Ponedeljak", "Utorak", "Sreda", "Četvrtak", "Petak", "Subota"],
+	'daysShort':   ["Ned", "Pon", "Uto", "Sre", "Čet", "Pet", "Sub"],
+	'monthsLong':  ["Januar", "Februar", "Mart", "April", "Maj", "Jun", "Jul", "Avgust", "Septembar", "Oktobar", "Novembar", "Decembar"],
+	'monthsShort': ["Jan", "Feb", "Mar", "Apr", "Maj", "Jun", "Jul", "Avg", "Sep", "Okt", "Nov", "Dec"],
+	'defaultDateFormat': "D M d",
+	'defaultTimeFormat': "h:i a",
+
+	't_dateformat':     'Format datuma:',
+	't_timeformat':     'Format vremena:',
+	't_timezone':       'Vremenska zona:',
+	't_localtime':      'Lokalno vreme',
+	't_bottomlabel':    'Donji naslov:',
+	't_optional':       '(opcionalno)',
+	't_examples':       'Primer:',
+	't_date':           'Datum:',
+	't_time':           'Vreme:',
+	't_label':          'Naslov:',
+	't_dateexamples':   'D M d = Sub Apr 07<br>n/j l = 4/7 Subota',
+	't_timeexamples':   'g:i a = 5:44 pm<br>H:i = 17:44',
+	't_labelexamples':  'Portland, Tokyo, GMT+2',
+	't_formathelp':     '<a href="http://us.php.net/manual/en/function.date.php">Pomoć za oblik prikaza</a>',
+	't_formathelplong': '<a href="http://us.php.net/manual/en/function.date.php">Format help</a> (Nije podržano: T, e, o)',
+	't_version':        'Verzija xxVER (xxDATE)',
+	't_about':          'Info o gadget-u',
+	't_translateby':    'Milan Nagulić',
+	't_language':       'Jezik:',
+	't_charity':        "Presto's Clock je zasnovan na dobrovoljnim donacijama. Ako Vam se sviđa, molim Vas razmislite o donaciji manje srećnim ljudima u svetu. Pogledajte projektnu stranicu za <a href=\"http://prestonhunt.com/story/110\">Informaciju kako da date donaciju</a>.",
+	't_fontfamily1':     'Font:',
+	't_fontfamily2':     'Font:',
+	't_fontfamily3':     'Font:',
+	't_fontsize1':       'Veličina fonta:',
+	't_fontsize2':       'Veličina fonta:',
+	't_fontsize3':       'Veličina fonta:',
+	't_fontcolor1':      'Boja fonta:',
+	't_fontcolor2':      'Boja fonta:',
+	't_fontcolor3':      'Boja fonta:',
+//	't_background':  		'Pozadinska slika',
+	't_date2': 				 	 'Datum',
+	't_time2': 				 	 'Vreme',
+	't_label2': 			 	 'Naslov',
+	't_swap_labels':     'Zamenite datum sa donjim naslovom',
+  't_tab1':            'Opšte', 
+  't_tab2':            'Izgled',
+  't_tab3':            'Info',
+  't_copyright':       'Autorsko pravo 2008, Preston Hunt'
 }
 
 };

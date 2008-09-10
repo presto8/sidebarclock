@@ -3,6 +3,8 @@ For more information about this gadget:
 
 RELEASE HISTORY
 
+1.22 2008-09-10 Added Serbian (thanks Milan Nagulic!)
+
 1.21 2008-09-05 Added font support (family, size, and color).  Added  
 ability to disable automatic sizing for time.  Added tabs to settings
 user interface.  Fixed Pakistan time zone.  Added Swedish translation
