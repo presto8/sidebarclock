@@ -55,7 +55,7 @@ var translations = {
   't_tab1':            'General', 
   't_tab2':            'Appearance',
   't_tab3':            'About',
-  't_copyright':       'Copyright 2008, Preston Hunt'
+  't_copyright':       'Copyright 2008 Preston Hunt'
 },
 
 // Spanish translation by Tom <getkresh@yahoo.ca>
@@ -489,7 +489,56 @@ var translations = {
   't_tab1':            'Загально', 
   't_tab2':            'Зовнішній вигляд',
   't_tab3':            'Про',
-  't_copyright':       'Авторське право 2008, Preston Hunt'
+  't_copyright':       'Авторське право 2008 Preston Hunt'
+},
+
+// Hungarian translation by Nagy László <nalaszi@gmail.com>
+'hu': {
+	'daysLong':    ["Vasárnap", "Hétfõ", "Kedd", "Szerda", "Csütörtök", "Péntek", "Szombat"],
+	'daysShort':   ["Va", "Hé", "Ke", "Sze", "Csü", "Pé", "Szo"],
+	'monthsLong':  ["Január", "Február", "Március", "Április", "Május", "Június", "Július", "Augusztus", "Szeptember", "Október", "November", "December"],
+	'monthsShort': ["Jan", "Feb", "Már", "Ápr", "Máj", "Jún", "Júl", "Aug", "Szep", "Okt", "Nov", "Dec"],
+	'defaultDateFormat': "Y M d",
+	'defaultTimeFormat': "H:i:s",
+
+	't_dateformat':     'Dátum formátuma:',
+	't_timeformat':     'Idõ formátuma:',
+	't_timezone':       'Idõzóna:',
+	't_localtime':      'Helyi idõ',
+	't_bottomlabel':    'Alsó felirat:',
+	't_optional':       '(választható)',
+	't_examples':       'Példák:',
+	't_date':           'Dátum:',
+	't_time':           'Idõ:',
+	't_label':          'Felirat:',
+	't_dateexamples':   'D M d = Szo Ápr 07<br>n/j l = 4/7 Szombat',
+	't_timeexamples':   'g:i a = 5:44 pm<br>H:i = 17:44',
+	't_labelexamples':  'Budapest, Kaposvár, GMT+1',
+	't_formathelp':     '<a href="http://us.php.net/manual/hu/function.date.php">Formázási segítség</a>',
+	't_formathelplong': '<a href="http://us.php.net/manual/hu/function.date.php">Formázási segítség</a> (nem támogatott: T, e, o)',
+	't_version':        'Verzió: 1.22 (2008-09-12)',
+	't_about':          'Információk a minialkalmazásról',
+	't_translateby':    'A magyar fordítást készítette: Nagy László',
+	't_language':       'Nyelv:',
+	't_charity':        "Presto Órája Charityware program. Amennyiben tetszik kérlek támogasd adományoddal a világ kevésbé szerencsés embereit. Nézd meg a részleteket <a href=\"http://prestonhunt.com/story/110\">információért hogyan adakozhatsz</a>.",
+	't_fontfamily1':     'Betû:',
+	't_fontfamily2':     'Betû:',
+	't_fontfamily3':     'Betû:',
+	't_fontsize1':       'Betûméret:',
+	't_fontsize2':       'Betûméret:',
+	't_fontsize3':       'Betûméret:',
+	't_fontcolor1':      'Betûszín:',
+	't_fontcolor2':      'Betûszín:',
+	't_fontcolor3':      'Betûszín:',
+//	't_background':  		'Háttérkép',
+	't_date2': 				 	 'Dátum',
+	't_time2': 				 	 'Idõ',
+	't_label2': 			 	 'Felirat',
+	't_swap_labels':     'Dátum és az alsó felirat felcserélése',
+  't_tab1':            'Általános', 
+  't_tab2':            'Megjelenés',
+  't_tab3':            'Rólunk',
+  't_copyright':       'Szerzõi Jog: 2008 Preston Hunt'
 },
 
 // Serbian translation by Milan <n.milan.n@gmail.com>
@@ -538,7 +587,7 @@ var translations = {
   't_tab1':            'Opšte', 
   't_tab2':            'Izgled',
   't_tab3':            'Info',
-  't_copyright':       'Autorsko pravo 2008, Preston Hunt'
+  't_copyright':       'Autorsko pravo 2008 Preston Hunt'
 }
 
 };
