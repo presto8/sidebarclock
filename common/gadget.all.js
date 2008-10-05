@@ -3175,7 +3175,7 @@ var translations = {
 	't_labelexamples':  'Budapest, Kaposvár, GMT+1',
 	't_formathelp':     '<a href="http://us.php.net/manual/hu/function.date.php">Formázási segítség</a>',
 	't_formathelplong': '<a href="http://us.php.net/manual/hu/function.date.php">Formázási segítség</a> (nem támogatott: T, e, o)',
-	't_version':        'Verzió: 1.22 (2008-09-12)',
+	't_version':        'Verzió: xxVER (xxDATE)',
 	't_about':          'Információk a minialkalmazásról',
 	't_translateby':    'A magyar fordítást készítette: Nagy László',
 	't_language':       'Nyelv:',
