@@ -1,4 +1,4 @@
-// vim: encoding=utf-8 nospell ts=2 et
+// vim: fileencoding=utf-8 nospell ts=2 et
 
 // Translation instructions:
 // Each line has one phrase that needs translating.  Only edit the 
@@ -441,6 +441,55 @@ var translations = {
   't_tab1':            'General',
   't_tab2':            'Apperance',
   't_tab3':            'About'
+},
+
+// Ukranian translation by mr.gorka <mr.gorka@gmail.com>
+'uk': {
+	'daysLong':    ["Неділя", "Понеділок", "Вівторок", "Середа", "Четвер", "П’ятниця", "Субота"],
+	'daysShort':   ["Нед", "Пон", "Вів", "Сер", "Чет", "Пʼят", "Суб"],
+	'monthsLong':  ["Січень", "Лютий", "Березень", "Квітень", "Травень", "Червень", "Липень", "Серпень", "Вересень", "Жовтень", "Листопад", "Грудень"],
+	'monthsShort': ["Січ", "Лют", "Бер", "Кві", "Тра", "Чер", "Лип", "Сер", "Вер", "Жов", "Лис", "Гру"],
+	'defaultDateFormat': "D d M ",
+	'defaultTimeFormat': "h:i ",
+
+	't_dateformat':     'Формат дати:',
+	't_timeformat':     'Формат часу:',
+	't_timezone':       'Часовий пояс:',
+	't_localtime':      'Локальний час:',
+	't_bottomlabel':    'Текст:',
+	't_optional':       "(необов'язково)",
+	't_examples':       'Наприклад:',
+	't_date':           'Дата:',
+	't_time':           'Час:',
+	't_label':          'Текст:',
+	't_dateexamples':   'D d M = Суб 07 Кві<br>l n/j = Субота 7/4',
+	't_timeexamples':   'g:i a = 5:44 pm<br>H:i = 17:44',
+	't_labelexamples':  'Ukraine, Kiev, GMT+2',
+	't_formathelp':     '<a href="http://us.php.net/manual/en/function.date.php">Format help</a>',
+	't_formathelplong': '<a href="http://us.php.net/manual/en/function.date.php">Format help</a> (не підтримується: T, e, o)',
+	't_version':        'Версія xxVER (xxDATE)',
+	't_about':          'Про гаджет',
+	't_translateby':    '',
+	't_language':       'Мова:',
+	't_charity':        "Годинник Presto's - Безкоштовний гаджет. Якщо Вам він сподобався, будь-ласка розгляньте  можливість пожертвування менш вдалому з цього світу. Див. сторінку для цього <a href=\"http://prestonhunt.com/story/110\">information on how to donate</a>. Переклав українською Ігор Каплін",
+	't_fontfamily1':     'Шрифт:',
+	't_fontfamily2':     'Шрифт:',
+	't_fontfamily3':     'Шрифт:',
+	't_fontsize1':       'Розмір шрифту:',
+	't_fontsize2':       'Розмір шрифту:',
+	't_fontsize3':       'Розмір шрифту:',
+	't_fontcolor1':      'Колір шрифту:',
+	't_fontcolor2':      'Колір шрифту:',
+	't_fontcolor3':      'Колір шрифту:',
+//	't_background':  		'Другорядне зображення',
+	't_date2': 				 	 'Дата',
+	't_time2': 				 	 'Час',
+	't_label2': 			 	 'Текст',
+	't_swap_labels':     'Зміна розташування дати',
+  't_tab1':            'Загально', 
+  't_tab2':            'Зовнішній вигляд',
+  't_tab3':            'Про',
+  't_copyright':       'Авторське право 2008, Preston Hunt'
 },
 
 // Serbian translation by Milan <n.milan.n@gmail.com>
