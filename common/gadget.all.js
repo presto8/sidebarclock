@@ -3102,7 +3102,7 @@ var translations = {
   't_tab3':            'About'
 },
 
-// Ukranian translation by mr.gorka <mr.gorka@gmail.com>
+// Ukrainian translation by mr.gorka <mr.gorka@gmail.com>
 'uk': {
 	'daysLong':    ["Неділя", "Понеділок", "Вівторок", "Середа", "Четвер", "П’ятниця", "Субота"],
 	'daysShort':   ["Нед", "Пон", "Вів", "Сер", "Чет", "Пʼят", "Суб"],
