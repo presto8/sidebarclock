@@ -21,6 +21,7 @@
 // supported switches are
 // a, A, B, c, d, D, F, g, G, h, H, i, I (uppercase i), j, l (lowecase L), 
 // L, m, M, n, N, O, P, r, s, S, t, U, w, W, y, Y, z, Z
+// J (uppercase)
 // 
 // unsupported (as compared to date in PHP 5.1.3)
 // T, e, o
@@ -305,6 +306,13 @@ formatDate = function (input,time) {
             var t = new Date("January 1 " + this.Y() + " 00:00:00");
             var diff = date.getTime() - t.getTime();
             return Math.floor(diff/1000/60/60/24);
+        },
+
+        J : function () {
+            // Julian date - day of the year, one indexed! 1 through 367
+            var t = new Date("January 1 " + this.Y() + " 00:00:00");
+            var diff = date.getTime() - t.getTime();
+            return 1 + Math.floor(diff/1000/60/60/24);
         },
 
         Z : function () {
