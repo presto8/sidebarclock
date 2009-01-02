@@ -3,7 +3,9 @@ For more information about this gadget:
 
 RELEASE HISTORY
 
-1.24 2009-01-02 Fixed bug with "W" date format flag.
+1.24 2009-01-02 Fixed bug with "W" date format flag (thanks Paul Van
+Cotthem, Rickard Utgren, Mike Pavini, and Brian Montalto). Updated to latest
+zoneinfo database.
 
 1.23 2008-10-06 Added Ukrainian (thanks Mr. Gorka and Natalie
 Maciukenas!).  Added Hungarian (thanks Nagy László!).
