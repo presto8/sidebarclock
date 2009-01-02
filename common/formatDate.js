@@ -258,7 +258,8 @@ formatDate = function (input,time) {
             // If the day is within 3 days after New Year's Eve and is Friday or later,
             // it belongs to the old year.
             if (DoY <= 2 && DoW >= 5) {
-                return new Date (this.Y () - 1, 11, 31).formatDate ("W");
+                //return new Date (this.Y () - 1, 11, 31).formatDate ("W");
+								return formatDate( 'W', new Date (this.Y () - 1, 11, 31) );
             }
             
             var nyDoW = new Date (this.Y (), 0, 1).getDay ();
