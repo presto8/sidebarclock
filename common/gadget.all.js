@@ -2653,7 +2653,7 @@ var translations = {
 	't_timeexamples':   'g:i a = 5:44 pm<br>H:i = 17:44',
 	't_labelexamples':  'Portland, Tokyo, GMT+2',
 	't_formathelp':     '<a href="http://us.php.net/manual/en/function.date.php">Format help</a>',
-	't_formathelplong': '<a href="http://us.php.net/manual/en/function.date.php">Format help</a> (unsupported: T, e, o)',
+	't_formathelplong': '<a href="http://us.php.net/manual/en/function.date.php">Format help</a> (unsupported: T, e, o, u)',
 	't_version':        'Version xxVER (xxDATE)',
 	't_about':          'About this gadget',
 	't_translateby':    '',
@@ -2676,7 +2676,7 @@ var translations = {
   't_tab1':            'General', 
   't_tab2':            'Appearance',
   't_tab3':            'About',
-  't_copyright':       'Copyright 2008 Preston Hunt'
+  't_copyright':       'Copyright 2009 Preston Hunt'
 },
 
 // Spanish translation by Tom <getkresh@yahoo.ca>
@@ -2702,7 +2702,7 @@ var translations = {
 	't_timeexamples':  'H:i = 17:44',
 	't_labelexamples': 'CET, Madrid, Paris, GMT+1',
 	't_formathelp':    '<a href="http://us.php.net/manual/es/function.date.php">Ayuda con el formato</a>',
-	't_formathelplong':'<a href="http://us.php.net/manual/es/function.date.php">Ayuda con el formato</a> (no posibles: T, e, o)',
+	't_formathelplong':'<a href="http://us.php.net/manual/es/function.date.php">Ayuda con el formato</a> (no posibles: T, e, o, u)',
 	't_version':       'Versión xxVER (xxDATE)',
 	't_about':         'Acerca de este gadget',
 	't_translateby':   'Traducción en español por Lucía y Tom',
@@ -2724,7 +2724,8 @@ var translations = {
 	't_swap_labels':     'Swap date and bottom label', // TODO
   't_tab1':            'General', // TODO
   't_tab2':            'Apariencia', // TODO
-  't_tab3':            'Sobre' // TODO
+  't_tab3':            'Sobre', // TODO
+  't_copyright':       'Copyright 2009 Preston Hunt'
 },
 
 // Danish translation by Dennis Boffy <adidas.lover2000@yahoo.com>
@@ -2750,7 +2751,7 @@ var translations = {
 	't_timeexamples':  'g:i a = 5:44 pm<br>H:i = 17:44',
 	't_labelexamples': 'CET, GMT+1, København, London',
 	't_formathelp':    '<a href="http://php.net/date">Hjælp til formatering</a>',
-	't_formathelplong':'<a href="http://php.net/date">Hjælp til formatering</a> (ikke understøttet: T, e, o)',
+	't_formathelplong':'<a href="http://php.net/date">Hjælp til formatering</a> (ikke understøttet: T, e, o, u)',
 	't_version':       'Version xxVER (xxDATE)',
 	't_about':         'Om denne gadget',
 	't_translateby':   'Dansk oversættelse af Dennis Boffy',
@@ -2772,7 +2773,8 @@ var translations = {
 	't_swap_labels':     'Byt om på dato og angivelse af tidszone',
   't_tab1':            'General',
   't_tab2':            'Appearance',
-  't_tab3':            'About'
+  't_tab3':            'About',
+  't_copyright':       'Copyright 2009 Preston Hunt'
 },
 
 // French translation by Erik Vandevoorde <erik.vdvoorde@gmail.com>
@@ -2798,7 +2800,7 @@ var translations = {
 	't_timeexamples':  'H:i = 17:44',
 	't_labelexamples': 'Paris, Bruxelles, GMT+1',
 	't_formathelp':    '<a href="http://us.php.net/manual/fr/function.date.php">Aide paramètrage format</a>',
-	't_formathelplong':'<a href="http://us.php.net/manual/fr/function.date.php">Aide paramètrage format</a> (non reconnus: T, e, o)',
+	't_formathelplong':'<a href="http://us.php.net/manual/fr/function.date.php">Aide paramètrage format</a> (non reconnus: T, e, o, u)',
 	't_version':       'Version xxVER (xxDATE)',
 	't_about':         'A propos de ce gadget',
 	't_translateby':   'Traduction française par DionysosX',
@@ -2820,7 +2822,8 @@ var translations = {
 	't_swap_labels':     'Swap date and bottom label',
   't_tab1':            'General',
   't_tab2':            'Appearance',
-  't_tab3':            'About'
+  't_tab3':            'About',
+  't_copyright':       'Copyright 2009 Preston Hunt'
 },
 
 // Italian translation by Mirko Mazzacano <michy91@alice.it>
@@ -2846,7 +2849,7 @@ var translations = {
 	't_timeexamples':  'H:i = 17:44',
 	't_labelexamples': 'Roma, Tokyo, GMT+1',
 	't_formathelp':    '<a href="http://us3.php.net/manual/it/function.date.php">Aiuto formato</a>',
-	't_formathelplong':'<a href="http://us3.php.net/manual/it/function.date.php">Aiuto formato</a> (non supportato: T, e, o)',
+	't_formathelplong':'<a href="http://us3.php.net/manual/it/function.date.php">Aiuto formato</a> (non supportato: T, e, o, u)',
 	't_version':       'Versione xxVER (xxDATE)',
 	't_about':         'Informazioni su gadget',
 	't_translateby':   'Traduzione italiana di Mirko Mazzacano.',
@@ -2868,7 +2871,8 @@ var translations = {
 	't_swap_labels':     'Swap date and bottom label',
   't_tab1':            'General',
   't_tab2':            'Apperance',
-  't_tab3':            'About'
+  't_tab3':            'About',
+  't_copyright':       'Copyright 2009 Preston Hunt'
 },
 
 // Polish translation by Marcin Michalak <marcin.michalak@gmail.com>
@@ -2894,7 +2898,7 @@ var translations = {
 	't_timeexamples':  'g:i a = 5:44 pm<br>H:i = 17:44',
 	't_labelexamples': 'Warszawa, GMT+1',
 	't_formathelp':    '<a href="http://us.php.net/manual/pl/function.date.php">Więcej o formacie</a>',
-	't_formathelplong':'<a href="http://us.php.net/manual/pl/function.date.php">Więcej o formacie</a> (nieobsługiwane: T, e, o)',
+	't_formathelplong':'<a href="http://us.php.net/manual/pl/function.date.php">Więcej o formacie</a> (nieobsługiwane: T, e, o, u)',
 	't_version':       'Wersja xxVER (xxDATE)',
 	't_about':         'O tym gadżecie',
 	't_translateby':   'Przetłumaczył na polski Marcin Michalak',
@@ -2916,7 +2920,8 @@ var translations = {
 	't_swap_labels':     'Zamień datę i dolny tekst',
   't_tab1':            'General',
   't_tab2':            'Apperance',
-  't_tab3':            'About'
+  't_tab3':            'About',
+  't_copyright':       'Copyright 2009 Preston Hunt'
 },
 
 // Dutch translation by Edwin Walstra <ewalstra@xs4all.nl>
@@ -2942,7 +2947,7 @@ var translations = {
 	't_timeexamples':  'g:i a = 5:44 pm<br>H:i = 17:44',
 	't_labelexamples': 'Amsterdam, CET, GMT+2',
 	't_formathelp':    '<a href="http://us.php.net/manual/nl/function.date.php">Formaat help</a>',
-	't_formathelplong':'<a href="http://us.php.net/manual/nl/function.date.php">Formaat help</a> (niet ondersteund: T, e, o)',
+	't_formathelplong':'<a href="http://us.php.net/manual/nl/function.date.php">Formaat help</a> (niet ondersteund: T, e, o, u)',
 	't_version':       'Versie xxVER (xxDATE)',
 	't_about':         'Informatie over deze gadget',
 	't_translateby':   'Nederlandse vertaling door Edwin Walstra',
@@ -2964,7 +2969,8 @@ var translations = {
 	't_swap_labels':     'Verwissel datum en onderste label',
   't_tab1':            'General',
   't_tab2':            'Apperance',
-  't_tab3':            'About'
+  't_tab3':            'About',
+  't_copyright':       'Copyright 2009 Preston Hunt'
 },
 
 // Swedish translation by Jari Tammisto <jari@bildagenturen.se>
@@ -2990,7 +2996,7 @@ var translations = {
 	"t_timeexamples":   "g:i a = 5:44 pm<br>H:i = 17:44",
 	"t_labelexamples":  "CET, GMT+1, Stockholm, London",
 	"t_formathelp":     '<a href="http://php.net/date">Hjälp till formatering</a>',
-	"t_formathelplong": '<a href="http://php.net/date">Formateringshjälp</a> (Stöds ej: T, e, o)',
+	"t_formathelplong": '<a href="http://php.net/date">Formateringshjälp</a> (Stöds ej: T, e, o, u)',
 	"t_version":        "Version xxVER (xxDATE)",
 	"t_about":          "Om denna gadget",
 	"t_translateby":    "Svensk översättning av Jari Tammisto",
@@ -3012,7 +3018,8 @@ var translations = {
 	't_swap_labels':     'Växla datum och etikett',
   't_tab1':            'Allmän',
   't_tab2':            'Utseende',
-  't_tab3':            'Om'
+  't_tab3':            'Om',
+  't_copyright':       'Copyright 2009 Preston Hunt'
 },
 
 
@@ -3039,7 +3046,7 @@ var translations = {
 	"t_timeexamples":    "H:i a = 17:44",
 	"t_labelexamples":   "Berlin, GMT+1",
 	"t_formathelp":      '<a href="http://us.php.net/manual/de/function.date.php">Hilfe zu den Formaten</a>',
-	"t_formathelplong":  '<a href="http://us.php.net/manual/de/function.date.php">Hilfe zu den Formaten</a> (Nicht unterstützt: T, e, o)',
+	"t_formathelplong":  '<a href="http://us.php.net/manual/de/function.date.php">Hilfe zu den Formaten</a> (Nicht unterstützt: T, e, o, u)',
 	"t_version":         "Version xxVER (xxDATE)",
 	"t_about":           "Über dieses Gadget",
 	"t_translateby":     "Deutsche Übersetzung von Florian Thomsen",
@@ -3061,7 +3068,8 @@ var translations = {
 	't_swap_labels':     'Datum und zusätzlichen Text vertauschen',
   't_tab1':            'General',
   't_tab2':            'Apperance',
-  't_tab3':            'About'
+  't_tab3':            'About',
+  't_copyright':       'Copyright 2009 Preston Hunt'
 },
 
 // Ukrainian translation by mr.gorka <mr.gorka@gmail.com>
@@ -3087,7 +3095,7 @@ var translations = {
 	't_timeexamples':   'g:i a = 5:44 pm<br>H:i = 17:44',
 	't_labelexamples':  'Ukraine, Kiev, GMT+2',
 	't_formathelp':     '<a href="http://us.php.net/manual/en/function.date.php">Format help</a>',
-	't_formathelplong': '<a href="http://us.php.net/manual/en/function.date.php">Format help</a> (не підтримується: T, e, o)',
+	't_formathelplong': '<a href="http://us.php.net/manual/en/function.date.php">Format help</a> (не підтримується: T, e, o, u)',
 	't_version':        'Версія xxVER (xxDATE)',
 	't_about':          'Про гаджет',
 	't_translateby':    '',
@@ -3110,7 +3118,7 @@ var translations = {
   't_tab1':            'Загально', 
   't_tab2':            'Зовнішній вигляд',
   't_tab3':            'Про',
-  't_copyright':       'Авторське право 2008 Preston Hunt'
+  't_copyright':       'Авторське право 2009 Preston Hunt'
 },
 
 // Hungarian translation by Nagy László <nalaszi@gmail.com>
@@ -3136,7 +3144,7 @@ var translations = {
 	't_timeexamples':   'g:i a = 5:44 pm<br>H:i = 17:44',
 	't_labelexamples':  'Budapest, Kaposvár, GMT+1',
 	't_formathelp':     '<a href="http://us.php.net/manual/hu/function.date.php">Formázási segítség</a>',
-	't_formathelplong': '<a href="http://us.php.net/manual/hu/function.date.php">Formázási segítség</a> (nem támogatott: T, e, o)',
+	't_formathelplong': '<a href="http://us.php.net/manual/hu/function.date.php">Formázási segítség</a> (nem támogatott: T, e, o, u)',
 	't_version':        'Verzió: xxVER (xxDATE)',
 	't_about':          'Információk a minialkalmazásról',
 	't_translateby':    'A magyar fordítást készítette: Nagy László',
@@ -3159,7 +3167,7 @@ var translations = {
   't_tab1':            'Általános', 
   't_tab2':            'Megjelenés',
   't_tab3':            'Rólunk',
-  't_copyright':       'Szerzõi Jog: 2008 Preston Hunt'
+  't_copyright':       'Szerzõi Jog: 2009 Preston Hunt'
 },
 
 // Serbian translation by Milan <n.milan.n@gmail.com>
@@ -3185,7 +3193,7 @@ var translations = {
 	't_timeexamples':   'g:i a = 5:44 pm<br>H:i = 17:44',
 	't_labelexamples':  'Portland, Tokyo, GMT+2',
 	't_formathelp':     '<a href="http://us.php.net/manual/en/function.date.php">Pomoć za oblik prikaza</a>',
-	't_formathelplong': '<a href="http://us.php.net/manual/en/function.date.php">Format help</a> (Nije podržano: T, e, o)',
+	't_formathelplong': '<a href="http://us.php.net/manual/en/function.date.php">Format help</a> (Nije podržano: T, e, o, u)',
 	't_version':        'Verzija xxVER (xxDATE)',
 	't_about':          'Info o gadget-u',
 	't_translateby':    'Na srpski preveo Milan Nagulić',
@@ -3208,7 +3216,7 @@ var translations = {
   't_tab1':            'Opšte', 
   't_tab2':            'Izgled',
   't_tab3':            'Info',
-  't_copyright':       'Autorsko pravo 2008 Preston Hunt'
+  't_copyright':       'Autorsko pravo 2009 Preston Hunt'
 }
 
 };
