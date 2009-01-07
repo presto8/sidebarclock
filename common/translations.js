@@ -55,7 +55,8 @@ var translations = {
   't_tab1':            'General', 
   't_tab2':            'Appearance',
   't_tab3':            'About',
-  't_copyright':       'Copyright 2009 Preston Hunt'
+  't_copyright':       'Copyright 2009 Preston Hunt',
+  't_languagename':    'English'
 },
 
 // Spanish translation by Tom <getkresh@yahoo.ca>
@@ -401,6 +402,54 @@ var translations = {
   't_copyright':       'Copyright 2009 Preston Hunt'
 },
 
+// Czech translation by Jan Pintr <jan.pintr@gmail.com>
+'cs': {
+	'daysLong':    ["Neděle", "Pondělí", "Úterý", "Středa", "Čtvrtek", "Pátek", "Sobota"],
+	'daysShort':   ["NE", "PO", "ÚT", "ST", "ČT", "PÁ", "SO"],
+	'monthsLong':  ["Leden", "Únor", "Březen", "Duben", "Květen", "Červen", "Červenec", "Srpen", "Září", "Říjen", "Listopad", "Prosinec"],
+	'monthsShort': ["Led", "Úno", "Bře", "Dub", "Kvě", "Čen", "Čec", "Srp", "Zář", "Říj", "Lis", "Pro"],
+	'defaultDateFormat': "D M d",
+	'defaultTimeFormat': "h:i a",
+
+	't_dateformat':     'Formát data:',
+	't_timeformat':     'Formát času:',
+	't_timezone':       'Časové pásmo:',
+	't_localtime':      'Lokální čas',
+	't_bottomlabel':    'Spodní označení:',
+	't_optional':       '(nepovinné)',
+	't_examples':       'Příklad:',
+	't_date':           'Datum:',
+	't_time':           'Čas:',
+	't_label':          'Označení:',
+	't_dateexamples':   'D M d = SO Dub 07<br>n/j l = 4/7 sobota',
+	't_timeexamples':   'g:i a = 5:44 pm<br>H:i = 17:44',
+	't_labelexamples':  'Portland, Tokyo, GMT+2',
+	't_formathelp':     '<a href="http://us.php.net/manual/en/function.date.php">Dalsí možnosti uspořádání</a>',
+	't_formathelplong': '<a href="http://us.php.net/manual/en/function.date.php">Dalsí možnosti uspořádání</a> (nepodporuje: T, e, o, u)',
+	't_version':        'Verze xxVER (xxDATE)',
+	't_about':          'Informace o této aplikaci',
+	't_translateby':    'Czech translation by jan.pintr@gmail.com',
+	't_language':       'Jazyk:',
+	't_charity':        "Presto's Clock is Charityware. Pokud budete chtít, prosím obdarujte méně šťastné na tomto světě. Podívejte se na stránku <a href=\"http://prestonhunt.com/story/110\">informací jak pomoci</a>.",
+	't_fontfamily1':     'Písmo:',
+	't_fontfamily2':     'Písmo:',
+	't_fontfamily3':     'Písmo:',
+	't_fontsize1':       'Velikost písma:',
+	't_fontsize2':       'Velikost písma:',
+	't_fontsize3':       'Velikost písma:',
+	't_fontcolor1':      'Barva písma:',
+	't_fontcolor2':      'Barva písma:',
+	't_fontcolor3':      'Barva písma:',
+//	't_background':  		'Obrázek na pozadí',
+	't_date2': 				 	 'Datum',
+	't_time2': 				 	 'Čas',
+	't_label2': 			 	 'Označení',
+	't_swap_labels':     'Prohodit datum a spodní označení',
+  't_tab1':            'Všeobecný',
+  't_tab2':            'Vzhled',
+  't_tab3':            'Info',
+  't_copyright':       'Copyright 2009 Preston Hunt'
+},
 
 // German translation by Florian Thomsen <florian.thomsen@gmx.com>
 'de': {

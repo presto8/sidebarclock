@@ -3,6 +3,8 @@ For more information about this gadget:
 
 RELEASE HISTORY
 
+1.25 2009-01-06 Added Czech language (thanks Jan Pintr!)
+
 1.24 2009-01-02 Fixed bug with "W" date format flag (thanks Paul Van
 Cotthem, Rickard Utgren, Mike Pavini, and Brian Montalto). Updated to latest
 zoneinfo database.  Added note to settings page that "u" is
