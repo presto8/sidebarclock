@@ -2632,6 +2632,7 @@ var latlon = {
 var translations = {
 
 'en': {
+  // Do not change the order of the days or months!
 	'daysLong':    ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
 	'daysShort':   ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
 	'monthsLong':  ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
@@ -3045,13 +3046,13 @@ var translations = {
 	't_dateexamples':   'D M d = SO Dub 07<br>n/j l = 4/7 sobota',
 	't_timeexamples':   'g:i a = 5:44 pm<br>H:i = 17:44',
 	't_labelexamples':  'Portland, Tokyo, GMT+2',
-	't_formathelp':     '<a href="http://us.php.net/manual/en/function.date.php">Dalsí možnosti uspořádání</a>',
-	't_formathelplong': '<a href="http://us.php.net/manual/en/function.date.php">Dalsí možnosti uspořádání</a> (nepodporuje: T, e, o, u)',
+	't_formathelp':     '<a href="http://us.php.net/manual/en/function.date.php">Další možnosti uspořádání</a>',
+	't_formathelplong': '<a href="http://us.php.net/manual/en/function.date.php">Další možnosti uspořádání</a> (nepodporuje: T, e, o, u)',
 	't_version':        'Verze xxVER (xxDATE)',
 	't_about':          'Informace o této aplikaci',
-	't_translateby':    'Czech translation by jan.pintr@gmail.com',
+	't_translateby':    'Český překlad vytvořil: jan.pintr@gmail.com',
 	't_language':       'Jazyk:',
-	't_charity':        "Presto's Clock is Charityware. Pokud budete chtít, prosím obdarujte méně šťastné na tomto světě. Podívejte se na stránku <a href=\"http://prestonhunt.com/story/110\">informací jak pomoci</a>.",
+	't_charity':         "Presto's Clock je Charityware. Pokud budete chtít, prosím obdarujte méně šťastné na tomto světě. Podívejte se na stránku <a href=\"http://prestonhunt.com/story/110\">s informacemi jak pomoci</a>.",
 	't_fontfamily1':     'Písmo:',
 	't_fontfamily2':     'Písmo:',
 	't_fontfamily3':     'Písmo:',
@@ -3069,7 +3070,8 @@ var translations = {
   't_tab1':            'Všeobecný',
   't_tab2':            'Vzhled',
   't_tab3':            'Info',
-  't_copyright':       'Copyright 2009 Preston Hunt'
+  't_copyright':       'Copyright 2009 Preston Hunt',
+	't_languagename':    'Čeština'
 },
 
 // German translation by Florian Thomsen <florian.thomsen@gmx.com>
