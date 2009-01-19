@@ -89,12 +89,11 @@ function startup() {
 		readSettings();
 	}
 
-  var background = document.getElementById('imgBackground');
-  background.src = 'images/background-black.png';
+  imgBackground.src = 'images/background-black.png';
 
-  gDate = background.addTextObject("", "Segoe UI", 11, "white", 0, 0 );
-  gTime = background.addTextObject("", "Segoe UI", 12, "white", 0, 0 );
-  gLabel = background.addTextObject("", "Segoe UI", 11, "white", 0, 0 );
+  gDate = imgBackground.addTextObject("", "Segoe UI", 11, "white", 0, 0 );
+  gTime = imgBackground.addTextObject("", "Segoe UI", 12, "white", 0, 0 );
+  gLabel = imgBackground.addTextObject("", "Segoe UI", 11, "white", 0, 0 );
 
   updateFonts();
   updateGadget();

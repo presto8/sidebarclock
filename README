@@ -3,6 +3,10 @@ For more information about this gadget:
 
 RELEASE HISTORY
 
+1.26 2009-01-13 Runs on Windows 7 now (special thanks to Daron Brewood
+for initial bug report and helping to root cause the issue, and also to
+Jose Marques, Marc Seinfeld, and Sven Junesch for reporting the issue).
+
 1.25 2009-01-06 Added Czech language (thanks Jan Pintr!)
 
 1.24 2009-01-02 Fixed bug with "W" date format flag (thanks Paul Van
