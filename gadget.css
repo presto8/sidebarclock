@@ -7,11 +7,13 @@ body#gadget {
   height: 67px;
   color: #ffffff;
   font-size: 10px;
-	margin-top: 0px;
-	margin-bottom: 0px;
-  margin-right: 5px;
-  margin-bottom: 5px;
+	margin: 0;
   padding: 0;
+}
+
+#imgBackground {
+	width: 100%;
+	height: 100%;
 }
 
 body#gadget a {
@@ -28,11 +30,6 @@ body#settings {
 
 body#settings * {
   font-size: 12px;
-}
-
-#imgBackground {
-	width: 100%;
-	height: 100%;
 }
 
 .bigger {
