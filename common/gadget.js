@@ -186,6 +186,9 @@ function displayGadget() {
   gTime.value = formatDate( G.mainTimeFormat, now );
 
   adjustTimeToFit();
+  adjustDateToFit();
+  adjustLabelToFit();
+
   adjustPositions();
 
   var okToUpdate = now.getMinutes() % 15;
@@ -238,7 +241,7 @@ function adjustPositions() {
   }
 }
 
-function adjustTimeToFit() {
+function workingadjustTimeToFit() {
   if ( G.gTimefontsize != 'Auto' ) {
     gTime.fontsize = G.gTimefontsize;
     return;
@@ -257,6 +260,33 @@ function adjustTimeToFit() {
 
   if ( gTime.height > maxHeight ) {
     gTime.fontsize *= maxHeight / gTime.height;
+  }
+}
+
+function adjustTimeToFit() {
+  adjustToFit( gTime, G.gTimefontsize, 130, getProperTimeHeight() );
+}
+
+function adjustDateToFit() {
+  adjustToFit( gDate, G.gDatefontsize, 130, 16 );
+}
+
+function adjustLabelToFit() {
+  adjustToFit( gLabel, G.gLabelfontsize, 130, 16 );
+}
+
+function adjustToFit( obj, size, maxWidth, maxHeight ) {
+  if ( size != 'Auto' ) {
+    obj.fontsize = size;
+    return;
+  }
+
+  var newFontSize = Math.floor( obj.fontSize * maxWidth / obj.width );
+  if ( newFontSize > 100 ) newFontSize = 12;
+  obj.fontsize = newFontSize;
+
+  if ( obj.height > maxHeight ) {
+    obj.fontsize *= maxHeight / obj.height;
   }
 }
 

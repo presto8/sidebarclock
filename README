@@ -3,6 +3,9 @@ For more information about this gadget:
 
 RELEASE HISTORY
 
+1.27 2009-01-26 Fixed font size for date and label (thanks Ken
+Heart!).
+
 1.26 2009-01-13 Runs on Windows 7 now (special thanks to Daron Brewood
 for initial bug report and helping to root cause the issue, and also to
 Jose Marques, Marc Seinfeld, and Sven Junesch for reporting the issue).
