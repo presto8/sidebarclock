@@ -185,13 +185,6 @@ function displayGadget() {
 
   gTime.value = formatDate( G.mainTimeFormat, now );
 
-  //if ( G.swaplabels ) {
-    //var temp = gDate.value;
-    //gDate.value = gLabel.value;
-    //gLabel.value = temp;
-  //}
-
-  //updateFonts();
   adjustTimeToFit();
   adjustPositions();
 
@@ -294,12 +287,7 @@ function getProperTimeHeight() {
   if ( gLabel.value.length ) height -= gLabel.height - 5;
   if ( gDate.value.length ) height -= gDate.height - 5;
   return height;
-
-  //if ( window.timeArea.className == 'bigTime' ) return 67;
-  //if ( window.timeArea.className == 'smallTime' ) return 33;
-  //return 44; // was 45
 }
-
 
 var shown = false;
 function dd( msg ) {
@@ -331,7 +319,6 @@ function LoadVarForSettings( variablename ) {
     varEl.value = varVal;
   }
 }
-
 
 function setTzOptions() {
   var selectId = document.getElementById( "tzName" );
@@ -416,10 +403,6 @@ function settingsClosing(event) {
       CheckAndSet( base+"fontsize" );
       CheckAndSet( base+"fontcolor" );
     }
-
-//		var tzName = document.getElementById('tzName').value;
-//    var tzOffsets = tzdata2007k[ tzName ];
-//		System.Gadget.Settings.write( 'tzOffsets', tzOffsets );
   }
 
   event.cancel = false;
@@ -542,38 +525,6 @@ function getMicrosoftColors() {
 
   return MicrosoftColors;
 }
-
-
-/*
-function oldgetSystemFontsList() {
-  // http://forums.microsoft.com/MSDN/ShowPost.aspx?PostID=1959226&SiteID=1
-  var HKLM = 2147483650;
-  var rPath = "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Fonts\\";
-  var rValue;
-
-  // connect to the registry
-  var oSwbem = new ActiveXObject("WbemScripting.SwbemLocator");
-  var oSvc = oSwbem.ConnectServer(null, "root\\default");
-  var oReg = oSvc.Get("StdRegProv");
-
-  // enumerate the values 
-  var oMethod = oReg.Methods_.Item("EnumValues");
-  var oInParam = oMethod.InParameters.SpawnInstance_();
-  oInParam.hDefKey = HKLM;
-  oInParam.sSubKeyName = rPath;
-  var oOutParam = oReg.ExecMethod_(oMethod.Name, oInParam);
-
-  // get the values into an array
-  var sNames = oOutParam.sNames.toArray();
-
-  return sNames;
-
-//  for (var i = 0; i < sNames.length; i++) {
-//    document.write( sNames[i] );
-//   // font names are in sNames[i]
-//  }
-}
-*/
 
 function gotoTab( tabNum ) {
   for ( var i=1; i<=3; i++ ) {
