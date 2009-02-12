@@ -2681,6 +2681,57 @@ var translations = {
   't_languagename':    'English'
 },
 
+// Russian translation by Denis Baumgaertner <denco@freenet.de>
+'ru': {
+  // Do not change the order of the days or months!
+	'daysLong':    ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"],
+	'daysShort':   ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"],
+	'monthsLong':  ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"],
+	'monthsShort': ["Янв", "Фев", "Мар", "Апр", "Май", "Июн", "Июл", "Авг", "Сен", "Окт", "Ноя", "Дек"],
+	'defaultDateFormat': "D M d",
+	'defaultTimeFormat': "h:i a",
+
+	't_dateformat':     'Формат даты:',
+	't_timeformat':     'Формат времени:',
+	't_timezone':       'Часовой пояс:',
+	't_localtime':      'Местное время',
+	't_bottomlabel':    'Текст:',
+	't_optional':       '(дополнительно)',
+	't_examples':       'Примеры:',
+	't_date':           'Дата:',
+	't_time':           'Время:',
+	't_label':          'Текст:',
+	't_dateexamples':   'D M d = Сб Апр 07<br>n/j l = 4/7 Суббота',
+	't_timeexamples':   'g:i a = 5:44 pm<br>H:i = 17:44',
+	't_labelexamples':  'Москва, GMT+3',
+	't_formathelp':     '<a href="http://us.php.net/manual/en/function.date.php">Справка по формату</a>',
+	't_formathelplong': '<a href="http://us.php.net/manual/en/function.date.php">Справка по формату</a> (не поддерживаются: T, e, o, u)',
+	't_version':        'Версия xxVER (xxDATE)',
+	't_about':          'О гаджете',
+	't_translateby':    'Перевод на русский от Дениса Баумгертнера',
+	't_language':       'Язык:',
+	't_charity':        "Presto's Clock это Charityware. Если приложение Вам понравилось, пожалуйста внесите пожертвования в поддержку нуждающихся. Подробная <a href=\"http://prestonhunt.com/story/110\">информация для пожертвований</a> находится на моей домашней странице.",
+	't_fontfamily1':     'Шрифт:',
+	't_fontfamily2':     'Шрифт:',
+	't_fontfamily3':     'Шрифт:',
+	't_fontsize1':       'Размер шрифта:',
+	't_fontsize2':       'Размер шрифта:',
+	't_fontsize3':       'Размер шрифта:',
+	't_fontcolor1':      'Цвет шрифта:',
+	't_fontcolor2':      'Цвет шрифта:',
+	't_fontcolor3':      'Цвет шрифта:',
+//	't_background':  		'Фоновое изображение',
+	't_date2': 				 	 'Дата',
+	't_time2': 				 	 'Время',
+	't_label2': 			 	 'Текст',
+	't_swap_labels':     'Поменять местами дату и текст',
+  't_tab1':            'Общее', 
+  't_tab2':            'Настройки',
+  't_tab3':            'О программе',
+  't_copyright':       'Copyright 2009 Preston Hunt',
+  't_languagename':    'Русский'
+},
+
 // Spanish translation by Tom <getkresh@yahoo.ca>
 'es': {
 	'daysLong':    ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"],
