@@ -2689,7 +2689,7 @@ var translations = {
 	'monthsLong':  ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"],
 	'monthsShort': ["Янв", "Фев", "Мар", "Апр", "Май", "Июн", "Июл", "Авг", "Сен", "Окт", "Ноя", "Дек"],
 	'defaultDateFormat': "D M d",
-	'defaultTimeFormat': "h:i a",
+	'defaultTimeFormat': "H:i",
 
 	't_dateformat':     'Формат даты:',
 	't_timeformat':     'Формат времени:',
