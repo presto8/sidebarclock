@@ -3,6 +3,8 @@ For more information about this gadget:
 
 RELEASE HISTORY
 
+1.28 2009-02-26 Added GMT offsets (-12 to +12) by popular demand!
+
 1.27 2009-02-11 Added Russian language (thanks Denis Baumgaertner!)
 
 1.26 2009-01-13 Runs on Windows 7 now (special thanks to Daron Brewood
