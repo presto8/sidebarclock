@@ -105,8 +105,7 @@ function afterSettingsClosed() {
 }
 
 function changeColor( lat, lon, gmt ) {
-  return;
-/*
+  if ( G.tzLabel != 'sunrise' ) return;
   var now = new Date();
 
   var jd = calcJD( now.getFullYear(), 1+now.getMonth(), now.getDate() );
@@ -116,12 +115,12 @@ function changeColor( lat, lon, gmt ) {
   var h = sunriseUTC + gmt*60;
   var i = sunsetUTC + gmt*60;
 
-  var dateArea = document.getElementById( "dateArea" );
+  //var dateArea = document.getElementById( "dateArea" );
   var sunrise = timeStringDate(h,jd);
   var sunset = timeStringDate(i,jd);
 
-  dateArea.innerHTML = sunrise + " " + sunset;
-*/
+  //dateArea.innerHTML = sunrise + " " + sunset;
+  gLabel.value = sunrise + " " + sunset;
 }
 
 function updateGadget() {
@@ -171,8 +170,7 @@ function displayGadget() {
       now = new Date( otherTime );
       gmtOffset = otherOffset;
     } catch(err) {
-      G.tzName = '';
-      // no tzdata for this entry, clear it away
+      G.tzName = ''; // no tzdata for this entry, clear it away
     }
   }
 

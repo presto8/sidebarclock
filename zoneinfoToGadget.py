@@ -42,6 +42,21 @@ def findDSTRules( tzname, label ):
 
   return out_str
 
+def formatGMTRules( gmtOffset ):
+  offsetMinutes = gmtOffset * 60
+  if gmtOffset >= 0:
+    label = "GMT+%d" % gmtOffset
+  else:
+    label = "GMT%d" % gmtOffset
+  unixtime = 0
+
+  out_str = ''
+  out_str += '"%s":{' % (label)
+  out_str += "%d:%d" % (unixtime, offsetMinutes)
+  out_str += "}"
+
+  return out_str
+
 zones = {}
 for tz in pytz.common_timezones:
   if tz.startswith('US/'): continue
@@ -52,6 +67,9 @@ zones['Asia/New Delhi'] = 'Asia/Calcutta'
 output = []
 for label in sorted( zones.keys() ):
   output.append( findDSTRules(zones[label], label) )
+
+for gmt in range(-12,12):
+  output.append( formatGMTRules(gmt) )
 
 print "var tzdata = { "
 print ",\n".join( output )
