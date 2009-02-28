@@ -190,6 +190,7 @@ function displayGadget() {
   adjustPositions();
 
   var okToUpdate = now.getMinutes() % 15;
+  okToUpdate = true;
 
   if ( okToUpdate && G.tzName.length ) {
     var coords = latlon[ G.tzName ];

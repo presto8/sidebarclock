@@ -72,7 +72,7 @@ for label in sorted( zones.keys() ):
   else:
     output.append( findDSTRules(zones[label], label) )
 
-for gmt in range(-12,12):
+for gmt in range(-12,13):
   before_gmt_output.append( formatGMTRules(gmt) )
 
 combined = before_gmt_output + output
