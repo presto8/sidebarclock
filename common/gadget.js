@@ -413,6 +413,7 @@ function displaySettings( newlocale ) {
 
   setTzOptions();
   localizeText();
+  showIfUpdateAvailable();
   gotoTab( 1 );
 }
 
@@ -563,4 +564,31 @@ function gotoTab( tabNum ) {
 
   document.getElementById( 'tab'+tabNum ).style.display = 'block';
   document.getElementById( 'tabcontrol'+tabNum ).className = 'tab_selected';
+}
+
+function getHttpAsText( url ) {
+  try {
+    var req = new ActiveXObject( "Microsoft.XMLHTTP" );
+    req.open( 'GET', url );
+    req.send();
+    if ( req.status == 200 ) {
+      return req.responseText;
+    } else {
+      return false;
+    }
+  } catch (e) {
+    return false;
+  }
+}
+
+function isUpdateAvailable() {
+  var newestVersion = getHttpAsText( 'http://prestonhunt.com/m/2009/prestosidebarclock.version' );
+  var currentVersion = 'xxVER';
+  return newestVersion > currentVersion;
+}
+
+function showIfUpdateAvailable() {
+  if ( isUpdateAvailable() ) {
+    document.getElementById( 't_update' ).style.display = 'block';
+  }
 }
