@@ -586,7 +586,7 @@ function isUpdateAvailable() {
   if ( newestText === false ) return false;
 
   var newestVersion = parseFloat( newestText );
-  var currentVersion = 1.28;
+  var currentVersion = xxVER;
 
   return newestVersion > currentVersion;
 }
