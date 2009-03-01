@@ -584,9 +584,10 @@ function getHttpAsText( url ) {
 function isUpdateAvailable() {
   var newestText = getHttpAsText( 'http://prestonhunt.com/m/2009/prestosidebarclock.version' );
   if ( newestText === false ) return false;
+  var currentText = 'xxVER';
 
   var newestVersion = parseFloat( newestText );
-  var currentVersion = xxVER;
+  var currentVersion = parseFloat( currentText );
 
   return newestVersion > currentVersion;
 }

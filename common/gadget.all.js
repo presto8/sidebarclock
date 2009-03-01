@@ -2702,7 +2702,7 @@ var translations = {
   't_tab2':            'Appearance',
   't_tab3':            'About',
   't_copyright':       'Copyright 2009 Preston Hunt',
-  't_update':          "A newer version of Presto's Clock is available.",
+  't_update':          "A newer version of Presto's Clock is available. <a href=\"http://prestonhunt.com/story/110\">Update now!</a>",
   't_languagename':    'English'
 },
 
@@ -3933,9 +3933,10 @@ function getHttpAsText( url ) {
 function isUpdateAvailable() {
   var newestText = getHttpAsText( 'http://prestonhunt.com/m/2009/prestosidebarclock.version' );
   if ( newestText === false ) return false;
+  var currentText = 'xxVER';
 
   var newestVersion = parseFloat( newestText );
-  var currentVersion = 1.28;
+  var currentVersion = parseFloat( currentText );
 
   return newestVersion > currentVersion;
 }
