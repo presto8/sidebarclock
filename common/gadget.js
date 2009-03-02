@@ -569,7 +569,7 @@ function gotoTab( tabNum ) {
 function getHttpAsText( url ) {
   try {
     var req = new ActiveXObject( "Microsoft.XMLHTTP" );
-    req.open( 'GET', url );
+    req.open( 'GET', url, false );
     req.send();
     if ( req.status == 200 ) {
       return req.responseText;
@@ -582,8 +582,7 @@ function getHttpAsText( url ) {
 }
 
 function isUpdateAvailable() {
-  var rand = Math.random(); // to prevent xmlhttp from caching
-  var newestText = getHttpAsText( 'http://prestonhunt.com/m/2009/prestosidebarclock.version?rand=' + rand );
+  var newestText = getHttpAsText( 'http://prestonhunt.com/m/2009/prestosidebarclock.version?cacheBuster=' + Math.random() );
   if ( newestText === false ) return false;
   var currentText = 'xxVER';
 
