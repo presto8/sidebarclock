@@ -75,6 +75,9 @@ ul {
 }
 
 #t_update {
-	margin-top: 10px;
-	display: none;
+  margin-top: 10px;
+  display: none;
+  background-color: Wheat;
+  padding: 5px;
+  border: 1px solid Peru;
 }
