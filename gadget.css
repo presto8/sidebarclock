@@ -77,7 +77,7 @@ ul {
 #t_update {
   margin-top: 10px;
   display: none;
-  background-color: Wheat;
   padding: 5px;
-  border: 1px solid Peru;
+  background-color: #F5DEB3; /* Wheat */
+  border: 1px solid #CD853F; /* Peru */
 }
