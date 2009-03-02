@@ -570,7 +570,6 @@ function getHttpAsText( url ) {
   try {
     var req = new ActiveXObject( "Microsoft.XMLHTTP" );
     req.open( 'GET', url );
-    req.setRequestHeader( 'Cache-Control', 'no-cache' );
     req.send();
     if ( req.status == 200 ) {
       return req.responseText;
@@ -583,7 +582,8 @@ function getHttpAsText( url ) {
 }
 
 function isUpdateAvailable() {
-  var newestText = getHttpAsText( 'http://prestonhunt.com/m/2009/prestosidebarclock.version' );
+  var rand = Math.random(); // to prevent xmlhttp from caching
+  var newestText = getHttpAsText( 'http://prestonhunt.com/m/2009/prestosidebarclock.version?rand=' + rand );
   if ( newestText === false ) return false;
   var currentText = 'xxVER';
 
