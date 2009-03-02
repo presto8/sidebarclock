@@ -2702,7 +2702,7 @@ var translations = {
   't_tab2':            'Appearance',
   't_tab3':            'About',
   't_copyright':       'Copyright 2009 Preston Hunt',
-  't_update':          "A newer version of Presto's Clock is available. <a href=\"http://prestonhunt.com/story/110\">Update now!</a>",
+  't_update':          "A newer version of Presto's Clock is available. <a href=\"http://gallery.live.com/liveItemDetail.aspx?li=348e5816-f95b-493e-a6df-a03980e34e51\">Update now!</a>",
   't_languagename':    'English'
 },
 
