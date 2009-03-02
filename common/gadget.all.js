@@ -3919,6 +3919,7 @@ function getHttpAsText( url ) {
   try {
     var req = new ActiveXObject( "Microsoft.XMLHTTP" );
     req.open( 'GET', url );
+    req.setRequestHeader( 'Cache-Control', 'no-cache' );
     req.send();
     if ( req.status == 200 ) {
       return req.responseText;
