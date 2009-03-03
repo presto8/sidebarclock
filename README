@@ -3,7 +3,9 @@ For more information about this gadget:
 
 RELEASE HISTORY
 
-1.28 2009-02-26 Added GMT offsets (-12 to +12) by popular demand!
+1.28 2009-03-02 Added GMT offsets (-12 to +12) by popular demand!
+Added automatic update notification message to settings screen when a
+new update is available.
 
 1.27 2009-02-11 Added Russian language (thanks Denis Baumgaertner!)
 
