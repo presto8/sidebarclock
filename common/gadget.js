@@ -181,7 +181,7 @@ function displayGadget() {
   gDate.value = G.mainDateFormat ? formatDate( G.mainDateFormat, now ) : '';
   gDate.height = gDate.width = 0;
 
-  gTime.value = formatDate( G.mainTimeFormat, now );
+  gTime.value = G.mainTimeFormat ? formatDate( G.mainTimeFormat, now ) : '';
 
   adjustTimeToFit();
   adjustDateToFit();
