@@ -179,9 +179,11 @@ function displayGadget() {
 
   gDate.opacity = G.mainDateFormat ? 100 : 0;
   gDate.value = G.mainDateFormat ? formatDate( G.mainDateFormat, now ) : '';
-  gDate.height = gDate.width = 0;
+  gDate.height = gDate.width = 0; // force recalculation of width
 
-  gTime.value = G.mainTimeFormat ? formatDate( G.mainTimeFormat, now ) : '';
+  gTime.opacity = G.mainTimeFormat ? 100 : 0;
+  gTime.value = formatDate( G.mainTimeFormat, now );
+  gTime.height = gTime.width = 0; // force recalculation of width
 
   adjustTimeToFit();
   adjustDateToFit();

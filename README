@@ -3,6 +3,8 @@ For more information about this gadget:
 
 RELEASE HISTORY
 
+1.30 2009-04-03 Added Bulgarian translation (thanks Artyom Ivanov)
+
 1.29 2009-03-23 Updated to new time zone data (tzdata-2009a)
 
 1.28 2009-03-02 Added GMT offsets (-12 to +12) by popular demand!
