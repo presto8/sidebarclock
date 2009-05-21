@@ -11,5 +11,6 @@ gadget.all.js: $(files)
 
 gadget.all.min.js: gadget.all.js
 	yuicompressor --charset utf-8 $< -o $@
+	#perl -Ipacker packer/jsPacker.pl -i $< -o $@ -e95 -s
 
 debug: gadget.all.js
