@@ -3450,7 +3450,7 @@ pt: {
   't_tab3':            'Информации',
   't_copyright':       'Copyright 2009 Preston Hunt',
   't_update':          "Достапна е понова верзија од Presto's Clock. <a href=\"http://gallery.live.com/liveItemDetail.aspx?li=348e5816-f95b-493e-a6df-a03980e34e51\">Превземете ја!</a>",
-  't_languagename':    'македонски'
+  't_languagename':    'Mакедонски'
 },
 
 // Serbian translation by Milan <n.milan.n@gmail.com>
