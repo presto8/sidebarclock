@@ -1,5 +1,7 @@
 // vim: fileencoding=utf-8 nospell ts=2 et
 
+// All email addresses get stripped from this file before publishing
+
 // Translation instructions:
 // Each line has one phrase that needs translating.  Only edit the 
 // part after the colon.  Try to use a Unicode/UTF-8 editor to 
@@ -16,6 +18,7 @@ var translations = {
 	'daysShort':   ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
 	'monthsLong':  ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
 	'monthsShort': ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+  // Update these with the correct format for your country
 	'defaultDateFormat': "D M d",
 	'defaultTimeFormat': "h:i a",
 
@@ -34,8 +37,10 @@ var translations = {
 	't_labelexamples':  'Portland, Tokyo, GMT+2',
 	't_formathelp':     '<a href="http://us.php.net/manual/en/function.date.php">Format help</a>',
 	't_formathelplong': '<a href="http://us.php.net/manual/en/function.date.php">Format help</a> (unsupported: T, e, o, u)',
+  // Don't modify xxVER or xxDATE
 	't_version':        'Version xxVER (xxDATE)',
 	't_about':          'About this gadget',
+  // If you want credit for translation, translate "Languagename translation by your name"
 	't_translateby':    '',
 	't_language':       'Language:',
 	't_charity':        "Presto's Clock is Charityware. If you like it, please consider a donation to the less fortunate of the world. See the project page for <a href=\"http://prestonhunt.com/story/110\">information on how to donate</a>.",
@@ -58,6 +63,7 @@ var translations = {
   't_tab3':            'About',
   't_copyright':       'Copyright 2009 Preston Hunt',
   't_update':          "A newer version of Presto's Clock is available. <a href=\"http://gallery.live.com/liveItemDetail.aspx?li=348e5816-f95b-493e-a6df-a03980e34e51\">Update now!</a>",
+  // Replace English with the name of your language in your language
   't_languagename':    'English'
 },
 
@@ -748,6 +754,58 @@ pt: {
   t_copyright:          "Copyright 2009 Preston Hunt",
   t_update:             'Uma nova versão do Presto\'s Clock está disponível. <a href="http://gallery.live.com/liveItemDetail.aspx?li=348e5816-f95b-493e-a6df-a03980e34e51">Atualize agora!</a>',
   t_languagename:       "Português"
+},
+
+
+// Преведено на македонски од Виктор Манчев <viktor.mancev@gmail.com>
+'mk': {
+	'daysLong':    ["Недела", "Понеделник", "Вторник", "Среда", "Четврток", "Петок", "Сабота"],
+	'daysShort':   ["Нед", "Пон", "Вто", "Сре", "Чет", "Пет", "Саб"],
+	'monthsLong':  ["Јануари", "Февруари", "Март", "Април", "Мај", "Јуни", "Јули", "Август", "Септември", "Октомври", "Ноември", "Декември"],
+	'monthsShort': ["Јан", "Фев", "Мар", "Апр", "Мај", "Јун", "Јул", "Авг", "Сеп", "Окт", "Ное", "Дек"],
+	'defaultDateFormat': "D d M",
+	'defaultTimeFormat': "H:i",
+
+	't_dateformat':     'Изглед на датумот:',
+	't_timeformat':     'Изглед на часовникот:',
+	't_timezone':       'Временска зона:',
+	't_localtime':      'Локално време',
+	't_bottomlabel':    'Текст:',
+	't_optional':       '(дополнително)',
+	't_examples':       'Примери:',
+	't_date':           'Датум:',
+	't_time':           'Време:',
+	't_label':          'Текст:',
+	't_dateexamples':   'D d M = Саб 07 Апр<br>n/j l = 4/7 Сабота',
+	't_timeexamples':   'g:i a = 5:44 pm<br>H:i = 17:44',
+	't_labelexamples':  'Скопје, UTC+1',
+	't_formathelp':     '<a href="http://us.php.net/manual/en/function.date.php">Помош за изгледот</a>',
+	't_formathelplong': '<a href="http://us.php.net/manual/en/function.date.php">Помош за изгледот</a> (не се поддржани: T, e, o, u)',
+	't_version':        'Верзија xxVER (xxDATE)',
+	't_about':          'За овој gadget',
+	't_translateby':    'Преведено на македонски од Виктор Манчев',
+	't_language':       'Јазик:',
+	't_charity':        "Presto's Clock претставува Charityware. Ако ви се допаѓа и често го користите, ве молам размислете да донирате на помалку среќните. Посетете ја веб-страницата на проектов <a href=\"http://prestonhunt.com/story/110\">за повеќе информации</a>.",
+	't_fontfamily1':     'Фонт:',
+	't_fontfamily2':     'Фонт:',
+	't_fontfamily3':     'Фонт:',
+	't_fontsize1':       'Големина на фонтот:',
+	't_fontsize2':       'Големина на фонтот:',
+	't_fontsize3':       'Големина на фонтот:',
+	't_fontcolor1':      'Боја на фонтот:',
+	't_fontcolor2':      'Боја на фонтот:',
+	't_fontcolor3':      'Боја на фонтот:',
+//	't_background':  		'Позадина',
+	't_date2': 				 	 'Датум',
+	't_time2': 				 	 'Време',
+	't_label2': 			 	 'Текст',
+	't_swap_labels':     'Промени ги местата на датумот и текстот',
+  't_tab1':            'Општо', 
+  't_tab2':            'Изглеd',
+  't_tab3':            'Информации',
+  't_copyright':       'Copyright 2009 Preston Hunt',
+  't_update':          "Достапна е понова верзија од Presto's Clock. <a href=\"http://gallery.live.com/liveItemDetail.aspx?li=348e5816-f95b-493e-a6df-a03980e34e51\">Превземете ја!</a>",
+  't_languagename':    'македонски'
 },
 
 // Serbian translation by Milan <n.milan.n@gmail.com>
