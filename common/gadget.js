@@ -465,8 +465,6 @@ function settingsClosing(event) {
   }
 
   event.cancel = false;
-
-  displayGadget();
 }
 
 function updateFonts() {
