@@ -133,7 +133,9 @@ function get_milliseconds_to_wait() {
 
   if ( G.mainTimeFormat.indexOf('s') >= 0 ) {
     // Time format string includes seconds, need to update quickly
-    return 1000 - now.getMilliseconds();
+    // Set this to 1000 instead of calculating remaining milliseconds
+    // otherwise it does not update smoothly
+    return 1000;
   } else {
     // Time format does not include seconds, can delay update until next
     // the next minute.  But we need to make sure that we update after
@@ -463,6 +465,8 @@ function settingsClosing(event) {
   }
 
   event.cancel = false;
+
+  displayGadget();
 }
 
 function updateFonts() {
