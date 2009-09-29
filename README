@@ -4,7 +4,8 @@ For more information about this gadget:
 RELEASE HISTORY
 
 1.33 2009-09-29 Reduced polling frequency in certain situations to
-improve power performance.  Updated time zone data to tzdata-2009n.
+improve power performance (thanks Jared Miniman for the suggestion!).
+Updated time zone data to tzdata-2009n.
 
 1.32 2009-07-17 Corrections to German translation (thanks Florian
 Thomsen!).  Upgraded time zone data to tzdata-2009i.

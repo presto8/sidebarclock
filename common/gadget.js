@@ -123,13 +123,38 @@ function changeColor( lat, lon, gmt ) {
   gLabel.value = sunrise + " " + sunset;
 }
 
+function get_milliseconds_to_wait() {
+  /* To reduce power usage, we determine polling frequency based on the
+   * time format string.  If seconds are included, then we update every
+   * second.  But if no seconds are included, then we only update every
+   * minute. */
+
+  var now = new Date();
+
+  if ( G.mainTimeFormat.indexOf('s') >= 0 ) {
+    // Time format string includes seconds, need to update quickly
+    return 1000 - now.getMilliseconds();
+  } else {
+    // Time format does not include seconds, can delay update until next
+    // the next minute.  But we need to make sure that we update after
+    // the minute has switched, otherwise we will be out of commission
+    // for another whole minute.
+    var seconds_to_wait = 60 - now.getSeconds();
+    var milliseconds_to_wait = 1000 - now.getMilliseconds();
+    var safety_factor_in_ms = 100;
+
+    return ( seconds_to_wait * 1000 ) + milliseconds_to_wait + safety_factor_in_ms;
+  }
+}
+
 function updateGadget() {
   if ( ! System.Gadget.visible ) {
     isDirty = true;
   } else {
     displayGadget();
     isDirty = false;
-    window.setTimeout(updateGadget, 1000);
+    //window.setTimeout(updateGadget, 1000);
+    window.setTimeout( updateGadget, get_milliseconds_to_wait() );
   }
 }
 
