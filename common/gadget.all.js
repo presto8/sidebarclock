@@ -3607,7 +3607,17 @@ function startup() {
 function afterSettingsClosed() {
   readSettings();
   updateFonts();
-  displayGadget();
+
+  /* We have to handle a corner case here.  If the time format is
+   * changing from not display seconds to display seconds, then the
+   * clock won't be updated until the minute changes, which could be up
+   * to 59 seconds away.  A quick hack is to simply calculate how many
+   * seconds are remaining until the next minute and manually update the
+   * clock that many times. */
+  var now = new Date();
+  for ( var i = 60 - now.getSeconds(); i >= 1; i-- ) {
+    window.setTimeout( displayGadget, i*1000 );
+  }
 }
 
 function changeColor( lat, lon, gmt ) {
