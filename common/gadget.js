@@ -155,7 +155,6 @@ function updateGadget() {
   } else {
     displayGadget();
     isDirty = false;
-    //window.setTimeout(updateGadget, 1000);
     window.setTimeout( updateGadget, get_milliseconds_to_wait() );
   }
 }
@@ -462,6 +461,8 @@ function settingsClosing(event) {
       CheckAndSet( base+"fontsize" );
       CheckAndSet( base+"fontcolor" );
     }
+
+    updateGadget();
   }
 
   event.cancel = false;
