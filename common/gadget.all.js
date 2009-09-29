@@ -3607,6 +3607,7 @@ function startup() {
 function afterSettingsClosed() {
   readSettings();
   updateFonts();
+  displayGadget();
 }
 
 function changeColor( lat, lon, gmt ) {
@@ -3966,8 +3967,6 @@ function settingsClosing(event) {
       CheckAndSet( base+"fontsize" );
       CheckAndSet( base+"fontcolor" );
     }
-
-    updateGadget();
   }
 
   event.cancel = false;
