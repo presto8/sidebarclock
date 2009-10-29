@@ -24,7 +24,7 @@ def findDSTRules( tzname, label ):
   out_str = ''
   out_str += '"%s":{' % (label)
 
-  start_utc = datetime.now( utc )
+  start_utc = datetime.now( utc ).replace( minute=0, second=0, microsecond=0 )
   stop_utc = start_utc + timedelta(days=+10*365)
   step = timedelta(hours=+1)
 
