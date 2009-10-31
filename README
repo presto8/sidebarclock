@@ -7,6 +7,8 @@ RELEASE HISTORY
 many European time zones, thanks Diane Koyich for the bug report, and
 also Stuart Bishop for his tireless maintenance of pytz!).
 Tweaked time algorithm to switch closer to daylight saving time.
+Fixed problem with Julian date updating one-hour late during daylight
+saving time (thanks Christopher Throckmorton!).
 
 1.33 2009-09-29 Reduced polling frequency in certain situations to
 improve power performance (thanks Jared Miniman for the suggestion!).

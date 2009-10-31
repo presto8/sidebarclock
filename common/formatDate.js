@@ -11,6 +11,8 @@
 //    major overhaul and improvements
 //  - Matt Bannon,
 //    correcting some stupid bugs in my days-in-the-months list!
+//  - levon ghazaryan. pointing out an error in z switch.
+//  - Andy Pemberton. pointing out error in c switch 
 //
 // input : format string
 // time : epoch time (seconds, and optional)
@@ -74,7 +76,7 @@ formatDate = function (input,time) {
             // ISO 8601 date (e.g.: "2004-02-12T15:19:21+00:00"), as per
             // http://www.cl.cam.ac.uk/~mgk25/iso-time.html
             return (this.Y() + "-" + this.m() + "-" + this.d() + "T" + 
-                    this.h() + ":" + this.i() + ":" + this.s() + this.P());
+                    this.H() + ":" + this.i() + ":" + this.s() + this.P());
         },
         
         d : function () {
@@ -304,16 +306,20 @@ formatDate = function (input,time) {
         
         z : function () {
             // The day of the year, zero indexed! 0 through 366
-            var t = new Date("January 1 " + this.Y() + " 00:00:00");
+            var s = "January 1 " + this.Y() + " 00:00:00 GMT" + this.O();
+            var t = new Date(s);
             var diff = date.getTime() - t.getTime();
             return Math.floor(diff/1000/60/60/24);
         },
 
         J : function () {
+			return this.z() + 1;
+			/*
             // Julian date - day of the year, one indexed! 1 through 367
             var t = new Date("January 1 " + this.Y() + " 00:00:00");
             var diff = date.getTime() - t.getTime();
             return 1 + Math.floor(diff/1000/60/60/24);
+			*/
         },
 
         Z : function () {
