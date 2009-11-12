@@ -108,10 +108,16 @@ function afterSettingsClosed() {
    * clock won't be updated until the minute changes, which could be up
    * to 59 seconds away.  A quick hack is to simply calculate how many
    * seconds are remaining until the next minute and manually update the
-   * clock that many times. */
+   * clock that many times. 
+   *
+   * If multipl clocks are running with second showing, the seconds
+   * will be out of sync if we only update every 1000 ms.  Updating
+   * every 100 ms is a good compromise.
+   */
   var now = new Date();
-  for ( var i = 60 - now.getSeconds(); i >= 1; i-- ) {
-    window.setTimeout( displayGadget, i*1000 );
+  var secondsUntilNextMinute = 60 - now.getSeconds();
+  for ( var i = secondsUntilNextMinute*10; i >= 1; i-- ) {
+    window.setTimeout( displayGadget, i*100 );
   }
 }
 
@@ -141,23 +147,22 @@ function get_milliseconds_to_wait() {
    * minute. */
 
   var now = new Date();
-  var milliseconds_to_wait = 1000 - now.getMilliseconds();
 
   if ( G.mainTimeFormat.indexOf('s') >= 0 ) {
     // Time format string includes seconds, need to update quickly
-    // Set this to 1000 instead of calculating remaining milliseconds
-    // otherwise it does not update smoothly
-    //return 1000;
-    // Always return at least 950 milliseconds so that the clock 
-    // looks smooth to the user.  
-    if ( milliseconds_to_wait < 950 ) return 950;
-    return milliseconds_to_wait;
+    // Set this to 100 instead of calculating remaining milliseconds
+    // otherwise it does not update smoothly.  The reason 100 ms is used
+    // instead of 1000 ms is to handle the case where multiple clocks
+    // are running with second showing.  Updating every second will
+    // result in the seconds being out of sync.
+    return 100;
   } else {
     // Time format does not include seconds, can delay update until next
     // the next minute.  But we need to make sure that we update after
     // the minute has switched, otherwise we will be out of commission
     // for another whole minute.
     var seconds_to_wait = 60 - now.getSeconds();
+    var milliseconds_to_wait = 1000 - now.getMilliseconds();
     var safety_factor_in_ms = 100;
 
     return ( seconds_to_wait * 1000 ) + milliseconds_to_wait + safety_factor_in_ms;

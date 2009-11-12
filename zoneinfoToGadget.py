@@ -26,7 +26,8 @@ def findDSTRules( tzname, label ):
 
   start_utc = datetime.now( utc ).replace( minute=0, second=0, microsecond=0 )
   stop_utc = start_utc + timedelta(days=+10*365)
-  step = timedelta(hours=+1)
+#  step = timedelta(hours=+1)
+  step = timedelta( minutes=+15 )
 
   d = start_utc
   prevOffset = None

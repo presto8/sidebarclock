@@ -3,6 +3,10 @@ For more information about this gadget:
 
 RELEASE HISTORY
 
+1.35 2009-11-12 Clock updates 10 times a second now if the seconds are
+visible. This keeps the seconds in sync if multiple clocks are running
+(thanks Jeremy Wallis!).  Updated time zones to zoneinfo database 2009r.
+
 1.34 2009-10-28 Updated zoneinfo timezones to tzdata-2009p (fixed
 many European time zones, thanks Diane Koyich for the bug report, and
 also Stuart Bishop for his tireless maintenance of pytz!).
