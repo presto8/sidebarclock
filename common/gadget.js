@@ -141,19 +141,23 @@ function get_milliseconds_to_wait() {
    * minute. */
 
   var now = new Date();
+  var milliseconds_to_wait = 1000 - now.getMilliseconds();
 
   if ( G.mainTimeFormat.indexOf('s') >= 0 ) {
     // Time format string includes seconds, need to update quickly
     // Set this to 1000 instead of calculating remaining milliseconds
     // otherwise it does not update smoothly
-    return 1000;
+    //return 1000;
+    // Always return at least 950 milliseconds so that the clock 
+    // looks smooth to the user.  
+    if ( milliseconds_to_wait < 950 ) return 950;
+    return milliseconds_to_wait;
   } else {
     // Time format does not include seconds, can delay update until next
     // the next minute.  But we need to make sure that we update after
     // the minute has switched, otherwise we will be out of commission
     // for another whole minute.
     var seconds_to_wait = 60 - now.getSeconds();
-    var milliseconds_to_wait = 1000 - now.getMilliseconds();
     var safety_factor_in_ms = 100;
 
     return ( seconds_to_wait * 1000 ) + milliseconds_to_wait + safety_factor_in_ms;
