@@ -3524,6 +3524,7 @@ var G = {
   'tzLabel': null,
   'tzName': null,
   'swaplabels': false,
+  'highprecision': true,
 
   'gDatefontfamily': null,
   'gDatefontsize': null,
@@ -3662,12 +3663,12 @@ function get_milliseconds_to_wait() {
 
   if ( G.mainTimeFormat.indexOf('s') >= 0 ) {
     // Time format string includes seconds, need to update quickly
-    // Set this to 100 instead of calculating remaining milliseconds
-    // otherwise it does not update smoothly.  The reason 100 ms is used
-    // instead of 1000 ms is to handle the case where multiple clocks
-    // are running with second showing.  Updating every second will
-    // result in the seconds being out of sync.
-    return 100;
+    // Set this to a fixed value instead of calculating remaining milliseconds
+    // otherwise it does not update smoothly.  
+    // For users running multiple clocks with seconds who want them to
+    // change in sync, the high precision updates 100 times per second.
+    // Otherwise, just once per second.
+    return G.highprecision ? 10 : 1000;
   } else {
     // Time format does not include seconds, can delay update until next
     // the next minute.  But we need to make sure that we update after
