@@ -24,12 +24,12 @@ if [ $MODIFIED -ne 0 ]; then
 fi
 
 # =====
-echo Checking CSS files...
-grep \.css MANIFEST | xargs -L1 csslint
-  if [ $? -ne 0 ]; then
-  echo Correct CSS errors and commit before proceeding
-  exit 1
-fi
+#echo Checking CSS files...
+#grep \.css MANIFEST | xargs -L1 csslint
+  #if [ $? -ne 0 ]; then
+  #echo Correct CSS errors and commit before proceeding
+  #exit 1
+#fi
 
 # =====
 echo Cloning repository to temp directory

@@ -808,6 +808,59 @@ pt: {
   't_languagename':    'Mакедонски'
 },
 
+// Afrikaans translation by Constant Van Wyk <constant.vanwyk@xtremekiwi.com>
+'af': {
+  // Do not change the order of the days or months!
+	'daysLong':    ["Sondag", "Maandag", "Dinsdag", "Woensdag", "Donderdag", "Vrydag", "Saterdag"],
+	'daysShort':   ["Son", "Ma", "Di", "Wo", "Do", "Vr", "Sa"],
+	'monthsLong':  ["Januarie", "Februarie", "Maart", "April", "Mei", "Junie", "Julie", "Augustus", "September", "Oktober", "November", "Desember"],
+	'monthsShort': ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+  // Update these with the correct format for your country
+	'defaultDateFormat': "D M d",
+	'defaultTimeFormat': "h:i a",
+
+	't_dateformat':     'Datum formaat:',
+	't_timeformat':     'Tyd formaat:',
+	't_timezone':       'Tyd zone:',
+	't_localtime':      'Plaaslike tyd',
+	't_bottomlabel':    'Onderste etiket:',
+	't_optional':       '(Optioneel)',
+	't_examples':       'Voorbeeld:',
+	't_date':           'Datum:',
+	't_time':           'Tyd:',
+	't_label':          'Etiket:',
+	't_dateexamples':   'D M d = Sa Apr 07<br>n/j l = 4/7 Saterdag',
+	't_timeexamples':   'g:i a = 5:44 nm<br>H:i = 17:44',
+	't_labelexamples':  'Portland, Tokyo, GMT+2',
+	't_formathelp':     '<a href="http://us.php.net/manual/en/function.date.php">Format help</a>',
+	't_formathelplong': '<a href="http://us.php.net/manual/en/function.date.php">Format help</a> (unsupported: T, e, o, u)',
+	't_version':        'Veergawe xxVER (xxDATE)',
+	't_about':          'Inligitng oor gadget',
+	't_translateby':    '',
+	't_language':       'Taal:',
+	't_charity':        "Presto's Clock is Liefdadigheids waare. As jy ddar van hou, stuur asseblief `n donasie aan die minder bevoregtes. Verwys asseblief na die project blad <a href=\"http://prestonhunt.com/story/110\">information on how to donate</a>.",
+	't_fontfamily1':     'Karaktertipe:',
+	't_fontfamily2':     'Karaktertipe:',
+	't_fontfamily3':     'Karaktertipe:',
+	't_fontsize1':       'Karaktertipe grootte:',
+	't_fontsize2':       'Karaktertipe grootte:',
+	't_fontsize3':       'Karaktertipe grootte:',
+	't_fontcolor1':      'Karaktertipe kleur:',
+	't_fontcolor2':      'Karaktertipe kleur:',
+	't_fontcolor3':      'Karaktertipe kleur:',
+//	't_background':  		'Agtergrond prentjie',
+	't_date2': 				 	 'Datum',
+	't_time2': 				 	 'Tyd',
+	't_label2': 			 	 'Label',
+	't_swap_labels':     'Ruil die datum and onderste etiket om',
+  't_tab1':            'Algemeen', 
+  't_tab2':            'Voorkoms',
+  't_tab3':            'Inligting',
+  't_copyright':       'Kopiereg 2009 - Preston Hunt',
+  't_update':          "1n Nuwer weergawe van die Presto's Clock is hier beskikbaar. <a href=\"http://gallery.live.com/liveItemDetail.aspx?li=348e5816-f95b-493e-a6df-a03980e34e51\">Update now!</a>",
+  't_languagename':    'Afrikaans'
+},
+
 // Serbian translation by Milan <n.milan.n@gmail.com>
 'sr': {
 	'daysLong':    ["Nedelja", "Ponedeljak", "Utorak", "Sreda", "Četvrtak", "Petak", "Subota"],
