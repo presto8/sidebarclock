@@ -2,7 +2,7 @@
 # Replace xxVER and xxDATE
 #
 VERSION=1.35
-DATE=2009-11-12
+DATE=2009-11-16
 TMPDIR=/tmp/prestosidebarclock-$DATE-$VERSION-$$
 TAG=live_push_$DATE
 
@@ -12,24 +12,13 @@ FILES=$(cat MANIFEST)
 echo Checking javascript files and minifying...
 make -C common
 
-# 
-# First check if any diffs need to be committed.  If so, cowardly
-# refuse to push any changes
-# 
-MODIFIED=$(hg status $FILES | wc -l)
-if [ $MODIFIED -ne 0 ]; then
-  echo Uncommitted changes exist, cowardly refusing to proceed
-  hg status $FILES
+# =====
+echo Checking CSS files...
+grep \.css MANIFEST | xargs -L1 csslint
+  if [ $? -ne 0 ]; then
+  echo Correct CSS errors and commit before proceeding
   exit 1
 fi
-
-# =====
-#echo Checking CSS files...
-#grep \.css MANIFEST | xargs -L1 csslint
-  #if [ $? -ne 0 ]; then
-  #echo Correct CSS errors and commit before proceeding
-  #exit 1
-#fi
 
 # =====
 echo Cloning repository to temp directory
@@ -51,3 +40,14 @@ ZIP=../prestosidebarclock-$VERSION.gadget
 # =====
 PWD=$(pwd)
 echo Final gadget is at: $PWD/$ZIP
+
+# 
+# Check if any diffs need to be committed.  If so, warn user
+# 
+MODIFIED=$(hg status $FILES | wc -l)
+if [ $MODIFIED -ne 0 ]; then
+  echo WARNING - Uncommitted changes exist
+  hg status $FILES
+  exit 1
+fi
+
