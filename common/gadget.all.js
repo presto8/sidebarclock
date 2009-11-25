@@ -3513,6 +3513,59 @@ pt: {
   't_languagename':    'Afrikaans'
 },
 
+// Lithuanian translation by Gintaras Pavilionis <fongintas@gmail.com>
+'lt': {
+	'daysLong':    ["Sekmadienis", "Pirmadienis", "Antradienis", "Trečiadienis", "Ketvirtadienis", "Penktadienis", "Šeštadienis"],
+	'daysShort':   ["S", "Pr", "A", "T", "K", "Pn", "Š"],
+	'monthsLong':  ["Sausio", "Vasario", "Kovo", "Balandžio", "Gegužės", "Birželio", "Liepos", "Rugpjūčio", "Rugsėjo", "Spalio", "Lapkričio", "Gruodžio"],
+	'monthsShort': ["Sau", "Vas", "Kov", "Bal", "Geg", "Birž", "Lie", "Rugpj", "Rugs", "Spa", "Lapkr", "Gruo"],
+	'defaultDateFormat': "Y F d",
+	'defaultTimeFormat': "h:i",
+
+	't_dateformat':     'Datos formatas:',
+	't_timeformat':     'Laiko formatas:',
+	't_timezone':       'Laiko juosta:',
+	't_localtime':      'Vietos laikas',
+	't_bottomlabel':    'Tekstas:',
+	't_optional':       '(papildomai)',
+	't_examples':       'Pavyzdžiai:',
+	't_date':           'Data:',
+	't_time':           'Laikas:',
+	't_label':          'Tekstas:',
+	't_dateexamples':   'Y F d = 2009 Lapkričio 24<br>y n/j l = 09 11/24 Antradienis',
+	't_timeexamples':   'g:i a = 5:44 pm<br>H:i = 17:44',
+	't_labelexamples':  'Vilnius, Ryga, GMT+2',
+	't_formathelp':     '<a href="http://us.php.net/manual/en/function.date.php">Formato pagalba</a>',
+	't_formathelplong': '<a href="http://us.php.net/manual/en/function.date.php">Formato pagalba</a> (nepalaikoma: T, e, o, u)',
+  // Don't modify xxVER or xxDATE
+	't_version':        'Versija xxVER (xxDATE)',
+	't_about':          'Apie',
+	't_translateby':    'Išvertė į lietuvių kalbą Gintaras Pavilionis',
+	't_language':       'Kalba:',
+	't_charity':        "Presto's Clock yra Charityware (labdaros išlaikoma programa). Jeigu Jums patiko programa ir norėtumėte prisidėti prie jos palaikymo ir tobulinimo, prašome Jus, paaukoti mažiau pasiekusiems šiame pasaulyje. Žiūrėkite projekto puslapyje <a href=\"http://prestonhunt.com/story/110\">informacija kaip paaukoti</a>.",
+	't_fontfamily1':     'Šriftas:',
+	't_fontfamily2':     'Šriftas:',
+	't_fontfamily3':     'Šriftas:',
+	't_fontsize1':       'Šrifto dydis:',
+	't_fontsize2':       'Šrifto dydis:',
+	't_fontsize3':       'Šrifto dydis:',
+	't_fontcolor1':      'Šrifto spalva:',
+	't_fontcolor2':      'Šrifto spalva:',
+	't_fontcolor3':      'Šrifto spalva:',
+//	't_background':  		'Fonas',
+	't_date2': 				 	 'Data',
+	't_time2': 				 	 'Laikas',
+	't_label2': 			 	 'Tekstas',
+	't_swap_labels':     'Sukeisti vietomis datą su tekstu',
+  't_tab1':            'Bendri', 
+  't_tab2':            'Nustatymai',
+  't_tab3':            'Apie programą',
+  't_copyright':       'Copyright 2009 Preston Hunt',
+  't_update':          "Galima naujesnė Presto's Clock versija. <a href=\"http://gallery.live.com/liveItemDetail.aspx?li=348e5816-f95b-493e-a6df-a03980e34e51\">Atnaujinti!</a>",
+  // Replace English with the name of your language in your language
+  't_languagename':    'Lietuvių'
+},
+
 // Serbian translation by Milan <n.milan.n@gmail.com>
 'sr': {
 	'daysLong':    ["Nedelja", "Ponedeljak", "Utorak", "Sreda", "Četvrtak", "Petak", "Subota"],
