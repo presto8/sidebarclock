@@ -868,7 +868,7 @@ pt: {
 	'monthsLong':  ["Sausio", "Vasario", "Kovo", "Balandžio", "Gegužės", "Birželio", "Liepos", "Rugpjūčio", "Rugsėjo", "Spalio", "Lapkričio", "Gruodžio"],
 	'monthsShort': ["Sau", "Vas", "Kov", "Bal", "Geg", "Birž", "Lie", "Rugpj", "Rugs", "Spa", "Lapkr", "Gruo"],
 	'defaultDateFormat': "Y F d",
-	'defaultTimeFormat': "h:i",
+	'defaultTimeFormat': "H:i:s",
 
 	't_dateformat':     'Datos formatas:',
 	't_timeformat':     'Laiko formatas:',
