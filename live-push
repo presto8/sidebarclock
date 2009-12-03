@@ -13,6 +13,11 @@ echo Checking javascript files and minifying...
 make -C common
 
 # =====
+# Compute this now before we change directories, buy only display at the
+# end
+MODIFIED=$(hg status $FILES | wc -l)
+
+# =====
 echo Checking CSS files...
 grep \.css MANIFEST | xargs -L1 csslint
   if [ $? -ne 0 ]; then
@@ -44,7 +49,7 @@ echo Final gadget is at: $PWD/$ZIP
 # 
 # Check if any diffs need to be committed.  If so, warn user
 # 
-MODIFIED=$(hg status $FILES | wc -l)
+#MODIFIED=$(hg status $FILES | wc -l) # see above
 if [ $MODIFIED -ne 0 ]; then
   echo WARNING - Uncommitted changes exist
   hg status $FILES
