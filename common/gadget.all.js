@@ -2713,6 +2713,7 @@ var translations = {
   't_tab1':            'General', 
   't_tab2':            'Appearance',
   't_tab3':            'About',
+  't_tab4':            'Background',
   't_copyright':       'Copyright 2009 Preston Hunt',
   't_update':          "A newer version of Presto's Clock is available. <a href=\"http://gallery.live.com/liveItemDetail.aspx?li=348e5816-f95b-493e-a6df-a03980e34e51\">Update now!</a>",
   // Replace English with the name of your language in your language
@@ -3668,6 +3669,61 @@ pt: {
   't_tab2':            'Izgled',
   't_tab3':            'Info',
   't_copyright':       'Autorsko pravo 2009 Preston Hunt'
+},
+
+'cn': {
+  // Do not change the order of the days or months!
+  'daysLong':    ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"],
+  'daysShort':   ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"],
+  'monthsLong':  ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+  'monthsShort': ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+  // Update these with the correct format for your country
+  'defaultDateFormat': "M d D",
+  'defaultTimeFormat': "h:i a",
+
+  't_dateformat':     '日期格式:',
+  't_timeformat':     '时间格式:',
+  't_timezone':       '时区:',
+  't_localtime':      '本地时间',
+  't_bottomlabel':    '下标:',
+  't_optional':       '(可选)',
+  't_examples':       '样例:',
+  't_date':           '日期:',
+  't_time':           '时间:',
+  't_label':          '标识:',
+  't_dateexamples':   'M d D = 4月 7日 星期日',
+  't_timeexamples':   'g:i a = 5:44 下午<br>H:i = 17:44',
+  't_labelexamples':  '北京,重庆,香港 GMT+8',
+  't_formathelp':     '<a href="http://us.php.net/manual/en/function.date.php">格式信息</a>',
+  't_formathelplong': '<a href="http://us.php.net/manual/en/function.date.php">格式信息</a> (不支持: T, e, o, u)',
+  // Don't modify xxVER or xxDATE
+  't_version':        '版本 xxVER (xxDATE)',
+  't_about':          '关于这个小玩意',
+  // If you want credit for translation, translate "Languagename translation by your name"
+  't_translateby':    'Knight Lin',
+  't_language':       '语言:',
+  't_charity':        "Presto's Clock 是一个慈善软件,如果你喜欢,请考虑为需要幸福的世界捐出您的一份心意. 请参照项目页面 <a href=\"http://prestonhunt.com/story/110\">关于如何捐赠</a>.",
+  't_fontfamily1':     '字体:',
+  't_fontfamily2':     '字体:',
+  't_fontfamily3':     '字体:',
+  't_fontsize1':       '字体大小:',
+  't_fontsize2':       '字体大小:',
+  't_fontsize3':       '字体大小:',
+  't_fontcolor1':      '字体颜色:',
+  't_fontcolor2':      '字体颜色:',
+  't_fontcolor3':      '字体颜色:',
+//  't_background':     '背景图片',
+  't_date2':           '日期',
+  't_time2':           '时间',
+  't_label2':          '时钟标识',
+  't_swap_labels':     '交换日期和时钟标识位置',
+  't_tab1':            '常规', 
+  't_tab2':            '显示',
+  't_tab3':            '关于',
+  't_copyright':       '版权 2009 Preston Hunt',
+  't_update':          "Presto's Clock 版本更新. <a href=\"http://gallery.live.com/liveItemDetail.aspx?li=348e5816-f95b-493e-a6df-a03980e34e51\">立即更新!</a>",
+  // Replace English with the name of your language in your language
+  't_languagename':    '简体中文'
 }
 
 };
