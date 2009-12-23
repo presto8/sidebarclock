@@ -48,7 +48,8 @@ formatDate = function (input,time) {
         
         a : function () {
             // Lowercase Ante meridiem and Post meridiem
-            return date.getHours() > 11? "pm" : "am";
+            return date.getHours() > 11 ? L.pm : L.am;
+            //return date.getHours() > 11? "pm" : "am";
         },
         
         A : function () {
@@ -2670,6 +2671,8 @@ var translations = {
 	'daysShort':   ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
 	'monthsLong':  ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
 	'monthsShort': ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+  'am':          'am',
+  'pm':          'pm',
   // Update these with the correct format for your country
 	'defaultDateFormat': "D M d",
 	'defaultTimeFormat': "h:i a",
@@ -3671,7 +3674,7 @@ pt: {
   't_copyright':       'Autorsko pravo 2009 Preston Hunt'
 },
 
-'cn': {
+'zh': {
   // Do not change the order of the days or months!
   'daysLong':    ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"],
   'daysShort':   ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"],

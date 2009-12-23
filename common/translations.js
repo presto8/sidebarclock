@@ -18,6 +18,8 @@ var translations = {
 	'daysShort':   ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
 	'monthsLong':  ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
 	'monthsShort': ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+  'am':          'am',
+  'pm':          'pm',
   // Update these with the correct format for your country
 	'defaultDateFormat': "D M d",
 	'defaultTimeFormat': "h:i a",
@@ -1019,12 +1021,14 @@ pt: {
   't_copyright':       'Autorsko pravo 2009 Preston Hunt'
 },
 
-'cn': {
+'zh': {
   // Do not change the order of the days or months!
   'daysLong':    ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"],
   'daysShort':   ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"],
   'monthsLong':  ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
   'monthsShort': ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+  'am':          'am',
+  'pm':          'pm',
   // Update these with the correct format for your country
   'defaultDateFormat': "n月 j日 D",
   'defaultTimeFormat': "h:i a",

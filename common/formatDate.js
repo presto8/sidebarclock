@@ -48,7 +48,8 @@ formatDate = function (input,time) {
         
         a : function () {
             // Lowercase Ante meridiem and Post meridiem
-            return date.getHours() > 11? "pm" : "am";
+            return date.getHours() > 11 ? L.pm : L.am;
+            //return date.getHours() > 11? "pm" : "am";
         },
         
         A : function () {
