@@ -3678,7 +3678,7 @@ pt: {
   'monthsLong':  ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
   'monthsShort': ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
   // Update these with the correct format for your country
-  'defaultDateFormat': "M d D",
+  'defaultDateFormat': "n月 j日 D",
   'defaultTimeFormat': "h:i a",
 
   't_dateformat':     '日期格式:',
