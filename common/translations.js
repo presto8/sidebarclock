@@ -1027,8 +1027,8 @@ pt: {
   'daysShort':   ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"],
   'monthsLong':  ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
   'monthsShort': ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
-  'am':          'am',
-  'pm':          'pm',
+  'am':          '上午',
+  'pm':          '下午',
   // Update these with the correct format for your country
   'defaultDateFormat': "n月 j日 D",
   'defaultTimeFormat': "h:i a",
@@ -1052,7 +1052,7 @@ pt: {
   't_version':        '版本 xxVER (xxDATE)',
   't_about':          '关于这个小玩意',
   // If you want credit for translation, translate "Languagename translation by your name"
-  't_translateby':    'Knight Lin',
+  't_translateby':    '中文翻译 Knight Lin',
   't_language':       '语言:',
   't_charity':        "Presto's Clock 是一个慈善软件,如果你喜欢,请考虑为需要幸福的世界捐出您的一份心意. 请参照项目页面 <a href=\"http://prestonhunt.com/story/110\">关于如何捐赠</a>.",
   't_fontfamily1':     '字体:',
