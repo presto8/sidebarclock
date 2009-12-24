@@ -3680,8 +3680,8 @@ pt: {
   'daysShort':   ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"],
   'monthsLong':  ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
   'monthsShort': ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
-  'am':          '上午',
-  'pm':          '下午',
+  //'am':          '上午',
+  //'pm':          '下午',
   // Update these with the correct format for your country
   'defaultDateFormat': "n月 j日 D",
   'defaultTimeFormat': "h:i a",
