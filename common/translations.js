@@ -1031,7 +1031,7 @@ pt: {
   //'pm':          '下午',
   // Update these with the correct format for your country
   'defaultDateFormat': "n月 j日 D",
-  'defaultTimeFormat': "h:i a",
+  'defaultTimeFormat': "H:i",
 
   't_dateformat':     '日期格式:',
   't_timeformat':     '时间格式:',
