@@ -14,9 +14,7 @@
 <li id="tabcontrol1" onclick="gotoTab(1)"><span id="t_tab1"></span></li>
 <li id="tabcontrol2" onclick="gotoTab(2)"><span id="t_tab2"></span></li>
 <li id="tabcontrol3" onclick="gotoTab(3)"><span id="t_tab3"></span></li>
-<!--
-<li id="tabcontrol3" onclick="gotoTab(4)"><span id="t_tab4"></span></li>
--->
+<li id="tabcontrol4" onclick="gotoTab(4)"><span id="t_tab4"></span></li>
 </ul>
 </div>
 
@@ -126,11 +124,8 @@
 
 <div id="tab4" class="tab">
 <ul>
-<li id=t_version></li>
-<li id=t_copyright></li>
-<li><a id=t_about href="http://prestonhunt.com/go/sidebarclock"></a></li>
-<li id=t_charity></li>
-<li id=t_translateby></li>
+<li onclick="saveIniFile()" id=t_saveini></li>
+<li onclick="loadIniFile()" id=t_loadini></li>
 </ul>
 </div>
 

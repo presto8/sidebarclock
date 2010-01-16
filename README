@@ -3,6 +3,10 @@ For more information about this gadget:
 
 RELEASE HISTORY
 
+1.39 2010-01-13 Fixed problem with Italian long dates (thanks Carmine
+Castiglia Jr).  Added ability to save and restore settings to disk
+(thanks Rich Armstrong).
+
 1.38 2009-12-23 Added Simplified Chinese support (thanks Knight Lin!)
 
 1.37 2009-11-30 Added Slovenian (thanks Janez Pobezin)

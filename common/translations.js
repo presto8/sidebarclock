@@ -67,7 +67,10 @@ var translations = {
   't_copyright':       'Copyright 2009 Preston Hunt',
   't_update':          "A newer version of Presto's Clock is available. <a href=\"http://gallery.live.com/liveItemDetail.aspx?li=348e5816-f95b-493e-a6df-a03980e34e51\">Update now!</a>",
   // Replace English with the name of your language in your language
-  't_languagename':    'English'
+  't_languagename':    'English',
+
+  't_saveini':         "Backup settings",
+  't_loadini':         "Restore settings"
 },
 
 // Russian translation by Denis Baumgaertner <denco@freenet.de>
@@ -319,7 +322,7 @@ var translations = {
 
 // Italian translation by Mirko Mazzacano <michy91@alice.it>
 'it': {
-	'daysLong':    ["Lunedi", "Martedi", "Mercoledi", "Giovedi", "Venerdi", "Sabato"],
+	'daysLong':    ["Domenica", "Lunedi", "Martedi", "Mercoledi", "Giovedi", "Venerdi", "Sabato"],
 	'daysShort':   ["Dom", "Lun", "Mar" , "Mer", "Giov", "Ven","Sab"],
 	'monthsShort': ["Gen","Feb","Mar","Apr", "Mag","Giu","Lug","Agosto","Set","Ott","Nov","Dic"],
 	'monthsLong':  ["Gennaio","Febbraio","Marzo","Aprile","Maggio","Giugno","Luglio","Agosto","Settembre","Ottobre","Novembre","Dicembre"],

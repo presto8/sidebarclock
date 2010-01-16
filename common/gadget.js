@@ -60,6 +60,13 @@ function readSettings() {
   setLocale();
 }
 
+function saveSettings() {
+  for ( var key in G ) {
+    G[key] = get_settings_dialog_value( key );
+    System.Gadget.Settings.write( key, G[key] );
+  }
+}
+
 function setDefaults() {
   var lang = getSystemLanguage();
   setLocale(lang);
@@ -366,6 +373,18 @@ function dd( msg ) {
   shell.Popup( msg );
 }
 
+function get_settings_dialog_value( variablename ) {
+  var varEl = document.getElementById( variablename );
+  var varVal;
+  if ( varEl.type == 'checkbox' ) {
+    varVal = varEl.checked ? true : false;
+  } else {
+    varVal = varEl.value;
+  }
+  return varVal;
+}
+
+/*
 function CheckAndSet( variablename ) {
   var varEl = document.getElementById( variablename );
   var varVal;
@@ -376,6 +395,7 @@ function CheckAndSet( variablename ) {
   }
   System.Gadget.Settings.write( variablename, varVal );
 }
+*/
 
 function LoadVarForSettings( variablename ) {
   var varEl = document.getElementById( variablename );
@@ -456,7 +476,7 @@ function displaySettings( newlocale ) {
   gotoTab( 1 );
 }
 
-function settingsClosing(event) {
+function oldsettingsClosing(event) {
   if ( event.closeAction == event.Action.commit ) {
     CheckAndSet( "mainDateFormat" );
     CheckAndSet( "mainTimeFormat" );
@@ -472,6 +492,15 @@ function settingsClosing(event) {
       CheckAndSet( base+"fontsize" );
       CheckAndSet( base+"fontcolor" );
     }
+  }
+
+  event.cancel = false;
+}
+
+function settingsClosing(event) {
+  if ( event.closeAction == event.Action.commit ) {
+    saveSettings();
+    saveIniFile();
   }
 
   event.cancel = false;
@@ -596,7 +625,7 @@ function getMicrosoftColors() {
 }
 
 function gotoTab( tabNum ) {
-  for ( var i=1; i<=3; i++ ) {
+  for ( var i=1; i<=4; i++ ) {
     document.getElementById( 'tab'+i ).style.display = 'none';
     document.getElementById( 'tabcontrol'+i ).className = '';
   }
@@ -635,4 +664,19 @@ function showIfUpdateAvailable() {
   if ( isUpdateAvailable() ) {
     document.getElementById( 't_update' ).style.display = 'block';
   }
+}
+
+function saveIniFile() {
+  for ( var key in G ) {
+    SettingsManager.setValue( 'default', key, G[key] );
+  }
+  SettingsManager.saveFile();
+}
+
+function loadIniFile() {
+  for ( var key in G ) {
+    G[key] = SettingsManager.getValue( 'default', key );
+  }
+
+  setLocale();
 }

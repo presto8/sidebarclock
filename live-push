@@ -1,8 +1,8 @@
 # 
 # Replace xxVER and xxDATE
 #
-VERSION=1.38
-DATE=2009-12-22
+VERSION=1.39
+DATE=2010-01-15
 TMPDIR=/tmp/prestosidebarclock-$DATE-$VERSION-$$
 TAG=live_push_$DATE
 
@@ -27,7 +27,8 @@ fi
 
 # =====
 echo Cloning repository to temp directory
-hg clone . $TMPDIR
+#hg clone . $TMPDIR
+cp -a . $TMPDIR
 cd $TMPDIR
 
 # =====
@@ -45,6 +46,7 @@ ZIP=../prestosidebarclock-$VERSION.gadget
 # =====
 PWD=$(pwd)
 echo Final gadget is at: $PWD/$ZIP
+echo mv -f $PWD/$ZIP ~
 
 # 
 # Check if any diffs need to be committed.  If so, warn user
