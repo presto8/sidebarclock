@@ -62,12 +62,12 @@ function readSettings() {
 
 function saveSettings() {
   for ( var key in G ) {
-    G[key] = get_settings_dialog_value( key );
-    System.Gadget.Settings.write( key, G[key] );
+    var val = get_settings_dialog_value( key );
+    System.Gadget.Settings.write( key, val );
   }
 }
 
-function setDefaults() {
+function set_defaults() {
   var lang = getSystemLanguage();
   setLocale(lang);
   
@@ -86,13 +86,13 @@ function setDefaults() {
 
 function startup() {
   System.Gadget.settingsUI = "settings.html";
-  System.Gadget.onSettingsClosed = afterSettingsClosed;
+  System.Gadget.onSettingsClosed = after_settings_closed;
   System.Gadget.visibilityChanged = checkVisibility;
 
   readSettings();
 
 	if ( ! G.mainTimeFormat ) {
-		setDefaults();
+		set_defaults();
 		readSettings();
 	}
 
@@ -106,7 +106,7 @@ function startup() {
   updateGadget();
 }
 
-function afterSettingsClosed() {
+function after_settings_closed() {
   readSettings();
   updateFonts();
 
@@ -500,7 +500,6 @@ function oldsettingsClosing(event) {
 function settingsClosing(event) {
   if ( event.closeAction == event.Action.commit ) {
     saveSettings();
-    saveIniFile();
   }
 
   event.cancel = false;
@@ -668,7 +667,8 @@ function showIfUpdateAvailable() {
 
 function saveIniFile() {
   for ( var key in G ) {
-    SettingsManager.setValue( 'default', key, G[key] );
+    var val = get_settings_dialog_value( key );
+    SettingsManager.setValue( 'default', key, val );
   }
   SettingsManager.saveFile();
 }
