@@ -37,7 +37,7 @@ var gLabel = null;
 
 function alert( mesg ) {
   /*jsl:ignore*/
-  return; // uncomment this line for release app
+//  return; // uncomment this line for release app
   System.Debug.outputString( mesg );
   /*jsl:end*/
   // See: http://keithelder.net/blog/archive/2008/01/31/Debugging-Vista-Sidebar-Gadgets-in-Visual-Studio-2008.aspx
@@ -53,18 +53,8 @@ function setLocale() {
 }
 
 function readSettings() {
-  for ( var key in G ) {
-    G[key] = readSetting( key );
-  }
-
+  settings_registry_to_G();
   setLocale();
-}
-
-function saveSettings() {
-  for ( var key in G ) {
-    var val = get_settings_dialog_value( key );
-    System.Gadget.Settings.write( key, val );
-  }
 }
 
 function set_defaults() {
@@ -295,10 +285,6 @@ function workingadjustTimeToFit() {
   var maxWidth = 130;
   var maxHeight = getProperTimeHeight();
 
-//  gLabel.value = gTime.fontsize * maxWidth / gTime.width;
-//gLabel.value = maxHeight;
-//  gLabel.opacity = 100;
-
   var newFontSize = Math.floor( gTime.fontSize * maxWidth / gTime.width );
   if ( newFontSize > 100 ) newFontSize = 12;
   gTime.fontsize = newFontSize;
@@ -335,28 +321,6 @@ function adjustToFit( obj, size, maxWidth, maxHeight ) {
   }
 }
 
-function oldadjustTimeToFit() {
-  var fontSize = 100;
-  var maxWidth = 120;
-
-  window.timeArea.style.fontSize = fontSize + 'px';
-
-  var hscale = maxWidth / window.timeArea.offsetWidth;
-  fontSize = Math.floor( fontSize * hscale );
-  window.timeArea.style.fontSize = fontSize + 'px';
-
-  var timeHeight = getProperTimeHeight();
-  var vscale = timeHeight / window.timeArea.offsetHeight;
-  if ( vscale < 1 ) {
-    fontSize = Math.floor( fontSize * vscale );
-    window.timeArea.style.fontSize = fontSize + 'px';
-  }
-
-  var whiteSpace = window.timeArea.offsetHeight - fontSize;
-  window.timeArea.style.paddingTop = whiteSpace/2 + 'px';
-  window.timeArea.style.lineHeight = 1.0;
-}
-
 function getProperTimeHeight() {
   var height = 67;
   if ( gLabel.value.length ) height -= gLabel.height - 5;
@@ -364,17 +328,10 @@ function getProperTimeHeight() {
   return height;
 }
 
-var shown = false;
-function dd( msg ) {
-  if ( shown ) return;
-
-  shown = true;
-  var shell = new ActiveXObject("WScript.Shell");
-  shell.Popup( msg );
-}
-
-function get_settings_dialog_value( variablename ) {
+function get_form_value( variablename ) {
   var varEl = document.getElementById( variablename );
+  if ( varEl === null ) return "form-element-not-found";
+
   var varVal;
   if ( varEl.type == 'checkbox' ) {
     varVal = varEl.checked ? true : false;
@@ -384,22 +341,9 @@ function get_settings_dialog_value( variablename ) {
   return varVal;
 }
 
-/*
-function CheckAndSet( variablename ) {
-  var varEl = document.getElementById( variablename );
-  var varVal;
-  if ( varEl.type == 'checkbox' ) {
-    varVal = varEl.checked ? true : false;
-  } else {
-    varVal = varEl.value;
-  }
-  System.Gadget.Settings.write( variablename, varVal );
-}
-*/
-
-function LoadVarForSettings( variablename ) {
-  var varEl = document.getElementById( variablename );
-  var varVal = readSetting( variablename );
+function set_form_value( varname, varVal ) {
+  var varEl = document.getElementById( varname );
+  if ( varEl === null ) return;
 
   if ( varEl.type == 'checkbox' ) {
     varEl.checked = varVal;
@@ -430,28 +374,53 @@ function getSystemLanguage() {
   return lang;
 }
 
-function init_settings() {
-  System.Gadget.onSettingsClosing = settingsClosing;
-  var varsToLoad = [ 'mainDateFormat', 'mainTimeFormat', 'tzLabel', 'swaplabels' ];
+function G_to_form() {
+  for ( var key in G ) {
+    set_form_value( key, G[key] );
+  }
+}
 
+function form_to_G() {
+  for ( var key in G ) {
+    var val = get_form_value( key );
+    if ( val !== 'form-element-not-found' ) {
+      G[key] = val;
+    }
+  }
+}
+
+function G_to_settings_registry() {
+  for ( var key in G ) {
+    System.Gadget.Settings.write( key, G[key] );
+  }
+}
+
+function settings_registry_to_G() {
+  for ( var key in G ) {
+    G[key] = readSetting( key );
+  }
+}
+
+function create_settings_html_elements() {
   var elements = [ 'gDate', 'gTime', 'gLabel' ];
   for ( var el in elements ) {
     var base = elements[el];
     document.getElementById(base+'_fontList').innerHTML = createFontSelect( base+'fontfamily');
     document.getElementById(base+'_fontSizeList').innerHTML = createFontSizeSelect( base+'fontsize' );
     document.getElementById(base+'_fontColorList').innerHTML = createFontColorSelect( base+'fontcolor' );
-
-    varsToLoad.push( base+'fontfamily', base+'fontsize', base+'fontcolor' );
   }
+}
 
-  for ( var v in varsToLoad ) {
-    LoadVarForSettings( varsToLoad[v] );
-  }
+function init_settings() {
+  System.Gadget.onSettingsClosing = settingsClosing;
 
-  G.locale = document.getElementById("locale").value = readSetting( "locale" );
+  create_settings_html_elements();
+
+  settings_registry_to_G();
+  G_to_form();
 
   setLocale();
-  displaySettings();
+  display_settings();
 }
 
 function localizeText() {
@@ -462,44 +431,26 @@ function localizeText() {
 	}
 }
 
-function displaySettings( newlocale ) {
-  if ( newlocale !== undefined ) {
-    G.locale = newlocale;
-    setLocale();
-    document.getElementById("mainDateFormat").value = L.defaultDateFormat;
-    document.getElementById("mainTimeFormat").value = L.defaultTimeFormat;
-  }
+function change_locale( newlocale ) {
+  G.locale = newlocale;
+  setLocale();
+  document.getElementById("mainDateFormat").value = L.defaultDateFormat;
+  document.getElementById("mainTimeFormat").value = L.defaultTimeFormat;
 
+  display_settings();
+}
+
+function display_settings() {
   setTzOptions();
   localizeText();
   showIfUpdateAvailable();
   gotoTab( 1 );
 }
 
-function oldsettingsClosing(event) {
-  if ( event.closeAction == event.Action.commit ) {
-    CheckAndSet( "mainDateFormat" );
-    CheckAndSet( "mainTimeFormat" );
-    CheckAndSet( "tzLabel" );
-    CheckAndSet( "tzName" );
-    CheckAndSet( "locale" );
-    CheckAndSet( "swaplabels" );
-
-    var elements = [ 'gDate', 'gTime', 'gLabel' ];
-    for ( var el in elements ) {
-      var base = elements[el];
-      CheckAndSet( base+"fontfamily" );
-      CheckAndSet( base+"fontsize" );
-      CheckAndSet( base+"fontcolor" );
-    }
-  }
-
-  event.cancel = false;
-}
-
 function settingsClosing(event) {
   if ( event.closeAction == event.Action.commit ) {
-    saveSettings();
+    form_to_G();
+    G_to_settings_registry();
   }
 
   event.cancel = false;
@@ -666,17 +617,47 @@ function showIfUpdateAvailable() {
 }
 
 function saveIniFile() {
-  for ( var key in G ) {
-    var val = get_settings_dialog_value( key );
-    SettingsManager.setValue( 'default', key, val );
-  }
-  SettingsManager.saveFile();
+  var json_settings = document.getElementById( "json_settings" );
+
+  copy_settings_to_clipboard();
+  json_settings.value = "Settings copied to clipboard";
+}
+
+function set_backup_status( mesg ) {
+  var el = document.getElementById( "t_backup_status" );
+  el.innerText = mesg;
 }
 
 function loadIniFile() {
-  for ( var key in G ) {
-    G[key] = SettingsManager.getValue( 'default', key );
+  var new_G = paste_settings_from_clipboard();
+  if ( ! new_G ) {
+    set_backup_status( "Clipboard does not contain valid settings." );
+    return;
   }
 
-  setLocale();
+  G = new_G;
+  G_to_form();
+  set_backup_status( "Settings loaded from clipboard!" );
+}
+
+function copy_settings_to_clipboard() {
+  G.settingsVersion = 2;
+  form_to_G();
+  window.clipboardData.setData( "Text", JSON.stringify( G ) );
+  set_backup_status( "Settings copied to clipboard!" );
+}
+
+function paste_settings_from_clipboard() {
+  try {
+    var clip = window.clipboardData.getData( "Text" );
+    var new_G = JSON.parse( clip );
+  } catch(err) {
+    return null;
+  }
+
+  if ( new_G.settingsVersion != 2 ) {
+    new_G = null;
+  }
+
+  return new_G;
 }

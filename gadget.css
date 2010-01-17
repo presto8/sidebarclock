@@ -7,7 +7,7 @@ body#gadget {
   height: 67px;
   color: #ffffff;
   font-size: 10px;
-	margin: 0;
+  margin: 0;
   padding: 0;
 }
 
@@ -80,4 +80,9 @@ ul {
   padding: 5px;
   background-color: #F5DEB3; /* Wheat */
   border: 1px solid #CD853F; /* Peru */
+}
+
+.link {
+  text-decoration: underline;
+  color: blue;
 }

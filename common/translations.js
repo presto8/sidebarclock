@@ -69,8 +69,9 @@ var translations = {
   // Replace English with the name of your language in your language
   't_languagename':    'English',
 
-  't_saveini':         "Backup settings",
-  't_loadini':         "Restore settings"
+  't_backup_settings': "Backup settings",
+  't_backup':          "Backup settings to clipboard",
+  't_restore':         "Restore settings from clipboard"
 },
 
 // Russian translation by Denis Baumgaertner <denco@freenet.de>

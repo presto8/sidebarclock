@@ -24,7 +24,7 @@
 
 <ul id=inputs>
 <li><span id="t_language" class=firstcol></span>
-<select id="locale" onchange="displaySettings(this.value)">
+<select id="locale" onchange="change_locale(this.value)">
 <option value="af">Afrikaans</option>
 <option value="bg">Български</option>
 <option value="cs">Čeština</option>
@@ -120,12 +120,17 @@
 <li id=t_charity></li>
 <li id=t_translateby></li>
 </ul>
+
+<ul>
+<li><span id="t_backup_settings" class="bigger"></span></li>
+<li class="link" onclick="saveIniFile()" id="t_backup"></li>
+<li class="link" onclick="loadIniFile()" id="t_restore"></li>
+<li id=t_backup_status></li>
+
 </div>
 
 <div id="tab4" class="tab">
 <ul>
-<li onclick="saveIniFile()" id=t_saveini></li>
-<li onclick="loadIniFile()" id=t_loadini></li>
 </ul>
 </div>
 

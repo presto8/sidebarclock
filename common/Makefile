@@ -1,5 +1,5 @@
 files = formatDate.js tzdata-2009r_json.js noaa.js latlon_json.js \
-SettingsManager.js \
+json2.js \
 translations.js gadget.js
 
 all: jslint gadget.all.min.js
