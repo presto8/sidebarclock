@@ -4794,13 +4794,13 @@ function getMicrosoftColors() {
 }
 
 function gotoTab( tabNum ) {
-  for ( var i=1; i<=4; i++ ) {
-    document.getElementById( 'tab'+i ).style.display = 'none';
-    document.getElementById( 'tabcontrol'+i ).className = '';
-  }
+    for ( var i=1; i<=3; i++ ) {
+        document.getElementById( 'tab'+i ).style.display = 'none';
+        document.getElementById( 'tabcontrol'+i ).className = '';
+    }
 
-  document.getElementById( 'tab'+tabNum ).style.display = 'block';
-  document.getElementById( 'tabcontrol'+tabNum ).className = 'tab_selected';
+    document.getElementById( 'tab'+tabNum ).style.display = 'block';
+    document.getElementById( 'tabcontrol'+tabNum ).className = 'tab_selected';
 }
 
 function getHttpAsText( url ) {

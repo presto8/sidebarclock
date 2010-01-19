@@ -2,7 +2,7 @@
 # Replace xxVER and xxDATE
 #
 VERSION=1.39
-DATE=2010-01-17
+DATE=2010-01-19
 TMPDIR=/tmp/prestosidebarclock-$DATE-$VERSION-$$
 TAG=live_push_$DATE
 

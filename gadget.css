@@ -84,5 +84,6 @@ ul {
 
 .link {
   text-decoration: underline;
-  color: blue;
+  color: #3366bb;
+  cursor: pointer;
 }
