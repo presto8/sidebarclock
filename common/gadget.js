@@ -188,7 +188,7 @@ function getOffsetInMinutes( tzName, utcEpoch ) {
 
 function displayGadget() {
   var now = new Date();
-  var gmtOffset = now.getTimezoneOffset();
+  var gmtOffset = - now.getTimezoneOffset();
 
   gLabel.opacity = G.tzLabel ? 100 : 0; // this has to be done BEFORE changing the text!
   gLabel.value = G.tzLabel;

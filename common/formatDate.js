@@ -190,23 +190,11 @@ formatDate = function (input,time,offsetmins) {
 			h.length == 1? h = "0"+h:1;
 			m.length == 1? m = "0"+m:1;
 			//return date.getTimezoneOffset() < 0 ? "+"+h+m : "-"+h+m;
-			return offsetmins < 0 ? "+"+h+m : "-"+h+m;
+			return offsetmins > 0 ? "+"+h+m : "-"+h+m;
         },
 
-        P : function () {
-            // Difference to Greenwich time (GMT) in hours
-			//var os = Math.abs(date.getTimezoneOffset());
-			var os = Math.abs(offsetmins);
-			//var os = offsetmins;
-			var h = String(Math.floor(os/60));
-			var m = String(os%60);
-			h.length == 1? h = "0"+h:1;
-			m.length == 1? m = "0"+m:1;
-			return offsetmins < 0 ? "+"+h+m : "-"+h+m;
-        },
-        
         Q : function () {
-            // Difference to local time zone
+            // Difference to local time zone, with colons
 			var localOffset = date.getTimezoneOffset();
 			var offset = localOffset + offsetmins;
 			var os = Math.abs( offset );
@@ -216,7 +204,7 @@ formatDate = function (input,time,offsetmins) {
 			var m = String(os%60);
 			h.length == 1? h = "0"+h:1;
 			m.length == 1? m = "0"+m:1;
-			return offset < 0 ? "+"+h+m : "-"+h+m;
+			return offset > 0 ? "+"+h+":"+m : "-"+h+":"+m;
         },
         
         
