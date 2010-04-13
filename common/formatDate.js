@@ -42,8 +42,8 @@
                        "October", "November", "December"];
 */
 
-//Date.prototype.formatDate = function (input,time) {
-formatDate = function (input,time) {
+//Date.prototype.formatDate = function (input,time,gmtoffset) {
+formatDate = function (input,time,offsetmins) {
     var switches = { // switches object
         
         a : function () {
@@ -183,13 +183,39 @@ formatDate = function (input,time) {
         
         O : function () {
             // Difference to Greenwich time (GMT) in hours
-            var os = Math.abs(date.getTimezoneOffset());
-            var h = String(Math.floor(os/60));
-            var m = String(os%60);
-            h.length == 1? h = "0"+h:1;
-            m.length == 1? m = "0"+m:1;
-            return date.getTimezoneOffset() < 0 ? "+"+h+m : "-"+h+m;
+			//var os = Math.abs(date.getTimezoneOffset());
+			var os = offsetmins;
+			var h = String(Math.floor(os/60));
+			var m = String(os%60);
+			h.length == 1? h = "0"+h:1;
+			m.length == 1? m = "0"+m:1;
+			return date.getTimezoneOffset() < 0 ? "+"+h+m : "-"+h+m;
         },
+
+        P : function () {
+            // Difference to Greenwich time (GMT) in hours
+			//var os = Math.abs(date.getTimezoneOffset());
+			var os = offsetmins;
+			var h = String(Math.floor(os/60));
+			var m = String(os%60);
+			h.length == 1? h = "0"+h:1;
+			m.length == 1? m = "0"+m:1;
+			return date.getTimezoneOffset() < 0 ? "+"+h+m : "-"+h+m;
+        },
+        
+        Q : function () {
+            // Difference to local time zone
+			var localOffset = date.getTimezoneOffset();
+			var os = localOffset + offsetmins;
+			//var os = Math.abs(date.getTimezoneOffset());
+			//var os = offsetmins;
+			var h = String(Math.floor(os/60));
+			var m = String(os%60);
+			h.length == 1? h = "0"+h:1;
+			m.length == 1? m = "0"+m:1;
+			return date.getTimezoneOffset() < 0 ? "+"+h+m : "-"+h+m;
+        },
+        
         
         P : function () {
             // Difference to GMT, with colon between hours and minutes
@@ -239,6 +265,11 @@ formatDate = function (input,time) {
             return Math.round(date.getTime()/1000);
         },
 
+        V : function () {
+            // Intel weeknumber, if it is different from ISO
+            return this.W() + 1;
+        },
+        
         w : function () {
             // Numeric representation of the day of the week
             return date.getDay();

@@ -3,6 +3,13 @@ For more information about this gadget:
 
 RELEASE HISTORY
 
+1.40 2010-04-12 Added "V" switch for organizations that use a workweek
+calendar that is not ISO-compliant.  The "V" switch is the same as the
+"W" switch but adds 1 to the week number.  Added US time zones (Pacific,
+Eastern, etc.).  Fixed "O" and "P" date flags to work properly and added
+"Q" to show timezone delta relative to local timezone (thanks Andrew
+Zemek!).  Updated zoneinfo to tzdata-2010g.
+
 1.39 2010-01-17 Fixed problem with Italian long dates (thanks Carmine
 Castiglia Jr and Marco).  Added ability to save and restore settings to
 disk (thanks Rich Armstrong).
