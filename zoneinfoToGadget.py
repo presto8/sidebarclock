@@ -26,13 +26,12 @@ def findDSTRules( tzname, label ):
 
   start_utc = datetime.now( utc ).replace( minute=0, second=0, microsecond=0 )
   stop_utc = start_utc + timedelta(days=+10*365)
-#  step = timedelta(hours=+1)
   step = timedelta( minutes=+15 )
 
   d = start_utc
   prevOffset = None
   while d <= stop_utc:
-    offset = d.astimezone(tz).utcoffset()
+    offset = -d.astimezone(tz).utcoffset()
     if offset != prevOffset:
       if prevOffset != None: out_str += ","
       unixtime = int(timegm(d.timetuple()))

@@ -199,7 +199,7 @@ function displayGadget() {
       var utc = now.getTime() + gmtOffset*60*1000;
 			var utcEpoch = Math.round(utc/1000.0);
       var otherOffset = getOffsetInMinutes( G.tzName, utcEpoch );
-      var otherTime = utc + otherOffset*60*1000;
+      var otherTime = utc - otherOffset*60*1000;
 
       now = new Date( otherTime );
       gmtOffset = otherOffset;
@@ -212,11 +212,11 @@ function displayGadget() {
 //  gTime.value = '<a href="http://www.timeanddate.com/worldclock/">' + formatDate( mainTimeFormat, now ) + '</a>';
 
   gDate.opacity = G.mainDateFormat ? 100 : 0;
-  gDate.value = G.mainDateFormat ? formatDate( G.mainDateFormat, now, -gmtOffset ) : '';
+  gDate.value = G.mainDateFormat ? formatDate( G.mainDateFormat, now, gmtOffset ) : '';
   gDate.height = gDate.width = 0; // force recalculation of width
 
   gTime.opacity = G.mainTimeFormat ? 100 : 0;
-  gTime.value = formatDate( G.mainTimeFormat, now, -gmtOffset );
+  gTime.value = formatDate( G.mainTimeFormat, now, gmtOffset );
   gTime.height = gTime.width = 0; // force recalculation of width
 
   adjustTimeToFit();
