@@ -43,7 +43,7 @@ def findDSTRules( tzname, label ):
   return out_str
 
 def formatGMTRules( gmtOffset ):
-  offsetMinutes = gmtOffset * 60
+  offsetMinutes = - gmtOffset * 60
   if gmtOffset >= 0:
     label = "GMT+%02d" % gmtOffset
   else:
