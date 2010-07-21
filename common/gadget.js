@@ -37,7 +37,7 @@ var gLabel = null;
 
 function alert( mesg ) {
   /*jsl:ignore*/
-//  return; // uncomment this line for release app
+  return; // uncomment this line for release app
   System.Debug.outputString( mesg );
   /*jsl:end*/
   // See: http://keithelder.net/blog/archive/2008/01/31/Debugging-Vista-Sidebar-Gadgets-in-Visual-Studio-2008.aspx
@@ -158,6 +158,7 @@ function get_milliseconds_to_wait() {
 }
 
 function updateGadget() {
+  alert( "Entering updateGadget()" );
   if ( ! System.Gadget.visible ) {
     isDirty = true;
   } else {

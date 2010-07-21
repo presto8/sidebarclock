@@ -1025,6 +1025,68 @@ pt: {
   't_copyright':       'Autorsko pravo 2009 Preston Hunt'
 },
 
+'mr': {
+  // Do not change the order of the days or months!
+	'daysLong':    ["रविवार", "सोमवार", "मंगळवार", "बुधवार", "गुरुवार", "शुक्रवार", "शनिवार"],
+	'daysShort':   ["रवि", "सोम", "मंगळ", "बुध", "गुरु", "शुक्र", "शनि"],
+	'monthsLong':  ["जानेवारी", "फेब्रुवारी", "मार्च", "एप्रिल", "मे", "जून", "जूलै", "ऑगस्ट", "सप्टेंबर", "ऑक्टोबर", "नोव्हेंबर", "डिसेंबर"],
+	'monthsShort': ["जाने", "फेब्रु", "मार्च", "एप्रिल", "मे", "जून", "जूलै", "ऑगस्ट", "सप्टें", "ऑक्टो", "नोव्हें", "डिसें"],
+  'am':          'पू.मा.',
+  'pm':          'उ.मा.',
+  // Update these with the correct format for your country
+	'defaultDateFormat': "l d M",
+	'defaultTimeFormat': "g:i a",
+
+	't_dateformat':     'दिनांक स्वरुप:',
+	't_timeformat':     'वेळ स्वरुप:',
+	't_timezone':       'कालविभाग:',
+	't_localtime':      'स्थानिक वेळ',
+	't_bottomlabel':    'तळमजकूर:',
+	't_optional':       '(ऐच्छिक)',
+	't_examples':       'उदाहरणे:',
+	't_date':           'दिनांक:',
+	't_time':           'वेळ:',
+	't_label':          'मजकूर:',
+	't_dateexamples':   'D M d = शनि एप्रिल ०७<br>n/j l = ४/७ शनिवार',
+	't_timeexamples':   'g:i a = ५:४४ उ.मा.<br>H:i = १७:४४',
+	't_labelexamples':  'पुणे, भारत, जी एम टी+५.३०',
+	't_formathelp':     '<a href="http://us.php.net/manual/en/function.date.php">स्वरुपन मदत</a>',
+	't_formathelplong': '<a href="http://us.php.net/manual/en/function.date.php">स्वरुपन मदत</a> (unsupported: T, e, o, u)',
+  // Don't modify xxVER or xxDATE
+	't_version':        'आवृत्ती xxVER (xxDATE)',
+	't_about':          'या उपकरणा विषयी',
+  // If you want credit for translation, translate "Languagename translation by your name"
+	't_translateby':    'संतोष साळुंके',
+	't_language':       'भाषा:',
+	't_charity':        "प्रेस्टोचे घडयाळ हा एक धर्मदाय प्रकल्प आहे. जर तुम्हाला आमचा हा प्रयत्न आवडला असेल तर कृपया दान करा. <a href=\"http://prestonhunt.com/story/110\">देणगी व प्रकल्पा विषयी अधिक माहिती येथे वाचा.</a>.",
+	't_fontfamily1':     'अक्षरशैली:',
+	't_fontfamily2':     'अक्षरशैली:',
+	't_fontfamily3':     'अक्षरशैली:',
+	't_fontsize1':       'अक्षरांचा आकार:',
+	't_fontsize2':       'अक्षरांचा आकार:',
+	't_fontsize3':       'अक्षरांचा आकार:',
+	't_fontcolor1':      'अक्षरांचा रंग:',
+	't_fontcolor2':      'अक्षरांचा रंग:',
+	't_fontcolor3':      'अक्षरांचा रंग:',
+//	't_background':  		'पार्श्वचित्र',
+	't_date2': 				 	 'दिनांक',
+	't_time2': 				 	 'वेळ',
+	't_label2': 			 	 'मजकूर',
+	't_swap_labels':     'दिनांक व तळमजकूर यांच्या जागांची अदलाबदल करा',
+  't_tab1':            'साधारण', 
+  't_tab2':            'स्वरुप',
+  't_tab3':            'विषयी',
+  't_tab4':            'पार्श्वभूमी',
+  't_copyright':       'प्रताधिकार २००९ प्रेस्टो हंट. सर्व हक्क स्वाधीन.',
+  't_update':          "प्रेस्टोच्या घडयाळाची नवीन आवृत्ती आता उपलब्ध आहे. <a href=\"http://gallery.live.com/liveItemDetail.aspx?li=348e5816-f95b-493e-a6df-a03980e34e51\">येथुन अद्ययावत करा.</a>",
+  // Replace English with the name of your language in your language
+  't_languagename':    'मराठी',
+
+  't_backup_settings': "सेटिंग्जचा बॅकअप ",
+  't_backup':          "सेटिंग्जचा बॅकअप क्लिपबोर्डवर ठेवा",
+  't_restore':         "सेटिंग्जचा बॅकअप क्लिपबोर्डवरुन आयात करा"
+},
+
 'zh': {
   // Do not change the order of the days or months!
   'daysLong':    ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"],
