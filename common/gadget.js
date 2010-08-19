@@ -4,6 +4,7 @@
  */
 
 var isDirty = true;
+var DEBUG = true;
 
 // Global stored settings
 var G = {
@@ -37,7 +38,7 @@ var gLabel = null;
 
 function alert( mesg ) {
   /*jsl:ignore*/
-  return; // uncomment this line for release app
+  if ( ! DEBUG ) return;
   System.Debug.outputString( mesg );
   /*jsl:end*/
   // See: http://keithelder.net/blog/archive/2008/01/31/Debugging-Vista-Sidebar-Gadgets-in-Visual-Studio-2008.aspx
@@ -75,6 +76,7 @@ function set_defaults() {
 }
 
 function startup() {
+  alert( "Entering startup()" );
   System.Gadget.settingsUI = "settings.html";
   System.Gadget.onSettingsClosed = after_settings_closed;
   System.Gadget.visibilityChanged = checkVisibility;
@@ -188,12 +190,18 @@ function getOffsetInMinutes( tzName, utcEpoch ) {
 }
 
 function displayGadget() {
+  alert( "Entering displayGadget()" );
   var now = new Date();
   var gmtOffset = now.getTimezoneOffset();
 
   gLabel.opacity = G.tzLabel ? 100 : 0; // this has to be done BEFORE changing the text!
   gLabel.value = G.tzLabel;
   gLabel.width = gLabel.height = 0; // force recalculation of width
+
+  if ( DEBUG ) {
+    gLabel.opacity = 100;
+    gLabel.value += " (DEBUG)";
+  }
 
   if ( G.tzName.length > 0 ) {
     try {

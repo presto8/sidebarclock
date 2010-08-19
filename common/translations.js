@@ -1142,6 +1142,74 @@ pt: {
   't_update':          "Presto's Clock 版本更新. <a href=\"http://gallery.live.com/liveItemDetail.aspx?li=348e5816-f95b-493e-a6df-a03980e34e51\">立即更新!</a>",
   // Replace English with the name of your language in your language
   't_languagename':    '简体中文'
+},
+
+// Norwegian translation by Tom Ryan Svart <sydox86@gmail.com>
+'no': {
+  // Do not change the order of the days or months!
+	'daysLong':    ["Søndag", "Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag", "Lørdag"],
+	'daysShort':   ["Søn", "Man", "Tir", "Ons", "Tor", "Fre", "Lør"],
+	'monthsLong':  ["Januar", "Februar", "Mars", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Desember"],
+	'monthsShort': ["Jan", "Feb", "Mar", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Des"],
+ 	'am':          'am',
+ 	'pm':          'pm',
+
+  // Update these with the correct format for your country
+	'defaultDateFormat': "D n/j",
+	'defaultTimeFormat': "H:i",
+
+	't_dateformat':     'Dato format:',
+	't_timeformat':     'Tids format:',
+	't_timezone':       'Tids sone:',
+	't_localtime':      'Lokal tid',
+	't_bottomlabel':    'Under etikett:',
+	't_optional':       '(alternativt)',
+	't_examples':       'Eksempler:',
+	't_date':           'Dato:',
+	't_time':           'Tid:',
+	't_label':          'Etikett:',
+	't_dateexamples':   'D M d = Lør Apr 07<br>n/j l = 4/7 Lørdag',
+	't_timeexamples':   'g:i a = 5:44 pm<br>H:i = 17:44',
+	't_labelexamples':  'Portland, Tokyo, GMT+2',
+	't_formathelp':     '<a href="http://us.php.net/manual/en/function.date.php">Format help</a>',
+	't_formathelplong': '<a href="http://us.php.net/manual/en/function.date.php">Format help</a> (unsupported: T, e, o, u)',
+
+  // Don't modify xxVER or xxDATE
+	't_version':        'Versjon xxVER (xxDATE)',
+	't_about':          'Om dette miniprogrammet',
+
+  // If you want credit for translation, translate "Languagename translation by your name"
+	't_translateby':    'Norsk oversettelse av Tom Ryan Svart',
+	't_language':       'Språk:',
+	't_charity':        "Presto's Clock er <a href=\"http://charityware.info/wiki/what-is-a-charityware\">Charityware</a>. Hvis du liker det, gi gjerne en liten sum til de mer trengende i verden. Pengene går til UNICEF. <a href=\"http://prestonhunt.com/story/110\">Les mer!</a>.",
+	't_fontfamily1':    'Skrift:',
+	't_fontfamily2':    'Skrift:',
+	't_fontfamily3':    'Skrift:',
+	't_fontsize1':      'Skrift størresle:',
+	't_fontsize2':      'Skrift størresle:',
+	't_fontsize3':      'Skrift størresle:',
+	't_fontcolor1':     'Skrift farge:',
+	't_fontcolor2':     'Skrift farge:',
+	't_fontcolor3':     'Skrift farge:',
+  //	't_background':     'Bakgrunnsbilde',
+	't_date2': 	    'Dato',
+	't_time2':	    'Tid',
+	't_label2':	    'Etikett',
+	't_swap_labels':    'Bytt om dato og under etikett',
+	't_tab1':           'Generell', 
+	't_tab2':           'Utseende',
+	't_tab3':           'Om',
+	't_tab4':           'Bakgrund',
+	't_copyright':      'Copyright 2009 Preston Hunt',
+	't_update':         "En nyere versjon av Presto's Clock er tilgjengelig. <a href=\"http://gallery.live.com/liveItemDetail.aspx?li=348e5816-f95b-493e-a6df-a03980e34e51\">Oppdater nå!</a>",
+
+  // Replace English with the name of your language in your language
+
+	't_languagename':   'Norsk',
+
+	't_backup_settings': "Sikkerhetskopier instillinger",
+	't_backup':          "Eksporter instillinger til utklippstavle",
+	't_restore':         "Importer instillinger fra utklippstavle"
 }
 
 };
