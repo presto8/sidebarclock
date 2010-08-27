@@ -1171,8 +1171,8 @@ pt: {
 	't_dateexamples':   'D M d = Lør Apr 07<br>n/j l = 4/7 Lørdag',
 	't_timeexamples':   'g:i a = 5:44 pm<br>H:i = 17:44',
 	't_labelexamples':  'Portland, Tokyo, GMT+2',
-	't_formathelp':     '<a href="http://us.php.net/manual/en/function.date.php">Format help</a>',
-	't_formathelplong': '<a href="http://us.php.net/manual/en/function.date.php">Format help</a> (unsupported: T, e, o, u)',
+	't_formathelp':     '<a href="http://us.php.net/manual/en/function.date.php">Format hjelp</a>',
+	't_formathelplong': '<a href="http://us.php.net/manual/en/function.date.php">Format hjelp</a> (ustøttet: T, e, o, u)',
 
   // Don't modify xxVER or xxDATE
 	't_version':        'Versjon xxVER (xxDATE)',
