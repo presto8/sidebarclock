@@ -4219,7 +4219,7 @@ pt: {
 	't_version':        'आवृत्ती xxVER (xxDATE)',
 	't_about':          'या उपकरणा विषयी',
   // If you want credit for translation, translate "Languagename translation by your name"
-	't_translateby':    'संतोष साळुंके',
+	't_translateby':    'मराठी भाषांतर संतोष साळुंके यांनी केले',
 	't_language':       'भाषा:',
 	't_charity':        "प्रेस्टोचे घडयाळ हा एक धर्मदाय प्रकल्प आहे. जर तुम्हाला आमचा हा प्रयत्न आवडला असेल तर कृपया दान करा. <a href=\"http://prestonhunt.com/story/110\">देणगी व प्रकल्पा विषयी अधिक माहिती येथे वाचा.</a>.",
 	't_fontfamily1':     'अक्षरशैली:',
@@ -4238,7 +4238,7 @@ pt: {
 	't_swap_labels':     'दिनांक व तळमजकूर यांच्या जागांची अदलाबदल करा',
   't_tab1':            'साधारण', 
   't_tab2':            'स्वरुप',
-  't_tab3':            'विषयी',
+  't_tab3':            'विषयक',
   't_tab4':            'पार्श्वभूमी',
   't_copyright':       'प्रताधिकार २००९ प्रेस्टो हंट. सर्व हक्क स्वाधीन.',
   't_update':          "प्रेस्टोच्या घडयाळाची नवीन आवृत्ती आता उपलब्ध आहे. <a href=\"http://gallery.live.com/liveItemDetail.aspx?li=348e5816-f95b-493e-a6df-a03980e34e51\">येथुन अद्ययावत करा.</a>",
