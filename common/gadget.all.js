@@ -4382,7 +4382,7 @@ pt: {
  */
 
 var isDirty = true;
-var DEBUG = true;
+var DEBUG = false;
 
 // Global stored settings
 var G = {
