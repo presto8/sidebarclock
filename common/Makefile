@@ -15,3 +15,6 @@ gadget.all.min.js: gadget.all.js
 	#perl -Ipacker packer/jsPacker.pl -i $< -o $@ -e95 -s
 
 debug: gadget.all.js
+
+clean:
+	rm gadget.all.js gadget.all.min.js
