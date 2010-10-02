@@ -4432,11 +4432,11 @@ function setLocale() {
 }
 
 function readSettings() {
-  settings_registry_to_G();
+  settingsRegistryToG();
   setLocale();
 }
 
-function set_defaults() {
+function setDefaults() {
   var lang = getSystemLanguage();
   setLocale(lang);
   
@@ -4456,13 +4456,13 @@ function set_defaults() {
 function startup() {
   alert( "Entering startup()" );
   System.Gadget.settingsUI = "settings.html";
-  System.Gadget.onSettingsClosed = after_settings_closed;
+  System.Gadget.onSettingsClosed = afterSettingsClosed;
   System.Gadget.visibilityChanged = checkVisibility;
 
   readSettings();
 
 	if ( ! G.mainTimeFormat ) {
-		set_defaults();
+		setDefaults();
 		readSettings();
 	}
 
@@ -4476,7 +4476,7 @@ function startup() {
   updateGadget();
 }
 
-function after_settings_closed() {
+function afterSettingsClosed() {
   readSettings();
   updateFonts();
 
@@ -4514,7 +4514,7 @@ function changeColor( lat, lon, gmt ) {
   gLabel.value = sunrise + " " + sunset;
 }
 
-function get_milliseconds_to_wait() {
+function getMillisecondsToWait() {
   /* To reduce power usage, we determine polling frequency based on the
    * time format string.  If seconds are included, then we update every
    * second.  But if no seconds are included, then we only update every
@@ -4544,7 +4544,7 @@ function updateGadget() {
   } else {
     displayGadget();
     isDirty = false;
-    window.setTimeout( updateGadget, get_milliseconds_to_wait() );
+    window.setTimeout( updateGadget, getMillisecondsToWait() );
   }
 }
 
@@ -4715,7 +4715,7 @@ function getProperTimeHeight() {
   return height;
 }
 
-function get_form_value( variablename ) {
+function getFormValue( variablename ) {
   var varEl = document.getElementById( variablename );
   if ( varEl === null ) return "form-element-not-found";
 
@@ -4728,7 +4728,7 @@ function get_form_value( variablename ) {
   return varVal;
 }
 
-function set_form_value( varname, varVal ) {
+function setFormValue( varname, varVal ) {
   var varEl = document.getElementById( varname );
   if ( varEl === null ) return;
 
@@ -4761,34 +4761,34 @@ function getSystemLanguage() {
   return lang;
 }
 
-function G_to_form() {
+function GToForm() {
   for ( var key in G ) {
-    set_form_value( key, G[key] );
+    setFormValue( key, G[key] );
   }
 }
 
-function form_to_G() {
+function formToG() {
   for ( var key in G ) {
-    var val = get_form_value( key );
+    var val = getFormValue( key );
     if ( val !== 'form-element-not-found' ) {
       G[key] = val;
     }
   }
 }
 
-function G_to_settings_registry() {
+function GToSettingsRegistry() {
   for ( var key in G ) {
     System.Gadget.Settings.write( key, G[key] );
   }
 }
 
-function settings_registry_to_G() {
+function settingsRegistryToG() {
   for ( var key in G ) {
     G[key] = readSetting( key );
   }
 }
 
-function create_settings_html_elements() {
+function createSettingsHtmlElements() {
   var elements = [ 'gDate', 'gTime', 'gLabel' ];
   for ( var el in elements ) {
     var base = elements[el];
@@ -4798,16 +4798,16 @@ function create_settings_html_elements() {
   }
 }
 
-function init_settings() {
+function initSettings() {
   System.Gadget.onSettingsClosing = settingsClosing;
 
-  create_settings_html_elements();
+  createSettingsHtmlElements();
 
-  settings_registry_to_G();
-  G_to_form();
+  settingsRegistryToG();
+  GToForm();
 
   setLocale();
-  display_settings();
+  displaySettings();
 }
 
 function localizeText() {
@@ -4818,16 +4818,16 @@ function localizeText() {
 	}
 }
 
-function change_locale( newlocale ) {
+function changeLocale( newlocale ) {
   G.locale = newlocale;
   setLocale();
   document.getElementById("mainDateFormat").value = L.defaultDateFormat;
   document.getElementById("mainTimeFormat").value = L.defaultTimeFormat;
 
-  display_settings();
+  displaySettings();
 }
 
-function display_settings() {
+function displaySettings() {
   setTzOptions();
   localizeText();
   showIfUpdateAvailable();
@@ -4836,8 +4836,8 @@ function display_settings() {
 
 function settingsClosing(event) {
   if ( event.closeAction == event.Action.commit ) {
-    form_to_G();
-    G_to_settings_registry();
+    formToG();
+    GToSettingsRegistry();
   }
 
   event.cancel = false;
@@ -4892,10 +4892,17 @@ function createSelectOptions( values ) {
   return out;
 }
 
+/*
+TODO: I don't think this function is used any more
+TODO: Remove it after 2011-01-01 if it hasn't caused any problems
 function getFontColor() {
   var decimalColor = dlgHelper.ChooseColorDlg();
 
   document.getElementById('fontColor').style.backgroundColor = decimalColor;
+}
+*/
+
+function switchBackground( filename ) {
 }
 
 function createFontColorSelect( id ) {
@@ -5006,35 +5013,35 @@ function showIfUpdateAvailable() {
 function saveIniFile() {
   var json_settings = document.getElementById( "json_settings" );
 
-  copy_settings_to_clipboard();
+  copySettingsToClipboard();
   json_settings.value = "Settings copied to clipboard";
 }
 
-function set_backup_status( mesg ) {
+function setBackupStatus( mesg ) {
   var el = document.getElementById( "t_backup_status" );
   el.innerText = mesg;
 }
 
 function loadIniFile() {
-  var new_G = paste_settings_from_clipboard();
+  var new_G = pasteSettingsFromClipboard();
   if ( ! new_G ) {
-    set_backup_status( "Clipboard does not contain valid settings." );
+    setBackupStatus( "Clipboard does not contain valid settings." );
     return;
   }
 
   G = new_G;
-  G_to_form();
-  set_backup_status( "Settings loaded from clipboard!" );
+  GToForm();
+  setBackupStatus( "Settings loaded from clipboard!" );
 }
 
-function copy_settings_to_clipboard() {
+function copySettingsToClipboard() {
   G.settingsVersion = 2;
-  form_to_G();
+  formToG();
   window.clipboardData.setData( "Text", JSON.stringify( G ) );
-  set_backup_status( "Settings copied to clipboard!" );
+  setBackupStatus( "Settings copied to clipboard!" );
 }
 
-function paste_settings_from_clipboard() {
+function pasteSettingsFromClipboard() {
   try {
     var clip = window.clipboardData.getData( "Text" );
     var new_G = JSON.parse( clip );
