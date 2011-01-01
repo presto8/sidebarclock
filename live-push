@@ -33,8 +33,11 @@ cd $TMPDIR
 
 # =====
 echo Setting version and date in files
-for file in gadget.xml gadget.html settings.html common/gadget.all.min.js; do
-  perl -pi -e "s/xxVER/$VERSION/g; s/xxDATE/$DATE/g; s/gadget.all.js/gadget.all.min.js/g;" $file
+#for file in gadget.xml gadget.html settings.html common/gadget.all.min.js; do
+#  perl -pi -e "s/xxVER/$VERSION/g; s/xxDATE/$DATE/g; s/gadget.all.js/gadget.all.min.js/g;" $file
+#done
+for file in gadget.xml gadget.html settings.html; do
+ perl -pi -e "s/xxVER/$VERSION/g; s/xxDATE/$DATE/g;" $file
 done
 
 # =====

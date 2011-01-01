@@ -283,7 +283,8 @@ formatDate = function (input,time,offsetmins) {
             // it belongs to the old year.
             if (DoY <= 2 && DoW >= 5) {
                 //return new Date (this.Y () - 1, 11, 31).formatDate ("W");
-								return formatDate( 'W', new Date (this.Y () - 1, 11, 31) );
+                //rewriting since we aren't extending the Date prototype
+                return this( 'W', new Date (this.Y() - 1, 11, 31), offsetmins );
             }
             
             var nyDoW = new Date (this.Y (), 0, 1).getDay ();
