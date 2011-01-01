@@ -3,7 +3,7 @@ gadget.html
 settings.html
 gadget.css
 README
-common/gadget.all.min.js
+common/gadget.all.js
 images/background-black.png
 images/prestoclear-128.png
 images/prestosidebarclock_icon.png
