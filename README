@@ -5,7 +5,7 @@ RELEASE HISTORY
 
 1.42 2011-01-01 Made time and date format boxes on the settings page
 wider (thanks Paul Van Cotthem).  Fixed bug with "W" flag (thanks Arun
-Das).
+Das). Stopped minimizing Javascript source code.
 
 1.41 2010-08-26 Added Marathi language support (thanks Santosh Salunke!)
 and Norwegian language support (thanks Tom Ryan Svart!).
@@ -99,19 +99,32 @@ this bug report!).  Added Polish support (thanks Marcin Michalak!)
 font size algorith.  Can now specify an empty date line for an even
 larger clock. 
 
-1.16 2008-02-28: Fixed Sydney and Nocosia (thanks John Bishop!).  Moved away from Fleegix to home-grown timezone library.
+1.16 2008-02-28: Fixed Sydney and Nocosia (thanks John Bishop!).  Moved
+away from Fleegix to home-grown timezone library.
 
-1.15 2008-02-25: Corrected accidental overwrite of settings with defaults on system restart (thanks Mike Ogden)
+1.15 2008-02-25: Corrected accidental overwrite of settings with
+defaults on system restart (thanks Mike Ogden)
 
-1.14  2008-02-22: Removed timezone entries without timezone data.  Fixed problem with multiple clocks not updating (was probably caused by selecting a city with a missing timezone entry (thanks Rob Ryan and HongSheng Zhang).
+1.14  2008-02-22: Removed timezone entries without timezone data.  Fixed
+problem with multiple clocks not updating (was probably caused by
+selecting a city with a missing timezone entry (thanks Rob Ryan and
+HongSheng Zhang).
 
-1.13  2008-02-10: Updated to latest version of Fleegix date libary (current version as of 2008-02-10 - thanks Matthew Eernisse).  Added minor bug fix for incorrect handling of dates such as Asia/Jerusalem and the new US daylight saving rules (thanks Jeffry Ma, Mike Ogden, and Shlomi Bernthal).
+1.13  2008-02-10: Updated to latest version of Fleegix date libary
+(current version as of 2008-02-10 - thanks Matthew Eernisse).  Added
+minor bug fix for incorrect handling of dates such as Asia/Jerusalem and
+the new US daylight saving rules (thanks Jeffry Ma, Mike Ogden, and
+Shlomi Bernthal).
 
 1.12  2008-02-02: Added Spanish (thanks Lucia and Tom!).
 
 1.11  2007-12-26: Added French (thanks Erik Vandevoorde!).
 
-1.10  2007-09-01: Major overhaul and extension for timezone support (thanks to Matthew Eernisse for his Javascript XDate timezone library (please see http://tinyurl.com/2eqk4c) and to the administrators of the zoneinfo database).  Added Italian language support (thanks Mirko Mazzacano!).  
+1.10  2007-09-01: Major overhaul and extension for timezone support
+(thanks to Matthew Eernisse for his Javascript XDate timezone library
+(please see http://tinyurl.com/2eqk4c) and to the administrators of the
+zoneinfo database).  Added Italian language support (thanks Mirko
+Mazzacano!).  
 
 1.05  2007-08-27: Offset for other timezone is now relative to UTC (GMT)
 
