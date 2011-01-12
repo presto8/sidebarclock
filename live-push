@@ -1,8 +1,8 @@
 # 
 # Replace xxVER and xxDATE
 #
-VERSION=1.42
-DATE=2011-01-01
+VERSION=1.43
+DATE=2011-01-12
 TMPDIR=/tmp/prestosidebarclock-$DATE-$VERSION-$$
 TAG=live_push_$DATE
 
@@ -36,7 +36,7 @@ echo Setting version and date in files
 #for file in gadget.xml gadget.html settings.html common/gadget.all.min.js; do
 #  perl -pi -e "s/xxVER/$VERSION/g; s/xxDATE/$DATE/g; s/gadget.all.js/gadget.all.min.js/g;" $file
 #done
-for file in gadget.xml gadget.html settings.html; do
+for file in gadget.xml gadget.html settings.html common/gadget.all.js; do
  perl -pi -e "s/xxVER/$VERSION/g; s/xxDATE/$DATE/g;" $file
 done
 

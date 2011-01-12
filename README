@@ -3,6 +3,9 @@ For more information about this gadget:
 
 RELEASE HISTORY
 
+1.43 2011-01-12 Fixed problem with version number and date not showing
+up correctly.
+
 1.42 2011-01-01 Made time and date format boxes on the settings page
 wider (thanks Paul Van Cotthem).  Fixed bug with "W" flag (thanks Arun
 Das). Stopped minimizing Javascript source code.
