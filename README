@@ -3,6 +3,10 @@ For more information about this gadget:
 
 RELEASE HISTORY
 
+1.44 2011-01-20 Added dimming feature to dim clock face by 70 percent at
+night time based on the latitude and longitude of the city selected for
+the time zone.
+
 1.43 2011-01-12 Fixed problem with version number and date not showing
 up correctly.
 
