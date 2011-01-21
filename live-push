@@ -1,8 +1,8 @@
 # 
 # Replace xxVER and xxDATE
 #
-VERSION=1.43
-DATE=2011-01-12
+VERSION=1.44
+DATE=2011-01-13
 TMPDIR=/tmp/prestosidebarclock-$DATE-$VERSION-$$
 TAG=live_push_$DATE
 
@@ -26,8 +26,7 @@ grep \.css MANIFEST | xargs -L1 csslint
 fi
 
 # =====
-echo Cloning repository to temp directory
-#hg clone . $TMPDIR
+echo Copying source directory to temp directory
 cp -a . $TMPDIR
 cd $TMPDIR
 

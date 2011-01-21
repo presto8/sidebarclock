@@ -818,2350 +818,161 @@ var tzdata = {
 "Pacific/Wallis":{1271390400:-720},
 "UTC":{1271390400:0}
 };
-/* 
- * This code from
- * http://www.srrb.noaa.gov/highlights/sunrise/calcdetails.html
- *
- */
-
-//***********************************************************************/
-//*	DATA STRUCTURES									*/
-//***********************************************************************/
-
-	function month(name, numdays, abbr) 
-	{
-		this.name = name;
-		this.numdays = numdays;
-		this.abbr = abbr;
-	}
-
-//*********************************************************************/
-
-	function ans(daySave,value)
-	{
-		this.daySave = daySave;
-		this.value = value;
-	}
-
-//*********************************************************************/
-
-	function city(name, lat, lng, zoneHr) 
-	{
-		this.name = name;
-		this.lat = lat;
-		this.lng = lng;
-		this.zoneHr = zoneHr;
-	}
-
-
-//***********************************************************************/
-//*	Data for Selectbox Controls							*/
-//***********************************************************************/
-
-	var monthList = new Array();	//	list of months and days for non-leap year
-	var i = 0;
-	monthList[i++] = new month("January", 31, "Jan");
-	monthList[i++] = new month("February", 28, "Feb");
-	monthList[i++] = new month("March", 31, "Mar");
-	monthList[i++] = new month("April", 30, "Apr");
-	monthList[i++] = new month("May", 31, "May");
-	monthList[i++] = new month("June", 30, "Jun");
-	monthList[i++] = new month("July", 31, "Jul");
-	monthList[i++] = new month("August", 31, "Aug");
-	monthList[i++] = new month("September", 30, "Sep");
-	monthList[i++] = new month("October", 31, "Oct");
-	monthList[i++] = new month("November", 30, "Nov");
-	monthList[i++] = new month("December", 31, "Dec");
-
-//*********************************************************************/
-
-	var YesNo = new Array();	//Daylight Saving array	
-	i=0;
-	YesNo[i++] = new ans("No",0);
-	YesNo[i++] = new ans("Yes",60);
-
-//*********************************************************************/
-
-	var City = new Array();
-
-	j = 0;
-	City[j++] = new city("Enter Lat/Long -->",0,0,0);
-	City[j++] = new city("",0,0,0);
-	City[j++] = new city("US CITIES",0,0,0);
-	City[j++] = new city("Albuquerque, NM", 35.0833,106.65,7);
-	City[j++] = new city("Anchorage, AK", 61.217, 149.90,9);
-	City[j++] = new city("Atlanta, GA", 33.733, 84.383, 5);
-	City[j++] = new city("Austin, TX", 30.283, 97.733, 6);
-	City[j++] = new city("Birmingham, AL", 33.521, 86.8025, 6);
-	City[j++] = new city("Bismarck, ND", 46.817, 100.783, 6);
-	City[j++] = new city("Boston, MA", 42.35, 71.05, 5);
-	City[j++] = new city("Boulder, CO", 40.125, 105.237, 7);
-	City[j++] = new city("Chicago, IL", 41.85,87.65,6);
-	City[j++] = new city("Dallas, TX", 32.46, 96.47,6);
-	City[j++] = new city("Denver, CO", 39.733, 104.983, 7);
-	City[j++] = new city("Detroit, MI", 42.333, 83.05, 5);
-	City[j++] = new city("Honolulu, HI", 21.30, 157.85, 10);
-	City[j++] = new city("Houston, TX", 29.75, 95.35, 6);
-	City[j++] = new city("Indianapolis, IN", 39.767, 86.15, 5);
-	City[j++] = new city("Jackson, MS", 32.283, 90.183, 6);
-	City[j++] = new city("Kansas City, MO", 39.083, 94.567,6);
-	City[j++] = new city("Los Angeles, CA",34.05,118.233,8);
-	City[j++] = new city("Menomonee Falls, WI",43.11,88.10,6);
-	City[j++] = new city("Miami, FL", 25.767, 80.183,5);
-	City[j++] = new city("Minneapolis, MN", 44.967, 93.25, 6);
-	City[j++] = new city("New Orleans, LA", 29.95, 90.067, 6);
-	City[j++] = new city("New York City, NY", 40.7167, 74.0167, 5);
-	City[j++] = new city("Oklahoma City, OK", 35.483, 97.533,6);
-	City[j++] = new city("Philadelphia, PA", 39.95, 75.15, 5);
-	City[j++] = new city("Phoenix, AZ",33.433,112.067,7);
-	City[j++] = new city("Pittsburgh, PA",40.433,79.9833,5);
-	City[j++] = new city("Portland, ME", 43.666, 70.283, 5);
-	City[j++] = new city("Portland, OR", 45.517, 122.65, 8);
-	City[j++] = new city("Raleigh, NC", 35.783, 78.65, 5);
-	City[j++] = new city("Richmond, VA", 37.5667, 77.450, 5);
-	City[j++] = new city("Saint Louis, MO", 38.6167,90.1833,6);
-	City[j++] = new city("San Diego, CA", 32.7667, 117.2167, 8);
-	City[j++] = new city("San Francisco, CA",37.7667,122.4167,8);
-	City[j++] = new city("Seattle, WA",47.60,122.3167,8);
-	City[j++] = new city("Washington DC", 38.8833, 77.0333,5);
-	City[j++] = new city("",0,0,0);
-	City[j++] = new city("WORLD CITIES",0,0,0);
-	City[j++] = new city("Beijing, China",39.9167, -116.4167,-8);
-	City[j++] = new city("Berlin, Germany",52.33, -13.30, -1);
-	City[j++] = new city("Bombay, India", 18.9333, -72.8333, -5.5);
-	City[j++] = new city("Buenos Aires, Argentina", -34.60,58.45,3);
-	City[j++] = new city("Cairo, Egypt", 30.10,-31.3667,-2);
-	City[j++] = new city("Cape Town, South Africa",-33.9167,-18.3667,-2);
-	City[j++] = new city("Caracas, Venezuela", 10.50,66.9333,4);
-	City[j++] = new city("Helsinki, Finland", 60.1667, -24.9667,-2);
-	City[j++] = new city("Hong Kong, China", 22.25,-114.1667, -8);
-	City[j++] = new city("Jerusalem, Israel", 31.7833, -35.2333, -2);
-	City[j++] = new city("London, England", 51.50, 0.1667,0);
-	City[j++] = new city("Mexico City, Mexico", 19.4,99.15,6);
-	City[j++] = new city("Moscow, Russia", 55.75, -37.5833, -3);
-	City[j++] = new city("New Delhi, India",28.6, -77.2, -5.5);
-	City[j++] = new city("Ottawa, Canada", 45.41667,75.7,5);
-	City[j++] = new city("Paris, France", 48.8667, -2.667, -1);
-	City[j++] = new city("Rio de Janeiro, Brazil",-22.90,43.2333,3);
-	City[j++] = new city("Riyadh, Saudi Arabia", 24.633, -46.71667, -3);
-	City[j++] = new city("Rome, Italy",41.90, -12.4833,-1);
-	City[j++] = new city("Sydney, Australia",-33.8667,-151.2167,-10);
-	City[j++] = new city("Tokyo, Japan", 35.70, -139.7667, -9); 
-	City[j++] = new city("Zurich, Switzerland", 47.3833, -8.5333,-1);
-	City[j++] = new city("",0,0,0);
-	City[j++] = new city("SURFRAD NETWORK",0,0,0);
-	City[j++] = new city("Goodwin Creek, MS",34.2544444,89.8738888, 6);
-	City[j++] = new city("Fort Peck, MT",48.310555,105.1025, 7);
-	City[j++] = new city("Bondville, IL",40.055277,88.371944, 6);
-	City[j++] = new city("Table Mountain, CO",40.125,105.23694, 7);
-	City[j++] = new city("Desert Rock, NV",36.626, 116.018, 8);
-	City[j++] = new city("Penn State, PA", 40.72, 77.93, 5);
-	City[j++] = new city("Canaan Valley, WV", 39.1, 79.4, 5);
-	City[j++] = new city("Sioux Falls, SD", 43.733, 96.6233, 6);
-	City[j++] = new city("",0,0,0);
-	City[j++] = new city("ARM/CART NETWORK",0,0,0);
-	City[j++] = new city("Atqasuk, AK", 70.47215, 157.4078, 9);
-	City[j++] = new city("Barrow, AK", 71.30,156.683, 9);
-	City[j++] = new city("Manus Island, PNG", -2.06, -147.425,-10);
-	City[j++] = new city("Nauru Island", -0.52, -166.92, -12);
-	City[j++] = new city("Darwin, Australia", -12.425, -130.891, -9.5);
-	City[j++] = new city("SGP Central Facility", 36.6167, 97.5, 6);
-	City[j++] = new city("",0,0,0);
-	City[j++] = new city("ISIS NETWORK",0,0,0);
-	City[j++] = new city("Albuquerque, NM", 35.04, 106.62,7);
-	City[j++] = new city("Bismarck, ND", 46.77, 100.77,6);
-	City[j++] = new city("Hanford, CA", 36.31, 119.63,8);
-	City[j++] = new city("Madison, WI", 43.13, 89.33,6);	
-	City[j++] = new city("Oak Ridge, TN", 35.96, 84.37,5);
-	City[j++] = new city("Salt Lake City, UT", 40.77,111.97,7);
-	City[j++] = new city("Seattle, WA", 47.68, 122.25,8);
-	City[j++] = new city("Sterling, VA", 38.98, 77.47,5);
-	City[j++] = new city("Tallahassee, FL", 30.38, 84.37,5);
-
-//*********************************************************************/
-
-	function setLatLong(f, index)
-	{
-		// Decimal degrees are passed in the array.  Temporarily store these 
-		// degs in lat and lon deg and have convLatLong modify them.
-
-		f["latDeg"].value = City[index].lat;
-		f["lonDeg"].value = City[index].lng;
-	
-		// These are needed to prevent iterative adding of min and sec when 
-		// set button is clicked.
-
-		f["latMin"].value = 0;
-		f["latSec"].value = 0;
-		f["lonMin"].value = 0;
-		f["lonSec"].value = 0;
-		
-		//call convLatLong to convert decimal degrees into table form.
-
-		convLatLong(f);
-
-		//Local time zone value set in table
-
-		f["hrsToGMT"].value =  City[index].zoneHr;
-	}
-
-
-//*********************************************************************/
-
-// isLeapYear returns 1 if the 4-digit yr is a leap year, 0 if it is not
-
-	function isLeapYear(yr) 
-	{
-		return ((yr % 4 == 0 && yr % 100 != 0) || yr % 400 == 0);
-	}
-
-
-//*********************************************************************/
-
-// isPosInteger returns false if the value is not a positive integer, true is
-// returned otherwise.  The code is from taken from Danny Goodman's Javascript
-// Handbook, p. 372.
-
-	function isPosInteger(inputVal) 
-	{
-		inputStr = ("" + inputVal);
-		for (var i = 0; i < inputStr.length; i++) {
-			var oneChar = inputStr.charAt(i);
-			if (oneChar < "0" || oneChar > "9")
-				return false;
-		}
-		return true;
-	}
-
-//*********************************************************************/
-
-	function isInteger(inputVal) 
-	{
-		inputStr = "" + inputVal;
-		if(inputStr == "NaN") return false;
-		if(inputStr == "-NaN") return false;
-		for (var i = 0; i < inputStr.length; i++) 
-		{
-			var oneChar = inputStr.charAt(i);
-			if (i == 0 && (oneChar == "-" || oneChar == "+"))
-			{
-				continue;
-			}
-			if (oneChar < "0" || oneChar > "9")
-			{
-				return false;
-			}
-		}
-		return true;
-	}
-
-
-//*********************************************************************/
-
-	function isNumber(inputVal) 
-	{
-		var oneDecimal = false;
-		var inputStr = "" + inputVal;
-		for (var i = 0; i < inputStr.length; i++) 
-		{
-			var oneChar = inputStr.charAt(i);
-			if (i == 0 && (oneChar == "-" || oneChar == "+"))
-			{
-				continue;
-			}
-			if (oneChar == "." && !oneDecimal) 
-			{
-				oneDecimal = true;
-				continue;
-			}
-			if (oneChar < "0" || oneChar > "9")
-			{
-				return false;
-			}
-		}
-		return true;
-	}
-
-
-//*********************************************************************/
-
-// isValidInput makes sure valid input is entered before going ahead to 
-// calculate the sunrise and sunset.  False is returned if an invalid entry 
-// was made, true is the entry is valid.
-
-	function isValidInput(f, index, latLongForm) 
-	{
-		if (f["day"].value == "") 
-		{	//	see if the day field is empty
-			alert("You must enter a day before attempting the calculation.");
-			return false;
-		}
-		else if (f["year"].value == "") 
-		{	//	 see if the year field is empty
-			alert("You must enter a year before attempting the calculation.");
-			return false;
-		}
-		else if (!isPosInteger(f["day"].value) || f["day"].value == 0)
-		{
-			alert("The day must be a positive integer.");
-			return false;
-		}
-		else if (!isInteger(f["year"].value)) 
-		{
-			alert("The year must be an integer.");
-			return false;
-		}
-		else if ( (f["year"].value < -1000) || (f["year"].value > 3000) )
-		{
-			alert("The algorithm used is not valid for years outside of/nthe range -1000 to 3000.");
-			return false;
-		}
-
-
-		//	For the non-February months see if the day entered is greater than
-		//	the number of days in the selected month
-
-		else if ((index != 1) && (f["day"].value > monthList[index].numdays)) 
-		{
-			alert("There are only " + monthList[index].numdays + " days in " 
-				+ monthList[index].name + ".");
-			return false;
-		}
-
-		//	First see if the year entered is a leap year.  If so we have to make sure
-		//	the days entered is <= 29.  If not a leap year we make sure that the days
-		//	entered is <= 28.
-
-		else if (index == 1) 
-		{	//	 month selected is February the screwball month
-			if (isLeapYear(f["year"].value)) {	//	year entered is a leap year
-				if (f["day"].value > (monthList[index].numdays + 1)) 
-				{
-					alert("There are only " + (monthList[index].numdays + 1) 
-						+ " days in " + monthList[index].name + ".");
-					return false;
-				}
-				else
-					return true;
-			}
-			else 
-			{	//	year entered is not a leap year
-				if (f["day"].value > monthList[index].numdays) 
-				{
-					alert("There are only " + monthList[index].numdays 
-						+ " days in " + monthList[index].name + ".");
-					return false;
-				}
-				else
-					return true;
-			}
-		}
-		else 
-			return true;	
-	}
-
-//*********************************************************************/
-
-//convLatLong converts any type of lat/long input
-//into  the table form and then handles bad input
-//it is nested in the calcSun function.
-
-	function convLatLong(f)
-	{
-		if(f["latDeg"].value == "")
-		{
-			f["latDeg"].value = 0;
-		}
-		if(f["latMin"].value == "")
-		{
-			f["latMin"].value = 0;
-		}
-		if(f["latSec"].value == "")
-		{
-			f["latSec"].value = 0;
-		}
-		if(f["lonDeg"].value == "")
-		{
-			f["lonDeg"].value = 0;
-		}
-		if(f["lonMin"].value == "")
-		{
-			f["lonMin"].value = 0;
-		}
-		if(f["lonSec"].value == "")
-		{
-			f["lonSec"].value = 0;
-		}
-
-		var neg = 0;
-		if(f["latDeg"].value.charAt(0) == '-') 
-		{
-			neg = 1;
-		}
-
-		if(neg != 1)
-		{
-			var latSeconds = (parseFloat(f["latDeg"].value))*3600 
-				+ parseFloat(f["latMin"].value)*60 
-				+ parseFloat(f["latSec"].value)*1;
-
-			f["latDeg"].value = Math.floor(latSeconds/3600);
-			f["latMin"].value = Math.floor((latSeconds
-				- (parseFloat(f["latDeg"].value)*3600))/60);
-			f["latSec"].value = Math.floor((latSeconds
-				- (parseFloat(f["latDeg"].value)*3600) 
-				- (parseFloat(f["latMin"].value)*60)) + 0.5);
-		}
-		else if(parseFloat(f["latDeg"].value) > -1)
-		{
-			var latSeconds = parseFloat(f["latDeg"].value)*3600 
-				- parseFloat(f["latMin"].value)*60 
-				- parseFloat(f["latSec"].value)*1;
-
-			f["latDeg"].value = "-0";
-			f["latMin"].value = Math.floor((-latSeconds)/60);
-			f["latSec"].value = Math.floor( (-latSeconds 
-				- (parseFloat(f["latMin"].value)*60)) + 0.5);
-
-		}
-		else
-		{
-			var latSeconds = parseFloat(f["latDeg"].value)*3600 
-				- parseFloat(f["latMin"].value)*60 
-				- parseFloat(f["latSec"].value)*1;
-
-			f["latDeg"].value = Math.ceil(latSeconds/3600);
-			f["latMin"].value = Math.floor((-latSeconds
-				+ (parseFloat(f["latDeg"].value)*3600))/60);
-			f["latSec"].value = Math.floor((-latSeconds
-				+ (parseFloat(f["latDeg"].value)*3600) 
-				- (parseFloat(f["latMin"].value)*60)) + 0.5);
-		}
-
-		neg = 0;
-		if(f["lonDeg"].value.charAt(0) == '-') 
-		{
-			neg = 1;
-		}
-
-		if(neg != 1)
-		{
-			var lonSeconds = parseFloat(f["lonDeg"].value)*3600 
-				+ parseFloat(f["lonMin"].value)*60 
-				+ parseFloat(f["lonSec"].value)*1;
-			f["lonDeg"].value = Math.floor(lonSeconds/3600);
-			f["lonMin"].value = Math.floor((lonSeconds
-				- (parseFloat(f["lonDeg"].value)*3600))/60);
-			f["lonSec"].value = Math.floor((lonSeconds
-				- (parseFloat(f["lonDeg"].value)*3600)
-				- (parseFloat(f["lonMin"].value))*60) + 0.5);
-		}
-		else if(parseFloat(f["lonDeg"].value) > -1)
-		{
-			var lonSeconds = parseFloat(f["lonDeg"].value)*3600 
-				- parseFloat(f["lonMin"].value)*60 
-				- parseFloat(f["lonSec"].value)*1;
-
-			f["lonDeg"].value = "-0";
-			f["lonMin"].value = Math.floor((-lonSeconds)/60);
-			f["lonSec"].value = Math.floor((-lonSeconds
-				- (parseFloat(f["lonMin"].value)*60)) + 0.5);
-		}
-		else
-		{
-			var lonSeconds = parseFloat(f["lonDeg"].value)*3600 
-				- parseFloat(f["lonMin"].value)*60 
-				- parseFloat(f["lonSec"].value)*1;
-			f["lonDeg"].value = Math.ceil(lonSeconds/3600);
-			f["lonMin"].value = Math.floor((-lonSeconds
-				+ (parseFloat(f["lonDeg"].value)*3600))/60);
-			f["lonSec"].value = Math.floor((-lonSeconds
-				+ (parseFloat(f["lonDeg"].value)*3600)
-				- (parseFloat(f["lonMin"].value)*60)) + 0.5);
-		}
-
-		//Test for invalid lat/long input
-
-		if(latSeconds > 324000)
-		{
-			alert("You have entered an invalid latitude.\n  Setting lat = 89.");
-			f["latDeg"].value = 89;
-			f["latMin"].value = 0;
-			f["latSec"].value = 0;
-		}
-		if(latSeconds < -324000)
-		{
-			alert("You have entered an invalid latitude.\n  Setting lat = -89.");
-			f["latDeg"].value = -89;
-			f["latMin"].value = 0;
-			f["latSec"].value = 0;
-		}
-		if(lonSeconds > 648000)
-		{
-			alert("You have entered an invalid longitude.\n Setting lon = 180.");
-			f["lonDeg"].value = 180;
-			f["lonMin"].value = 0;
-			f["lonSec"].value = 0;
-		}
-		if(lonSeconds < -648000)
-		{
-			alert("You have entered an invalid longitude.\n Setting lon = -180.");
-			f["lonDeg"].value = -180;
-			f["lonMin"].value = 0;
-			f["lonSec"].value =0;
-		}
-
-	}
-
-
-
-//***********************************************************************/
-//***********************************************************************/
-//*												*/
-//*This section contains subroutines used in calculating solar position */
-//*												*/
-//***********************************************************************/
-//***********************************************************************/
-
-// Convert radian angle to degrees
-
-	function radToDeg(angleRad) 
-	{
-		return (180.0 * angleRad / Math.PI);
-	}
-
-//*********************************************************************/
-
-// Convert degree angle to radians
-
-	function degToRad(angleDeg) 
-	{
-		return (Math.PI * angleDeg / 180.0);
-	}
-
-//*********************************************************************/
-
-
-//***********************************************************************/
-//* Name:    calcDayOfYear								*/
-//* Type:    Function									*/
-//* Purpose: Finds numerical day-of-year from mn, day and lp year info  */
-//* Arguments:										*/
-//*   month: January = 1								*/
-//*   day  : 1 - 31									*/
-//*   lpyr : 1 if leap year, 0 if not						*/
-//* Return value:										*/
-//*   The numerical day of year							*/
-//***********************************************************************/
-
-	function calcDayOfYear(mn, dy, lpyr) 
-	{
-		var k = (lpyr ? 1 : 2);
-		var doy = Math.floor((275 * mn)/9) - k * Math.floor((mn + 9)/12) + dy -30;
-		return doy;
-	}
-
-
-//***********************************************************************/
-//* Name:    calcDayOfWeek								*/
-//* Type:    Function									*/
-//* Purpose: Derives weekday from Julian Day					*/
-//* Arguments:										*/
-//*   juld : Julian Day									*/
-//* Return value:										*/
-//*   String containing name of weekday						*/
-//***********************************************************************/
-
-	function calcDayOfWeek(juld)
-	{
-		var A = (juld + 1.5) % 7;
-		var DOW = (A==0)?"Sunday":(A==1)?"Monday":(A==2)?"Tuesday":(A==3)?"Wednesday":(A==4)?"Thursday":(A==5)?"Friday":"Saturday";
-		return DOW;
-	}
-
-
-//***********************************************************************/
-//* Name:    calcJD									*/
-//* Type:    Function									*/
-//* Purpose: Julian day from calendar day						*/
-//* Arguments:										*/
-//*   year : 4 digit year								*/
-//*   month: January = 1								*/
-//*   day  : 1 - 31									*/
-//* Return value:										*/
-//*   The Julian day corresponding to the date					*/
-//* Note:											*/
-//*   Number is returned for start of day.  Fractional days should be	*/
-//*   added later.									*/
-//***********************************************************************/
-
-	function calcJD(year, month, day)
-	{
-		if (month <= 2) {
-			year -= 1;
-			month += 12;
-		}
-		var A = Math.floor(year/100);
-		var B = 2 - A + Math.floor(A/4);
-
-		var JD = Math.floor(365.25*(year + 4716)) + Math.floor(30.6001*(month+1)) + day + B - 1524.5;
-		return JD;
-	}
-
-
-
-//***********************************************************************/
-//* Name:    calcDateFromJD								*/
-//* Type:    Function									*/
-//* Purpose: Calendar date from Julian Day					*/
-//* Arguments:										*/
-//*   jd   : Julian Day									*/
-//* Return value:										*/
-//*   String date in the form DD-MONTHNAME-YYYY					*/
-//* Note:											*/
-//***********************************************************************/
-
-	function calcDateFromJD(jd)
-	{
-		var z = Math.floor(jd + 0.5);
-		var f = (jd + 0.5) - z;
-
-		if (z < 2299161) {
-			var A = z;
-		} else {
-			alpha = Math.floor((z - 1867216.25)/36524.25);
-			var A = z + 1 + alpha - Math.floor(alpha/4);
-		}
-
-		var B = A + 1524;
-		var C = Math.floor((B - 122.1)/365.25);
-		var D = Math.floor(365.25 * C);
-		var E = Math.floor((B - D)/30.6001);
-
-		var day = B - D - Math.floor(30.6001 * E) + f;
-		var month = (E < 14) ? E - 1 : E - 13;
-		var year = (month > 2) ? C - 4716 : C - 4715;
-
-		// alert ("date: " + day + "-" + monthList[month-1].name + "-" + year);
-		return (day + "-" + monthList[month-1].name + "-" + year);
-	}
-
-
-//***********************************************************************/
-//* Name:    calcDayFromJD								*/
-//* Type:    Function									*/
-//* Purpose: Calendar day (minus year) from Julian Day			*/
-//* Arguments:										*/
-//*   jd   : Julian Day									*/
-//* Return value:										*/
-//*   String date in the form DD-MONTH						*/
-//***********************************************************************/
-
-	function calcDayFromJD(jd)
-	{
-		var z = Math.floor(jd + 0.5);
-		var f = (jd + 0.5) - z;
-
-		if (z < 2299161) {
-			var A = z;
-		} else {
-			alpha = Math.floor((z - 1867216.25)/36524.25);
-			var A = z + 1 + alpha - Math.floor(alpha/4);
-		}
-
-		var B = A + 1524;
-		var C = Math.floor((B - 122.1)/365.25);
-		var D = Math.floor(365.25 * C);
-		var E = Math.floor((B - D)/30.6001);
-
-		var day = B - D - Math.floor(30.6001 * E) + f;
-		var month = (E < 14) ? E - 1 : E - 13;
-		var year = (month > 2) ? C - 4716 : C - 4715;
-
-		return ((day<10 ? "0" : "") + day + monthList[month-1].abbr);
-	}
-
-
-//***********************************************************************/
-//* Name:    calcTimeJulianCent							*/
-//* Type:    Function									*/
-//* Purpose: convert Julian Day to centuries since J2000.0.			*/
-//* Arguments:										*/
-//*   jd : the Julian Day to convert						*/
-//* Return value:										*/
-//*   the T value corresponding to the Julian Day				*/
-//***********************************************************************/
-
-	function calcTimeJulianCent(jd)
-	{
-		var T = (jd - 2451545.0)/36525.0;
-		return T;
-	}
-
-
-//***********************************************************************/
-//* Name:    calcJDFromJulianCent							*/
-//* Type:    Function									*/
-//* Purpose: convert centuries since J2000.0 to Julian Day.			*/
-//* Arguments:										*/
-//*   t : number of Julian centuries since J2000.0				*/
-//* Return value:										*/
-//*   the Julian Day corresponding to the t value				*/
-//***********************************************************************/
-
-	function calcJDFromJulianCent(t)
-	{
-		var JD = t * 36525.0 + 2451545.0;
-		return JD;
-	}
-
-
-//***********************************************************************/
-//* Name:    calGeomMeanLongSun							*/
-//* Type:    Function									*/
-//* Purpose: calculate the Geometric Mean Longitude of the Sun		*/
-//* Arguments:										*/
-//*   t : number of Julian centuries since J2000.0				*/
-//* Return value:										*/
-//*   the Geometric Mean Longitude of the Sun in degrees			*/
-//***********************************************************************/
-
-	function calcGeomMeanLongSun(t)
-	{
-		var L0 = 280.46646 + t * (36000.76983 + 0.0003032 * t);
-		while(L0 > 360.0)
-		{
-			L0 -= 360.0;
-		}
-		while(L0 < 0.0)
-		{
-			L0 += 360.0;
-		}
-		return L0;		// in degrees
-	}
-
-
-//***********************************************************************/
-//* Name:    calGeomAnomalySun							*/
-//* Type:    Function									*/
-//* Purpose: calculate the Geometric Mean Anomaly of the Sun		*/
-//* Arguments:										*/
-//*   t : number of Julian centuries since J2000.0				*/
-//* Return value:										*/
-//*   the Geometric Mean Anomaly of the Sun in degrees			*/
-//***********************************************************************/
-
-	function calcGeomMeanAnomalySun(t)
-	{
-		var M = 357.52911 + t * (35999.05029 - 0.0001537 * t);
-		return M;		// in degrees
-	}
-
-//***********************************************************************/
-//* Name:    calcEccentricityEarthOrbit						*/
-//* Type:    Function									*/
-//* Purpose: calculate the eccentricity of earth's orbit			*/
-//* Arguments:										*/
-//*   t : number of Julian centuries since J2000.0				*/
-//* Return value:										*/
-//*   the unitless eccentricity							*/
-//***********************************************************************/
-
-
-	function calcEccentricityEarthOrbit(t)
-	{
-		var e = 0.016708634 - t * (0.000042037 + 0.0000001267 * t);
-		return e;		// unitless
-	}
-
-//***********************************************************************/
-//* Name:    calcSunEqOfCenter							*/
-//* Type:    Function									*/
-//* Purpose: calculate the equation of center for the sun			*/
-//* Arguments:										*/
-//*   t : number of Julian centuries since J2000.0				*/
-//* Return value:										*/
-//*   in degrees										*/
-//***********************************************************************/
-
-
-	function calcSunEqOfCenter(t)
-	{
-		var m = calcGeomMeanAnomalySun(t);
-
-		var mrad = degToRad(m);
-		var sinm = Math.sin(mrad);
-		var sin2m = Math.sin(mrad+mrad);
-		var sin3m = Math.sin(mrad+mrad+mrad);
-
-		var C = sinm * (1.914602 - t * (0.004817 + 0.000014 * t)) + sin2m * (0.019993 - 0.000101 * t) + sin3m * 0.000289;
-		return C;		// in degrees
-	}
-
-//***********************************************************************/
-//* Name:    calcSunTrueLong								*/
-//* Type:    Function									*/
-//* Purpose: calculate the true longitude of the sun				*/
-//* Arguments:										*/
-//*   t : number of Julian centuries since J2000.0				*/
-//* Return value:										*/
-//*   sun's true longitude in degrees						*/
-//***********************************************************************/
-
-
-	function calcSunTrueLong(t)
-	{
-		var l0 = calcGeomMeanLongSun(t);
-		var c = calcSunEqOfCenter(t);
-
-		var O = l0 + c;
-		return O;		// in degrees
-	}
-
-//***********************************************************************/
-//* Name:    calcSunTrueAnomaly							*/
-//* Type:    Function									*/
-//* Purpose: calculate the true anamoly of the sun				*/
-//* Arguments:										*/
-//*   t : number of Julian centuries since J2000.0				*/
-//* Return value:										*/
-//*   sun's true anamoly in degrees							*/
-//***********************************************************************/
-
-	function calcSunTrueAnomaly(t)
-	{
-		var m = calcGeomMeanAnomalySun(t);
-		var c = calcSunEqOfCenter(t);
-
-		var v = m + c;
-		return v;		// in degrees
-	}
-
-//***********************************************************************/
-//* Name:    calcSunRadVector								*/
-//* Type:    Function									*/
-//* Purpose: calculate the distance to the sun in AU				*/
-//* Arguments:										*/
-//*   t : number of Julian centuries since J2000.0				*/
-//* Return value:										*/
-//*   sun radius vector in AUs							*/
-//***********************************************************************/
-
-	function calcSunRadVector(t)
-	{
-		var v = calcSunTrueAnomaly(t);
-		var e = calcEccentricityEarthOrbit(t);
- 
-		var R = (1.000001018 * (1 - e * e)) / (1 + e * Math.cos(degToRad(v)));
-		return R;		// in AUs
-	}
-
-//***********************************************************************/
-//* Name:    calcSunApparentLong							*/
-//* Type:    Function									*/
-//* Purpose: calculate the apparent longitude of the sun			*/
-//* Arguments:										*/
-//*   t : number of Julian centuries since J2000.0				*/
-//* Return value:										*/
-//*   sun's apparent longitude in degrees						*/
-//***********************************************************************/
-
-	function calcSunApparentLong(t)
-	{
-		var o = calcSunTrueLong(t);
-
-		var omega = 125.04 - 1934.136 * t;
-		var lambda = o - 0.00569 - 0.00478 * Math.sin(degToRad(omega));
-		return lambda;		// in degrees
-	}
-
-//***********************************************************************/
-//* Name:    calcMeanObliquityOfEcliptic						*/
-//* Type:    Function									*/
-//* Purpose: calculate the mean obliquity of the ecliptic			*/
-//* Arguments:										*/
-//*   t : number of Julian centuries since J2000.0				*/
-//* Return value:										*/
-//*   mean obliquity in degrees							*/
-//***********************************************************************/
-
-	function calcMeanObliquityOfEcliptic(t)
-	{
-		var seconds = 21.448 - t*(46.8150 + t*(0.00059 - t*(0.001813)));
-		var e0 = 23.0 + (26.0 + (seconds/60.0))/60.0;
-		return e0;		// in degrees
-	}
-
-//***********************************************************************/
-//* Name:    calcObliquityCorrection						*/
-//* Type:    Function									*/
-//* Purpose: calculate the corrected obliquity of the ecliptic		*/
-//* Arguments:										*/
-//*   t : number of Julian centuries since J2000.0				*/
-//* Return value:										*/
-//*   corrected obliquity in degrees						*/
-//***********************************************************************/
-
-	function calcObliquityCorrection(t)
-	{
-		var e0 = calcMeanObliquityOfEcliptic(t);
-
-		var omega = 125.04 - 1934.136 * t;
-		var e = e0 + 0.00256 * Math.cos(degToRad(omega));
-		return e;		// in degrees
-	}
-
-//***********************************************************************/
-//* Name:    calcSunRtAscension							*/
-//* Type:    Function									*/
-//* Purpose: calculate the right ascension of the sun				*/
-//* Arguments:										*/
-//*   t : number of Julian centuries since J2000.0				*/
-//* Return value:										*/
-//*   sun's right ascension in degrees						*/
-//***********************************************************************/
-
-	function calcSunRtAscension(t)
-	{
-		var e = calcObliquityCorrection(t);
-		var lambda = calcSunApparentLong(t);
- 
-		var tananum = (Math.cos(degToRad(e)) * Math.sin(degToRad(lambda)));
-		var tanadenom = (Math.cos(degToRad(lambda)));
-		var alpha = radToDeg(Math.atan2(tananum, tanadenom));
-		return alpha;		// in degrees
-	}
-
-//***********************************************************************/
-//* Name:    calcSunDeclination							*/
-//* Type:    Function									*/
-//* Purpose: calculate the declination of the sun				*/
-//* Arguments:										*/
-//*   t : number of Julian centuries since J2000.0				*/
-//* Return value:										*/
-//*   sun's declination in degrees							*/
-//***********************************************************************/
-
-	function calcSunDeclination(t)
-	{
-		var e = calcObliquityCorrection(t);
-		var lambda = calcSunApparentLong(t);
-
-		var sint = Math.sin(degToRad(e)) * Math.sin(degToRad(lambda));
-		var theta = radToDeg(Math.asin(sint));
-		return theta;		// in degrees
-	}
-
-//***********************************************************************/
-//* Name:    calcEquationOfTime							*/
-//* Type:    Function									*/
-//* Purpose: calculate the difference between true solar time and mean	*/
-//*		solar time									*/
-//* Arguments:										*/
-//*   t : number of Julian centuries since J2000.0				*/
-//* Return value:										*/
-//*   equation of time in minutes of time						*/
-//***********************************************************************/
-
-	function calcEquationOfTime(t)
-	{
-		var epsilon = calcObliquityCorrection(t);
-		var l0 = calcGeomMeanLongSun(t);
-		var e = calcEccentricityEarthOrbit(t);
-		var m = calcGeomMeanAnomalySun(t);
-
-		var y = Math.tan(degToRad(epsilon)/2.0);
-		y *= y;
-
-		var sin2l0 = Math.sin(2.0 * degToRad(l0));
-		var sinm   = Math.sin(degToRad(m));
-		var cos2l0 = Math.cos(2.0 * degToRad(l0));
-		var sin4l0 = Math.sin(4.0 * degToRad(l0));
-		var sin2m  = Math.sin(2.0 * degToRad(m));
-
-		var Etime = y * sin2l0 - 2.0 * e * sinm + 4.0 * e * y * sinm * cos2l0
-				- 0.5 * y * y * sin4l0 - 1.25 * e * e * sin2m;
-
-		return radToDeg(Etime)*4.0;	// in minutes of time
-	}
-
-//***********************************************************************/
-//* Name:    calcHourAngleSunrise							*/
-//* Type:    Function									*/
-//* Purpose: calculate the hour angle of the sun at sunrise for the	*/
-//*			latitude								*/
-//* Arguments:										*/
-//*   lat : latitude of observer in degrees					*/
-//*	solarDec : declination angle of sun in degrees				*/
-//* Return value:										*/
-//*   hour angle of sunrise in radians						*/
-//***********************************************************************/
-
-	function calcHourAngleSunrise(lat, solarDec)
-	{
-		var latRad = degToRad(lat);
-		var sdRad  = degToRad(solarDec)
-
-		var HAarg = (Math.cos(degToRad(90.833))/(Math.cos(latRad)*Math.cos(sdRad))-Math.tan(latRad) * Math.tan(sdRad));
-
-		var HA = (Math.acos(Math.cos(degToRad(90.833))/(Math.cos(latRad)*Math.cos(sdRad))-Math.tan(latRad) * Math.tan(sdRad)));
-
-		return HA;		// in radians
-	}
-
-//***********************************************************************/
-//* Name:    calcHourAngleSunset							*/
-//* Type:    Function									*/
-//* Purpose: calculate the hour angle of the sun at sunset for the	*/
-//*			latitude								*/
-//* Arguments:										*/
-//*   lat : latitude of observer in degrees					*/
-//*	solarDec : declination angle of sun in degrees				*/
-//* Return value:										*/
-//*   hour angle of sunset in radians						*/
-//***********************************************************************/
-
-	function calcHourAngleSunset(lat, solarDec)
-	{
-		var latRad = degToRad(lat);
-		var sdRad  = degToRad(solarDec)
-
-		var HAarg = (Math.cos(degToRad(90.833))/(Math.cos(latRad)*Math.cos(sdRad))-Math.tan(latRad) * Math.tan(sdRad));
-
-		var HA = (Math.acos(Math.cos(degToRad(90.833))/(Math.cos(latRad)*Math.cos(sdRad))-Math.tan(latRad) * Math.tan(sdRad)));
-
-		return -HA;		// in radians
-	}
-
-
-//***********************************************************************/
-//* Name:    calcSunriseUTC								*/
-//* Type:    Function									*/
-//* Purpose: calculate the Universal Coordinated Time (UTC) of sunrise	*/
-//*			for the given day at the given location on earth	*/
-//* Arguments:										*/
-//*   JD  : julian day									*/
-//*   latitude : latitude of observer in degrees				*/
-//*   longitude : longitude of observer in degrees				*/
-//* Return value:										*/
-//*   time in minutes from zero Z							*/
-//***********************************************************************/
-
-	function calcSunriseUTC(JD, latitude, longitude)
-	{
-		var t = calcTimeJulianCent(JD);
-
-		// *** Find the time of solar noon at the location, and use
-        //     that declination. This is better than start of the 
-        //     Julian day
-
-		var noonmin = calcSolNoonUTC(t, longitude);
-		var tnoon = calcTimeJulianCent (JD+noonmin/1440.0);
-
-		// *** First pass to approximate sunrise (using solar noon)
-
-		var eqTime = calcEquationOfTime(tnoon);
-		var solarDec = calcSunDeclination(tnoon);
-		var hourAngle = calcHourAngleSunrise(latitude, solarDec);
-
-		var delta = longitude - radToDeg(hourAngle);
-		var timeDiff = 4 * delta;	// in minutes of time
-		var timeUTC = 720 + timeDiff - eqTime;	// in minutes
-
-		// alert("eqTime = " + eqTime + "\nsolarDec = " + solarDec + "\ntimeUTC = " + timeUTC);
-
-		// *** Second pass includes fractional jday in gamma calc
-
-		var newt = calcTimeJulianCent(calcJDFromJulianCent(t) + timeUTC/1440.0); 
-		eqTime = calcEquationOfTime(newt);
-		solarDec = calcSunDeclination(newt);
-		hourAngle = calcHourAngleSunrise(latitude, solarDec);
-		delta = longitude - radToDeg(hourAngle);
-		timeDiff = 4 * delta;
-		timeUTC = 720 + timeDiff - eqTime; // in minutes
-
-		// alert("eqTime = " + eqTime + "\nsolarDec = " + solarDec + "\ntimeUTC = " + timeUTC);
-
-		return timeUTC;
-	}
-
-//***********************************************************************/
-//* Name:    calcSolNoonUTC								*/
-//* Type:    Function									*/
-//* Purpose: calculate the Universal Coordinated Time (UTC) of solar	*/
-//*		noon for the given day at the given location on earth		*/
-//* Arguments:										*/
-//*   t : number of Julian centuries since J2000.0				*/
-//*   longitude : longitude of observer in degrees				*/
-//* Return value:										*/
-//*   time in minutes from zero Z							*/
-//***********************************************************************/
-
-	function calcSolNoonUTC(t, longitude)
-	{
-		// First pass uses approximate solar noon to calculate eqtime
-		var tnoon = calcTimeJulianCent(calcJDFromJulianCent(t) + longitude/360.0);
-		var eqTime = calcEquationOfTime(tnoon);
-		var solNoonUTC = 720 + (longitude * 4) - eqTime; // min
-
-		var newt = calcTimeJulianCent(calcJDFromJulianCent(t) -0.5 + solNoonUTC/1440.0); 
-
-		eqTime = calcEquationOfTime(newt);
-		// var solarNoonDec = calcSunDeclination(newt);
-		solNoonUTC = 720 + (longitude * 4) - eqTime; // min
-		
-		return solNoonUTC;
-	}
-
-//***********************************************************************/
-//* Name:    calcSunsetUTC								*/
-//* Type:    Function									*/
-//* Purpose: calculate the Universal Coordinated Time (UTC) of sunset	*/
-//*			for the given day at the given location on earth	*/
-//* Arguments:										*/
-//*   JD  : julian day									*/
-//*   latitude : latitude of observer in degrees				*/
-//*   longitude : longitude of observer in degrees				*/
-//* Return value:										*/
-//*   time in minutes from zero Z							*/
-//***********************************************************************/
-
-	function calcSunsetUTC(JD, latitude, longitude)
-	{
-		var t = calcTimeJulianCent(JD);
-
-		// *** Find the time of solar noon at the location, and use
-        //     that declination. This is better than start of the 
-        //     Julian day
-
-		var noonmin = calcSolNoonUTC(t, longitude);
-		var tnoon = calcTimeJulianCent (JD+noonmin/1440.0);
-
-		// First calculates sunrise and approx length of day
-
-		var eqTime = calcEquationOfTime(tnoon);
-		var solarDec = calcSunDeclination(tnoon);
-		var hourAngle = calcHourAngleSunset(latitude, solarDec);
-
-		var delta = longitude - radToDeg(hourAngle);
-		var timeDiff = 4 * delta;
-		var timeUTC = 720 + timeDiff - eqTime;
-
-		// first pass used to include fractional day in gamma calc
-
-		var newt = calcTimeJulianCent(calcJDFromJulianCent(t) + timeUTC/1440.0); 
-		eqTime = calcEquationOfTime(newt);
-		solarDec = calcSunDeclination(newt);
-		hourAngle = calcHourAngleSunset(latitude, solarDec);
-
-		delta = longitude - radToDeg(hourAngle);
-		timeDiff = 4 * delta;
-		timeUTC = 720 + timeDiff - eqTime; // in minutes
-
-		return timeUTC;
-	}
-
-
-//*********************************************************************/
-
-// Returns the decimal latitude from the degrees, minutes and seconds entered 
-// into the form	
-
-	function getLatitude(latLongForm)
-	{
-		var neg = 0;
-		var strLatDeg = latLongForm["latDeg"].value;
-		var degs = parseFloat(latLongForm["latDeg"].value);
-		if (latLongForm["latDeg"].value.charAt(0) == '-') 
-		{
-			neg = 1;
-		}
-
-		if (strLatDeg.indexOf(".") != -1) 
-		{
-			latLongForm["latMin"].value = 0;
-			latLongForm["latSec"].value = 0;
-		}
-
-		if(latLongForm["latMin"].value == "")
-		{
-			latLongForm["latMin"].value = 0;
-		}
-		if(latLongForm["latSec"].value == "")
-		{
-			latLongForm["latSec"].value = 0;
-		}
-
-		var mins = parseFloat(latLongForm["latMin"].value);
-
-		var secs = parseFloat(latLongForm["latSec"].value);
-
-		if(neg != 1)
-		{
-			var decLat = degs + (mins / 60) + (secs / 3600);
-		} else if(neg == 1)
-		{
-			var decLat = degs - (mins / 60) - (secs / 3600);
-		} else 
-		{
-			return -9999;
-		}
-		return decLat;
-	}	
-
-
-//*********************************************************************/
-
-// Returns the decimal longitude from the degrees, minutes and seconds entered 
-// into the form	
-
-	function getLongitude(latLongForm)
-	{
-		var neg = 0;
-		var strLonDeg = latLongForm["lonDeg"].value;
-		var degs = parseFloat(latLongForm["lonDeg"].value);
-		if (latLongForm["lonDeg"].value.charAt(0) == '-') 
-		{
-			neg = 1;
-		}
-
-		if (strLonDeg.indexOf(".") != -1) 
-		{
-			latLongForm["lonMin"].value = 0;
-			latLongForm["lonSec"].value = 0;
-		}
-
-		if(latLongForm["lonMin"].value == "")
-		{
-			latLongForm["lonMin"].value = 0;
-		}
-		if(latLongForm["lonSec"].value == "")
-		{
-			latLongForm["lonSec"].value = 0;
-		}
-
-		var mins = parseFloat(latLongForm["lonMin"].value);
-		var secs = parseFloat(latLongForm["lonSec"].value);
-		var decLon = degs + (mins / 60) + (secs / 3600);
-
-		if(neg != 1)
-		{
-			var decLon = degs + (mins / 60) + (secs / 3600);
-		} else if(neg == 1)
-		{
-			var decLon = degs - (mins / 60) - (secs / 3600);
-		} else 
-		{
-			return -9999;
-		}
-		return decLon;
-	}	
-
-
-//***********************************************************************/
-//* Name:    findRecentSunrise							*/
-//* Type:    Function									*/
-//* Purpose: calculate the julian day of the most recent sunrise		*/
-//*		starting from the given day at the given location on earth	*/
-//* Arguments:										*/
-//*   JD  : julian day									*/
-//*   latitude : latitude of observer in degrees				*/
-//*   longitude : longitude of observer in degrees				*/
-//* Return value:										*/
-//*   julian day of the most recent sunrise					*/
-//***********************************************************************/
-
-	function findRecentSunrise(jd, latitude, longitude)
-	{
-		var julianday = jd;
-
-		var time = calcSunriseUTC(julianday, latitude, longitude);
-		while(!isNumber(time)){
-			julianday -= 1.0;
-			time = calcSunriseUTC(julianday, latitude, longitude);
-		}
-
-		return julianday;
-	}
-
-
-//***********************************************************************/
-//* Name:    findRecentSunset								*/
-//* Type:    Function									*/
-//* Purpose: calculate the julian day of the most recent sunset		*/
-//*		starting from the given day at the given location on earth	*/
-//* Arguments:										*/
-//*   JD  : julian day									*/
-//*   latitude : latitude of observer in degrees				*/
-//*   longitude : longitude of observer in degrees				*/
-//* Return value:										*/
-//*   julian day of the most recent sunset					*/
-//***********************************************************************/
-
-	function findRecentSunset(jd, latitude, longitude)
-	{
-		var julianday = jd;
-
-		var time = calcSunsetUTC(julianday, latitude, longitude);
-		while(!isNumber(time)){
-			julianday -= 1.0;
-			time = calcSunsetUTC(julianday, latitude, longitude);
-		}
-
-		return julianday;
-	}
-
-
-//***********************************************************************/
-//* Name:    findNextSunrise								*/
-//* Type:    Function									*/
-//* Purpose: calculate the julian day of the next sunrise			*/
-//*		starting from the given day at the given location on earth	*/
-//* Arguments:										*/
-//*   JD  : julian day									*/
-//*   latitude : latitude of observer in degrees				*/
-//*   longitude : longitude of observer in degrees				*/
-//* Return value:										*/
-//*   julian day of the next sunrise						*/
-//***********************************************************************/
-
-	function findNextSunrise(jd, latitude, longitude)
-	{
-		var julianday = jd;
-
-		var time = calcSunriseUTC(julianday, latitude, longitude);
-		while(!isNumber(time)){
-			julianday += 1.0;
-			time = calcSunriseUTC(julianday, latitude, longitude);
-		}
-
-		return julianday;
-	}
-
-
-//***********************************************************************/
-//* Name:    findNextSunset								*/
-//* Type:    Function									*/
-//* Purpose: calculate the julian day of the next sunset			*/
-//*		starting from the given day at the given location on earth	*/
-//* Arguments:										*/
-//*   JD  : julian day									*/
-//*   latitude : latitude of observer in degrees				*/
-//*   longitude : longitude of observer in degrees				*/
-//* Return value:										*/
-//*   julian day of the next sunset							*/
-//***********************************************************************/
-
-	function findNextSunset(jd, latitude, longitude)
-	{
-		var julianday = jd;
-
-		var time = calcSunsetUTC(julianday, latitude, longitude);
-		while(!isNumber(time)){
-			julianday += 1.0;
-			time = calcSunsetUTC(julianday, latitude, longitude);
-		}
-
-		return julianday;
-	}
-
-//***********************************************************************/
-//* Name:    timeString									*/
-//* Type:    Function									*/
-//* Purpose: convert time of day in minutes to a zero-padded string	*/
-//*		suitable for printing to the form text fields			*/
-//* Arguments:										*/
-//*   minutes : time of day in minutes						*/
-//* Return value:										*/
-//*   string of the format HH:MM:SS, minutes and seconds are zero padded*/
-//***********************************************************************/
-
-	function timeString(minutes)
-	// timeString returns a zero-padded string (HH:MM:SS) given time in minutes
-	{
-		var floatHour = minutes / 60.0;
-		var hour = Math.floor(floatHour);
-		var floatMinute = 60.0 * (floatHour - Math.floor(floatHour));
-		var minute = Math.floor(floatMinute);
-		var floatSec = 60.0 * (floatMinute - Math.floor(floatMinute));
-		var second = Math.floor(floatSec + 0.5);
-
-		var timeStr = hour + ":";
-		if (minute < 10)	//	i.e. only one digit
-			timeStr += "0" + minute + ":";
-		else
-			timeStr += minute + ":";
-		if (second < 10)	//	i.e. only one digit
-			timeStr += "0" + second;
-		else
-			timeStr += second;
-
-		return timeStr;
-	}
-
-
-//***********************************************************************/
-//* Name:    timeStringShortAMPM							*/
-//* Type:    Function									*/
-//* Purpose: convert time of day in minutes to a zero-padded string	*/
-//*		suitable for printing to the form text fields.  If time	*/
-//*		crosses a day boundary, date is appended.				*/
-//* Arguments:										*/
-//*   minutes : time of day in minutes						*/
-//*   JD  : julian day									*/
-//* Return value:										*/
-//*   string of the format HH:MM[AM/PM] (DDMon)					*/
-//***********************************************************************/
-
-// timeStringShortAMPM returns a zero-padded string (HH:MM *M) given time in 
-// minutes and appends short date if time is > 24 or < 0, resp.
-
-	function timeStringShortAMPM(minutes, JD)
-	{
-		var julianday = JD;
-		var floatHour = minutes / 60.0;
-		var hour = Math.floor(floatHour);
-		var floatMinute = 60.0 * (floatHour - Math.floor(floatHour));
-		var minute = Math.floor(floatMinute);
-		var floatSec = 60.0 * (floatMinute - Math.floor(floatMinute));
-		var second = Math.floor(floatSec + 0.5);
-		var PM = false;
-
-		minute += (second >= 30)? 1 : 0;
-
-		if (minute >= 60) 
-		{
-			minute -= 60;
-			hour ++;
-		}
-
-		var daychange = false;
-		if (hour > 23) 
-		{
-			hour -= 24;
-			daychange = true;
-			julianday += 1.0;
-		}
-
-		if (hour < 0)
-		{
-			hour += 24;
-			daychange = true;
-			julianday -= 1.0;
-		}
-
-		if (hour > 12)
-		{
-			hour -= 12;
-			PM = true;
-		}
-
-            if (hour == 12)
-		{
-              PM = true;
-            }
-
-		if (hour == 0)
-		{
-			PM = false;
-			hour = 12;
-		}
-
-		var timeStr = hour + ":";
-		if (minute < 10)	//	i.e. only one digit
-			timeStr += "0" + minute + ((PM)?"PM":"AM");
-		else
-			timeStr += "" + minute + ((PM)?"PM":"AM");
-
-		if (daychange) return timeStr + " " + calcDayFromJD(julianday);
-		return timeStr;
-	}
-
-
-//***********************************************************************/
-//* Name:    timeStringAMPMDate							*/
-//* Type:    Function									*/
-//* Purpose: convert time of day in minutes to a zero-padded string	*/
-//*		suitable for printing to the form text fields, and appends	*/
-//*		the date.									*/
-//* Arguments:										*/
-//*   minutes : time of day in minutes						*/
-//*   JD  : julian day									*/
-//* Return value:										*/
-//*   string of the format HH:MM[AM/PM] DDMon					*/
-//***********************************************************************/
-
-// timeStringAMPMDate returns a zero-padded string (HH:MM[AM/PM]) given time 
-// in minutes and julian day, and appends the short date
-
-	function timeStringAMPMDate(minutes, JD)
-	{
-		var julianday = JD;
-		var floatHour = minutes / 60.0;
-		var hour = Math.floor(floatHour);
-		var floatMinute = 60.0 * (floatHour - Math.floor(floatHour));
-		var minute = Math.floor(floatMinute);
-		var floatSec = 60.0 * (floatMinute - Math.floor(floatMinute));
-		var second = Math.floor(floatSec + 0.5);
-
-		minute += (second >= 30)? 1 : 0;
-
-		if (minute >= 60) 
-		{
-			minute -= 60;
-			hour ++;
-		}
-
-		if (hour > 23) 
-		{
-			hour -= 24;
-			julianday += 1.0;
-		}
-
-		if (hour < 0)
-		{
-			hour += 24;
-			julianday -= 1.0;
-		}
-
-		var PM = false;
-		if (hour > 12)
-		{
-			hour -= 12;
-			PM = true;
-		}
-
-        if (hour == 12)
-		{
-            PM = true;
+// SunriseSunset Class
+//   By Preston Hunt <me@prestonhunt.com>
+//
+//   Implementation of http://williams.best.vwh.net/sunrise_sunset_algorithm.htm
+//
+//   Provides sunrise and sunset times for specified date and position.
+//   All dates are UTC.  Year is 4-digit.  Month is 1-12.  Day is 1-31.
+//   Longitude is positive for east, negative for west.
+//
+//   Sample usage:
+//   var tokyo = new SunriseSunset( 2011, 1, 19, 35+40/60, 139+45/60); 
+//   tokyo.sunriseUtcHours()      --> 21.8199 = 21:49 GMT
+//   tokyo.sunsetUtcHours()       --> 7.9070  = 07:54 GMT
+//   tokyo.sunriseLocalHours(9)   --> 6.8199  = 06:49 at GMT+9
+//   tokyo.sunsunsetLocalHours(9) --> 16.9070 = 16:54 at GMT+9
+//
+//   var losangeles = new SunriseSunset( 2011, 1, 19, 34.05, -118.233333333 );
+
+function SunriseSunset( utcFullYear, utcMonth, utcDay, latitude, longitude ) {
+    this.zenith = 90 + 50/60; //   offical      = 90 degrees 50'
+                              //   civil        = 96 degrees
+                              //   nautical     = 102 degrees
+                              //   astronomical = 108 degrees
+
+    this.utcFullYear = utcFullYear;
+    this.utcMonth = utcMonth;
+    this.utcDay = utcDay;
+    this.latitude = latitude;
+    this.longitude = longitude;
+
+    this.rising = true; // set to true for sunrise, false for sunset
+    this.lngHour = this.longitude / 15;
+
+    this.sin = function( deg ) { return Math.sin( deg * Math.PI / 180 ); };
+    this.cos = function( deg ) { return Math.cos( deg * Math.PI / 180 ); };
+    this.tan = function( deg ) { return Math.tan( deg * Math.PI / 180 ); };
+    this.asin = function( x ) { return (180/Math.PI) * Math.asin(x); };
+    this.acos = function( x ) { return (180/Math.PI) * Math.acos(x); };
+    this.atan = function( x ) { return (180/Math.PI) * Math.atan(x); };
+
+    this.getDOY = function() {
+        var month = this.utcMonth;
+        var year = this.utcFullYear;
+        var day = this.utcDay;
+
+        var N1 = Math.floor( 275 * month / 9 );
+        var N2 = Math.floor( (month + 9) / 12 );
+        var N3 = (1 + Math.floor((year - 4 * Math.floor(year / 4 ) + 2) / 3));
+        var N = N1 - (N2 * N3) + day - 30;
+        return N;
+    };
+
+    this.approximateTime = function() {
+        var doy = this.getDOY();
+        if ( this.rising ) {
+            return doy + ((6 - this.lngHour) / 24);
+        } else {
+            return doy + ((18 - this.lngHour) / 24);
         }
-
-		if (hour == 0)
-		{
-			PM = false;
-			hour = 12;
-		}
-
-		var timeStr = hour + ":";
-		if (minute < 10)	//	i.e. only one digit
-			timeStr += "0" + minute + ((PM)?"PM":"AM");
-		else
-			timeStr += minute + ((PM)?"PM":"AM");
-
-		return timeStr + " " + calcDayFromJD(julianday);
-	}
-
-
-//***********************************************************************/
-//* Name:    timeStringDate								*/
-//* Type:    Function									*/
-//* Purpose: convert time of day in minutes to a zero-padded 24hr time	*/
-//*		suitable for printing to the form text fields.  If time	*/
-//*		crosses a day boundary, date is appended.				*/
-//* Arguments:										*/
-//*   minutes : time of day in minutes						*/
-//*   JD  : julian day									*/
-//* Return value:										*/
-//*   string of the format HH:MM (DDMon)						*/
-//***********************************************************************/
-
-// timeStringDate returns a zero-padded string (HH:MM) given time in minutes
-// and julian day, and appends the short date if time crosses a day boundary
-
-	function timeStringDate(minutes, JD)
-	{
-		var julianday = JD;
-		var floatHour = minutes / 60.0;
-		var hour = Math.floor(floatHour);
-		var floatMinute = 60.0 * (floatHour - Math.floor(floatHour));
-		var minute = Math.floor(floatMinute);
-		var floatSec = 60.0 * (floatMinute - Math.floor(floatMinute));
-		var second = Math.floor(floatSec + 0.5);
-
-		minute += (second >= 30)? 1 : 0;
-
-		if (minute >= 60) 
-		{
-			minute -= 60;
-			hour ++;
-		}
-
-		var daychange = false;
-		if (hour > 23) 
-		{
-			hour -= 24;
-			julianday += 1.0;
-			daychange = true;
-		}
-
-		if (hour < 0)
-		{
-			hour += 24;
-			julianday -= 1.0;
-			daychange = true;
-		}
-
-		var timeStr = hour + ":";
-		if (minute < 10)	//	i.e. only one digit
-			timeStr += "0" + minute;
-		else
-			timeStr += minute;
-
-		if (daychange) return timeStr + " " + calcDayFromJD(julianday);
-		return timeStr;
-	}
-
-	
-//***********************************************************************/
-//* Name:    calcSun									*/
-//* Type:    Main Function called by form controls				*/
-//* Purpose: calculate time of sunrise and sunset for the entered date	*/
-//*		and location.  In the special cases near earth's poles, 	*/
-//*		the date of nearest sunrise and set are reported.		*/
-//* Arguments:										*/
-//*   riseSetForm : for displaying results					*/
-//*   latLongForm : for reading latitude and longitude data			*/
-//*   index : daylight saving yes/no select					*/
-//*   index2 : city select index							*/
-//* Return value:										*/
-//*   none											*/
-//*	(fills riseSetForm text fields with results of calculations)	*/
-//***********************************************************************/
-
-	function calcSun(riseSetForm, latLongForm, index, index2) 
-	{
-		if(index2 != 0)
-		{
-			setLatLong(latLongForm, index2);
-		}
-
-		var latitude = getLatitude(latLongForm);
-		var longitude = getLongitude(latLongForm);
-		var indexRS = riseSetForm.mos.selectedIndex
-		if (isValidInput(riseSetForm, indexRS, latLongForm)) 
-		{
-			if((latitude >= -90) && (latitude < -89))
-			{
-				alert("All latitudes between 89 and 90 S\n will be set to -89");
-				latLongForm["latDeg"].value = -89;
-				latitude = -89;
-			}
-			if ((latitude <= 90) && (latitude > 89))
-			{
-				alert("All latitudes between 89 and 90 N\n will be set to 89");
-				latLongForm["latDeg"].value = 89;
-				latitude = 89;
-			}
-			
-			//*****	Calculate the time of sunrise			
-
-//*********************************************************************/
-//****************   NEW STUFF   ******   January, 2001   ****************
-//*********************************************************************/
-
-			var JD = calcJD(parseFloat(riseSetForm["year"].value), indexRS + 1, parseFloat(riseSetForm["day"].value));
-			var dow = calcDayOfWeek(JD);
-			var doy = calcDayOfYear(indexRS + 1, parseFloat(riseSetForm["day"].value), isLeapYear(riseSetForm["year"].value));
-			var T = calcTimeJulianCent(JD);
-
-			var alpha = calcSunRtAscension(T);
-			var theta = calcSunDeclination(T);
-			var Etime = calcEquationOfTime(T);
-
-			//riseSetForm["dbug"].value = doy;
-
-//*********************************************************************/
-
-			var eqTime = Etime;
-			var solarDec = theta;
-
-			// Calculate sunrise for this date
-			// if no sunrise is found, set flag nosunrise
-
-			var nosunrise = false;
-
-			var riseTimeGMT = calcSunriseUTC(JD, latitude, longitude);
-			if (!isNumber(riseTimeGMT))
-			{
-				nosunrise = true;
-			}
-
-			// Calculate sunset for this date
-			// if no sunset is found, set flag nosunset
-
-			var nosunset = false;
-			var setTimeGMT = calcSunsetUTC(JD, latitude, longitude);
-			if (!isNumber(setTimeGMT))
-			{
-				nosunset = true;
-			}
-
-			var daySavings = YesNo[index].value;  // = 0 (no) or 60 (yes)
-			var zone = latLongForm["hrsToGMT"].value;
-			if(zone > 12 || zone < -12.5)
-			{
-				alert("The offset must be between -12.5 and 12.  \n Setting \"Off-Set\"=0");
-				zone = "0";
-				latLongForm["hrsToGMT"].value = zone;
-			}
-
-			if (!nosunrise)		// Sunrise was found
-			{
-				var riseTimeLST = riseTimeGMT - (60 * zone) + daySavings;	
-					//	in minutes
-				var riseStr = timeStringShortAMPM(riseTimeLST, JD);
-				var utcRiseStr = timeStringDate(riseTimeGMT, JD);
-
-				riseSetForm["sunrise"].value = riseStr;
-				riseSetForm["utcsunrise"].value = utcRiseStr;
-			}
-
-			if (!nosunset)		// Sunset was found
-			{
-				var setTimeLST = setTimeGMT - (60 * zone) + daySavings;
-				var setStr = timeStringShortAMPM(setTimeLST, JD);
-				var utcSetStr = timeStringDate(setTimeGMT, JD);
-
-				riseSetForm["sunset"].value = setStr;
-				riseSetForm["utcsunset"].value = utcSetStr;
-			}
-
-			// Calculate solar noon for this date
-
-			var solNoonGMT = calcSolNoonUTC(T, longitude);
-			var solNoonLST = solNoonGMT - (60 * zone) + daySavings;
-
-			var solnStr = timeString(solNoonLST);
-			var utcSolnStr = timeString(solNoonGMT);
-
-			riseSetForm["solnoon"].value = solnStr;
-			riseSetForm["utcsolnoon"].value = utcSolnStr;
-
-			var tsnoon = calcTimeJulianCent(calcJDFromJulianCent(T) -0.5 + solNoonGMT/1440.0); 
-
-			eqTime = calcEquationOfTime(tsnoon);
-			solarDec = calcSunDeclination(tsnoon);
-
-			riseSetForm["eqTime"].value = (Math.floor(100*eqTime))/100;
-			riseSetForm["solarDec"].value = (Math.floor(100*(solarDec)))/100;
-			
-			//***********Convert lat and long to standard format
-			convLatLong(latLongForm);
-
-			// report special cases of no sunrise
-
-			if(nosunrise)
-			{ 
-				riseSetForm["utcsunrise"].value = "";
-				// if Northern hemisphere and spring or summer, OR  
-				// if Southern hemisphere and fall or winter, use 
-				// previous sunrise and next sunset
-
-				if ( ((latitude > 66.4) && (doy > 79) && (doy < 267)) ||
-				   ((latitude < -66.4) && ((doy < 83) || (doy > 263))) )
-				{
-					newjd = findRecentSunrise(JD, latitude, longitude);
-					newtime = calcSunriseUTC(newjd, latitude, longitude)
-						 - (60 * zone) + daySavings;
-					if (newtime > 1440)
-					{
-						newtime -= 1440;
-						newjd += 1.0;
-					}
-					if (newtime < 0)
-					{
-						newtime += 1440;
-						newjd -= 1.0;
-					}
-					riseSetForm["sunrise"].value = 
-						timeStringAMPMDate(newtime, newjd);
-					riseSetForm["utcsunrise"].value = "prior sunrise";
-				}
-
-				// if Northern hemisphere and fall or winter, OR 
-				// if Southern hemisphere and spring or summer, use 
-				// next sunrise and previous sunset
-
-				else if ( ((latitude > 66.4) && ((doy < 83) || (doy > 263))) ||
-					((latitude < -66.4) && (doy > 79) && (doy < 267)) )
-				{
-					newjd = findNextSunrise(JD, latitude, longitude);
-					newtime = calcSunriseUTC(newjd, latitude, longitude)
-						 - (60 * zone) + daySavings;
-					if (newtime > 1440)
-					{
-						newtime -= 1440;
-						newjd += 1.0;
-					}
-					if (newtime < 0)
-					{
-						newtime += 1440;
-						newjd -= 1.0;
-					}
-					riseSetForm["sunrise"].value = 
-						timeStringAMPMDate(newtime, newjd);
-//					riseSetForm["sunrise"].value = calcDayFromJD(newjd)
-//						+ " " + timeStringDate(newtime, newjd);
-					riseSetForm["utcsunrise"].value = "next sunrise";
-				}
-				else 
-				{
-					alert("Cannot Find Sunrise!");
-				}
-
-				// alert("Last Sunrise was on day " + findRecentSunrise(JD, latitude, longitude));
-				// alert("Next Sunrise will be on day " + findNextSunrise(JD, latitude, longitude));
-
-			}
-
-			if(nosunset)
-			{ 
-				riseSetForm["utcsunset"].value = "";
-				// if Northern hemisphere and spring or summer, OR
-				// if Southern hemisphere and fall or winter, use 
-				// previous sunrise and next sunset
-
-				if ( ((latitude > 66.4) && (doy > 79) && (doy < 267)) ||
-				   ((latitude < -66.4) && ((doy < 83) || (doy > 263))) )
-				{
-					newjd = findNextSunset(JD, latitude, longitude);
-					newtime = calcSunsetUTC(newjd, latitude, longitude) - (60 * zone) + daySavings;
-					if (newtime > 1440)
-					{
-						newtime -= 1440;
-						newjd += 1.0;
-					}
-					if (newtime < 0)
-					{
-						newtime += 1440;
-						newjd -= 1.0;
-					}
-					riseSetForm["sunset"].value = 
-						timeStringAMPMDate(newtime, newjd);
-					riseSetForm["utcsunset"].value = "next sunset";
-					riseSetForm["utcsolnoon"].value = "";
-				}
-
-				// if Northern hemisphere and fall or winter, OR
-				// if Southern hemisphere and spring or summer, use 
-				// next sunrise and last sunset
-
-				else if ( ((latitude > 66.4) && ((doy < 83) || (doy > 263))) ||
-					((latitude < -66.4) && (doy > 79) && (doy < 267)) )
-				{
-					newjd = findRecentSunset(JD, latitude, longitude);
-					newtime = calcSunsetUTC(newjd, latitude, longitude) - (60 * zone) + daySavings;
-					if (newtime > 1440)
-					{
-						newtime -= 1440;
-						newjd += 1.0;
-					}
-					if (newtime < 0)
-					{
-						newtime += 1440;
-						newjd -= 1.0;
-					}
-					riseSetForm["sunset"].value = 
-						timeStringAMPMDate(newtime, newjd);
-					riseSetForm["utcsunset"].value = "prior sunset";
-					riseSetForm["solnoon"].value = "N/A";
-					riseSetForm["utcsolnoon"].value = "";
-				}
-
-				else 
-				{
-					alert ("Cannot Find Sunset!");
-				}
-			}
-		}
-	}
-
-
-
-//*********************************************************************/
-var latlon = {
-"Europe/Andorra":[42.5,1.51666666667], "Asia/Dubai":[25.3,55.3], "Asia/Kabul":[34.5166666667,69.2], "America/Antigua":[17.05,-61.8], "America/Anguilla":[18.2,-63.0666666667], "Europe/Tirane":[41.3333333333,19.8333333333], "Asia/Yerevan":[40.1833333333,44.5], "America/Curacao":[12.1833333333,-69.0], "Africa/Luanda":[-8.8,13.2333333333], "Antarctica/McMurdo":[-77.8333333333,166.6], "Antarctica/South_Pole":[-90.0,0.0], "Antarctica/Rothera":[-67.5666666667,-68.1333333333], "Antarctica/Palmer":[-64.8,-64.1], "Antarctica/Mawson":[-67.6,62.8833333333], "Antarctica/Davis":[-68.5833333333,77.9666666667], "Antarctica/Casey":[-66.2833333333,110.516666667], "Antarctica/Vostok":[-78.4,106.9], "Antarctica/DumontDUrville":[-66.6666666667,140.016666667], "Antarctica/Syowa":[-69.0,39.5833333333], "America/Argentina/Buenos_Aires":[-34.6,-58.45], "America/Argentina/Cordoba":[-31.4,-64.1833333333], "America/Argentina/Jujuy":[-24.1833333333,-65.3], "America/Argentina/Tucuman":[-26.8166666667,-65.2166666667], "America/Argentina/Catamarca":[-28.4666666667,-65.7833333333], "America/Argentina/La_Rioja":[-29.4333333333,-66.85], "America/Argentina/San_Juan":[-31.5333333333,-68.5166666667], "America/Argentina/Mendoza":[-32.8833333333,-68.8166666667], "America/Argentina/Rio_Gallegos":[-51.6333333333,-69.2166666667], "America/Argentina/Ushuaia":[-54.8,-68.3], "Pacific/Pago_Pago":[-14.2666666667,-170.7], "Europe/Vienna":[48.2166666667,16.3333333333], "Australia/Lord_Howe":[-31.55,159.083333333], "Australia/Hobart":[-42.8833333333,147.316666667], "Australia/Currie":[-39.9333333333,143.866666667], "Australia/Melbourne":[-37.8166666667,144.966666667], "Australia/Sydney":[-33.8666666667,151.216666667], "Australia/Broken_Hill":[-31.95,141.45], "Australia/Brisbane":[-27.4666666667,153.033333333], "Australia/Lindeman":[-20.2666666667,149.0], "Australia/Adelaide":[-34.9166666667,138.583333333], "Australia/Darwin":[-12.4666666667,130.833333333], "Australia/Perth":[-31.95,115.85], "Australia/Eucla":[-31.7166666667,128.866666667], "America/Aruba":[12.5,-69.9666666667], "Europe/Mariehamn":[60.1,19.95], "Asia/Baku":[40.3833333333,49.85], "Europe/Sarajevo":[43.8666666667,18.4166666667], "America/Barbados":[13.1,-59.6166666667], "Asia/Dhaka":[23.7166666667,90.4166666667], "Europe/Brussels":[50.8333333333,4.33333333333], "Africa/Ouagadougou":[12.3666666667,-1.51666666667], "Europe/Sofia":[42.6833333333,23.3166666667], "Asia/Bahrain":[26.3833333333,50.5833333333], "Africa/Bujumbura":[-3.38333333333,29.3666666667], "Africa/Porto-Novo":[6.48333333333,2.61666666667], "America/St_Barthelemy":[17.8833333333,-62.85], "Atlantic/Bermuda":[32.2833333333,-64.7666666667], "Asia/Brunei":[4.93333333333,114.916666667], "America/La_Paz":[-16.5,-68.15], "America/Noronha":[-3.85,-32.4166666667], "America/Belem":[-1.45,-48.4833333333], "America/Fortaleza":[-3.71666666667,-38.5], "America/Recife":[-8.05,-34.9], "America/Araguaina":[-7.2,-48.2], "America/Maceio":[-9.66666666667,-35.7166666667], "America/Bahia":[-12.9833333333,-38.5166666667], "America/Sao_Paulo":[-23.5333333333,-46.6166666667], "America/Campo_Grande":[-20.45,-54.6166666667], "America/Cuiaba":[-15.5833333333,-56.0833333333], "America/Porto_Velho":[-8.76666666667,-63.9], "America/Boa_Vista":[2.81666666667,-60.6666666667], "America/Manaus":[-3.13333333333,-60.0166666667], "America/Eirunepe":[-6.66666666667,-69.8666666667], "America/Rio_Branco":[-9.96666666667,-67.8], "America/Nassau":[25.0833333333,-77.35], "Asia/Thimphu":[27.4666666667,89.65], "Africa/Gaborone":[-25.75,25.9166666667], "Europe/Minsk":[53.9,27.5666666667], "America/Belize":[17.5,-88.2], "America/St_Johns":[47.5666666667,-52.7166666667], "America/Halifax":[44.65,-63.6], "America/Glace_Bay":[46.2,-59.95], "America/Moncton":[46.1,-64.7833333333], "America/Goose_Bay":[53.3333333333,-60.4166666667], "America/Blanc-Sablon":[51.4166666667,-57.1166666667], "America/Montreal":[45.5166666667,-73.5666666667], "America/Toronto":[43.65,-79.3833333333], "America/Nipigon":[49.0166666667,-88.2666666667], "America/Thunder_Bay":[48.3833333333,-89.25], "America/Iqaluit":[63.7333333333,-68.4666666667], "America/Pangnirtung":[66.1333333333,-65.7333333333], "America/Resolute":[74.6833333333,-94.8166666667], "America/Atikokan":[48.75,-91.6166666667], "America/Rankin_Inlet":[62.8166666667,-92.0666666667], "America/Winnipeg":[49.8833333333,-97.15], "America/Rainy_River":[48.7166666667,-94.5666666667], "America/Regina":[50.4,-104.65], "America/Swift_Current":[50.2833333333,-107.833333333], "America/Edmonton":[53.55,-113.466666667], "America/Cambridge_Bay":[69.1,-105.05], "America/Yellowknife":[62.45,-114.35], "America/Inuvik":[68.3333333333,-133.716666667], "America/Dawson_Creek":[59.7666666667,-120.233333333], "America/Vancouver":[49.2666666667,-123.116666667], "America/Whitehorse":[60.7166666667,-135.05], "America/Dawson":[64.0666666667,-139.416666667], "Indian/Cocos":[-12.1666666667,96.9166666667], "Africa/Kinshasa":[-4.3,15.3], "Africa/Lubumbashi":[-11.6666666667,27.4666666667], "Africa/Bangui":[4.36666666667,18.5833333333], "Africa/Brazzaville":[-4.26666666667,15.2833333333], "Europe/Zurich":[47.3833333333,8.53333333333], "Africa/Abidjan":[5.31666666667,-4.03333333333], "Pacific/Rarotonga":[-21.2333333333,-159.766666667], "America/Santiago":[-33.45,-70.6666666667], "Pacific/Easter":[-27.15,-109.433333333], "Africa/Douala":[4.05,9.7], "Asia/Shanghai":[31.2333333333,121.466666667], "Asia/Harbin":[45.75,126.683333333], "Asia/Chongqing":[29.5666666667,106.583333333], "Asia/Urumqi":[43.8,87.5833333333], "Asia/Kashgar":[39.4833333333,75.9833333333], "America/Bogota":[4.6,-74.0833333333], "America/Costa_Rica":[9.93333333333,-84.0833333333], "America/Havana":[23.1333333333,-82.3666666667], "Atlantic/Cape_Verde":[14.9166666667,-23.5166666667], "Indian/Christmas":[-10.4166666667,105.716666667], "Asia/Nicosia":[35.1666666667,33.3666666667], "Europe/Prague":[50.0833333333,14.4333333333], "Europe/Berlin":[52.5,13.3666666667], "Africa/Djibouti":[11.6,43.15], "Europe/Copenhagen":[55.6666666667,12.5833333333], "America/Dominica":[15.3,-61.4], "America/Santo_Domingo":[18.4666666667,-69.9], "Africa/Algiers":[36.7833333333,3.05], "America/Guayaquil":[-2.16666666667,-79.8333333333], "Pacific/Galapagos":[-0.9,-89.6], "Europe/Tallinn":[59.4166666667,24.75], "Africa/Cairo":[30.05,31.25], "Africa/El_Aaiun":[27.15,-13.2], "Africa/Asmara":[15.3333333333,38.8833333333], "Europe/Madrid":[40.4,-3.68333333333], "Africa/Ceuta":[35.8833333333,-5.31666666667], "Atlantic/Canary":[28.1,-15.4], "Africa/Addis_Ababa":[9.03333333333,38.7], "Europe/Helsinki":[60.1666666667,24.9666666667], "Pacific/Fiji":[-18.1333333333,178.416666667], "Atlantic/Stanley":[-51.7,-57.85], "Pacific/Truk":[7.41666666667,151.783333333], "Pacific/Ponape":[6.96666666667,158.216666667], "Pacific/Kosrae":[5.31666666667,162.983333333], "Atlantic/Faroe":[62.0166666667,-6.76666666667], "Europe/Paris":[48.8666666667,2.33333333333], "Africa/Libreville":[0.383333333333,9.45], "Europe/London":[51.5,-0.116666666667], "America/Grenada":[12.05,-61.75], "Asia/Tbilisi":[41.7166666667,44.8166666667], "America/Cayenne":[4.93333333333,-52.3333333333], "Europe/Guernsey":[49.45,-2.53333333333], "Africa/Accra":[5.55,-0.216666666667], "Europe/Gibraltar":[36.1333333333,-5.35], "America/Godthab":[64.1833333333,-51.7333333333], "America/Danmarkshavn":[76.7666666667,-18.6666666667], "America/Scoresbysund":[70.4833333333,-21.9666666667], "America/Thule":[76.5666666667,-68.7833333333], "Africa/Banjul":[13.4666666667,-16.65], "Africa/Conakry":[9.51666666667,-13.7166666667], "America/Guadeloupe":[16.2333333333,-61.5333333333], "Africa/Malabo":[3.75,8.78333333333], "Europe/Athens":[37.9666666667,23.7166666667], "Atlantic/South_Georgia":[-54.2666666667,-36.5333333333], "America/Guatemala":[14.6333333333,-90.5166666667], "Pacific/Guam":[13.4666666667,144.75], "Africa/Bissau":[11.85,-15.5833333333], "America/Guyana":[6.8,-58.1666666667], "Asia/Hong_Kong":[22.2833333333,114.15], "America/Tegucigalpa":[14.1,-87.2166666667], "Europe/Zagreb":[45.8,15.9666666667], "America/Port-au-Prince":[18.5333333333,-72.3333333333], "Europe/Budapest":[47.5,19.0833333333], "Asia/Jakarta":[-6.16666666667,106.8], "Asia/Pontianak":[-0.0333333333333,109.333333333], "Asia/Makassar":[-5.11666666667,119.4], "Asia/Jayapura":[-2.53333333333,140.7], "Europe/Dublin":[53.3333333333,-6.25], "Asia/Jerusalem":[31.7666666667,35.2333333333], "Europe/Isle_of_Man":[54.15,-4.46666666667], "Asia/Calcutta":[22.5333333333,88.3666666667], "Indian/Chagos":[-7.33333333333,72.4166666667], "Asia/Baghdad":[33.35,44.4166666667], "Asia/Tehran":[35.6666666667,51.4333333333], "Atlantic/Reykjavik":[64.15,-21.85], "Europe/Rome":[41.9,12.4833333333], "Europe/Jersey":[49.2,-2.11666666667], "America/Jamaica":[18.0,-76.8], "Asia/Amman":[31.95,35.9333333333], "Asia/Tokyo":[35.65,139.733333333], "Africa/Nairobi":[-1.28333333333,36.8166666667], "Asia/Bishkek":[42.9,74.6], "Asia/Phnom_Penh":[11.55,104.916666667], "Pacific/Tarawa":[1.41666666667,173.0], "Pacific/Enderbury":[-3.13333333333,-171.083333333], "Pacific/Kiritimati":[1.86666666667,-157.333333333], "Indian/Comoro":[-11.6833333333,43.2666666667], "America/St_Kitts":[17.3,-62.7166666667], "Asia/Pyongyang":[39.0166666667,125.75], "Asia/Seoul":[37.55,126.966666667], "Asia/Kuwait":[29.3333333333,47.9833333333], "America/Cayman":[19.3,-81.3833333333], "Asia/Almaty":[43.25,76.95], "Asia/Qyzylorda":[44.8,65.4666666667], "Asia/Aqtobe":[50.2833333333,57.1666666667], "Asia/Aqtau":[44.5166666667,50.2666666667], "Asia/Oral":[51.2166666667,51.35], "Asia/Vientiane":[17.9666666667,102.6], "Asia/Beirut":[33.8833333333,35.5], "America/St_Lucia":[14.0166666667,-61.0], "Europe/Vaduz":[47.15,9.51666666667], "Asia/Colombo":[6.93333333333,79.85], "Africa/Monrovia":[6.3,-10.7833333333], "Africa/Maseru":[-29.4666666667,27.5], "Europe/Vilnius":[54.6833333333,25.3166666667], "Europe/Luxembourg":[49.6,6.15], "Europe/Riga":[56.95,24.1], "Africa/Tripoli":[32.9,13.1833333333], "Africa/Casablanca":[33.65,-7.58333333333], "Europe/Monaco":[43.7,7.38333333333], "Europe/Chisinau":[47.0,28.8333333333], "Europe/Podgorica":[42.4333333333,19.2666666667], "America/Marigot":[18.0666666667,-63.0833333333], "Indian/Antananarivo":[-18.9166666667,47.5166666667], "Pacific/Majuro":[7.15,171.2], "Pacific/Kwajalein":[9.08333333333,167.333333333], "Europe/Skopje":[41.9833333333,21.4333333333], "Africa/Bamako":[12.65,-8.0], "Asia/Rangoon":[16.7833333333,96.1666666667], "Asia/Ulaanbaatar":[47.9166666667,106.883333333], "Asia/Hovd":[48.0166666667,91.65], "Asia/Choibalsan":[48.0666666667,114.5], "Asia/Macau":[22.2333333333,113.583333333], "Pacific/Saipan":[15.2,145.75], "America/Martinique":[14.6,-61.0833333333], "Africa/Nouakchott":[18.1,-15.95], "America/Montserrat":[16.7166666667,-62.2166666667], "Europe/Malta":[35.9,14.5166666667], "Indian/Mauritius":[-20.1666666667,57.5], "Indian/Maldives":[4.16666666667,73.5], "Africa/Blantyre":[-15.7833333333,35.0], "America/Mexico_City":[19.4,-99.15], "America/Cancun":[21.0833333333,-86.7666666667], "America/Merida":[20.9666666667,-89.6166666667], "America/Monterrey":[25.6666666667,-100.316666667], "America/Mazatlan":[23.2166666667,-106.416666667], "America/Chihuahua":[28.6333333333,-106.083333333], "America/Hermosillo":[29.0666666667,-110.966666667], "America/Tijuana":[32.5333333333,-117.016666667], "Asia/Kuala_Lumpur":[3.16666666667,101.7], "Asia/Kuching":[1.55,110.333333333], "Africa/Maputo":[-25.9666666667,32.5833333333], "Africa/Windhoek":[-22.5666666667,17.1], "Pacific/Noumea":[-22.2666666667,165.5], "Africa/Niamey":[13.5166666667,2.11666666667], "Pacific/Norfolk":[-29.05,167.966666667], "Africa/Lagos":[6.45,3.4], "America/Managua":[12.15,-86.2833333333], "Europe/Amsterdam":[52.3666666667,4.9], "Europe/Oslo":[59.9166666667,10.75], "Asia/Katmandu":[27.7166666667,85.3166666667], "Pacific/Nauru":[-0.516666666667,166.916666667], "Pacific/Niue":[-19.0166666667,169.916666667], "Pacific/Auckland":[-36.8666666667,174.766666667], "Pacific/Chatham":[-43.95,-176.55], "Asia/Muscat":[23.6,58.5833333333], "America/Panama":[8.96666666667,-79.5333333333], "America/Lima":[-12.05,-77.05], "Pacific/Tahiti":[-17.5333333333,-149.566666667], "Pacific/Marquesas":[-9.0,-139.5], "Pacific/Gambier":[-23.1333333333,-134.95], "Pacific/Port_Moresby":[-9.5,147.166666667], "Asia/Manila":[14.5833333333,121.0], "Asia/Karachi":[24.8666666667,67.05], "Europe/Warsaw":[52.25,21.0], "America/Miquelon":[47.05,-56.3333333333], "Pacific/Pitcairn":[-25.0666666667,-130.083333333], "America/Puerto_Rico":[18.4666666667,-66.1], "Asia/Gaza":[31.5,34.4666666667], "Europe/Lisbon":[38.7166666667,-9.13333333333], "Atlantic/Madeira":[32.6333333333,-16.9], "Atlantic/Azores":[37.7333333333,-25.6666666667], "Pacific/Palau":[7.33333333333,134.483333333], "America/Asuncion":[-25.2666666667,-57.6666666667], "Asia/Qatar":[25.2833333333,51.5333333333], "Indian/Reunion":[-20.8666666667,55.4666666667], "Europe/Bucharest":[44.4333333333,26.1], "Europe/Belgrade":[44.8333333333,20.5], "Europe/Kaliningrad":[54.7166666667,20.5], "Europe/Moscow":[55.75,37.5833333333], "Europe/Volgograd":[48.7333333333,44.4166666667], "Europe/Samara":[53.2,50.15], "Asia/Yekaterinburg":[56.85,60.6], "Asia/Omsk":[55.0,73.4], "Asia/Novosibirsk":[55.0333333333,82.9166666667], "Asia/Krasnoyarsk":[56.0166666667,92.8333333333], "Asia/Irkutsk":[52.2666666667,104.333333333], "Asia/Yakutsk":[62.0,129.666666667], "Asia/Vladivostok":[43.1666666667,131.933333333], "Asia/Sakhalin":[46.9666666667,142.7], "Asia/Magadan":[59.5666666667,150.8], "Asia/Kamchatka":[53.0166666667,158.65], "Asia/Anadyr":[64.75,177.483333333], "Africa/Kigali":[-1.95,30.0666666667], "Asia/Riyadh":[24.6333333333,46.7166666667], "Pacific/Guadalcanal":[-9.53333333333,160.2], "Indian/Mahe":[-4.66666666667,55.4666666667], "Africa/Khartoum":[15.6,32.5333333333], "Europe/Stockholm":[59.3333333333,18.05], "Asia/Singapore":[1.28333333333,103.85], "Atlantic/St_Helena":[-15.9166666667,-5.7], "Europe/Ljubljana":[46.05,14.5166666667], "Arctic/Longyearbyen":[78.0,16.0], "Europe/Bratislava":[48.15,17.1166666667], "Africa/Freetown":[8.5,-13.25], "Europe/San_Marino":[43.9166666667,12.4666666667], "Africa/Dakar":[14.6666666667,-17.4333333333], "Africa/Mogadishu":[2.06666666667,45.3666666667], "America/Paramaribo":[5.83333333333,-55.1666666667], "Africa/Sao_Tome":[0.333333333333,6.73333333333], "America/El_Salvador":[13.7,-89.2], "Asia/Damascus":[33.5,36.3], "Africa/Mbabane":[-26.3,31.1], "America/Grand_Turk":[21.4666666667,-71.1333333333], "Africa/Ndjamena":[12.1166666667,15.05], "Indian/Kerguelen":[-49.35,70.2166666667], "Africa/Lome":[6.13333333333,1.21666666667], "Asia/Bangkok":[13.75,100.516666667], "Asia/Dushanbe":[38.5833333333,68.8], "Pacific/Fakaofo":[-9.36666666667,-171.233333333], "Asia/Dili":[-8.55,125.583333333], "Asia/Ashgabat":[37.95,58.3833333333], "Africa/Tunis":[36.8,10.1833333333], "Pacific/Tongatapu":[-21.1666666667,175.166666667], "Europe/Istanbul":[41.0166666667,28.9666666667], "America/Port_of_Spain":[10.65,-61.5166666667], "Pacific/Funafuti":[-8.51666666667,179.216666667], "Asia/Taipei":[25.05,121.5], "Africa/Dar_es_Salaam":[-6.8,39.2833333333], "Europe/Kiev":[50.4333333333,30.5166666667], "Europe/Uzhgorod":[48.6166666667,22.3], "Europe/Zaporozhye":[47.8333333333,35.1666666667], "Europe/Simferopol":[44.95,34.1], "Africa/Kampala":[0.316666666667,32.4166666667], "Pacific/Johnston":[16.75,-169.516666667], "Pacific/Midway":[28.2166666667,-177.366666667], "Pacific/Wake":[19.2833333333,166.616666667], "America/New_York":[40.7,-74.0], "America/Detroit":[42.3166666667,-83.0333333333], "America/Kentucky/Louisville":[38.25,-85.75], "America/Kentucky/Monticello":[36.8166666667,-84.8333333333], "America/Indiana/Indianapolis":[39.7666666667,-86.15], "America/Indiana/Vincennes":[38.6666666667,-87.5166666667], "America/Indiana/Knox":[41.2833333333,-86.6166666667], "America/Indiana/Winamac":[41.05,-86.6], "America/Indiana/Marengo":[38.3666666667,-86.3333333333], "America/Indiana/Vevay":[38.7333333333,-85.0666666667], "America/Chicago":[41.85,-87.65], "America/Indiana/Tell_City":[37.95,-86.75], "America/Indiana/Petersburg":[38.4833333333,-87.2666666667], "America/Menominee":[45.1,-87.6], "America/North_Dakota/Center":[47.1,-101.283333333], "America/North_Dakota/New_Salem":[46.8333333333,-101.4], "America/Denver":[39.7333333333,-104.983333333], "America/Boise":[43.6,-116.2], "America/Shiprock":[36.7833333333,-108.683333333], "America/Phoenix":[33.4333333333,-112.066666667], "America/Los_Angeles":[34.05,-118.233333333], "America/Anchorage":[61.2166666667,-149.9], "America/Juneau":[58.3,-134.416666667], "America/Yakutat":[59.5333333333,-139.716666667], "America/Nome":[64.5,-165.4], "America/Adak":[51.8666666667,-176.65], "Pacific/Honolulu":[21.3,-157.85], "America/Montevideo":[-34.8833333333,-56.1833333333], "Asia/Samarkand":[39.6666666667,66.8], "Asia/Tashkent":[41.3333333333,69.3], "Europe/Vatican":[41.9,12.45], "America/St_Vincent":[13.15,-61.2333333333], "America/Caracas":[10.5,-66.9333333333], "America/Tortola":[18.45,-64.6166666667], "America/St_Thomas":[18.35,-64.9333333333], "Asia/Saigon":[10.75,106.666666667], "Pacific/Efate":[-17.6666666667,168.416666667], "Pacific/Wallis":[-13.3,-176.166666667], "Pacific/Apia":[-13.8333333333,-171.733333333], "Asia/Aden":[12.75,45.2], "Indian/Mayotte":[-12.7833333333,45.2333333333], "Africa/Johannesburg":[-26.25,28.0], "Africa/Lusaka":[-15.4166666667,28.2833333333], "Africa/Harare":[-17.8333333333,31.05] };
-/*
-    http://www.JSON.org/json2.js
-    2009-09-29
-
-    Public Domain.
-
-    NO WARRANTY EXPRESSED OR IMPLIED. USE AT YOUR OWN RISK.
-
-    See http://www.JSON.org/js.html
-
-
-    This code should be minified before deployment.
-    See http://javascript.crockford.com/jsmin.html
-
-    USE YOUR OWN COPY. IT IS EXTREMELY UNWISE TO LOAD CODE FROM SERVERS YOU DO
-    NOT CONTROL.
-
-
-    This file creates a global JSON object containing two methods: stringify
-    and parse.
-
-        JSON.stringify(value, replacer, space)
-            value       any JavaScript value, usually an object or array.
-
-            replacer    an optional parameter that determines how object
-                        values are stringified for objects. It can be a
-                        function or an array of strings.
-
-            space       an optional parameter that specifies the indentation
-                        of nested structures. If it is omitted, the text will
-                        be packed without extra whitespace. If it is a number,
-                        it will specify the number of spaces to indent at each
-                        level. If it is a string (such as '\t' or '&nbsp;'),
-                        it contains the characters used to indent at each level.
-
-            This method produces a JSON text from a JavaScript value.
-
-            When an object value is found, if the object contains a toJSON
-            method, its toJSON method will be called and the result will be
-            stringified. A toJSON method does not serialize: it returns the
-            value represented by the name/value pair that should be serialized,
-            or undefined if nothing should be serialized. The toJSON method
-            will be passed the key associated with the value, and this will be
-            bound to the value
-
-            For example, this would serialize Dates as ISO strings.
-
-                Date.prototype.toJSON = function (key) {
-                    function f(n) {
-                        // Format integers to have at least two digits.
-                        return n < 10 ? '0' + n : n;
-                    }
-
-                    return this.getUTCFullYear()   + '-' +
-                         f(this.getUTCMonth() + 1) + '-' +
-                         f(this.getUTCDate())      + 'T' +
-                         f(this.getUTCHours())     + ':' +
-                         f(this.getUTCMinutes())   + ':' +
-                         f(this.getUTCSeconds())   + 'Z';
-                };
-
-            You can provide an optional replacer method. It will be passed the
-            key and value of each member, with this bound to the containing
-            object. The value that is returned from your method will be
-            serialized. If your method returns undefined, then the member will
-            be excluded from the serialization.
-
-            If the replacer parameter is an array of strings, then it will be
-            used to select the members to be serialized. It filters the results
-            such that only members with keys listed in the replacer array are
-            stringified.
-
-            Values that do not have JSON representations, such as undefined or
-            functions, will not be serialized. Such values in objects will be
-            dropped; in arrays they will be replaced with null. You can use
-            a replacer function to replace those with JSON values.
-            JSON.stringify(undefined) returns undefined.
-
-            The optional space parameter produces a stringification of the
-            value that is filled with line breaks and indentation to make it
-            easier to read.
-
-            If the space parameter is a non-empty string, then that string will
-            be used for indentation. If the space parameter is a number, then
-            the indentation will be that many spaces.
-
-            Example:
-
-            text = JSON.stringify(['e', {pluribus: 'unum'}]);
-            // text is '["e",{"pluribus":"unum"}]'
-
-
-            text = JSON.stringify(['e', {pluribus: 'unum'}], null, '\t');
-            // text is '[\n\t"e",\n\t{\n\t\t"pluribus": "unum"\n\t}\n]'
-
-            text = JSON.stringify([new Date()], function (key, value) {
-                return this[key] instanceof Date ?
-                    'Date(' + this[key] + ')' : value;
-            });
-            // text is '["Date(---current time---)"]'
-
-
-        JSON.parse(text, reviver)
-            This method parses a JSON text to produce an object or array.
-            It can throw a SyntaxError exception.
-
-            The optional reviver parameter is a function that can filter and
-            transform the results. It receives each of the keys and values,
-            and its return value is used instead of the original value.
-            If it returns what it received, then the structure is not modified.
-            If it returns undefined then the member is deleted.
-
-            Example:
-
-            // Parse the text. Values that look like ISO date strings will
-            // be converted to Date objects.
-
-            myData = JSON.parse(text, function (key, value) {
-                var a;
-                if (typeof value === 'string') {
-                    a =
-/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2}(?:\.\d*)?)Z$/.exec(value);
-                    if (a) {
-                        return new Date(Date.UTC(+a[1], +a[2] - 1, +a[3], +a[4],
-                            +a[5], +a[6]));
-                    }
-                }
-                return value;
-            });
-
-            myData = JSON.parse('["Date(09/09/2001)"]', function (key, value) {
-                var d;
-                if (typeof value === 'string' &&
-                        value.slice(0, 5) === 'Date(' &&
-                        value.slice(-1) === ')') {
-                    d = new Date(value.slice(5, -1));
-                    if (d) {
-                        return d;
-                    }
-                }
-                return value;
-            });
-
-
-    This is a reference implementation. You are free to copy, modify, or
-    redistribute.
-*/
-
-/*jslint evil: true, strict: false */
-
-/*members "", "\b", "\t", "\n", "\f", "\r", "\"", JSON, "\\", apply,
-    call, charCodeAt, getUTCDate, getUTCFullYear, getUTCHours,
-    getUTCMinutes, getUTCMonth, getUTCSeconds, hasOwnProperty, join,
-    lastIndex, length, parse, prototype, push, replace, slice, stringify,
-    test, toJSON, toString, valueOf
-*/
-
-
-// Create a JSON object only if one does not already exist. We create the
-// methods in a closure to avoid creating global variables.
-
-if (!this.JSON) {
-    this.JSON = {};
+    };
+
+    this.meanAnomaly = function() {
+        var t = this.approximateTime();
+        return (0.9856 * t) - 3.289;
+    };
+
+    this.trueLongitude = function() {
+        var M = this.meanAnomaly();
+        var L = M + (1.916 * this.sin(M)) + (0.020 * this.sin(2 * M)) + 282.634;
+        return L % 360;
+    };
+
+    this.rightAscension = function() {
+        var L = this.trueLongitude();
+        var RA = this.atan(0.91764 * this.tan(L));
+        RA %= 360;
+
+        var Lquadrant  = (Math.floor( L/90)) * 90;
+        var RAquadrant = (Math.floor(RA/90)) * 90;
+        RA = RA + (Lquadrant - RAquadrant);
+        RA /= 15;
+
+        return RA;
+    };
+
+    this.sinDec = function() {
+        var L = this.trueLongitude();
+        var sinDec = 0.39782 * this.sin(L);
+        return sinDec;
+    };
+
+    this.cosDec = function() {
+        return this.cos(this.asin(this.sinDec()));
+    };
+
+    this.localMeanTime = function() {
+        var cosH = (this.cos(this.zenith) - (this.sinDec() * this.sin(this.latitude))) 
+            / (this.cosDec() * this.cos(this.latitude));
+
+        if (cosH >  1) {
+            return "the sun never rises on this location (on the specified date)";
+        } else if (cosH < -1) {
+            return "the sun never sets on this location (on the specified date)";
+        } else {
+            var H = this.rising ? 360 - this.acos(cosH) : this.acos(cosH);
+            H /= 15;
+            var RA = this.rightAscension();
+            var t = this.approximateTime();
+            var T = H + RA - (0.06571 * t) - 6.622;
+            return T;
+        }
+    };
+
+    this.UTCTime = function() {
+        var T = this.localMeanTime();
+        var UT = T - this.lngHour;
+        return UT % 24;
+    };
+
+    this.sunriseUtcHours = function() {
+        this.rising = true;
+        return this.UTCTime();
+    };
+
+    this.sunsetUtcHours = function() {
+        this.rising = false;
+        return this.UTCTime();
+    };
+
+    this.hoursRange = function( h ) {
+        if ( h >= 24 ) {
+            return h - 24;
+        } else if ( h < 0 ) {
+            return h + 24;
+        } else {
+            return h;
+        }
+    };
+
+    this.sunriseLocalHours = function(gmt) {
+        return this.hoursRange( gmt + this.sunriseUtcHours() );
+    };
+
+    this.sunsetLocalHours = function(gmt) {
+        return this.hoursRange( gmt + this.sunsetUtcHours() );
+    };
 }
 
-(function () {
-
-    function f(n) {
-        // Format integers to have at least two digits.
-        return n < 10 ? '0' + n : n;
-    }
-
-    if (typeof Date.prototype.toJSON !== 'function') {
-
-        Date.prototype.toJSON = function (key) {
-
-            return isFinite(this.valueOf()) ?
-                   this.getUTCFullYear()   + '-' +
-                 f(this.getUTCMonth() + 1) + '-' +
-                 f(this.getUTCDate())      + 'T' +
-                 f(this.getUTCHours())     + ':' +
-                 f(this.getUTCMinutes())   + ':' +
-                 f(this.getUTCSeconds())   + 'Z' : null;
-        };
-
-        String.prototype.toJSON =
-        Number.prototype.toJSON =
-        Boolean.prototype.toJSON = function (key) {
-            return this.valueOf();
-        };
-    }
-
-    var cx = /[\u0000\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,
-        escapable = /[\\\"\x00-\x1f\x7f-\x9f\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,
-        gap,
-        indent,
-        meta = {    // table of character substitutions
-            '\b': '\\b',
-            '\t': '\\t',
-            '\n': '\\n',
-            '\f': '\\f',
-            '\r': '\\r',
-            '"' : '\\"',
-            '\\': '\\\\'
-        },
-        rep;
-
-
-    function quote(string) {
-
-// If the string contains no control characters, no quote characters, and no
-// backslash characters, then we can safely slap some quotes around it.
-// Otherwise we must also replace the offending characters with safe escape
-// sequences.
-
-        escapable.lastIndex = 0;
-        return escapable.test(string) ?
-            '"' + string.replace(escapable, function (a) {
-                var c = meta[a];
-                return typeof c === 'string' ? c :
-                    '\\u' + ('0000' + a.charCodeAt(0).toString(16)).slice(-4);
-            }) + '"' :
-            '"' + string + '"';
-    }
-
-
-    function str(key, holder) {
-
-// Produce a string from holder[key].
-
-        var i,          // The loop counter.
-            k,          // The member key.
-            v,          // The member value.
-            length,
-            mind = gap,
-            partial,
-            value = holder[key];
-
-// If the value has a toJSON method, call it to obtain a replacement value.
-
-        if (value && typeof value === 'object' &&
-                typeof value.toJSON === 'function') {
-            value = value.toJSON(key);
-        }
-
-// If we were called with a replacer function, then call the replacer to
-// obtain a replacement value.
-
-        if (typeof rep === 'function') {
-            value = rep.call(holder, key, value);
-        }
-
-// What happens next depends on the value's type.
-
-        switch (typeof value) {
-        case 'string':
-            return quote(value);
-
-        case 'number':
-
-// JSON numbers must be finite. Encode non-finite numbers as null.
-
-            return isFinite(value) ? String(value) : 'null';
-
-        case 'boolean':
-        case 'null':
-
-// If the value is a boolean or null, convert it to a string. Note:
-// typeof null does not produce 'null'. The case is included here in
-// the remote chance that this gets fixed someday.
-
-            return String(value);
-
-// If the type is 'object', we might be dealing with an object or an array or
-// null.
-
-        case 'object':
-
-// Due to a specification blunder in ECMAScript, typeof null is 'object',
-// so watch out for that case.
-
-            if (!value) {
-                return 'null';
-            }
-
-// Make an array to hold the partial results of stringifying this object value.
-
-            gap += indent;
-            partial = [];
-
-// Is the value an array?
-
-            if (Object.prototype.toString.apply(value) === '[object Array]') {
-
-// The value is an array. Stringify every element. Use null as a placeholder
-// for non-JSON values.
-
-                length = value.length;
-                for (i = 0; i < length; i += 1) {
-                    partial[i] = str(i, value) || 'null';
-                }
-
-// Join all of the elements together, separated with commas, and wrap them in
-// brackets.
-
-                v = partial.length === 0 ? '[]' :
-                    gap ? '[\n' + gap +
-                            partial.join(',\n' + gap) + '\n' +
-                                mind + ']' :
-                          '[' + partial.join(',') + ']';
-                gap = mind;
-                return v;
-            }
-
-// If the replacer is an array, use it to select the members to be stringified.
-
-            if (rep && typeof rep === 'object') {
-                length = rep.length;
-                for (i = 0; i < length; i += 1) {
-                    k = rep[i];
-                    if (typeof k === 'string') {
-                        v = str(k, value);
-                        if (v) {
-                            partial.push(quote(k) + (gap ? ': ' : ':') + v);
-                        }
-                    }
-                }
-            } else {
-
-// Otherwise, iterate through all of the keys in the object.
-
-                for (k in value) {
-                    if (Object.hasOwnProperty.call(value, k)) {
-                        v = str(k, value);
-                        if (v) {
-                            partial.push(quote(k) + (gap ? ': ' : ':') + v);
-                        }
-                    }
-                }
-            }
-
-// Join all of the member texts together, separated with commas,
-// and wrap them in braces.
-
-            v = partial.length === 0 ? '{}' :
-                gap ? '{\n' + gap + partial.join(',\n' + gap) + '\n' +
-                        mind + '}' : '{' + partial.join(',') + '}';
-            gap = mind;
-            return v;
-        }
-    }
-
-// If the JSON object does not yet have a stringify method, give it one.
-
-    if (typeof JSON.stringify !== 'function') {
-        JSON.stringify = function (value, replacer, space) {
-
-// The stringify method takes a value and an optional replacer, and an optional
-// space parameter, and returns a JSON text. The replacer can be a function
-// that can replace values, or an array of strings that will select the keys.
-// A default replacer method can be provided. Use of the space parameter can
-// produce text that is more easily readable.
-
-            var i;
-            gap = '';
-            indent = '';
-
-// If the space parameter is a number, make an indent string containing that
-// many spaces.
-
-            if (typeof space === 'number') {
-                for (i = 0; i < space; i += 1) {
-                    indent += ' ';
-                }
-
-// If the space parameter is a string, it will be used as the indent string.
-
-            } else if (typeof space === 'string') {
-                indent = space;
-            }
-
-// If there is a replacer, it must be a function or an array.
-// Otherwise, throw an error.
-
-            rep = replacer;
-            if (replacer && typeof replacer !== 'function' &&
-                    (typeof replacer !== 'object' ||
-                     typeof replacer.length !== 'number')) {
-                throw new Error('JSON.stringify');
-            }
-
-// Make a fake root object containing our value under the key of ''.
-// Return the result of stringifying the value.
-
-            return str('', {'': value});
-        };
-    }
-
-
-// If the JSON object does not yet have a parse method, give it one.
-
-    if (typeof JSON.parse !== 'function') {
-        JSON.parse = function (text, reviver) {
-
-// The parse method takes a text and an optional reviver function, and returns
-// a JavaScript value if the text is a valid JSON text.
-
-            var j;
-
-            function walk(holder, key) {
-
-// The walk method is used to recursively walk the resulting structure so
-// that modifications can be made.
-
-                var k, v, value = holder[key];
-                if (value && typeof value === 'object') {
-                    for (k in value) {
-                        if (Object.hasOwnProperty.call(value, k)) {
-                            v = walk(value, k);
-                            if (v !== undefined) {
-                                value[k] = v;
-                            } else {
-                                delete value[k];
-                            }
-                        }
-                    }
-                }
-                return reviver.call(holder, key, value);
-            }
-
-
-// Parsing happens in four stages. In the first stage, we replace certain
-// Unicode characters with escape sequences. JavaScript handles many characters
-// incorrectly, either silently deleting them, or treating them as line endings.
-
-            cx.lastIndex = 0;
-            if (cx.test(text)) {
-                text = text.replace(cx, function (a) {
-                    return '\\u' +
-                        ('0000' + a.charCodeAt(0).toString(16)).slice(-4);
-                });
-            }
-
-// In the second stage, we run the text against regular expressions that look
-// for non-JSON patterns. We are especially concerned with '()' and 'new'
-// because they can cause invocation, and '=' because it can cause mutation.
-// But just to be safe, we want to reject all unexpected forms.
-
-// We split the second stage into 4 regexp operations in order to work around
-// crippling inefficiencies in IE's and Safari's regexp engines. First we
-// replace the JSON backslash pairs with '@' (a non-JSON character). Second, we
-// replace all simple value tokens with ']' characters. Third, we delete all
-// open brackets that follow a colon or comma or that begin the text. Finally,
-// we look to see that the remaining characters are only whitespace or ']' or
-// ',' or ':' or '{' or '}'. If that is so, then the text is safe for eval.
-
-            if (/^[\],:{}\s]*$/.
-test(text.replace(/\\(?:["\\\/bfnrt]|u[0-9a-fA-F]{4})/g, '@').
-replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, ']').
-replace(/(?:^|:|,)(?:\s*\[)+/g, ''))) {
-
-// In the third stage we use the eval function to compile the text into a
-// JavaScript structure. The '{' operator is subject to a syntactic ambiguity
-// in JavaScript: it can begin a block or an object literal. We wrap the text
-// in parens to eliminate the ambiguity.
-
-                j = eval('(' + text + ')');
-
-// In the optional fourth stage, we recursively walk the new structure, passing
-// each name/value pair to a reviver function for possible transformation.
-
-                return typeof reviver === 'function' ?
-                    walk({'': j}, '') : j;
-            }
-
-// If the text is not JSON parseable, then a SyntaxError is thrown.
-
-            throw new SyntaxError('JSON.parse');
-        };
-    }
-}());
+//Los Angeles
+//x = new SunriseSunset( new Date(), 34.05, -118.233333333 );
+
+//Tokyo
+//x = new SunriseSunset( 2011, 1, 19, 35+40/60, 139+45/60);
+var latlon = {
+"Europe/Andorra":[42.5,1.51666666667], "Asia/Dubai":[25.3,55.3], "Asia/Kabul":[34.5166666667,69.2], "America/Antigua":[17.05,-61.8], "America/Anguilla":[18.2,-63.0666666667], "Europe/Tirane":[41.3333333333,19.8333333333], "Asia/Yerevan":[40.1833333333,44.5], "America/Curacao":[12.1833333333,-69.0], "Africa/Luanda":[-8.8,13.2333333333], "Antarctica/McMurdo":[-77.8333333333,166.6], "Antarctica/South Pole":[-90.0,0.0], "Antarctica/Rothera":[-67.5666666667,-68.1333333333], "Antarctica/Palmer":[-64.8,-64.1], "Antarctica/Mawson":[-67.6,62.8833333333], "Antarctica/Davis":[-68.5833333333,77.9666666667], "Antarctica/Casey":[-66.2833333333,110.516666667], "Antarctica/Vostok":[-78.4,106.9], "Antarctica/DumontDUrville":[-66.6666666667,140.016666667], "Antarctica/Syowa":[-69.0,39.5833333333], "America/Argentina/Buenos Aires":[-34.6,-58.45], "America/Argentina/Cordoba":[-31.4,-64.1833333333], "America/Argentina/Jujuy":[-24.1833333333,-65.3], "America/Argentina/Tucuman":[-26.8166666667,-65.2166666667], "America/Argentina/Catamarca":[-28.4666666667,-65.7833333333], "America/Argentina/La Rioja":[-29.4333333333,-66.85], "America/Argentina/San Juan":[-31.5333333333,-68.5166666667], "America/Argentina/Mendoza":[-32.8833333333,-68.8166666667], "America/Argentina/Rio Gallegos":[-51.6333333333,-69.2166666667], "America/Argentina/Ushuaia":[-54.8,-68.3], "Pacific/Pago Pago":[-14.2666666667,-170.7], "Europe/Vienna":[48.2166666667,16.3333333333], "Australia/Lord Howe":[-31.55,159.083333333], "Australia/Hobart":[-42.8833333333,147.316666667], "Australia/Currie":[-39.9333333333,143.866666667], "Australia/Melbourne":[-37.8166666667,144.966666667], "Australia/Sydney":[-33.8666666667,151.216666667], "Australia/Broken Hill":[-31.95,141.45], "Australia/Brisbane":[-27.4666666667,153.033333333], "Australia/Lindeman":[-20.2666666667,149.0], "Australia/Adelaide":[-34.9166666667,138.583333333], "Australia/Darwin":[-12.4666666667,130.833333333], "Australia/Perth":[-31.95,115.85], "Australia/Eucla":[-31.7166666667,128.866666667], "America/Aruba":[12.5,-69.9666666667], "Europe/Mariehamn":[60.1,19.95], "Asia/Baku":[40.3833333333,49.85], "Europe/Sarajevo":[43.8666666667,18.4166666667], "America/Barbados":[13.1,-59.6166666667], "Asia/Dhaka":[23.7166666667,90.4166666667], "Europe/Brussels":[50.8333333333,4.33333333333], "Africa/Ouagadougou":[12.3666666667,-1.51666666667], "Europe/Sofia":[42.6833333333,23.3166666667], "Asia/Bahrain":[26.3833333333,50.5833333333], "Africa/Bujumbura":[-3.38333333333,29.3666666667], "Africa/Porto-Novo":[6.48333333333,2.61666666667], "America/St Barthelemy":[17.8833333333,-62.85], "Atlantic/Bermuda":[32.2833333333,-64.7666666667], "Asia/Brunei":[4.93333333333,114.916666667], "America/La Paz":[-16.5,-68.15], "America/Noronha":[-3.85,-32.4166666667], "America/Belem":[-1.45,-48.4833333333], "America/Fortaleza":[-3.71666666667,-38.5], "America/Recife":[-8.05,-34.9], "America/Araguaina":[-7.2,-48.2], "America/Maceio":[-9.66666666667,-35.7166666667], "America/Bahia":[-12.9833333333,-38.5166666667], "America/Sao Paulo":[-23.5333333333,-46.6166666667], "America/Campo Grande":[-20.45,-54.6166666667], "America/Cuiaba":[-15.5833333333,-56.0833333333], "America/Porto Velho":[-8.76666666667,-63.9], "America/Boa Vista":[2.81666666667,-60.6666666667], "America/Manaus":[-3.13333333333,-60.0166666667], "America/Eirunepe":[-6.66666666667,-69.8666666667], "America/Rio Branco":[-9.96666666667,-67.8], "America/Nassau":[25.0833333333,-77.35], "Asia/Thimphu":[27.4666666667,89.65], "Africa/Gaborone":[-25.75,25.9166666667], "Europe/Minsk":[53.9,27.5666666667], "America/Belize":[17.5,-88.2], "America/St Johns":[47.5666666667,-52.7166666667], "America/Halifax":[44.65,-63.6], "America/Glace Bay":[46.2,-59.95], "America/Moncton":[46.1,-64.7833333333], "America/Goose Bay":[53.3333333333,-60.4166666667], "America/Blanc-Sablon":[51.4166666667,-57.1166666667], "America/Montreal":[45.5166666667,-73.5666666667], "America/Toronto":[43.65,-79.3833333333], "America/Nipigon":[49.0166666667,-88.2666666667], "America/Thunder Bay":[48.3833333333,-89.25], "America/Iqaluit":[63.7333333333,-68.4666666667], "America/Pangnirtung":[66.1333333333,-65.7333333333], "America/Resolute":[74.6833333333,-94.8166666667], "America/Atikokan":[48.75,-91.6166666667], "America/Rankin Inlet":[62.8166666667,-92.0666666667], "America/Winnipeg":[49.8833333333,-97.15], "America/Rainy River":[48.7166666667,-94.5666666667], "America/Regina":[50.4,-104.65], "America/Swift Current":[50.2833333333,-107.833333333], "America/Edmonton":[53.55,-113.466666667], "America/Cambridge Bay":[69.1,-105.05], "America/Yellowknife":[62.45,-114.35], "America/Inuvik":[68.3333333333,-133.716666667], "America/Dawson Creek":[59.7666666667,-120.233333333], "America/Vancouver":[49.2666666667,-123.116666667], "America/Whitehorse":[60.7166666667,-135.05], "America/Dawson":[64.0666666667,-139.416666667], "Indian/Cocos":[-12.1666666667,96.9166666667], "Africa/Kinshasa":[-4.3,15.3], "Africa/Lubumbashi":[-11.6666666667,27.4666666667], "Africa/Bangui":[4.36666666667,18.5833333333], "Africa/Brazzaville":[-4.26666666667,15.2833333333], "Europe/Zurich":[47.3833333333,8.53333333333], "Africa/Abidjan":[5.31666666667,-4.03333333333], "Pacific/Rarotonga":[-21.2333333333,-159.766666667], "America/Santiago":[-33.45,-70.6666666667], "Pacific/Easter":[-27.15,-109.433333333], "Africa/Douala":[4.05,9.7], "Asia/Shanghai":[31.2333333333,121.466666667], "Asia/Harbin":[45.75,126.683333333], "Asia/Chongqing":[29.5666666667,106.583333333], "Asia/Urumqi":[43.8,87.5833333333], "Asia/Kashgar":[39.4833333333,75.9833333333], "America/Bogota":[4.6,-74.0833333333], "America/Costa Rica":[9.93333333333,-84.0833333333], "America/Havana":[23.1333333333,-82.3666666667], "Atlantic/Cape Verde":[14.9166666667,-23.5166666667], "Indian/Christmas":[-10.4166666667,105.716666667], "Asia/Nicosia":[35.1666666667,33.3666666667], "Europe/Prague":[50.0833333333,14.4333333333], "Europe/Berlin":[52.5,13.3666666667], "Africa/Djibouti":[11.6,43.15], "Europe/Copenhagen":[55.6666666667,12.5833333333], "America/Dominica":[15.3,-61.4], "America/Santo Domingo":[18.4666666667,-69.9], "Africa/Algiers":[36.7833333333,3.05], "America/Guayaquil":[-2.16666666667,-79.8333333333], "Pacific/Galapagos":[-0.9,-89.6], "Europe/Tallinn":[59.4166666667,24.75], "Africa/Cairo":[30.05,31.25], "Africa/El Aaiun":[27.15,-13.2], "Africa/Asmara":[15.3333333333,38.8833333333], "Europe/Madrid":[40.4,-3.68333333333], "Africa/Ceuta":[35.8833333333,-5.31666666667], "Atlantic/Canary":[28.1,-15.4], "Africa/Addis Ababa":[9.03333333333,38.7], "Europe/Helsinki":[60.1666666667,24.9666666667], "Pacific/Fiji":[-18.1333333333,178.416666667], "Atlantic/Stanley":[-51.7,-57.85], "Pacific/Truk":[7.41666666667,151.783333333], "Pacific/Ponape":[6.96666666667,158.216666667], "Pacific/Kosrae":[5.31666666667,162.983333333], "Atlantic/Faroe":[62.0166666667,-6.76666666667], "Europe/Paris":[48.8666666667,2.33333333333], "Africa/Libreville":[0.383333333333,9.45], "Europe/London":[51.5,-0.116666666667], "America/Grenada":[12.05,-61.75], "Asia/Tbilisi":[41.7166666667,44.8166666667], "America/Cayenne":[4.93333333333,-52.3333333333], "Europe/Guernsey":[49.45,-2.53333333333], "Africa/Accra":[5.55,-0.216666666667], "Europe/Gibraltar":[36.1333333333,-5.35], "America/Godthab":[64.1833333333,-51.7333333333], "America/Danmarkshavn":[76.7666666667,-18.6666666667], "America/Scoresbysund":[70.4833333333,-21.9666666667], "America/Thule":[76.5666666667,-68.7833333333], "Africa/Banjul":[13.4666666667,-16.65], "Africa/Conakry":[9.51666666667,-13.7166666667], "America/Guadeloupe":[16.2333333333,-61.5333333333], "Africa/Malabo":[3.75,8.78333333333], "Europe/Athens":[37.9666666667,23.7166666667], "Atlantic/South Georgia":[-54.2666666667,-36.5333333333], "America/Guatemala":[14.6333333333,-90.5166666667], "Pacific/Guam":[13.4666666667,144.75], "Africa/Bissau":[11.85,-15.5833333333], "America/Guyana":[6.8,-58.1666666667], "Asia/Hong Kong":[22.2833333333,114.15], "America/Tegucigalpa":[14.1,-87.2166666667], "Europe/Zagreb":[45.8,15.9666666667], "America/Port-au-Prince":[18.5333333333,-72.3333333333], "Europe/Budapest":[47.5,19.0833333333], "Asia/Jakarta":[-6.16666666667,106.8], "Asia/Pontianak":[-0.0333333333333,109.333333333], "Asia/Makassar":[-5.11666666667,119.4], "Asia/Jayapura":[-2.53333333333,140.7], "Europe/Dublin":[53.3333333333,-6.25], "Asia/Jerusalem":[31.7666666667,35.2333333333], "Europe/Isle of Man":[54.15,-4.46666666667], "Asia/Calcutta":[22.5333333333,88.3666666667], "Indian/Chagos":[-7.33333333333,72.4166666667], "Asia/Baghdad":[33.35,44.4166666667], "Asia/Tehran":[35.6666666667,51.4333333333], "Atlantic/Reykjavik":[64.15,-21.85], "Europe/Rome":[41.9,12.4833333333], "Europe/Jersey":[49.2,-2.11666666667], "America/Jamaica":[18.0,-76.8], "Asia/Amman":[31.95,35.9333333333], "Asia/Tokyo":[35.65,139.733333333], "Africa/Nairobi":[-1.28333333333,36.8166666667], "Asia/Bishkek":[42.9,74.6], "Asia/Phnom Penh":[11.55,104.916666667], "Pacific/Tarawa":[1.41666666667,173.0], "Pacific/Enderbury":[-3.13333333333,-171.083333333], "Pacific/Kiritimati":[1.86666666667,-157.333333333], "Indian/Comoro":[-11.6833333333,43.2666666667], "America/St Kitts":[17.3,-62.7166666667], "Asia/Pyongyang":[39.0166666667,125.75], "Asia/Seoul":[37.55,126.966666667], "Asia/Kuwait":[29.3333333333,47.9833333333], "America/Cayman":[19.3,-81.3833333333], "Asia/Almaty":[43.25,76.95], "Asia/Qyzylorda":[44.8,65.4666666667], "Asia/Aqtobe":[50.2833333333,57.1666666667], "Asia/Aqtau":[44.5166666667,50.2666666667], "Asia/Oral":[51.2166666667,51.35], "Asia/Vientiane":[17.9666666667,102.6], "Asia/Beirut":[33.8833333333,35.5], "America/St Lucia":[14.0166666667,-61.0], "Europe/Vaduz":[47.15,9.51666666667], "Asia/Colombo":[6.93333333333,79.85], "Africa/Monrovia":[6.3,-10.7833333333], "Africa/Maseru":[-29.4666666667,27.5], "Europe/Vilnius":[54.6833333333,25.3166666667], "Europe/Luxembourg":[49.6,6.15], "Europe/Riga":[56.95,24.1], "Africa/Tripoli":[32.9,13.1833333333], "Africa/Casablanca":[33.65,-7.58333333333], "Europe/Monaco":[43.7,7.38333333333], "Europe/Chisinau":[47.0,28.8333333333], "Europe/Podgorica":[42.4333333333,19.2666666667], "America/Marigot":[18.0666666667,-63.0833333333], "Indian/Antananarivo":[-18.9166666667,47.5166666667], "Pacific/Majuro":[7.15,171.2], "Pacific/Kwajalein":[9.08333333333,167.333333333], "Europe/Skopje":[41.9833333333,21.4333333333], "Africa/Bamako":[12.65,-8.0], "Asia/Rangoon":[16.7833333333,96.1666666667], "Asia/Ulaanbaatar":[47.9166666667,106.883333333], "Asia/Hovd":[48.0166666667,91.65], "Asia/Choibalsan":[48.0666666667,114.5], "Asia/Macau":[22.2333333333,113.583333333], "Pacific/Saipan":[15.2,145.75], "America/Martinique":[14.6,-61.0833333333], "Africa/Nouakchott":[18.1,-15.95], "America/Montserrat":[16.7166666667,-62.2166666667], "Europe/Malta":[35.9,14.5166666667], "Indian/Mauritius":[-20.1666666667,57.5], "Indian/Maldives":[4.16666666667,73.5], "Africa/Blantyre":[-15.7833333333,35.0], "America/Mexico City":[19.4,-99.15], "America/Cancun":[21.0833333333,-86.7666666667], "America/Merida":[20.9666666667,-89.6166666667], "America/Monterrey":[25.6666666667,-100.316666667], "America/Mazatlan":[23.2166666667,-106.416666667], "America/Chihuahua":[28.6333333333,-106.083333333], "America/Hermosillo":[29.0666666667,-110.966666667], "America/Tijuana":[32.5333333333,-117.016666667], "Asia/Kuala Lumpur":[3.16666666667,101.7], "Asia/Kuching":[1.55,110.333333333], "Africa/Maputo":[-25.9666666667,32.5833333333], "Africa/Windhoek":[-22.5666666667,17.1], "Pacific/Noumea":[-22.2666666667,165.5], "Africa/Niamey":[13.5166666667,2.11666666667], "Pacific/Norfolk":[-29.05,167.966666667], "Africa/Lagos":[6.45,3.4], "America/Managua":[12.15,-86.2833333333], "Europe/Amsterdam":[52.3666666667,4.9], "Europe/Oslo":[59.9166666667,10.75], "Asia/Katmandu":[27.7166666667,85.3166666667], "Pacific/Nauru":[-0.516666666667,166.916666667], "Pacific/Niue":[-19.0166666667,169.916666667], "Pacific/Auckland":[-36.8666666667,174.766666667], "Pacific/Chatham":[-43.95,-176.55], "Asia/Muscat":[23.6,58.5833333333], "America/Panama":[8.96666666667,-79.5333333333], "America/Lima":[-12.05,-77.05], "Pacific/Tahiti":[-17.5333333333,-149.566666667], "Pacific/Marquesas":[-9.0,-139.5], "Pacific/Gambier":[-23.1333333333,-134.95], "Pacific/Port Moresby":[-9.5,147.166666667], "Asia/Manila":[14.5833333333,121.0], "Asia/Karachi":[24.8666666667,67.05], "Europe/Warsaw":[52.25,21.0], "America/Miquelon":[47.05,-56.3333333333], "Pacific/Pitcairn":[-25.0666666667,-130.083333333], "America/Puerto Rico":[18.4666666667,-66.1], "Asia/Gaza":[31.5,34.4666666667], "Europe/Lisbon":[38.7166666667,-9.13333333333], "Atlantic/Madeira":[32.6333333333,-16.9], "Atlantic/Azores":[37.7333333333,-25.6666666667], "Pacific/Palau":[7.33333333333,134.483333333], "America/Asuncion":[-25.2666666667,-57.6666666667], "Asia/Qatar":[25.2833333333,51.5333333333], "Indian/Reunion":[-20.8666666667,55.4666666667], "Europe/Bucharest":[44.4333333333,26.1], "Europe/Belgrade":[44.8333333333,20.5], "Europe/Kaliningrad":[54.7166666667,20.5], "Europe/Moscow":[55.75,37.5833333333], "Europe/Volgograd":[48.7333333333,44.4166666667], "Europe/Samara":[53.2,50.15], "Asia/Yekaterinburg":[56.85,60.6], "Asia/Omsk":[55.0,73.4], "Asia/Novosibirsk":[55.0333333333,82.9166666667], "Asia/Krasnoyarsk":[56.0166666667,92.8333333333], "Asia/Irkutsk":[52.2666666667,104.333333333], "Asia/Yakutsk":[62.0,129.666666667], "Asia/Vladivostok":[43.1666666667,131.933333333], "Asia/Sakhalin":[46.9666666667,142.7], "Asia/Magadan":[59.5666666667,150.8], "Asia/Kamchatka":[53.0166666667,158.65], "Asia/Anadyr":[64.75,177.483333333], "Africa/Kigali":[-1.95,30.0666666667], "Asia/Riyadh":[24.6333333333,46.7166666667], "Pacific/Guadalcanal":[-9.53333333333,160.2], "Indian/Mahe":[-4.66666666667,55.4666666667], "Africa/Khartoum":[15.6,32.5333333333], "Europe/Stockholm":[59.3333333333,18.05], "Asia/Singapore":[1.28333333333,103.85], "Atlantic/St Helena":[-15.9166666667,-5.7], "Europe/Ljubljana":[46.05,14.5166666667], "Arctic/Longyearbyen":[78.0,16.0], "Europe/Bratislava":[48.15,17.1166666667], "Africa/Freetown":[8.5,-13.25], "Europe/San Marino":[43.9166666667,12.4666666667], "Africa/Dakar":[14.6666666667,-17.4333333333], "Africa/Mogadishu":[2.06666666667,45.3666666667], "America/Paramaribo":[5.83333333333,-55.1666666667], "Africa/Sao Tome":[0.333333333333,6.73333333333], "America/El Salvador":[13.7,-89.2], "Asia/Damascus":[33.5,36.3], "Africa/Mbabane":[-26.3,31.1], "America/Grand Turk":[21.4666666667,-71.1333333333], "Africa/Ndjamena":[12.1166666667,15.05], "Indian/Kerguelen":[-49.35,70.2166666667], "Africa/Lome":[6.13333333333,1.21666666667], "Asia/Bangkok":[13.75,100.516666667], "Asia/Dushanbe":[38.5833333333,68.8], "Pacific/Fakaofo":[-9.36666666667,-171.233333333], "Asia/Dili":[-8.55,125.583333333], "Asia/Ashgabat":[37.95,58.3833333333], "Africa/Tunis":[36.8,10.1833333333], "Pacific/Tongatapu":[-21.1666666667,175.166666667], "Europe/Istanbul":[41.0166666667,28.9666666667], "America/Port of Spain":[10.65,-61.5166666667], "Pacific/Funafuti":[-8.51666666667,179.216666667], "Asia/Taipei":[25.05,121.5], "Africa/Dar es Salaam":[-6.8,39.2833333333], "Europe/Kiev":[50.4333333333,30.5166666667], "Europe/Uzhgorod":[48.6166666667,22.3], "Europe/Zaporozhye":[47.8333333333,35.1666666667], "Europe/Simferopol":[44.95,34.1], "Africa/Kampala":[0.316666666667,32.4166666667], "Pacific/Johnston":[16.75,-169.516666667], "Pacific/Midway":[28.2166666667,-177.366666667], "Pacific/Wake":[19.2833333333,166.616666667], "America/New York":[40.7,-74.0], "America/Detroit":[42.3166666667,-83.0333333333], "America/Kentucky/Louisville":[38.25,-85.75], "America/Kentucky/Monticello":[36.8166666667,-84.8333333333], "America/Indiana/Indianapolis":[39.7666666667,-86.15], "America/Indiana/Vincennes":[38.6666666667,-87.5166666667], "America/Indiana/Knox":[41.2833333333,-86.6166666667], "America/Indiana/Winamac":[41.05,-86.6], "America/Indiana/Marengo":[38.3666666667,-86.3333333333], "America/Indiana/Vevay":[38.7333333333,-85.0666666667], "America/Chicago":[41.85,-87.65], "America/Indiana/Tell City":[37.95,-86.75], "America/Indiana/Petersburg":[38.4833333333,-87.2666666667], "America/Menominee":[45.1,-87.6], "America/North Dakota/Center":[47.1,-101.283333333], "America/North Dakota/New Salem":[46.8333333333,-101.4], "America/Denver":[39.7333333333,-104.983333333], "America/Boise":[43.6,-116.2], "America/Shiprock":[36.7833333333,-108.683333333], "America/Phoenix":[33.4333333333,-112.066666667], "America/Los Angeles":[34.05,-118.233333333], "America/Anchorage":[61.2166666667,-149.9], "America/Juneau":[58.3,-134.416666667], "America/Yakutat":[59.5333333333,-139.716666667], "America/Nome":[64.5,-165.4], "America/Adak":[51.8666666667,-176.65], "Pacific/Honolulu":[21.3,-157.85], "America/Montevideo":[-34.8833333333,-56.1833333333], "Asia/Samarkand":[39.6666666667,66.8], "Asia/Tashkent":[41.3333333333,69.3], "Europe/Vatican":[41.9,12.45], "America/St Vincent":[13.15,-61.2333333333], "America/Caracas":[10.5,-66.9333333333], "America/Tortola":[18.45,-64.6166666667], "America/St Thomas":[18.35,-64.9333333333], "Asia/Saigon":[10.75,106.666666667], "Pacific/Efate":[-17.6666666667,168.416666667], "Pacific/Wallis":[-13.3,-176.166666667], "Pacific/Apia":[-13.8333333333,-171.733333333], "Asia/Aden":[12.75,45.2], "Indian/Mayotte":[-12.7833333333,45.2333333333], "Africa/Johannesburg":[-26.25,28.0], "Africa/Lusaka":[-15.4166666667,28.2833333333], "Africa/Harare":[-17.8333333333,31.05] };
 // vim: fileencoding=utf-8 nospell ts=2 et
 
 // All email addresses get stripped from this file before publishing
@@ -3224,6 +1035,7 @@ var translations = {
 	't_time2': 				 	 'Time',
 	't_label2': 			 	 'Label',
 	't_swap_labels':     'Swap date and bottom label',
+	't_sun_colors':      'Dim clock at night (beta; time zone must be set)',
   't_tab1':            'General', 
   't_tab2':            'Appearance',
   't_tab3':            'About',
@@ -4392,6 +2204,7 @@ var G = {
   'tzLabel': null,
   'tzName': null,
   'swaplabels': false,
+  'suncolors': false,
 
   'gDatefontfamily': null,
   'gDatefontsize': null,
@@ -4414,6 +2227,7 @@ var L = null;
 var gTime = null;
 var gDate = null;
 var gLabel = null;
+var gOpacity = 100;
 
 function alert( mesg ) {
   /*jsl:ignore*/
@@ -4480,6 +2294,7 @@ function startup() {
 function afterSettingsClosed() {
   readSettings();
   updateFonts();
+  changeSunriseSunsetColors();
 
   /* We have to handle a corner case here.  If the time format is
    * changing from not display seconds to display seconds, then the
@@ -4496,23 +2311,39 @@ function afterSettingsClosed() {
   }
 }
 
-function changeColor( lat, lon, gmt ) {
-  if ( G.tzLabel != 'sunrise' ) return;
+function changeSunriseSunsetColors() {
+  if ( G.suncolors === false || G.tzName.length === 0 ) {
+      gOpacity = 100;
+      return;
+  }
+
+  var coords = latlon[ G.tzName ];
+  if ( ! coords ) return;
+  var lat = coords[0];
+  var lon = coords[1];
+
   var now = new Date();
 
-  var jd = calcJD( now.getFullYear(), 1+now.getMonth(), now.getDate() );
-  var sunriseUTC = calcSunriseUTC( jd, lat, lon );
-  var sunsetUTC = calcSunsetUTC( jd, lat, lon );
+  var sunobj = new SunriseSunset( now.getUTCFullYear(),
+          1+now.getUTCMonth(), now.getUTCDate(), lat, lon);
 
-  var h = sunriseUTC + gmt*60;
-  var i = sunsetUTC + gmt*60;
+  var nowHours = now.getUTCHours() + now.getUTCMinutes() / 60;
+  var sunriseHours = sunobj.sunriseUtcHours();
+  var sunsetHours = sunobj.sunsetUtcHours();
 
-  //var dateArea = document.getElementById( "dateArea" );
-  var sunrise = timeStringDate(h,jd);
-  var sunset = timeStringDate(i,jd);
+  if ( sunsetHours < sunriseHours ) {
+      // sunset happened previous day UTC time
+      sunriseHours -= 24;
+  }
 
-  //dateArea.innerHTML = sunrise + " " + sunset;
-  gLabel.value = sunrise + " " + sunset;
+  var afterSunrise = nowHours >= sunriseHours;
+  var beforeSunset = nowHours < sunsetHours;
+  var isLight = afterSunrise && beforeSunset;
+
+  alert( "now: " + nowHours + " sunrise: " + sunriseHours + " sunset: " + sunsetHours + " isLight: " + isLight);
+
+
+  gOpacity = isLight ? 100 : 33;
 }
 
 function getMillisecondsToWait() {
@@ -4569,16 +2400,15 @@ function getOffsetInMinutes( tzName, utcEpoch ) {
 }
 
 function displayGadget() {
-  alert( "Entering displayGadget()" );
   var now = new Date();
   var gmtOffset = now.getTimezoneOffset();
 
-  gLabel.opacity = G.tzLabel ? 100 : 0; // this has to be done BEFORE changing the text!
+  gLabel.opacity = G.tzLabel ? gOpacity : 0; // this has to be done BEFORE changing the text!
   gLabel.value = G.tzLabel;
   gLabel.width = gLabel.height = 0; // force recalculation of width
 
   if ( DEBUG ) {
-    gLabel.opacity = 100;
+    gLabel.opacity = gOpacity;
     gLabel.value += " (DEBUG)";
   }
 
@@ -4599,11 +2429,11 @@ function displayGadget() {
 // window.dateArea.innerHTML = '<a href="http://www.timeanddate.com/calendar/">' + formatDate( mainDateFormat, now ) + '</a>';
 //  gTime.value = '<a href="http://www.timeanddate.com/worldclock/">' + formatDate( mainTimeFormat, now ) + '</a>';
 
-  gDate.opacity = G.mainDateFormat ? 100 : 0;
+  gDate.opacity = G.mainDateFormat ? gOpacity : 0;
   gDate.value = G.mainDateFormat ? formatDate( G.mainDateFormat, now, gmtOffset ) : '';
   gDate.height = gDate.width = 0; // force recalculation of width
 
-  gTime.opacity = G.mainTimeFormat ? 100 : 0;
+  gTime.opacity = G.mainTimeFormat ? gOpacity : 0;
   gTime.value = formatDate( G.mainTimeFormat, now, gmtOffset );
   gTime.height = gTime.width = 0; // force recalculation of width
 
@@ -4613,16 +2443,9 @@ function displayGadget() {
 
   adjustPositions();
 
-  var okToUpdate = now.getMinutes() % 15;
-  okToUpdate = true;
-
-  if ( okToUpdate && G.tzName.length ) {
-    var coords = latlon[ G.tzName ];
-    if ( coords ) {
-      var lat = coords[0];
-      var lon = -coords[1];
-      changeColor( lat, lon, gmtOffset/60 );
-    }
+  var okToUpdate = now.getSeconds() === 0;
+  if ( okToUpdate ) {
+      changeSunriseSunsetColors();
   }
 }
 
@@ -4893,26 +2716,12 @@ function createSelectOptions( values ) {
   return out;
 }
 
-/*
-TODO: I don't think this function is used any more
-TODO: Remove it after 2011-01-01 if it hasn't caused any problems
-function getFontColor() {
-  var decimalColor = dlgHelper.ChooseColorDlg();
-
-  document.getElementById('fontColor').style.backgroundColor = decimalColor;
-}
-*/
-
-function switchBackground( filename ) {
-}
-
 function createFontColorSelect( id ) {
   var colors = getMicrosoftColors();
   var out = '';
   for ( var c in colors ) {
     var display_color = colors[c];
     var background_color = 'Black';
-//    if ( display_color == 'White' ) display_color = 'Black';
     out += '<option value="' + colors[c] + 
       '" style="color: ' + display_color + 
       '; background-color: ' + background_color + 

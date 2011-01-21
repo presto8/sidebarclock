@@ -1,5 +1,5 @@
-files = formatDate.js tzdata-2010g3_json.js noaa.js latlon_json.js \
-json2.js translations.js gadget.js
+files = formatDate.js tzdata-2010g3_json.js sun.js latlon_json.js \
+	translations.js gadget.js
 
 #all: jslint gadget.all.min.js
 all: jslint gadget.all.js

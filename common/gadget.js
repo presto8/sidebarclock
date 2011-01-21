@@ -13,6 +13,7 @@ var G = {
   'tzLabel': null,
   'tzName': null,
   'swaplabels': false,
+  'suncolors': false,
 
   'gDatefontfamily': null,
   'gDatefontsize': null,
@@ -35,6 +36,7 @@ var L = null;
 var gTime = null;
 var gDate = null;
 var gLabel = null;
+var gOpacity = 100;
 
 function alert( mesg ) {
   /*jsl:ignore*/
@@ -101,6 +103,7 @@ function startup() {
 function afterSettingsClosed() {
   readSettings();
   updateFonts();
+  changeSunriseSunsetColors();
 
   /* We have to handle a corner case here.  If the time format is
    * changing from not display seconds to display seconds, then the
@@ -117,23 +120,39 @@ function afterSettingsClosed() {
   }
 }
 
-function changeColor( lat, lon, gmt ) {
-  if ( G.tzLabel != 'sunrise' ) return;
+function changeSunriseSunsetColors() {
+  if ( G.suncolors === false || G.tzName.length === 0 ) {
+      gOpacity = 100;
+      return;
+  }
+
+  var coords = latlon[ G.tzName ];
+  if ( ! coords ) return;
+  var lat = coords[0];
+  var lon = coords[1];
+
   var now = new Date();
 
-  var jd = calcJD( now.getFullYear(), 1+now.getMonth(), now.getDate() );
-  var sunriseUTC = calcSunriseUTC( jd, lat, lon );
-  var sunsetUTC = calcSunsetUTC( jd, lat, lon );
+  var sunobj = new SunriseSunset( now.getUTCFullYear(),
+          1+now.getUTCMonth(), now.getUTCDate(), lat, lon);
 
-  var h = sunriseUTC + gmt*60;
-  var i = sunsetUTC + gmt*60;
+  var nowHours = now.getUTCHours() + now.getUTCMinutes() / 60;
+  var sunriseHours = sunobj.sunriseUtcHours();
+  var sunsetHours = sunobj.sunsetUtcHours();
 
-  //var dateArea = document.getElementById( "dateArea" );
-  var sunrise = timeStringDate(h,jd);
-  var sunset = timeStringDate(i,jd);
+  if ( sunsetHours < sunriseHours ) {
+      // sunset happened previous day UTC time
+      sunriseHours -= 24;
+  }
 
-  //dateArea.innerHTML = sunrise + " " + sunset;
-  gLabel.value = sunrise + " " + sunset;
+  var afterSunrise = nowHours >= sunriseHours;
+  var beforeSunset = nowHours < sunsetHours;
+  var isLight = afterSunrise && beforeSunset;
+
+  alert( "now: " + nowHours + " sunrise: " + sunriseHours + " sunset: " + sunsetHours + " isLight: " + isLight);
+
+
+  gOpacity = isLight ? 100 : 33;
 }
 
 function getMillisecondsToWait() {
@@ -190,16 +209,15 @@ function getOffsetInMinutes( tzName, utcEpoch ) {
 }
 
 function displayGadget() {
-  alert( "Entering displayGadget()" );
   var now = new Date();
   var gmtOffset = now.getTimezoneOffset();
 
-  gLabel.opacity = G.tzLabel ? 100 : 0; // this has to be done BEFORE changing the text!
+  gLabel.opacity = G.tzLabel ? gOpacity : 0; // this has to be done BEFORE changing the text!
   gLabel.value = G.tzLabel;
   gLabel.width = gLabel.height = 0; // force recalculation of width
 
   if ( DEBUG ) {
-    gLabel.opacity = 100;
+    gLabel.opacity = gOpacity;
     gLabel.value += " (DEBUG)";
   }
 
@@ -220,11 +238,11 @@ function displayGadget() {
 // window.dateArea.innerHTML = '<a href="http://www.timeanddate.com/calendar/">' + formatDate( mainDateFormat, now ) + '</a>';
 //  gTime.value = '<a href="http://www.timeanddate.com/worldclock/">' + formatDate( mainTimeFormat, now ) + '</a>';
 
-  gDate.opacity = G.mainDateFormat ? 100 : 0;
+  gDate.opacity = G.mainDateFormat ? gOpacity : 0;
   gDate.value = G.mainDateFormat ? formatDate( G.mainDateFormat, now, gmtOffset ) : '';
   gDate.height = gDate.width = 0; // force recalculation of width
 
-  gTime.opacity = G.mainTimeFormat ? 100 : 0;
+  gTime.opacity = G.mainTimeFormat ? gOpacity : 0;
   gTime.value = formatDate( G.mainTimeFormat, now, gmtOffset );
   gTime.height = gTime.width = 0; // force recalculation of width
 
@@ -234,16 +252,9 @@ function displayGadget() {
 
   adjustPositions();
 
-  var okToUpdate = now.getMinutes() % 15;
-  okToUpdate = true;
-
-  if ( okToUpdate && G.tzName.length ) {
-    var coords = latlon[ G.tzName ];
-    if ( coords ) {
-      var lat = coords[0];
-      var lon = -coords[1];
-      changeColor( lat, lon, gmtOffset/60 );
-    }
+  var okToUpdate = now.getSeconds() === 0;
+  if ( okToUpdate ) {
+      changeSunriseSunsetColors();
   }
 }
 
@@ -514,26 +525,12 @@ function createSelectOptions( values ) {
   return out;
 }
 
-/*
-TODO: I don't think this function is used any more
-TODO: Remove it after 2011-01-01 if it hasn't caused any problems
-function getFontColor() {
-  var decimalColor = dlgHelper.ChooseColorDlg();
-
-  document.getElementById('fontColor').style.backgroundColor = decimalColor;
-}
-*/
-
-function switchBackground( filename ) {
-}
-
 function createFontColorSelect( id ) {
   var colors = getMicrosoftColors();
   var out = '';
   for ( var c in colors ) {
     var display_color = colors[c];
     var background_color = 'Black';
-//    if ( display_color == 'White' ) display_color = 'Black';
     out += '<option value="' + colors[c] + 
       '" style="color: ' + display_color + 
       '; background-color: ' + background_color + 
