@@ -1,7 +1,36 @@
-// SunriseSunset Class
-//   By Preston Hunt <me@prestonhunt.com>
-//
+// SunriseSunset Class (2011-01-29)
 //   Implementation of http://williams.best.vwh.net/sunrise_sunset_algorithm.htm
+//
+//   Copyright (c) 2011, Preston Hunt <me@prestonhunt.com>
+//   All rights reserved.
+//
+//   Redistribution and use in source and binary forms, with or without
+//   modification, are permitted provided that the following conditions
+//   are met:
+//
+//   Redistributions of source code must retain the above copyright
+//   notice, this list of conditions and the following disclaimer.
+//   Redistributions in binary form must reproduce the above copyright
+//   notice, this list of conditions and the following disclaimer in the
+//   documentation and/or other materials provided with the
+//   distribution.
+//
+//   The name of Preston Hunt may be used to endorse or promote products
+//   derived from this software without specific prior written
+//   permission.
+//
+//   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+//   "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+//   LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+//   FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+//   COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+//   INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+//   (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+//   SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+//   HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+//   STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+//   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+//   OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 //   Provides sunrise and sunset times for specified date and position.
 //   All dates are UTC.  Year is 4-digit.  Month is 1-12.  Day is 1-31.
@@ -13,8 +42,10 @@
 //   tokyo.sunsetUtcHours()       --> 7.9070  = 07:54 GMT
 //   tokyo.sunriseLocalHours(9)   --> 6.8199  = 06:49 at GMT+9
 //   tokyo.sunsunsetLocalHours(9) --> 16.9070 = 16:54 at GMT+9
+//   tokyo.isDaylight(1.5)        --> true
 //
 //   var losangeles = new SunriseSunset( 2011, 1, 19, 34.05, -118.233333333 );
+//   etc.
 
 function SunriseSunset( utcFullYear, utcMonth, utcDay, latitude, longitude ) {
     this.zenith = 90 + 50/60; //   offical      = 90 degrees 50'
@@ -144,10 +175,82 @@ function SunriseSunset( utcFullYear, utcMonth, utcDay, latitude, longitude ) {
     this.sunsetLocalHours = function(gmt) {
         return this.hoursRange( gmt + this.sunsetUtcHours() );
     };
+
+    this.isDaylight = function( utcCurrentHours ) {
+        var sunriseHours = this.sunriseUtcHours();
+        var sunsetHours = this.sunsetUtcHours();
+
+        //print( "rise", sunriseHours );
+        //print( "set", sunsetHours );
+
+        if ( sunsetHours < sunriseHours ) {
+            // Either the sunrise or sunset time is for tomorrow
+            if ( utcCurrentHours > sunriseHours ) {
+                return true;
+            } else if ( utcCurrentHours < sunsetHours ) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        if ( utcCurrentHours >= sunriseHours ) {
+            return utcCurrentHours < sunsetHours;
+        } 
+
+        return false;
+    };
 }
 
-//Los Angeles
-//x = new SunriseSunset( new Date(), 34.05, -118.233333333 );
+function SunriseSunsetTest() {
+    var testcases = {
+        'Los Angeles': {
+            'year': 2011, 'month': 1, 'day': 22,
+            'lat': 34.05, 'lon': -118.23333333,
+            'tests': { // utcHours => isDaylight?
+                19.6666666: true
+            }
+        },
+        'Berlin': {
+            'year': 2011, 'month': 1, 'day': 25,
+            'lat': 52.5, 'lon': 13.366666667,
+            'tests': { // utcHours => isDaylight?
+                1.25: false
+            }
+        },
+        'Tokyo': {
+            'year': 2011, 'month': 1, 'day': 23,
+            'lat': 35+40/60, 'lon': 139+45/60,
+            'tests': { // utcHours => isDaylight?
+                1.5: true,
+                22.5: true
+            }
+        },
+        'New Delhi': {
+            'year': 2011, 'month': 1, 'day': 22,
+            'lat': 35+40/60, 'lon': 139+45/60,
+            'tests': { // utcHours => isDaylight?
+            }
+        }
+    };
 
-//Tokyo
-//x = new SunriseSunset( 2011, 1, 19, 35+40/60, 139+45/60);
+    var tests_run = 0;
+    var tests_failed = 0;
+
+    for ( var city_name in testcases ) {
+        var city = testcases[ city_name ];
+        var ss = new SunriseSunset( city.year, city.month, city.day, city.lat, city.lon );
+        for ( var t in city.tests ) {
+            var expected = city.tests[t];
+            var result = ss.isDaylight( t );
+            var passed = result === expected;
+
+            tests_run++;
+            if ( ! passed ) tests_failed++;
+            
+            //print( city_name, t, "passed:", passed );
+        }
+    }
+
+    //print( "tests: " + tests_run, "failed: " + tests_failed );
+}
