@@ -48,24 +48,23 @@
 <option value="se">Svenska</option>
 <option value="uk">українська</option>
 </select></li>
-<li><span id="t_dateformat" class=firstcol2></span><input type="text" id="mainDateFormat"></li>
-<li><span id="t_timeformat" class=firstcol></span><input type="text" id="mainTimeFormat"></li>
-<li><span id="t_timezone" class=firstcol></span><select id="tzName"></select></li>
+<li><span id="t_dateformat" class=firstcol2></span><input type="text" 
+    id="mainDateFormat"></li>
+<li><span id="t_timeformat" class=firstcol></span><input type="text" 
+    id="mainTimeFormat"></li>
+<li><span id="t_timezone" class=firstcol></span><select id="tzName"
+    onChange="timezoneChanged()"></select></li>
+<li id="dimcontrol"><label><input id=suncolors type=checkbox><span id="t_sun_colors"></span></label></li>
 <li><span id="t_bottomlabel" class=firstcol></span><input type="text" id="tzLabel"> <span id="t_optional"></span></li>
 </ul>
 
-<!--
-<br>
-<input id=sunmode type=checkbox>Change colors automatically with sun
-(not implemented yet)
--->
 <br>
 <span id="t_examples" class="bigger"></span>
 
 <table id=example_table>
-<tr><td id=t_date><td id=t_dateexamples>
-<tr><td id=t_time><td id=t_timeexamples>
-<tr><td id=t_label><td id=t_labelexamples>
+    <tr><td id=t_date></td><td id=t_dateexamples></td></tr>
+    <tr><td id=t_time></td><td id=t_timeexamples></td></tr>
+    <tr><td id=t_label></td><td id=t_labelexamples></td></tr>
 </table>
 
 <span id=t_formathelplong></span>
@@ -108,11 +107,6 @@
 
 <br>
 
-<label>
-<input id=suncolors type=checkbox>
-<span id="t_sun_colors"></span>
-</label>
-
 </div>
 
 <div id="tab3" class="tab">
@@ -129,6 +123,12 @@
 <li class="link" onclick="saveIniFile()" id="t_backup"></li>
 <li class="link" onclick="loadIniFile()" id="t_restore"></li>
 <li id=t_backup_status></li>
+</ul>
+
+<label>
+<input id=updatecheck type=checkbox>
+<span id=t_auto_check></span>
+</label>
 
 </div>
 

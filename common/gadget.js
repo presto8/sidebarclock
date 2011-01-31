@@ -1,4 +1,9 @@
 /*
+ * JavaScript code for Presto's Sidebar Clock
+ *
+ *   Copyright (c) 2011, Preston Hunt <me@prestonhunt.com>
+ *   All rights reserved.
+ *
  * Non-localized javascript
  * vim: ts=2 et nospell nowrap
  */
@@ -14,6 +19,7 @@ var G = {
   'tzName': null,
   'swaplabels': false,
   'suncolors': false,
+  'updatecheck': true,
 
   'gDatefontfamily': null,
   'gDatefontsize': null,
@@ -97,13 +103,14 @@ function startup() {
   gLabel = imgBackground.addTextObject("", "Segoe UI", 11, "white", 0, 0 );
 
   updateFonts();
+  adjustOpacityByCurrentTime();
   updateGadget();
 }
 
 function afterSettingsClosed() {
   readSettings();
   updateFonts();
-  changeSunriseSunsetColors();
+  adjustOpacityByCurrentTime();
 
   /* We have to handle a corner case here.  If the time format is
    * changing from not display seconds to display seconds, then the
@@ -120,7 +127,7 @@ function afterSettingsClosed() {
   }
 }
 
-function changeSunriseSunsetColors() {
+function adjustOpacityByCurrentTime() {
   if ( G.suncolors === false || G.tzName.length === 0 ) {
       gOpacity = 100;
       return;
@@ -136,21 +143,8 @@ function changeSunriseSunsetColors() {
   var sunobj = new SunriseSunset( now.getUTCFullYear(),
           1+now.getUTCMonth(), now.getUTCDate(), lat, lon);
 
-  var nowHours = now.getUTCHours() + now.getUTCMinutes() / 60;
-  var sunriseHours = sunobj.sunriseUtcHours();
-  var sunsetHours = sunobj.sunsetUtcHours();
-
-  if ( sunsetHours < sunriseHours ) {
-      // sunset happened previous day UTC time
-      sunriseHours -= 24;
-  }
-
-  var afterSunrise = nowHours >= sunriseHours;
-  var beforeSunset = nowHours < sunsetHours;
-  var isLight = afterSunrise && beforeSunset;
-
-  alert( "now: " + nowHours + " sunrise: " + sunriseHours + " sunset: " + sunsetHours + " isLight: " + isLight);
-
+  var nowUtcHours = now.getUTCHours() + now.getUTCMinutes() / 60;
+  var isLight = sunobj.isDaylight( nowUtcHours );
 
   gOpacity = isLight ? 100 : 33;
 }
@@ -192,6 +186,7 @@ function updateGadget() {
 function checkVisibility() {
   // See http://blogs.msdn.com/sidebar/archive/2006/08/18/706495.aspx
   if ( System.Gadget.visible && isDirty ) {
+    adjustOpacityByCurrentTime();
     updateGadget();
   }
 }
@@ -212,19 +207,24 @@ function displayGadget() {
   var now = new Date();
   var gmtOffset = now.getTimezoneOffset();
 
-  gLabel.opacity = G.tzLabel ? gOpacity : 0; // this has to be done BEFORE changing the text!
-  gLabel.value = G.tzLabel;
+  //var okToUpdate = now.getSeconds() === 0;
+  //if ( okToUpdate ) {
+    adjustOpacityByCurrentTime();
+  //}
+
+  gLabel.opacity = G.tzLabel ? gOpacity : 0; // this has to be done before changing the text!
+  //gLabel.value = G.tzLabel;
+  gLabel.value = formatTzLabel( G.tzLabel, now, gmtOffset );
   gLabel.width = gLabel.height = 0; // force recalculation of width
 
   if ( DEBUG ) {
-    gLabel.opacity = gOpacity;
     gLabel.value += " (DEBUG)";
   }
 
   if ( G.tzName.length > 0 ) {
     try {
       var utc = now.getTime() + gmtOffset*60*1000;
-			var utcEpoch = Math.round(utc/1000.0);
+      var utcEpoch = Math.round(utc/1000.0);
       var otherOffset = getOffsetInMinutes( G.tzName, utcEpoch );
       var otherTime = utc - otherOffset*60*1000;
 
@@ -234,9 +234,6 @@ function displayGadget() {
       G.tzName = ''; // no tzdata for this entry, clear it away
     }
   }
-
-// window.dateArea.innerHTML = '<a href="http://www.timeanddate.com/calendar/">' + formatDate( mainDateFormat, now ) + '</a>';
-//  gTime.value = '<a href="http://www.timeanddate.com/worldclock/">' + formatDate( mainTimeFormat, now ) + '</a>';
 
   gDate.opacity = G.mainDateFormat ? gOpacity : 0;
   gDate.value = G.mainDateFormat ? formatDate( G.mainDateFormat, now, gmtOffset ) : '';
@@ -251,11 +248,6 @@ function displayGadget() {
   adjustLabelToFit();
 
   adjustPositions();
-
-  var okToUpdate = now.getSeconds() === 0;
-  if ( okToUpdate ) {
-      changeSunriseSunsetColors();
-  }
 }
 
 function adjustPositions() {
@@ -374,7 +366,7 @@ function setFormValue( varname, varVal ) {
 
 function setTzOptions() {
   var selectId = document.getElementById( "tzName" );
-	var zones = tzdata;
+  var zones = tzdata;
 
   selectId.length = 0;
   selectId.add( new Option( L.t_localtime, '' ) );
@@ -465,6 +457,7 @@ function displaySettings() {
   localizeText();
   showIfUpdateAvailable();
   gotoTab( 1 );
+  timezoneChanged();
 }
 
 function settingsClosing(event) {
@@ -613,8 +606,12 @@ function getHttpAsText( url ) {
 }
 
 function isUpdateAvailable() {
-  var newestText = getHttpAsText( 'http://prestonhunt.com/m/2009/prestosidebarclock.version?cacheBuster=' + Math.random() );
+  if ( G.updatecheck === false ) return false;
+
+  var url = 'http://prestonhunt.com/m/2009/prestosidebarclock.version';
+  var newestText = getHttpAsText( url + '?cacheBuster=' + Math.random() );
   if ( newestText === false ) return false;
+
   var currentText = 'xxVER';
 
   var newestVersion = parseFloat( newestText );
@@ -673,4 +670,43 @@ function pasteSettingsFromClipboard() {
   }
 
   return new_G;
+}
+
+function swapEscapes( label ) {
+    var newlabel = '';
+
+    var last_was_slash = false;
+    for ( var i=0, len=label.length; i < len; i++ ) {
+        var c = label.charAt(i);
+        if ( c != '\\' ) {
+            if ( ! last_was_slash ) newlabel += '\\';
+            newlabel += c;
+        } 
+        last_was_slash = ( c == '\\' );
+    }
+
+    return newlabel;
+}
+
+function formatTzLabel( label, now, gmtOffset ) {
+    // Only process if there is a slash in the label
+    if ( label.indexOf('\\') < 0 ) {
+        return label;
+    } else {
+        var newlabel = swapEscapes( label );
+        return formatDate( newlabel, now, gmtOffset );
+    }
+}
+
+function timezoneChanged() {
+    var dimControl = document.getElementById( 'dimcontrol' );
+    var tzName = document.getElementById( 'tzName' ).value;
+    var tzNameSet = tzName !== '';
+    var coords = latlon[ tzName ];
+
+    if ( tzNameSet && coords ) {
+        dimControl.style.display = 'inline';
+    } else {
+        dimControl.style.display = 'none';
+    }
 }
