@@ -2381,6 +2381,8 @@ function setDefaults() {
     System.Gadget.Settings.write( "mainTimeFormat", L.defaultTimeFormat );
     System.Gadget.Settings.write( "locale", lang );
 
+    System.Gadget.Settings.write( "updatecheck", true );
+
     var elements = [ 'gDate', 'gTime', 'gLabel' ];
     for ( var el in elements ) {
         var base = elements[el];
