@@ -66,7 +66,7 @@ var translations = {
   't_tab3':            'About',
   't_tab4':            'Background',
   't_copyright':       'Copyright 2009 Preston Hunt',
-  't_auto_check':      'Notify me about new versions of the clock',
+  't_auto_check':      'Notify me when new versions of the clock are available',
   't_update':          "A newer version of Presto's Clock is available. <a href=\"http://gallery.live.com/liveItemDetail.aspx?li=348e5816-f95b-493e-a6df-a03980e34e51\">Update now!</a>",
   // Replace English with the name of your language in your language
   't_languagename':    'English',

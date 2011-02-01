@@ -3,7 +3,7 @@ For more information about this gadget:
 
 RELEASE HISTORY
 
-1.44 2011-01-30 Added dimming feature to dim clock face by 70 percent at
+1.44 2011-01-31 Added dimming feature to dim clock face by 70 percent at
 night time based on the latitude and longitude of the city selected for
 the time zone.  Added time and date format support to bottom label
 (thanks Arun Das!).  Added checkbox to toggle notification of new
