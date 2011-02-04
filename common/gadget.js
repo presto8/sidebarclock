@@ -44,6 +44,8 @@ var gDate = null;
 var gLabel = null;
 var gOpacity = 100;
 
+var gNow = null;
+
 function alert( mesg ) {
     /*jsl:ignore*/
     if ( ! DEBUG ) return;
@@ -87,6 +89,7 @@ function setDefaults() {
 
 function startup() {
     alert( "Entering startup()" );
+
     System.Gadget.settingsUI = "settings.html";
     System.Gadget.onSettingsClosed = afterSettingsClosed;
     System.Gadget.visibilityChanged = checkVisibility;
@@ -105,7 +108,6 @@ function startup() {
     gLabel = imgBackground.addTextObject("", "Segoe UI", 11, "white", 0, 0 );
 
     updateFonts();
-    adjustOpacityByCurrentTime();
     updateGadget();
 }
 
@@ -180,6 +182,7 @@ function updateGadget() {
     if ( ! System.Gadget.visible ) {
         isDirty = true;
     } else {
+        gNow = new Date();
         displayGadget();
         isDirty = false;
         window.setTimeout( updateGadget, getMillisecondsToWait() );
