@@ -36,7 +36,6 @@ var G = {
     'locale': 'en'
 };
 
-// Localized text
 var L = null;
 
 var gTime = null;
