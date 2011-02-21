@@ -3,6 +3,9 @@ For more information about this gadget:
 
 RELEASE HISTORY
 
+1.46 2011-02-?? Fixed time zone and sunrise info for Calcutta (thanks
+Rich Armstrong!).
+
 1.45 2011-02-04 Fixed backup settings to registry feature (thanks Rich
 Armstrong!).
 

@@ -42,7 +42,6 @@ var gTime = null;
 var gDate = null;
 var gLabel = null;
 var gOpacity = 100;
-
 var gNow = null;
 
 function alert( mesg ) {
@@ -141,7 +140,7 @@ function adjustOpacityByCurrentTime() {
     var lat = coords[0];
     var lon = coords[1];
 
-    var now = new Date();
+    var now = gNow; // new Date();
 
     var sunobj = new SunriseSunset( now.getUTCFullYear(),
             1+now.getUTCMonth(), now.getUTCDate(), lat, lon);
@@ -158,7 +157,7 @@ function getMillisecondsToWait() {
      * second.  But if no seconds are included, then we only update every
      * minute. */
 
-    var now = new Date();
+    var now = gNow; // new Date();
     var milliseconds_to_wait = 1000 - now.getMilliseconds() + 1;
 
     if ( G.mainTimeFormat.indexOf('s') >= 0 ) {
@@ -175,13 +174,33 @@ function getMillisecondsToWait() {
     }
 }
 
+function getNow() {
+    var now = new Date();
+
+    if ( G.tzName.length > 0 ) {
+        try {
+            var gmtOffset = now.getTimezoneOffset();
+            var utc = now.getTime() + gmtOffset*60*1000;
+            var utcEpoch = Math.round(utc/1000.0);
+            var otherOffset = getOffsetInMinutes( G.tzName, utcEpoch );
+            var otherTime = utc - otherOffset*60*1000;
+
+            now = new Date( otherTime );
+            gmtOffset = otherOffset;
+        } catch(err) {
+            G.tzName = ''; // no tzdata for this entry, clear it away
+        }
+    }
+
+    return now;
+}
+
 function updateGadget() {
     alert( "Entering updateGadget()" );
 
     if ( ! System.Gadget.visible ) {
         isDirty = true;
     } else {
-        gNow = new Date();
         displayGadget();
         isDirty = false;
         window.setTimeout( updateGadget, getMillisecondsToWait() );
@@ -208,43 +227,25 @@ function getOffsetInMinutes( tzName, utcEpoch ) {
 }
 
 function displayGadget() {
-    var now = new Date();
-    var gmtOffset = now.getTimezoneOffset();
+    gNow = getNow();
+    var gmtOffset = gNow.getTimezoneOffset();
 
-    //var okToUpdate = now.getSeconds() === 0;
-    //if ( okToUpdate ) {
     adjustOpacityByCurrentTime();
-    //}
 
     gLabel.opacity = G.tzLabel ? gOpacity : 0; // this has to be done before changing the text!
-    //gLabel.value = G.tzLabel;
-    gLabel.value = formatTzLabel( G.tzLabel, now, gmtOffset );
+    gLabel.value = formatTzLabel( G.tzLabel, gNow, gmtOffset );
     gLabel.width = gLabel.height = 0; // force recalculation of width
 
     if ( DEBUG ) {
         gLabel.value += " (DEBUG)";
     }
 
-    if ( G.tzName.length > 0 ) {
-        try {
-            var utc = now.getTime() + gmtOffset*60*1000;
-            var utcEpoch = Math.round(utc/1000.0);
-            var otherOffset = getOffsetInMinutes( G.tzName, utcEpoch );
-            var otherTime = utc - otherOffset*60*1000;
-
-            now = new Date( otherTime );
-            gmtOffset = otherOffset;
-        } catch(err) {
-            G.tzName = ''; // no tzdata for this entry, clear it away
-        }
-    }
-
     gDate.opacity = G.mainDateFormat ? gOpacity : 0;
-    gDate.value = G.mainDateFormat ? formatDate( G.mainDateFormat, now, gmtOffset ) : '';
+    gDate.value = G.mainDateFormat ? formatDate( G.mainDateFormat, gNow, gmtOffset ) : '';
     gDate.height = gDate.width = 0; // force recalculation of width
 
     gTime.opacity = G.mainTimeFormat ? gOpacity : 0;
-    gTime.value = formatDate( G.mainTimeFormat, now, gmtOffset );
+    gTime.value = formatDate( G.mainTimeFormat, gNow, gmtOffset );
     gTime.height = gTime.width = 0; // force recalculation of width
 
     adjustTimeToFit();

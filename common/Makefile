@@ -1,8 +1,8 @@
-files = json2.js formatDate.js tzdata-2010g3_json.js sun.js latlon_json.js \
+files = json2.js formatDate.js tzdata-2011b_json.js sun.js latlon_json.js \
 	Gettext.js translations.js gadget.js
 
 #all: jslint gadget.all.min.js
-all: jslint gadget.all.js
+all: jslint gadget.all.js trans.po
 
 jslint:
 	jsl -conf jsl.conf
@@ -17,3 +17,7 @@ debug: gadget.all.js
 
 clean:
 	rm gadget.all.js gadget.all.min.js
+
+trans.po: gettext_strings.js
+	xgettext -o $< --language=java --keyword=_ -a $^
+

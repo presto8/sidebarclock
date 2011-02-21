@@ -73,7 +73,8 @@ var translations = {
 
   't_backup_settings': "Backup settings",
   't_backup':          "Backup settings to clipboard",
-  't_restore':         "Restore settings from clipboard"
+  't_restore':         "Restore settings from clipboard",
+  't_sunset_opacity':  "Percent to dim clock at sunset"
 },
 
 // Russian translation by Denis Baumgaertner <denco@freenet.de>

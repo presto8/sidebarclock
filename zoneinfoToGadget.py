@@ -63,11 +63,13 @@ for tz in pytz.common_timezones:
   if tz.startswith('Canada/'): continue
   zones[ fixTzName(tz) ] = tz
 
-zones['Asia/New Delhi'] = 'Asia/Calcutta'
+zones['Asia/New Delhi'] = 'Asia/Kolkata'
+zones['Asia/Calcutta'] = 'Asia/Kolkata'
 zones['America/Eastern Time'] = 'America/New_York'
 zones['America/Central Time'] = 'America/Chicago'
 zones['America/Mountain Time'] = 'America/Denver'
 zones['America/Pacific Time'] = 'America/Los_Angeles'
+zones['Europe/Central European Time'] = 'Europe/Zurich'
 
 output = []
 for label in sorted( zones.keys() ):

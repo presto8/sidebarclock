@@ -15,8 +15,8 @@
 //   documentation and/or other materials provided with the
 //   distribution.
 //
-//   The name of Preston Hunt may be used to endorse or promote products
-//   derived from this software without specific prior written
+//   The name of Preston Hunt may not be used to endorse or promote
+//   products derived from this software without specific prior written
 //   permission.
 //
 //   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
