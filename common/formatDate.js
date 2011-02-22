@@ -61,7 +61,8 @@ formatDate = function (input,time,offsetmins) {
             // Swatch internet time. code simply grabbed from ppk,
             // since I was feeling lazy:
             // http://www.xs4all.nl/~ppk/js/beat.html
-            var off = (date.getTimezoneOffset() + 60)*60;
+            //var off = (date.getTimezoneOffset() + 60)*60;
+            var off = -1 * ( offsetmins * 60 );
             var theSeconds = (date.getHours() * 3600) + 
                              (date.getMinutes() * 60) + 
                               date.getSeconds() + off;
