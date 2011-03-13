@@ -65,6 +65,8 @@ for tz in pytz.common_timezones:
 
 zones['Asia/New Delhi'] = 'Asia/Kolkata'
 zones['Asia/Calcutta'] = 'Asia/Kolkata'
+zones['Asia/India'] = 'Asia/Kolkata'
+zones['Asia/China'] = 'Asia/Shanghai'
 zones['America/Eastern Time'] = 'America/New_York'
 zones['America/Central Time'] = 'America/Chicago'
 zones['America/Mountain Time'] = 'America/Denver'
