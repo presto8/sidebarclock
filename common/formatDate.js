@@ -62,7 +62,8 @@ formatDate = function (input,time,offsetmins) {
             // since I was feeling lazy:
             // http://www.xs4all.nl/~ppk/js/beat.html
             //var off = (date.getTimezoneOffset() + 60)*60;
-            var off = -1 * ( offsetmins * 60 );
+            var off = offsetmins * 60;
+            off += 1*60*60; // adjust for UTC+1
             var theSeconds = (date.getHours() * 3600) + 
                              (date.getMinutes() * 60) + 
                               date.getSeconds() + off;

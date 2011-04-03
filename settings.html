@@ -32,6 +32,7 @@
 <option value="de">Deutsch</option>
 <option value="en">English</option>
 <option value="es">Español</option>
+<option value="eo">Esperanto</option>
 <option value="fr">Français</option>
 <option value="it">Italiano</option>
 <option value="lt">Lietuvių</option>
@@ -54,7 +55,10 @@
     id="mainTimeFormat"></li>
 <li><span id="t_timezone" class=firstcol></span><select id="tzName"
     onChange="timezoneChanged()"></select></li>
-<li id="dimcontrol"><label><input id=suncolors type=checkbox><span id="t_sun_colors"></span></label></li>
+<li id="dimcontrol"><label><input id=suncolors type=checkbox><span id="t_sun_colors"></span></label>
+<label><input id=sunset_opacity type=text><span id=t_sunset_opacity></span></label>
+</li>
+<li id="dimdisabled"><span id="t_dim_disabled"></span></li>
 <li><span id="t_bottomlabel" class=firstcol></span><input type="text" id="tzLabel"> <span id="t_optional"></span></li>
 </ul>
 
@@ -105,11 +109,13 @@
 <span id="t_swap_labels"></span>
 </label>
 
-<br>
+<p>
 <label>
-<input id=sunset_opacity type=input>
-<span id=t_sunset_opacity></span>
+<span id=t_background class=bigger></span>
+<input id=background_temp type=file onChange="setBackground(this.value)">
 </label>
+
+<input id=background_file type=hidden>
 
 </div>
 

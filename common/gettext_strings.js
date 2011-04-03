@@ -1,10 +1,12 @@
 // vim: fileencoding=utf-8 nospell ts=2 et
 
+var lang = 'de';
+
 // "xgettext -k_ gadget.js" to generate .po file
 var gt = new Gettext( { 
         "domain": "PrestoClock", 
         //"domain": "", 
-        "locale_data": locale_data 
+        "locale_data": locale_data[ lang ]
         } ); 
 
 function _ ( msgid ) {

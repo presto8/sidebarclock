@@ -250,7 +250,6 @@ Gettext = function (args) {
         }
     }
 
-
     // try to load the lang file from somewhere
     this.try_load_lang();
 
@@ -271,6 +270,8 @@ Gettext.prototype.try_load_lang = function() {
         if (typeof(Gettext._locale_data[this.domain]) == 'undefined') {
             throw new Error("Error: Gettext 'locale_data' does not contain the domain '"+this.domain+"'");
         }
+
+        return;
     }
 
 

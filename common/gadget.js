@@ -12,6 +12,7 @@ var isDirty = true;
 var DEBUG = false;
 
 // Global stored settings
+// Also see setDefaults() which initializes this data structure
 var G = {
     'mainDateFormat': null,
     'mainTimeFormat': null,
@@ -19,7 +20,9 @@ var G = {
     'tzName': null,
     'swaplabels': false,
     'suncolors': false,
-    'updatecheck': true,
+    'sunset_opacity': null,
+    'updatecheck': null,
+    'background_file': null,
 
     'gDatefontfamily': null,
     'gDatefontsize': null,
@@ -43,6 +46,7 @@ var gDate = null;
 var gLabel = null;
 var gOpacity = 100;
 var gNow = null;
+var gGmtOffset = null;
 
 function alert( mesg ) {
     /*jsl:ignore*/
@@ -64,6 +68,17 @@ function setLocale() {
 function readSettings() {
     settingsRegistryToG();
     setLocale();
+
+    imgBackground.src = G.background_file;
+
+    var illegal_opacity = G.sunset_opacity < 0 || G.sunset_opacity > 100;
+    if ( illegal_opacity ) {
+        G.sunset_opacity = 50;
+    } 
+
+    if ( DEBUG ) {
+        G.tzLabel += " (DEBUG)";
+    }
 }
 
 function setDefaults() {
@@ -74,7 +89,10 @@ function setDefaults() {
     System.Gadget.Settings.write( "mainTimeFormat", L.defaultTimeFormat );
     System.Gadget.Settings.write( "locale", lang );
 
+    System.Gadget.Settings.write( "sunset_opacity", 30 );
     System.Gadget.Settings.write( "updatecheck", true );
+
+    System.Gadget.Settings.write( "background_file", 'images/background-black.png' );
 
     var elements = [ 'gDate', 'gTime', 'gLabel' ];
     for ( var el in elements ) {
@@ -98,8 +116,6 @@ function startup() {
         setDefaults();
         readSettings();
     }
-
-    imgBackground.src = 'images/background-black.png';
 
     gDate = imgBackground.addTextObject("", "Segoe UI", 11, "white", 0, 0 );
     gTime = imgBackground.addTextObject("", "Segoe UI", 12, "white", 0, 0 );
@@ -140,7 +156,7 @@ function adjustOpacityByCurrentTime() {
     var lat = coords[0];
     var lon = coords[1];
 
-    var now = gNow; // new Date();
+    var now = new Date(); // Don't use gNow here!
 
     var sunobj = new SunriseSunset( now.getUTCFullYear(),
             1+now.getUTCMonth(), now.getUTCDate(), lat, lon);
@@ -148,7 +164,8 @@ function adjustOpacityByCurrentTime() {
     var nowUtcHours = now.getUTCHours() + now.getUTCMinutes() / 60;
     var isLight = sunobj.isDaylight( nowUtcHours );
 
-    gOpacity = isLight ? 100 : 33;
+    var new_opacity = 100 - G.sunset_opacity;
+    gOpacity = isLight ? 100 : new_opacity;
 }
 
 function getMillisecondsToWait() {
@@ -174,25 +191,25 @@ function getMillisecondsToWait() {
     }
 }
 
-function getNow() {
-    var now = new Date();
+function updateNow() {
+    gNow = new Date();
+    gGmtOffset = gNow.getTimezoneOffset();
 
     if ( G.tzName.length > 0 ) {
         try {
-            var gmtOffset = now.getTimezoneOffset();
-            var utc = now.getTime() + gmtOffset*60*1000;
+            var utc = gNow.getTime() + gGmtOffset*60*1000;
             var utcEpoch = Math.round(utc/1000.0);
             var otherOffset = getOffsetInMinutes( G.tzName, utcEpoch );
             var otherTime = utc - otherOffset*60*1000;
 
-            now = new Date( otherTime );
-            gmtOffset = otherOffset;
+            gNow = new Date( otherTime );
+            gGmtOffset = otherOffset;
         } catch(err) {
             G.tzName = ''; // no tzdata for this entry, clear it away
         }
     }
 
-    return now;
+    return gNow;
 }
 
 function updateGadget() {
@@ -227,25 +244,19 @@ function getOffsetInMinutes( tzName, utcEpoch ) {
 }
 
 function displayGadget() {
-    gNow = getNow();
-    var gmtOffset = gNow.getTimezoneOffset();
-
+    updateNow();
     adjustOpacityByCurrentTime();
 
     gLabel.opacity = G.tzLabel ? gOpacity : 0; // this has to be done before changing the text!
-    gLabel.value = formatTzLabel( G.tzLabel, gNow, gmtOffset );
+    gLabel.value = formatTzLabel( G.tzLabel, gNow, gGmtOffset );
     gLabel.width = gLabel.height = 0; // force recalculation of width
 
-    if ( DEBUG ) {
-        gLabel.value += " (DEBUG)";
-    }
-
     gDate.opacity = G.mainDateFormat ? gOpacity : 0;
-    gDate.value = G.mainDateFormat ? formatDate( G.mainDateFormat, gNow, gmtOffset ) : '';
+    gDate.value = G.mainDateFormat ? formatDate( G.mainDateFormat, gNow, gGmtOffset ) : '';
     gDate.height = gDate.width = 0; // force recalculation of width
 
     gTime.opacity = G.mainTimeFormat ? gOpacity : 0;
-    gTime.value = formatDate( G.mainTimeFormat, gNow, gmtOffset );
+    gTime.value = formatDate( G.mainTimeFormat, gNow, gGmtOffset );
     gTime.height = gTime.width = 0; // force recalculation of width
 
     adjustTimeToFit();
@@ -708,13 +719,22 @@ function formatTzLabel( label, now, gmtOffset ) {
 
 function timezoneChanged() {
     var dimControl = document.getElementById( 'dimcontrol' );
+    var dimDisabled = document.getElementById( 'dimdisabled' );
     var tzName = document.getElementById( 'tzName' ).value;
     var tzNameSet = tzName !== '';
     var coords = latlon[ tzName ];
 
     if ( tzNameSet && coords ) {
         dimControl.style.display = 'inline';
+        dimDisabled.style.display = 'none';
     } else {
         dimControl.style.display = 'none';
+        dimDisabled.style.display = 'inline';
     }
 }
+
+function setBackground( newvalue ) {
+    var dest = document.getElementById( 'background_file' );
+    dest.value = newvalue;
+}
+

@@ -182,9 +182,6 @@ SunriseSunset.prototype = {
         var sunriseHours = this.sunriseUtcHours();
         var sunsetHours = this.sunsetUtcHours();
 
-        //print( "rise", sunriseHours );
-        //print( "set", sunsetHours );
-
         if ( sunsetHours < sunriseHours ) {
             // Either the sunrise or sunset time is for tomorrow
             if ( utcCurrentHours > sunriseHours ) {
@@ -207,32 +204,29 @@ SunriseSunset.prototype = {
 function SunriseSunsetTest() {
     var testcases = {
         'Los Angeles': {
-            'year': 2011, 'month': 1, 'day': 22,
             'lat': 34.05, 'lon': -118.23333333,
-            'tests': { // utcHours => isDaylight?
-                19.6666666: true
-            }
+            'tests': [ 
+                { 'year': 2011, 'month': 1, 'day': 22, 'utcHours': 19.6666666, 'isDaylight': true }
+            ]
         },
         'Berlin': {
-            'year': 2011, 'month': 1, 'day': 25,
             'lat': 52.5, 'lon': 13.366666667,
-            'tests': { // utcHours => isDaylight?
-                1.25: false
-            }
+            'tests': [ 
+                { 'year': 2011, 'month': 1, 'day': 25, 'utcHours': 1.25, 'isDaylight': false },
+                { 'year': 2011, 'month': 2, 'day': 22, 'utcHours': 2.5, 'isDaylight': false }
+            ]
         },
         'Tokyo': {
-            'year': 2011, 'month': 1, 'day': 23,
             'lat': 35+40/60, 'lon': 139+45/60,
-            'tests': { // utcHours => isDaylight?
-                1.5: true,
-                22.5: true
-            }
+            'tests': [ 
+                { 'year': 2011, 'month': 1, 'day': 23, 'utcHours': 1.5, 'isDaylight': true },
+                { 'year': 2011, 'month': 1, 'day': 23, 'utcHours': 22.5, 'isDaylight': true }
+            ]
         },
         'New Delhi': {
-            'year': 2011, 'month': 1, 'day': 22,
             'lat': 35+40/60, 'lon': 139+45/60,
-            'tests': { // utcHours => isDaylight?
-            }
+            'tests': [ 
+            ]
         }
     };
 
@@ -241,18 +235,23 @@ function SunriseSunsetTest() {
 
     for ( var city_name in testcases ) {
         var city = testcases[ city_name ];
-        var ss = new SunriseSunset( city.year, city.month, city.day, city.lat, city.lon );
-        for ( var t in city.tests ) {
-            var expected = city.tests[t];
-            var result = ss.isDaylight( t );
+        for ( var i=0; i<city.tests.length; i++ ) {
+            var t = city.tests[i];
+            var ss = new SunriseSunset( t.year, t.month, t.day, city.lat, city.lon );
+            var expected = t.isDaylight;
+            var result = ss.isDaylight( t.utcHours );
             var passed = result === expected;
 
             tests_run++;
             if ( ! passed ) tests_failed++;
             
-            //print( city_name, t, "passed:", passed );
+            /*jsl:ignore*/
+            print( city_name, t.year, t.month, t.day, t.utcHours, "passed:", passed );
+            /*jsl:end*/
         }
     }
 
-    //print( "tests: " + tests_run, "failed: " + tests_failed );
+    /*jsl:ignore*/
+    print( "tests: " + tests_run, "failed: " + tests_failed );
+    /*jsl:end*/
 }

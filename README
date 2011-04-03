@@ -3,8 +3,10 @@ For more information about this gadget:
 
 RELEASE HISTORY
 
-1.46 2011-02-?? Fixed time zone and sunrise info for Calcutta (thanks
-Rich Armstrong!).
+1.46 2011-04-03 Fixed time zone and sunrise info for Calcutta (thanks
+Rich Armstrong!).  Fixed Swatch Internet Time and added Esperanto
+language (thanks Jeff Zeitlin).  Preliminary support for user-provided
+background images.  Updated time zone definitions.
 
 1.45 2011-02-04 Fixed backup settings to registry feature (thanks Rich
 Armstrong!).
