@@ -1,4 +1,4 @@
-// SunriseSunset Class (2011-01-30)
+// SunriseSunset Class (2011-04-17)
 //   Implementation of http://williams.best.vwh.net/sunrise_sunset_algorithm.htm
 //
 //   Copyright (c) 2011, Preston Hunt <me@prestonhunt.com>
@@ -144,11 +144,16 @@ SunriseSunset.prototype = {
         }
     },
 
+    hoursRange: function( h ) {
+        return (h+24) % 24;
+    },
+
     UTCTime: function() {
         var T = this.localMeanTime();
         var UT = T - this.lngHour;
-        if ( UT < 0 ) UT += 24;
-        return UT % 24;
+        return this.hoursRange( UT );
+        //if ( UT < 0 ) UT += 24;
+        //return UT % 24;
     },
 
     sunriseUtcHours: function() {
@@ -161,15 +166,15 @@ SunriseSunset.prototype = {
         return this.UTCTime();
     },
 
-    hoursRange: function( h ) {
-        if ( h >= 24 ) {
-            return h - 24;
-        } else if ( h < 0 ) {
-            return h + 24;
-        } else {
-            return h;
-        }
-    },
+    //hoursRange: function( h ) {
+        //if ( h >= 24 ) {
+            //return h - 24;
+        //} else if ( h < 0 ) {
+            //return h + 24;
+        //} else {
+            //return h;
+        //}
+    //},
 
     sunriseLocalHours: function(gmt) {
         return this.hoursRange( gmt + this.sunriseUtcHours() );
