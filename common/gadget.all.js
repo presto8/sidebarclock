@@ -1474,6 +1474,7 @@ SunriseSunset.prototype = {
     UTCTime: function() {
         var T = this.localMeanTime();
         var UT = T - this.lngHour;
+        if ( UT < 0 ) UT += 24;
         return UT % 24;
     },
 
@@ -1550,6 +1551,12 @@ function SunriseSunsetTest() {
                 { 'year': 2011, 'month': 1, 'day': 23, 'utcHours': 22.5, 'isDaylight': true }
             ]
         },
+        'Seoul': {
+            'lat': 37.55, 'lon': 126.966666667,
+            'tests': [ 
+                { 'year': 2011, 'month': 4, 'day': 10, 'utcHours': 15+30/60, 'isDaylight': false }
+            ]
+        },
         'New Delhi': {
             'lat': 35+40/60, 'lon': 139+45/60,
             'tests': [ 
@@ -1574,6 +1581,11 @@ function SunriseSunsetTest() {
             
             /*jsl:ignore*/
             print( city_name, t.year, t.month, t.day, t.utcHours, "passed:", passed );
+            if ( ! passed ) {
+                print( "sunriseUtcHours=" + ss.sunriseUtcHours() + 
+                        ", sunsetUtcHours=" + ss.sunsetUtcHours() );
+            }
+
             /*jsl:end*/
         }
     }
@@ -1582,6 +1594,7 @@ function SunriseSunsetTest() {
     print( "tests: " + tests_run, "failed: " + tests_failed );
     /*jsl:end*/
 }
+
 var latlon = {
 "Europe/Andorra":[42.5,1.51666666667],
 "Asia/Dubai":[25.3,55.3],
@@ -2921,7 +2934,8 @@ var translations = {
 	't_fontcolor1':      'Font color:',
 	't_fontcolor2':      'Font color:',
 	't_fontcolor3':      'Font color:',
-  't_background':  		'Background image',
+  't_background':  		 'Background image',
+  't_background_help': 'Will be resized to 130x67 pixels',
 	't_date2': 				 	 'Date',
 	't_time2': 				 	 'Time',
 	't_label2': 			 	 'Label',
