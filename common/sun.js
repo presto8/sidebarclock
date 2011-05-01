@@ -1,8 +1,10 @@
-// SunriseSunset Class (2011-04-17)
+// SunriseSunset Class (2011-05-01)
 //   Implementation of http://williams.best.vwh.net/sunrise_sunset_algorithm.htm
 //
 //   Copyright (c) 2011, Preston Hunt <me@prestonhunt.com>
 //   All rights reserved.
+//
+//   (BSD License)
 //
 //   Redistribution and use in source and binary forms, with or without
 //   modification, are permitted provided that the following conditions
@@ -34,7 +36,8 @@
 //
 //   Provides sunrise and sunset times for specified date and position.
 //   All dates are UTC.  Year is 4-digit.  Month is 1-12.  Day is 1-31.
-//   Longitude is positive for east, negative for west.
+//   Longitude is positive for east, negative for west. Latitude is
+//   positive for north, negative for south.
 //
 //   Sample usage:
 //   var tokyo = new SunriseSunset( 2011, 1, 19, 35+40/60, 139+45/60); 
@@ -72,9 +75,9 @@ SunriseSunset.prototype = {
     atan: function( x ) { return (180/Math.PI) * Math.atan(x); },
 
     getDOY: function() {
-        var month = this.utcMonth;
-        var year = this.utcFullYear;
-        var day = this.utcDay;
+        var month = this.utcMonth,
+            year = this.utcFullYear,
+            day = this.utcDay;
 
         var N1 = Math.floor( 275 * month / 9 );
         var N2 = Math.floor( (month + 9) / 12 );
@@ -117,8 +120,9 @@ SunriseSunset.prototype = {
     },
 
     sinDec: function() {
-        var L = this.trueLongitude();
-        var sinDec = 0.39782 * this.sin(L);
+        var L = this.trueLongitude(),
+            sinDec = 0.39782 * this.sin(L);
+
         return sinDec;
     },
 
@@ -166,16 +170,6 @@ SunriseSunset.prototype = {
         return this.UTCTime();
     },
 
-    //hoursRange: function( h ) {
-        //if ( h >= 24 ) {
-            //return h - 24;
-        //} else if ( h < 0 ) {
-            //return h + 24;
-        //} else {
-            //return h;
-        //}
-    //},
-
     sunriseLocalHours: function(gmt) {
         return this.hoursRange( gmt + this.sunriseUtcHours() );
     },
@@ -185,8 +179,8 @@ SunriseSunset.prototype = {
     },
 
     isDaylight: function( utcCurrentHours ) {
-        var sunriseHours = this.sunriseUtcHours();
-        var sunsetHours = this.sunsetUtcHours();
+        var sunriseHours = this.sunriseUtcHours(),
+            sunsetHours = this.sunsetUtcHours();
 
         if ( sunsetHours < sunriseHours ) {
             // Either the sunrise or sunset time is for tomorrow
@@ -239,6 +233,18 @@ function SunriseSunsetTest() {
             'lat': 35+40/60, 'lon': 139+45/60,
             'tests': [ 
             ]
+        },
+        'Sydney': {
+            'lat': -(33+55/60), 'lon': 151+17/60,
+            'tests': [ 
+                { 'year': 2011, 'month': 5, 'day': 1, 'utcHours': 17+53/60, 'isDaylight': false }
+            ]
+        },
+        'Santiago': {
+            'lat': -(33+26/60), 'lon': -(70+40/60),
+            'tests': [ 
+                { 'year': 2011, 'month': 5, 'day': 1, 'utcHours': 17+54/60, 'isDaylight': true }
+            ]
         }
     };
 
@@ -272,4 +278,3 @@ function SunriseSunsetTest() {
     print( "tests: " + tests_run, "failed: " + tests_failed );
     /*jsl:end*/
 }
-
