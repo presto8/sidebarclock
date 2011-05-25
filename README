@@ -3,6 +3,8 @@ For more information about this gadget:
 
 RELEASE HISTORY
 
+1.48 2011-04-?? 
+
 1.47 2011-04-09 Fixed sunrise/sunset algorithm for certain cities.
 
 1.46 2011-04-03 Fixed time zone and sunrise info for Calcutta (thanks
