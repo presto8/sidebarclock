@@ -46,6 +46,7 @@ var translations = {
 	't_translateby':    '',
 	't_language':       'Language:',
 	't_charity':        "Presto's Clock is Charityware. If you like it, please consider a donation to the less fortunate of the world. See the project page for <a href=\"http://prestonhunt.com/story/110\">information on how to donate</a>.",
+  't_license':        "Free for personal or educational use. License required for commercial or government use. Please see the <a href=\"\">license information</a> for more details.",
 	't_fontfamily1':     'Font:',
 	't_fontfamily2':     'Font:',
 	't_fontfamily3':     'Font:',
@@ -68,7 +69,7 @@ var translations = {
   't_tab3':            'About',
   //'t_tab4':            'Background',
   't_copyright':       'Copyright 2009-2011 Preston Hunt',
-  't_auto_check':      'Notify me when new versions of the clock are available',
+  't_auto_check':      'Notify when new versions of the clock are available',
   't_update':          "A newer version of Presto's Clock is available. <a href=\"http://gallery.live.com/liveItemDetail.aspx?li=348e5816-f95b-493e-a6df-a03980e34e51\">Update now!</a>",
   // Replace English with the name of your language in your language
   't_languagename':    'English',

@@ -1,6 +1,12 @@
 For more information about this gadget:
   www.prestonhunt.com/go/sidebarclock
 
+LICENSE
+
+Free for personal or educational use. License required for commercial or
+government use. Please see the license information for details.
+
+
 RELEASE HISTORY
 
 1.48 2011-04-?? 
@@ -149,12 +155,16 @@ Mazzacano!).
 
 1.05  2007-08-27: Offset for other timezone is now relative to UTC (GMT)
 
-1.04  2007-08-02: Automatically shrink font size a little bit on the date area line if the user specifies a really long date format string (thanks Edwin Walstra!)
+1.04  2007-08-02: Automatically shrink font size a little bit on the
+date area line if the user specifies a really long date format string
+(thanks Edwin Walstra!)
 
 1.03  2007-08-01: Added Dutch language support (thanks Edwin Walstra!)
 
-1.02  2007-07-26: Fixed localization bug that would cause gadget not to work and display a white box on any non-US system
+1.02  2007-07-26: Fixed localization bug that would cause gadget not to
+work and display a white box on any non-US system
 
-1.01  2007-06-24: Now display midnight as "12:00 am" instead of "0:00 am" (thanks Zach Bogan!)
+1.01  2007-06-24: Now display midnight as "12:00 am" instead of "0:00
+am" (thanks Zach Bogan!)
 
 1.00  Initial release

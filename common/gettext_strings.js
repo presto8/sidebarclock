@@ -24,10 +24,10 @@ function _ ( msgid ) {
 function get_string( id ) {
     var strings = {
         // Do not change the order of the days or months!
-        'daysLong': [ 
+        //'daysLong': [ 
             _("Sunday"), _("Monday"), _("Tuesday"),
             _("Wednesday"), _("Thursday"), _("Friday"), _("Saturday")
-            ],
+        //    ],
         'daysShort': [
             _("Sun"), _("Mon"), _("Tue"),
             _("Wed"), _("Thu"), _("Fri"), _("Sat") 
