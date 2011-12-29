@@ -1215,6 +1215,78 @@ pt: {
   't_sunset_opacity':  "Procento obskurigi horloĝon ĉe sunsubiro"
 },
 
+// Catalan translation by Enric Montorio i Puig <enric.mon2@gmail.com>
+'ca': {
+  // Do not change the order of the days or months!
+	'daysLong':    ["Diumenge", "Dilluns","Dimarts","Dimecres","Dijous","Divendres","Dissabte"],
+	'daysShort':   ["Dg", "Dl", "Dt", "Dc", "Dj", "Dv", "Ds"],
+	'monthsLong':  ["Gener", "Febrer", "Març", "Abril", "Maig", "Juny", "Juliol", "Agost", "Setembre", "Octubre", "Novembre", "Desembre"],
+	'monthsShort': ["Gen", "Feb", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Oct", "Nov", "Des"],
+  'am':          'am',
+  'pm':          'pm',
+  // Update these with the correct format for your country
+	'defaultDateFormat': "D M d",
+	'defaultTimeFormat': "h:i a",
+
+	't_dateformat':     'Format data:',
+	't_timeformat':     'Format hora:',
+	't_timezone':       'Zona horària:',
+	't_localtime':      'Hora local:',
+	't_bottomlabel':    'Etiqueta:',
+	't_optional':       '(opcional)',
+	't_examples':       'Exemples:',
+	't_date':           'Data:',
+	't_time':           'Hora:',
+	't_label':          'Etiqueta:',
+	't_dateexamples':   'D M d = Ds Abr 07<br>n/j l = 4/7 Dissabte',
+	't_timeexamples':   'g:i a = 5:44 pm<br>H:i = 17:44',
+	't_labelexamples':  'Portland, Tokyo, GMT+2',
+	't_formathelp':     '<a href="http://us.php.net/manual/en/function.date.php">Ajuda amb el format</a>',
+	't_formathelplong': '<a href="http://us.php.net/manual/en/function.date.php">Ajuda amb el format</a> (sense suport: T, e, o, u)',
+  // Don't modify xxVER or xxDATE
+	't_version':        'Versió xxVER (xxDATE)',
+	't_about':          'En quant a aquest gadget',
+  // If you want credit for translation, translate "Languagename translation by your name"
+	't_translateby':    'Traduït al català per Enric Montorio i Puig',
+	't_language':       'Idioma:',
+	't_charity':        "Presto és un rellotge Charityware. Si t'agrada, si us plau, consideri una donació per als menys afortunats del món. Visiteu la pàgina del projecte per obtenir informació sobre com  <a href=\"http://prestonhunt.com/story/110\"> donar. </ a>",
+  't_license':        "Gratuït per a ús personal o educatiu. Cal llicència per a ús comercial o de govern. Consulteu
+la <a href = \ "\"> <a informació de la llicència </ a> per més detalls.",
+	't_fontfamily1':     'Lletra:',
+	't_fontfamily2':     'Lletra:',
+	't_fontfamily3':     'Lletra:',
+	't_fontsize1':       'Tamany lletra:',
+	't_fontsize2':       'Tamany lletra:',
+	't_fontsize3':       'Tamany lletra:',
+	't_fontcolor1':      'Color lletra:',
+	't_fontcolor2':      'Color lletra:',
+	't_fontcolor3':      'Color lletra:',
+  't_background':  		 'Imatge de fons',
+  't_background_help': 'Es canviarà la mida de 130x67 píxels',
+	't_date2': 				 	 'Data',
+	't_time2': 				 	 'Hora',
+	't_label2': 			 	 'Etiqueta',
+	't_swap_labels':     'Bescanvi, la data a baix i l'etiqueta amunt',
+	't_sun_colors':      'Atenua el rellotge a la nit',
+  't_dim_disabled':    '(La atenuació no està disponible per aquesta selecció de zona horària.)',
+  't_tab1':            'General', 
+  't_tab2':            'Aparença',
+  't_tab3':            'En quant a',
+  //'t_tab4':            'Background',
+  't_copyright':       'Copyright 2009-2011 Preston Hunt',
+  't_auto_check':      'Notificar quan les noves versions del rellotge estiguin disponibles',
+  't_update':          "Una nova versió del rellotge Presto està disponible. <A
+
+href = \ "http://gallery.live.com/liveItemDetail.aspx?li=348e5816-f95b-493e-a6df-a03980e34e51 \"> Actualitza ara </ a>",
+  // Put the name of your language in your language (e.g., "German" is "Deutsch")
+  't_languagename':    'Català',
+
+  't_backup_settings': "configuració de còpia de seguretat",
+  't_backup':          "Configuració de còpia de seguretat al porta-retalls",
+  't_restore':         "Restaurar la configuració des del porta-retalls",
+  't_sunset_opacity':  "per cent"
+},
+
 // Norwegian translation by Tom Ryan Svart <sydox86@gmail.com>
 'no': {
   // Do not change the order of the days or months!
