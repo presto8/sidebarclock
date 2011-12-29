@@ -1231,7 +1231,7 @@ pt: {
 	't_dateformat':     'Format data:',
 	't_timeformat':     'Format hora:',
 	't_timezone':       'Zona horària:',
-	't_localtime':      'Hora local:',
+	't_localtime':      'Hora local',
 	't_bottomlabel':    'Etiqueta:',
 	't_optional':       '(opcional)',
 	't_examples':       'Exemples:',
