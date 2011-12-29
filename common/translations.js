@@ -1250,8 +1250,7 @@ pt: {
 	't_translateby':    'Traduït al català per Enric Montorio i Puig',
 	't_language':       'Idioma:',
 	't_charity':        "Presto és un rellotge Charityware. Si t'agrada, si us plau, consideri una donació per als menys afortunats del món. Visiteu la pàgina del projecte per obtenir informació sobre com  <a href=\"http://prestonhunt.com/story/110\"> donar. </ a>",
-  't_license':        "Gratuït per a ús personal o educatiu. Cal llicència per a ús comercial o de govern. Consulteu
-la <a href = \ "\"> <a informació de la llicència </ a> per més detalls.",
+  't_license':        "Gratuït per a ús personal o educatiu. Cal llicència per a ús comercial o de govern. Consulteu la informació de la llicència per més detalls.",
 	't_fontfamily1':     'Lletra:',
 	't_fontfamily2':     'Lletra:',
 	't_fontfamily3':     'Lletra:',
@@ -1266,7 +1265,7 @@ la <a href = \ "\"> <a informació de la llicència </ a> per més detalls.",
 	't_date2': 				 	 'Data',
 	't_time2': 				 	 'Hora',
 	't_label2': 			 	 'Etiqueta',
-	't_swap_labels':     'Bescanvi, la data a baix i l'etiqueta amunt',
+	't_swap_labels':     "Bescanvi, la data a baix i l'etiqueta amunt",
 	't_sun_colors':      'Atenua el rellotge a la nit',
   't_dim_disabled':    '(La atenuació no està disponible per aquesta selecció de zona horària.)',
   't_tab1':            'General', 
@@ -1275,9 +1274,7 @@ la <a href = \ "\"> <a informació de la llicència </ a> per més detalls.",
   //'t_tab4':            'Background',
   't_copyright':       'Copyright 2009-2011 Preston Hunt',
   't_auto_check':      'Notificar quan les noves versions del rellotge estiguin disponibles',
-  't_update':          "Una nova versió del rellotge Presto està disponible. <A
-
-href = \ "http://gallery.live.com/liveItemDetail.aspx?li=348e5816-f95b-493e-a6df-a03980e34e51 \"> Actualitza ara </ a>",
+  't_update':          "Una nova versió del rellotge Presto està disponible. <a href=\"http://gallery.live.com/liveItemDetail.aspx?li=348e5816-f95b-493e-a6df-a03980e34e51\">Actualitza ara</a>",
   // Put the name of your language in your language (e.g., "German" is "Deutsch")
   't_languagename':    'Català',
 
