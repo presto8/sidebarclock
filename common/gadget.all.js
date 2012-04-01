@@ -4233,6 +4233,74 @@ pt: {
 	't_backup_settings': "Sikkerhetskopier instillinger",
 	't_backup':          "Eksporter instillinger til utklippstavle",
 	't_restore':         "Importer instillinger fra utklippstavle"
+},
+
+'ro': {
+  // Do not change the order of the days or months!
+	'daysLong':    ["Duminică", "Luni", "Marți", "Miercuri", "Joi", "Vineri", "Sâmbătă"],
+	'daysShort':   ["Du", "Lu", "Ma", "Mi", "Jo", "Vi", "Sâ"],
+	'monthsLong':  ["Ianuarie", "Februarie", "Martie", "Aprilie", "Mai", "Iunie", "Iulie", "August", "Septembrie", "Octombrie", "Noiembrie", "Decembrie"],
+	'monthsShort': ["Ian", "Feb", "Mar", "Apr", "Mai", "Iun", "Iul", "Aug", "Sep", "Oct", "Noi", "Dec"],
+  'am':          'am',
+  'pm':          'pm',
+  // Update these with the correct format for your country
+	'defaultDateFormat': "D, d M",
+	'defaultTimeFormat': "H:i",
+
+	't_dateformat':     'Format dată:',
+	't_timeformat':     'Format oră:',
+	't_timezone':       'Fus orar:',
+	't_localtime':      'Ora locală',
+	't_bottomlabel':    'Etichetă:',
+	't_optional':       '(opțional)',
+	't_examples':       'Exemple:',
+	't_date':           'Data:',
+	't_time':           'Ora:',
+	't_label':          'Etichetă:',
+	't_dateexamples':   'D M d = Sâm Apr 07<br>n/j l = 4/7 Sâmbătă',
+	't_timeexamples':   'g:i a = 5:44 pm<br>H:i = 17:44',
+	't_labelexamples':  'Portland, Tokyo, GMT+2',
+	't_formathelp':     '<a href="http://us.php.net/manual/en/function.date.php">Ajutor formate</a>',
+	't_formathelplong': '<a href="http://us.php.net/manual/en/function.date.php">Ajutor formate</a> (nesuportat: T, e, o, u)',
+  // Don't modify xxVER or xxDATE
+	't_version':        'Versiune xxVER (xxDATE)',
+	't_about':          'Despre acest gadget',
+  // If you want credit for translation, translate "Languagename translation by your name"
+	't_translateby':    'Goia Valentin',
+	't_language':       'Language: română',
+	't_charity':        "Presto's Clock este gratuit. Dacă vă place acest gadget, vă rog contribuiți cu o donație. Vizitați pagina mea pentru a afla <a href=\"http://prestonhunt.com/story/110\">cum se poate face o donație</a>.",
+  't_license':        "Licență gratuită pentru uz personal sau educațional. Pentru uz comercial necesită licență plătită. Vizitați <a href=\"\">informații despre licență</a> pentru mai multe detalii.",
+	't_fontfamily1':     'Font:',
+	't_fontfamily2':     'Font:',
+	't_fontfamily3':     'Font:',
+	't_fontsize1':       'Mărime font:',
+	't_fontsize2':       'Mărime font:',
+	't_fontsize3':       'Mărime font:',
+	't_fontcolor1':      'Culoare font:',
+	't_fontcolor2':      'Culoare font:',
+	't_fontcolor3':      'Culoare font:',
+  't_background':  		 'Imagine fundal',
+  't_background_help': 'Va fi redimensionată la 130x67 pixeli',
+	't_date2': 				 	 'Data',
+	't_time2': 				 	 'Ora',
+	't_label2': 			 	 'Eticheta',
+	't_swap_labels':     'Inversează data cu eticheta',
+	't_sun_colors':      'Noaptea se reduce lumina ceasului cu',
+  't_dim_disabled':    '(Reducerea luminii ceasului nu este disponibilă pentru acest fus orar.)',
+  't_tab1':            'General', 
+  't_tab2':            'Aspect',
+  't_tab3':            'Despre',
+  //'t_tab4':            'Fundal',
+  't_copyright':       'Copyright 2009-2011 Preston Hunt',
+  't_auto_check':      'Anunță-mă când apare o vesiune nouă',
+  't_update':          "O nouă versiune este disponibilă. <a href=\"http://prestonhunt.com/go/sidebarclock\">Actualizează acum!</a>",
+  // Replace the word below with the name of your language in your language
+  't_languagename':    'Română',
+
+  't_backup_settings': "Salvează setările",
+  't_backup':          "Salvează setările în clipboard",
+  't_restore':         "Restaurează setările din clipboard",
+  't_sunset_opacity':  "procente"
 }
 
 };
