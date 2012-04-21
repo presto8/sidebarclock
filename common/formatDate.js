@@ -43,6 +43,8 @@
 */
 
 //Date.prototype.formatDate = function (input,time) {
+// @param time is a Date() object with the time in the destination time zone,
+// but the timezone value is not valid
 formatDate = function (input,time,offsetmins) {
     var switches = { // switches object
         
@@ -331,9 +333,15 @@ formatDate = function (input,time,offsetmins) {
         
         z : function () {
             // The day of the year, zero indexed! 0 through 366
-            var s = "January 1 " + this.Y() + " 00:00:00 GMT" + this.O();
-            var t = new Date(s);
-            var diff = date.getTime() - t.getTime();
+            // Extremely tricky to calculate
+            // First, find current time delta since Jan 1 in GMT only
+            var jan1_gmt = new Date( "January 1 " + this.Y() + " 00:00:00 GMT" );
+            var now_gmt = new Date();
+            var diff = now_gmt - jan1_gmt;
+
+            // Now, apply the timezone offset for the target timezone to the GMT diff
+            diff -= offsetmins * 60 * 1000;
+
             return Math.floor(diff/1000/60/60/24);
         },
 
