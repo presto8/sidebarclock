@@ -9,6 +9,9 @@ government use. Please see the license information for details.
 
 RELEASE HISTORY
 
+1.52 2012-04-22 Fixed Julian date bug (thanks iitcheme2001!). Upgraded time
+zone definitions to 2012c.
+
 1.51 2012-04-01 Added Romanian translation (thanks Goia Valentin!).
 
 1.50 2012-03-15 Updated time zone definitions (2012b).
