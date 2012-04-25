@@ -174,7 +174,7 @@ function getMillisecondsToWait() {
      * second.  But if no seconds are included, then we only update every
      * minute. */
 
-    var now = gNow; // new Date();
+    var now = gNow;
     var milliseconds_to_wait = 1000 - now.getMilliseconds() + 1;
 
     if ( G.mainTimeFormat.indexOf('s') >= 0 ) {
