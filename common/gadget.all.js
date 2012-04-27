@@ -2903,11 +2903,11 @@ Copyright (C) 2008, Joshua I. Miller E<lt>unrtst@cpan.orgE<gt>, all rights reser
 
 var translations = {
 
-'en': {
-  // Do not change the order of the days or months!
-	'daysLong':    ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-	'daysShort':   ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
-	'monthsLong':  ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+en:
+// Do not change the order of the days or months!
+{ daysLong:    ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+, daysShort:   ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+, monthsLong:  ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
 	'monthsShort': ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
   'am':          'am',
   'pm':          'pm',
@@ -2969,6 +2969,10 @@ var translations = {
   't_backup':          "Backup settings to clipboard",
   't_restore':         "Restore settings from clipboard",
   't_sunset_opacity':  "percent"
+, t_settings_copied:   "Settings copied to clipboard!"
+, t_settings_loaded:   "Settings loaded from clipboard!"
+, t_settings_invalid:  "Clipboard does not contain valid settings."
+, t_title:              "Presto's Clock"
 },
 
 // Russian translation by Denis Baumgaertner <denco@freenet.de>
@@ -3268,64 +3272,67 @@ var translations = {
 },
 
 // Polish translation by Marcin Michalak <marcin.michalak@gmail.com> and Dariusz Bodzęta <darek334@gazeta.pl>
-pl: {
-	'daysLong':    ["Niedziela", "Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Sobota"],
-	'daysShort':   ["Ni", "Pn", "Wt", "Śr", "Cz", "Pt", "So"],
-	'monthsLong':  ["Styczeń", "Luty", "Marzec", "Kwiecień", "Maj", "Czerwiec", "Lipiec", "Sierpień", "Wrzesień", "Październik", "Listopad", "Grudzień"],
-	'monthsShort': ["Sty", "Lut", "Mar", "Kwi", "Maj", "Cze", "Lip", "Sie", "Wrz", "Paź", "Lis", "Gru"],
-	'defaultDateFormat': "D d M",
-	'defaultTimeFormat': "H:i",
-
-	't_dateformat':    'Format daty:',
-	't_timeformat':    'Format godziny:',
-	't_timezone':      'Strefa czasu:',
-	't_localtime':     'Czas lokalny',
-	't_bottomlabel':   'Tekst:',
-	't_optional':      '(opcjonalnie)',
-	't_examples':      'Przykłady:',
-	't_date':          'Data:',
-	't_time':          'Godzina:',
-	't_label':         'Tekst:',
-	't_dateexamples':  'D d M = Sob Kwi 07<br>l/j n = Sobota 7/4',
-	't_timeexamples':  'g:i a = 5:44 pm<br>H:i = 17:44',
-	't_labelexamples': 'Warszawa, GMT+1',
-	't_formathelp':    '<a href="http://us.php.net/manual/pl/function.date.php">Więcej o formacie</a>',
-	't_formathelplong':'<a href="http://us.php.net/manual/pl/function.date.php">Więcej o formacie</a> (nieobsługiwane: T, e, o, u)',
-	't_version':       'Wersja xxVER (xxDATE)',
-	't_about':         'O tym gadżecie',
-	't_translateby':   'Przetłumaczył na polski Dariusz Bodzęta & Marcin Michalak',
-	't_language':      'Język:',
-  't_charity':        "Zegar Preston'a jest oprogramowaniem charityware-darowiznowym. Jeśli Ci się podoba, pomyśl o darowiźnie dla mniej szczęśliwych tego świata. Na stronie projektu znajdziesz <a href=\"http://prestonhunt.com/story/110\">informację, jak złożyć darowiznę</a>.",
-  't_license':        "Bezpłatny do użytku domowego lub w celach dydaktyczno-naukowych, z wyłączeniem używania w firmach i innych instytucjach. <a href=\"\">więcej o licencji</a>",
-	't_fontfamily1':     'Czcionka:',
-	't_fontfamily2':     'Czcionka:',
-	't_fontfamily3':     'Czcionka:',
-	't_fontsize1':       'Rozmiar czcionki:',
-	't_fontsize2':       'Rozmiar czcionki:',
-	't_fontsize3':       'Rozmiar czcionki:',
-	't_fontcolor1':      'Kolor czcionki:',
-	't_fontcolor2':      'Kolor czcionki:',
-	't_fontcolor3':      'Kolor czcionki:',
-  't_background':  		'Obraz tła',
-  't_background_help': 'Zostanie wyskalowany do 130x67 pixelów',
-	't_date2': 				 	 'Data',
-	't_time2': 				 	 'Godzina',
-	't_label2': 			 	 'Tekst',
-	't_swap_labels':     'Zamień datę i dolny tekst',
-	't_sun_colors':      'Tonuj zegar w nocy o:',
-  't_dim_disabled':    '(Opcja tonowania nie jest dostępna w tej strefie czasowej.)',
-  't_tab1':            'General',
-  't_tab2':            'Apperance',
-  't_tab3':            'About',
-  //'t_tab4':            'Tło',
-  't_copyright':       'Copyright 2009-2012 Preston Hunt',
-  't_auto_check':      'Poinformuj, kiedy będzie dostępna nowsza wersja',
-  't_update':          "Dostępna jest nowsza wersja Presto's Clock <a href=\"http://prestonhunt.com/go/sidebarclock\">Aktualizuj teraz !</a>",
-  't_languagename':    'Polski',
-  't_backup_settings': "Przenoszenie ustawień",
-  't_backup':          "Zapisz ustawienia w schowku",
-  't_restore':         "Przywróć ustawienia ze schowka",
-  't_sunset_opacity':  "procenty"
+pl: 
+{ daysLong:    ["Niedziela", "Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Sobota"]
+, daysShort:   ["Ni", "Pn", "Wt", "Śr", "Cz", "Pt", "So"]
+, monthsLong:  ["Styczeń", "Luty", "Marzec", "Kwiecień", "Maj", "Czerwiec", "Lipiec", "Sierpień", "Wrzesień", "Październik", "Listopad", "Grudzień"]
+, monthsShort: ["Sty", "Lut", "Mar", "Kwi", "Maj", "Cze", "Lip", "Sie", "Wrz", "Paź", "Lis", "Gru"]
+, defaultDateFormat: "D d M"
+, defaultTimeFormat: "H:i"
+, t_dateformat:    'Format daty:'
+, t_timeformat:    'Format godziny:'
+, t_timezone:      'Strefa czasu:'
+, t_localtime:     'Czas lokalny'
+, t_bottomlabel:   'Tekst:'
+, t_optional:      '(opcjonalnie)'
+, t_examples:      'Przykłady:'
+, t_date:          'Data:'
+, t_time:          'Godzina:'
+, t_label:         'Tekst:'
+, t_dateexamples:  'D d M = Sob Kwi 07<br>l/j n = Sobota 7/4'
+, t_timeexamples:  'g:i a = 5:44 pm<br>H:i = 17:44'
+, t_labelexamples: 'Warszawa, GMT+1'
+, t_formathelp:    '<a href="http://us.php.net/manual/pl/function.date.php">Więcej o formacie</a>'
+, t_formathelplong:'<a href="http://us.php.net/manual/pl/function.date.php">Więcej o formacie</a> (nieobsługiwane: T, e, o, u)'
+, t_version:       'Wersja xxVER (xxDATE)'
+, t_about:         'O tym gadżecie'
+, t_translateby:   'Przetłumaczył na polski Dariusz Bodzęta & Marcin Michalak'
+, t_language:      'Język:'
+, t_charity:        "Zegar Preston'a jest oprogramowaniem charityware-darowiznowym. Jeśli Ci się podoba, pomyśl o darowiźnie dla mniej szczęśliwych tego świata. Na stronie projektu znajdziesz <a href=\"http://prestonhunt.com/story/110\">informację, jak złożyć darowiznę</a>."
+, t_license:        "Bezpłatny do użytku domowego lub w celach dydaktyczno-naukowych, z wyłączeniem używania w firmach i innych instytucjach. <a href=\"\">więcej o licencji</a>"
+, t_fontfamily1:     'Czcionka:'
+, t_fontfamily2:     'Czcionka:'
+, t_fontfamily3:     'Czcionka:'
+, t_fontsize1:       'Rozmiar czcionki:'
+, t_fontsize2:       'Rozmiar czcionki:'
+, t_fontsize3:       'Rozmiar czcionki:'
+, t_fontcolor1:      'Kolor czcionki:'
+, t_fontcolor2:      'Kolor czcionki:'
+, t_fontcolor3:      'Kolor czcionki:'
+, t_background:  		'Obraz tła'
+, t_background_help: 'Zostanie wyskalowane do 130x67 pixelów'
+, t_date2: 				 	 'Data'
+, t_time2: 				 	 'Godzina'
+, t_label2: 			 	 'Tekst'
+, t_swap_labels:     'Zamień datę i dolny tekst'
+, t_sun_colors:      'Tonuj zegar w nocy o:'
+, t_dim_disabled:    '(Opcja tonowania nie jest dostępna w tej strefie czasowej.)'
+, t_tab1:            'Ogólne'
+, t_tab2:            'Wygląd'
+, t_tab3:            'O gadżecie'
+  //'t_tab4:            'Tło'
+, t_copyright:       'Copyright 2009-2012 Preston Hunt'
+, t_auto_check:      'Informuj, kiedy będzie dostępna nowsza wersja'
+, t_update:          "Dostępna jest nowsza wersja Presto's Clock <a href=\"http://prestonhunt.com/go/sidebarclock\">Aktualizuj teraz !</a>"
+, t_languagename:    'Polski'
+, t_backup_settings: "Przenoszenie ustawień:"
+, t_backup:          "Zapisz ustawienia w schowku"
+, t_restore:         "Przywróć ustawienia ze schowka"
+, t_sunset_opacity:  "procent"
+, t_settings_copied:   "Skopiowano ustawienia do schowka!"
+, t_settings_loaded:   "Wgrano nowe ustawienia ze schowka!"
+, t_settings_invalid:  "Schowek nie zawierał właściwych ustawień!"
+, t_title:             "Zegar Prestona"
 },
 
 // Dutch translation by Edwin Walstra <ewalstra@xs4all.nl>
@@ -4327,7 +4334,7 @@ pl: {
 /*
  * JavaScript code for Presto's Sidebar Clock
  *
- *   Copyright (c) 2011, Preston Hunt <me@prestonhunt.com>
+ *   Copyright (c) 2011-2012, Preston Hunt <me@prestonhunt.com>
  *   All rights reserved.
  *
  * Non-localized javascript
@@ -4500,7 +4507,7 @@ function getMillisecondsToWait() {
      * second.  But if no seconds are included, then we only update every
      * minute. */
 
-    var now = gNow; // new Date();
+    var now = gNow;
     var milliseconds_to_wait = 1000 - now.getMilliseconds() + 1;
 
     if ( G.mainTimeFormat.indexOf('s') >= 0 ) {
@@ -4975,7 +4982,7 @@ function saveIniFile() {
     var json_settings = document.getElementById( "json_settings" );
 
     copySettingsToClipboard();
-    json_settings.value = "Settings copied to clipboard";
+    json_settings.value = L.t_settings_copied; //"Settings copied to clipboard";
 }
 
 function setBackupStatus( mesg ) {
@@ -4986,20 +4993,20 @@ function setBackupStatus( mesg ) {
 function loadIniFile() {
     var new_G = pasteSettingsFromClipboard();
     if ( ! new_G ) {
-        setBackupStatus( "Clipboard does not contain valid settings." );
+        setBackupStatus( L.t_settings_invalid );
         return;
     }
 
     G = new_G;
     GToForm();
-    setBackupStatus( "Settings loaded from clipboard!" );
+    setBackupStatus( L.t_settings_loaded );
 }
 
 function copySettingsToClipboard() {
     G.settingsVersion = 2;
     formToG();
     window.clipboardData.setData( "Text", JSON.stringify( G ) );
-    setBackupStatus( "Settings copied to clipboard!" );
+    setBackupStatus( L.t_settings_copied );
 }
 
 function pasteSettingsFromClipboard() {

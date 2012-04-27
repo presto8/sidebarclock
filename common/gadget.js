@@ -1,7 +1,7 @@
 /*
  * JavaScript code for Presto's Sidebar Clock
  *
- *   Copyright (c) 2011, Preston Hunt <me@prestonhunt.com>
+ *   Copyright (c) 2011-2012, Preston Hunt <me@prestonhunt.com>
  *   All rights reserved.
  *
  * Non-localized javascript
@@ -649,7 +649,7 @@ function saveIniFile() {
     var json_settings = document.getElementById( "json_settings" );
 
     copySettingsToClipboard();
-    json_settings.value = "Settings copied to clipboard";
+    json_settings.value = L.t_settings_copied; //"Settings copied to clipboard";
 }
 
 function setBackupStatus( mesg ) {
@@ -660,20 +660,20 @@ function setBackupStatus( mesg ) {
 function loadIniFile() {
     var new_G = pasteSettingsFromClipboard();
     if ( ! new_G ) {
-        setBackupStatus( "Clipboard does not contain valid settings." );
+        setBackupStatus( L.t_settings_invalid );
         return;
     }
 
     G = new_G;
     GToForm();
-    setBackupStatus( "Settings loaded from clipboard!" );
+    setBackupStatus( L.t_settings_loaded );
 }
 
 function copySettingsToClipboard() {
     G.settingsVersion = 2;
     formToG();
     window.clipboardData.setData( "Text", JSON.stringify( G ) );
-    setBackupStatus( "Settings copied to clipboard!" );
+    setBackupStatus( L.t_settings_copied );
 }
 
 function pasteSettingsFromClipboard() {
