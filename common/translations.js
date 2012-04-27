@@ -8,7 +8,7 @@
 // preserve special characters.
 //
 // Example:
-//   't_label':      'Replace this part with the translation'
+//   t_label:      'Replace this part with the translation'
 
 var translations = {
 
@@ -16,21 +16,22 @@ en:
 // Do not change the order of the days or months!
 { daysLong:    ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 , daysShort:   ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
-, monthsLong:  ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-	'monthsShort': ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-  'am':          'am',
-  'pm':          'pm',
-  // Update these with the correct format for your country
-	'defaultDateFormat': "D M d",
-	'defaultTimeFormat': "h:i a",
+, monthsLong:  ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+, monthsShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+, am:          'am'
+, pm:          'pm'
 
-	't_dateformat':     'Date format:',
-	't_timeformat':     'Time format:',
-	't_timezone':       'Time zone:',
-	't_localtime':      'Local time',
-	't_bottomlabel':    'Bottom label:',
-	't_optional':       '(optional)',
-	't_examples':       'Examples:',
+// Update these with the correct format for your country
+, defaultDateFormat: "D M d"
+, defaultTimeFormat: "h:i a"
+
+, t_dateformat:     'Date format:'
+, t_timeformat:     'Time format:'
+, t_timezone:       'Time zone:'
+, t_localtime:      'Local time'
+, t_bottomlabel:    'Bottom label:'
+, t_optional:       '(optional)'
+, t_examples:       'Examples:',
 	't_date':           'Date:',
 	't_time':           'Time:',
 	't_label':          'Label:',
