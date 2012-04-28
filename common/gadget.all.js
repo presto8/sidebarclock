@@ -2973,7 +2973,8 @@ en:
 , t_settings_copied:   "Settings copied to clipboard!"
 , t_settings_loaded:   "Settings loaded from clipboard!"
 , t_settings_invalid:  "Clipboard does not contain valid settings."
-, t_title:              "Presto's Clock"
+, t_title:             "Presto's Clock"
+, t_numerals:          "Numeral system:"
 },
 
 // Russian translation by Denis Baumgaertner <denco@freenet.de>
@@ -4347,31 +4348,32 @@ var DEBUG = false;
 
 // Global stored settings
 // Also see setDefaults() which initializes this data structure
-var G = {
-    'mainDateFormat': null,
-    'mainTimeFormat': null,
-    'tzLabel': null,
-    'tzName': null,
-    'swaplabels': false,
-    'suncolors': false,
-    'sunset_opacity': null,
-    'updatecheck': null,
-    'background_file': null,
+var G = 
+    { mainDateFormat: null
+    , mainTimeFormat: null
+    , tzLabel: null
+    , tzName: null
+    , swaplabels: false
+    , suncolors: false
+    , sunset_opacity: null
+    , updatecheck: null
+    , background_file: null
 
-    'gDatefontfamily': null,
-    'gDatefontsize': null,
-    'gDatefontcolor': null,
+    , gDatefontfamily: null
+    , gDatefontsize: null
+    , gDatefontcolor: null
 
-    'gTimefontfamily': null,
-    'gTimefontsize': null,
-    'gTimefontcolor': null,
+    , gTimefontfamily: null
+    , gTimefontsize: null
+    , gTimefontcolor: null
 
-    'gLabelfontfamily': null,
-    'gLabelfontsize': null,
-    'gLabelfontcolor': null,
+    , gLabelfontfamily: null
+    , gLabelfontsize: null
+    , gLabelfontcolor: null
 
-    'locale': 'en'
-};
+    , locale: 'en'
+    , numerals: 'a'
+    };
 
 var L = null;
 
@@ -4577,6 +4579,20 @@ function getOffsetInMinutes( tzName, utcEpoch ) {
     return offset;
 }
 
+function devadigits(s) {
+    // Function provided by Robert Lozyniak <r07271368@hotmail.com>
+    // takes a string and outputs same but with
+    // European digits changed to Devanagari digits
+    var p; var c;
+    var d="";
+    for (p=0; p<s.length; p++) {
+        c=s.charCodeAt(p);
+        if(c>=48 && c<=57) c+=2358;
+        d+=String.fromCharCode(c);
+    }
+    return d;
+}
+
 function displayGadget() {
     updateNow();
     adjustOpacityByCurrentTime();
@@ -4592,6 +4608,11 @@ function displayGadget() {
     gTime.opacity = G.mainTimeFormat ? gOpacity : 0;
     gTime.value = formatDate( G.mainTimeFormat, gNow, gGmtOffset );
     gTime.height = gTime.width = 0; // force recalculation of width
+
+    if ( G.numerals == 'd' ) {
+        gDate.value = devadigits( gDate.value ); 
+        gTime.value = devadigits( gTime.value ); 
+    }
 
     adjustTimeToFit();
     adjustDateToFit();
@@ -4785,6 +4806,8 @@ function initSettings() {
     GToForm();
 
     setLocale();
+    document.getElementById("numerals").value = G.numerals;
+
     displaySettings();
 }
 
@@ -4803,6 +4826,10 @@ function changeLocale( newlocale ) {
     document.getElementById("mainTimeFormat").value = L.defaultTimeFormat;
 
     displaySettings();
+}
+
+function changeNumerals( newvalue ) {
+    G.numerals = newvalue;
 }
 
 function displaySettings() {

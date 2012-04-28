@@ -82,7 +82,8 @@ en:
 , t_settings_copied:   "Settings copied to clipboard!"
 , t_settings_loaded:   "Settings loaded from clipboard!"
 , t_settings_invalid:  "Clipboard does not contain valid settings."
-, t_title:              "Presto's Clock"
+, t_title:             "Presto's Clock"
+, t_numerals:          "Numeral system:"
 },
 
 // Russian translation by Denis Baumgaertner <denco@freenet.de>
