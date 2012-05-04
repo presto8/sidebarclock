@@ -62,6 +62,10 @@
 </li>
 <li id="dimdisabled"><span id="t_dim_disabled"></span></li>
 <li><span id="t_bottomlabel" class=firstcol></span><input type="text" id="tzLabel"> <span id="t_optional"></span></li>
+<li><span id="t_numerals"></span><select id="numerals" onchange="changeNumerals(this.value)">
+<option value="a">Hindu-Arabic</option>
+<option value="d">Devanagari</option>
+</select></li>
 </ul>
 
 <br>
@@ -142,18 +146,10 @@
 <span id=t_auto_check></span>
 </label>
 
-
-<label>
-<span id="t_numerals"></span>
-<select id="numerals" onchange="changeNumerals(this.value)">
-<option value="a">Hindu-Arabic</option>
-<option value="d">Devanagari</option>
-</select>
-</label>
 </div>
 
 </body>
 </html>
 <!-- 
-vim: fileencoding=utf-8 fileformat=dos encoding=utf-8
+vim: fileencoding=utf-8 fileformat=dos
 -->

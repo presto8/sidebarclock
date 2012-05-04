@@ -2942,12 +2942,12 @@ en:
 	't_fontfamily1':     'Font:',
 	't_fontfamily2':     'Font:',
 	't_fontfamily3':     'Font:',
-	't_fontsize1':       'Font size:',
-	't_fontsize2':       'Font size:',
-	't_fontsize3':       'Font size:',
-	't_fontcolor1':      'Font color:',
-	't_fontcolor2':      'Font color:',
-	't_fontcolor3':      'Font color:',
+	't_fontsize1':       'Size:',
+	't_fontsize2':       'Size:',
+	't_fontsize3':       'Size:',
+	't_fontcolor1':      'Color:',
+	't_fontcolor2':      'Color:',
+	't_fontcolor3':      'Color:',
   't_background':  		 'Background image',
   't_background_help': 'Will be resized to 130x67 pixels',
 	't_date2': 				 	 'Date',
@@ -3943,6 +3943,7 @@ pl:
   't_copyright':       'Autorsko pravo 2009-2012 Preston Hunt'
 },
 
+// Marathi
 'mr': {
   // Do not change the order of the days or months!
 	'daysLong':    ["रविवार", "सोमवार", "मंगळवार", "बुधवार", "गुरुवार", "शुक्रवार", "शनिवार"],
@@ -4295,8 +4296,8 @@ pl:
 	't_version':        'Versiune xxVER (xxDATE)',
 	't_about':          'Despre acest gadget',
   // If you want credit for translation, translate "Languagename translation by your name"
-	't_translateby':    'Goia Valentin',
-	't_language':       'Language: română',
+	't_translateby':    'Goia Valentin'
+, t_language:       'Language:',
 	't_charity':        "Presto's Clock este gratuit. Dacă vă place acest gadget, vă rog contribuiți cu o donație. Vizitați pagina mea pentru a afla <a href=\"http://prestonhunt.com/story/110\">cum se poate face o donație</a>.",
   't_license':        "Licență gratuită pentru uz personal sau educațional. Pentru uz comercial necesită licență plătită. Vizitați <a href=\"\">informații despre licență</a> pentru mai multe detalii.",
 	't_fontfamily1':     'Font:',
@@ -4371,8 +4372,8 @@ var G =
     , gLabelfontsize: null
     , gLabelfontcolor: null
 
-    , locale: 'en'
-    , numerals: 'a'
+    , locale: null
+    , numerals: null
     };
 
 var L = null;
@@ -4424,6 +4425,7 @@ function setDefaults() {
     System.Gadget.Settings.write( "mainDateFormat", L.defaultDateFormat );
     System.Gadget.Settings.write( "mainTimeFormat", L.defaultTimeFormat );
     System.Gadget.Settings.write( "locale", lang );
+    System.Gadget.Settings.write( "numerals", "a" );
 
     System.Gadget.Settings.write( "sunset_opacity", 30 );
     System.Gadget.Settings.write( "updatecheck", true );
@@ -4806,7 +4808,6 @@ function initSettings() {
     GToForm();
 
     setLocale();
-    document.getElementById("numerals").value = G.numerals;
 
     displaySettings();
 }

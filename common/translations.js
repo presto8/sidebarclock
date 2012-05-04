@@ -1052,6 +1052,7 @@ pl:
   't_copyright':       'Autorsko pravo 2009-2012 Preston Hunt'
 },
 
+// Marathi
 'mr': {
   // Do not change the order of the days or months!
 	'daysLong':    ["रविवार", "सोमवार", "मंगळवार", "बुधवार", "गुरुवार", "शुक्रवार", "शनिवार"],
@@ -1404,8 +1405,8 @@ pl:
 	't_version':        'Versiune xxVER (xxDATE)',
 	't_about':          'Despre acest gadget',
   // If you want credit for translation, translate "Languagename translation by your name"
-	't_translateby':    'Goia Valentin',
-	't_language':       'Language: română',
+	't_translateby':    'Goia Valentin'
+, t_language:       'Language:',
 	't_charity':        "Presto's Clock este gratuit. Dacă vă place acest gadget, vă rog contribuiți cu o donație. Vizitați pagina mea pentru a afla <a href=\"http://prestonhunt.com/story/110\">cum se poate face o donație</a>.",
   't_license':        "Licență gratuită pentru uz personal sau educațional. Pentru uz comercial necesită licență plătită. Vizitați <a href=\"\">informații despre licență</a> pentru mai multe detalii.",
 	't_fontfamily1':     'Font:',

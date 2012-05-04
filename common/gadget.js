@@ -36,8 +36,8 @@ var G =
     , gLabelfontsize: null
     , gLabelfontcolor: null
 
-    , locale: 'en'
-    , numerals: 'a'
+    , locale: null
+    , numerals: null
     };
 
 var L = null;
@@ -89,6 +89,7 @@ function setDefaults() {
     System.Gadget.Settings.write( "mainDateFormat", L.defaultDateFormat );
     System.Gadget.Settings.write( "mainTimeFormat", L.defaultTimeFormat );
     System.Gadget.Settings.write( "locale", lang );
+    System.Gadget.Settings.write( "numerals", "a" );
 
     System.Gadget.Settings.write( "sunset_opacity", 30 );
     System.Gadget.Settings.write( "updatecheck", true );
@@ -471,7 +472,6 @@ function initSettings() {
     GToForm();
 
     setLocale();
-    document.getElementById("numerals").value = G.numerals;
 
     displaySettings();
 }
