@@ -9,6 +9,8 @@ government use. Please see the license information for details.
 
 RELEASE HISTORY
 
+1.55 2012-05-16 Added Gaelic (thanks April McCabe!)
+
 1.54 2012-04-28 Added support for different numbering systems (such as
 Devanagari). Thanks to Robert Lozyniak for the idea and for the code to convert
 Arabic digits to Devanagari.

@@ -4,7 +4,7 @@
 
 // Translation instructions:
 // Each line has one phrase that needs translating.  Only edit the 
-// part after the colon.  Try to use a Unicode/UTF-8 editor to 
+// part in "quotation marks" after the colon.  Try to use a Unicode/UTF-8 editor to 
 // preserve special characters.
 //
 // Example:
@@ -18,67 +18,69 @@ en:
 , daysShort:   ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
 , monthsLong:  ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 , monthsShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-, am:          'am'
-, pm:          'pm'
+, am:          "am"
+, pm:          "pm"
 
 // Update these with the correct format for your country
 , defaultDateFormat: "D M d"
 , defaultTimeFormat: "h:i a"
 
-, t_dateformat:     'Date format:'
-, t_timeformat:     'Time format:'
-, t_timezone:       'Time zone:'
-, t_localtime:      'Local time'
-, t_bottomlabel:    'Bottom label:'
-, t_optional:       '(optional)'
-, t_examples:       'Examples:',
-	't_date':           'Date:',
-	't_time':           'Time:',
-	't_label':          'Label:',
-	't_dateexamples':   'D M d = Sat Apr 07<br>n/j l = 4/7 Saturday',
-	't_timeexamples':   'g:i a = 5:44 pm<br>H:i = 17:44',
-	't_labelexamples':  'Portland, Tokyo, GMT+2',
-	't_formathelp':     '<a href="http://us.php.net/manual/en/function.date.php">Format help</a>',
-	't_formathelplong': '<a href="http://us.php.net/manual/en/function.date.php">Format help</a> (unsupported: T, e, o, u)',
+, t_dateformat:     "Date format:"
+, t_timeformat:     "Time format:"
+, t_timezone:       "Time zone:"
+, t_localtime:      "Local time"
+, t_bottomlabel:    "Bottom label:"
+, t_optional:       "(optional)"
+, t_examples:       "Examples:"
+, t_date:           "Date:"
+, t_time:           "Time:"
+, t_label:          "Label:"
+// Please translate the examples as well
+, t_dateexamples:   "D M d = Sat Apr 07<br>n/j l = 4/7 Saturday"
+, t_timeexamples:   "g:i a = 5:44 pm<br>H:i = 17:44"
+// Replace Portland with a major city in your country or known to speakers of the language
+, t_labelexamples:  "Portland, Tokyo, GMT+2"
+, t_formathelp:     "<a href=http://us.php.net/manual/en/function.date.php>Format help</a>"
+, t_formathelplong: "<a href=http://us.php.net/manual/en/function.date.php>Format help</a> (unsupported: T, e, o, u)"
   // Don't modify xxVER or xxDATE
-	't_version':        'Version xxVER (xxDATE)',
-	't_about':          'About this gadget',
+, t_version:        "Version xxVER (xxDATE)"
+, t_about:          "About this gadget"
   // If you want credit for translation, translate "Languagename translation by your name"
-	't_translateby':    '',
-	't_language':       'Language:',
-	't_charity':        "Presto's Clock is Charityware. If you like it, please consider a donation to the less fortunate of the world. See the project page for <a href=\"http://prestonhunt.com/story/110\">information on how to donate</a>.",
-  't_license':        "Free for personal or educational use. License required for commercial or government use. Please see the <a href=\"\">license information</a> for more details.",
-	't_fontfamily1':     'Font:',
-	't_fontfamily2':     'Font:',
-	't_fontfamily3':     'Font:',
-	't_fontsize1':       'Font size:',
-	't_fontsize2':       'Font size:',
-	't_fontsize3':       'Font size:',
-	't_fontcolor1':      'Font color:',
-	't_fontcolor2':      'Font color:',
-	't_fontcolor3':      'Font color:',
-  't_background':  		 'Background image',
-  't_background_help': 'Will be resized to 130x67 pixels',
-	't_date2': 				 	 'Date',
-	't_time2': 				 	 'Time',
-	't_label2': 			 	 'Label',
-	't_swap_labels':     'Swap date and bottom label',
-	't_sun_colors':      'Dim clock at night by',
-  't_dim_disabled':    '(Dimming is not available for this time zone selection.)',
-  't_tab1':            'General', 
-  't_tab2':            'Appearance',
-  't_tab3':            'About',
-  //'t_tab4':            'Background',
-  't_copyright':       'Copyright 2009-2012 Preston Hunt',
-  't_auto_check':      'Notify when new versions of the clock are available',
-  't_update':          "A newer version of Presto's Clock is available. <a href=\"http://prestonhunt.com/go/sidebarclock\">Update now!</a>",
+, t_translateby:    ""
+, t_language:       "Language:"
+, t_charity:        "Presto's Clock is Charityware. If you like it, please consider a donation to the less fortunate of the world. See the project page for <a href=\"http://prestonhunt.com/story/110\">information on how to donate</a>."
+, t_license:        "Free for personal or educational use. License required for commercial or government use. Please see the <a href=\"\">license information</a> for more details."
+, t_fontfamily1:     "Font:"
+, t_fontfamily2:     "Font:"
+, t_fontfamily3:     "Font:"
+, t_fontsize1:       "Font size:"
+, t_fontsize2:       "Font size:"
+, t_fontsize3:       "Font size:"
+, t_fontcolor1:      "Font color:"
+, t_fontcolor2:      "Font color:"
+, t_fontcolor3:      "Font color:"
+, t_background:  		 "Background image"
+, t_background_help: "Will be resized to 130x67 pixels"
+, t_date2: 				 	 "Date"
+, t_time2: 				 	 "Time"
+, t_label2: 			 	 "Label"
+, t_swap_labels:     "Swap date and bottom label"
+, t_sun_colors:      "Dim clock at night by"
+, t_dim_disabled:    "(Dimming is not available for this time zone selection.)"
+, t_tab1:            "General"
+, t_tab2:            "Appearance"
+, t_tab3:            "About"
+  //'t_tab4:            "Background"
+, t_copyright:       "Copyright 2009-2012 Preston Hunt"
+, t_auto_check:      "Notify when new versions of the clock are available"
+, t_update:          "A newer version of Presto's Clock is available. <a href=\"http://prestonhunt.com/go/sidebarclock\">Update now!</a>"
   // Replace English with the name of your language in your language
-  't_languagename':    'English',
+, t_languagename:    "English"
 
-  't_backup_settings': "Backup settings",
-  't_backup':          "Backup settings to clipboard",
-  't_restore':         "Restore settings from clipboard",
-  't_sunset_opacity':  "percent"
+, t_backup_settings: "Backup settings"
+, t_backup:          "Backup settings to clipboard"
+, t_restore:         "Restore settings from clipboard"
+, t_sunset_opacity:  "percent"
 , t_settings_copied:   "Settings copied to clipboard!"
 , t_settings_loaded:   "Settings loaded from clipboard!"
 , t_settings_invalid:  "Clipboard does not contain valid settings."
@@ -1440,6 +1442,80 @@ pl:
   't_backup':          "Salvează setările în clipboard",
   't_restore':         "Restaurează setările din clipboard",
   't_sunset_opacity':  "procente"
+},
+
+// Irish Gaelic translation by April McCabe
+ga:
+{ daysLong:    ["Dé Domhnaigh", "Dé Luain", "Dé Máirt", "Dé Céadaoin", "Déardaoin", "Dé hAoine", "Dé Sathairn"]
+, daysShort:   ["Dom", "Lua", "Mái", "Céa", "Déa", "Aoi", "Sat"]
+, monthsLong:  ["Eanáir", "Feabhra", "Márta", "Aibreán", "Bealtaine", "Meitheamh", "Iúil", "Lúnasa", "Meán Fómhair", "Deireadh Fómhair", "Samhain", "Nollaig"]
+, monthsShort: ["Ean", "Fea", "Mar", "Aib", "Bea", "Mei", "Iúi", "Lún", "MeáFó", "DeiFó", "Sam", "Nol"]
+, am:          "rn"
+, pm:          "in"
+
+// Update these with the correct format for your country
+, defaultDateFormat: "j F Y D"
+, defaultTimeFormat: "g:i a"
+
+, t_dateformat:     "Formáid an dáta:"
+, t_timeformat:     "Formáid an ama:"
+, t_timezone:       "Amchrios:"
+, t_localtime:      "Am Áitiúil"
+, t_bottomlabel:    "Bunlipéad:"
+, t_optional:       "(roghnach)"
+, t_examples:       "Samplaí:"
+, t_date:           "Dáta:"
+, t_time:           "Am:"
+, t_label:          "Lipéad:"
+, t_dateexamples:   "D M d = Sat Aib 07<br>n/j l = 4/7 Dé Sathairn"
+, t_timeexamples:   "g:i a = 5:44 in<br>H:i = 17:44"
+, t_labelexamples:  "Baile Átha Cliath, Tokyo, GMT+2"
+, t_formathelp:     "<a href=http://us.php.net/manual/en/function.date.php>Format help</a>"
+, t_formathelplong: "<a href=http://us.php.net/manual/en/function.date.php>Format help</a> (unsupported: T, e, o, u)"
+  // Don't modify xxVER or xxDATE
+, t_version:        "Leagan xxVER (xxDATE)"
+, t_about:          "Faoin nGiuirléid Seo"
+  // If you want credit for translation, translate "Languagename translation by your name"
+, t_translateby:    "Aistriúchán le AKMcCabe"
+, t_language:       "Teanga:"
+, t_charity:        "Is bogearraí carthanach é Clog Phresto. Más maith leat é, le do thoil, déan deirc ar dhuine bocht. Is féidir leat dul go dtí an <a href=\"http://prestonhunt.com/story/110\">suíomh seo chun níos mó eolais a fháil.</a>."
+, t_license:        "Saor in aisce le leas pearsanta nó leas oideachasúil. Tá ceadúnas de dhíth ar chomhlachtaí tráchtála agus rialtais roimh úsáid. Breathnaigh ar <a href=\"\">shonraí an cheadúnais</a> chun níos mó eolais a fháil."
+, t_fontfamily1:     "Clófhoirne:"
+, t_fontfamily2:     "Clófhoirne:"
+, t_fontfamily3:     "Clófhoirne:"
+, t_fontsize1:       "Méid an Chló:"
+, t_fontsize2:       "Méid an Chló:"
+, t_fontsize3:       "Méid an Chló:"
+, t_fontcolor1:      "Dath an Chló:"
+, t_fontcolor2:      "Dath an Chló:"
+, t_fontcolor3:      "Dath an Chló:"
+, t_background:  		 "Íomha Chúlra"
+, t_background_help: "Beidh méid na híomhá 130x67 pixels"
+, t_date2: 				 	 "Dáta"
+, t_time2: 				 	 "Am"
+, t_label2: 			 	 "Lipéad"
+, t_swap_labels:     "Aistrigh an dáta agus an bunlipéad"
+, t_sun_colors:      "Maolaigh an solas atá ag teacht as scaileán an chlog"
+, t_dim_disabled:    "(Níl sé ar fáil don amchrios seo.)"
+, t_tab1:            "Ginearalta"
+, t_tab2:            "Cuma"
+, t_tab3:            "Eolas"
+  //'t_tab4:            "Cúlra"
+, t_copyright:       "Cóipcheart 2009-2012 Preston Hunt"
+, t_auto_check:      "Cuir in iúl dom nuair a bhionns leaganacha nua ar fáil"
+, t_update:          "Tá leagan nua ar fáil. <a href=\"http://prestonhunt.com/go/sidebarclock\">Nuashonraigh anois!</a>"
+  // Replace English with the name of your language in your language
+, t_languagename:    "Gaeilge"
+
+, t_backup_settings: "Socruithe Cúltaca"
+, t_backup:          "Cóipeáil na socruithe cúltaca chuig an ngreamchlár"
+, t_restore:         "Aischur na socruithe cúltaca ón ngreamchlár"
+, t_sunset_opacity:  "faoin gcéad"
+, t_settings_copied:   "Chóipeáil na sochruithe chuig an ngreamchlár!"
+, t_settings_loaded:   "Bhí na socruithe lódáilte!"
+, t_settings_invalid:  "Ní bhfuarthas na socruithe ceart sa ngreamchlár."
+, t_title:             "Clog Phresto"
+, t_numerals:          "Coras Uimhreach:"
 }
 
 };
