@@ -386,66 +386,67 @@ en:
 
 // Polish translation by Marcin Michalak <marcin.michalak@gmail.com> and Dariusz Bodzęta <darek334@gazeta.pl>
 pl: 
-{ daysLong:    ["Niedziela", "Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Sobota"]
-, daysShort:   ["Ni", "Pn", "Wt", "Śr", "Cz", "Pt", "So"]
-, monthsLong:  ["Styczeń", "Luty", "Marzec", "Kwiecień", "Maj", "Czerwiec", "Lipiec", "Sierpień", "Wrzesień", "Październik", "Listopad", "Grudzień"]
-, monthsShort: ["Sty", "Lut", "Mar", "Kwi", "Maj", "Cze", "Lip", "Sie", "Wrz", "Paź", "Lis", "Gru"]
-, defaultDateFormat: "D d M"
-, defaultTimeFormat: "H:i"
-, t_dateformat:    'Format daty:'
-, t_timeformat:    'Format godziny:'
-, t_timezone:      'Strefa czasu:'
-, t_localtime:     'Czas lokalny'
-, t_bottomlabel:   'Tekst:'
-, t_optional:      '(opcjonalnie)'
-, t_examples:      'Przykłady:'
-, t_date:          'Data:'
-, t_time:          'Godzina:'
-, t_label:         'Tekst:'
-, t_dateexamples:  'D d M = Sob Kwi 07<br>l/j n = Sobota 7/4'
-, t_timeexamples:  'g:i a = 5:44 pm<br>H:i = 17:44'
-, t_labelexamples: 'Warszawa, GMT+1'
-, t_formathelp:    '<a href="http://us.php.net/manual/pl/function.date.php">Więcej o formacie</a>'
-, t_formathelplong:'<a href="http://us.php.net/manual/pl/function.date.php">Więcej o formacie</a> (nieobsługiwane: T, e, o, u)'
-, t_version:       'Wersja xxVER (xxDATE)'
-, t_about:         'O tym gadżecie'
-, t_translateby:   'Przetłumaczył na polski Dariusz Bodzęta & Marcin Michalak'
-, t_language:      'Język:'
-, t_charity:        "Zegar Preston'a jest oprogramowaniem charityware-darowiznowym. Jeśli Ci się podoba, pomyśl o darowiźnie dla mniej szczęśliwych tego świata. Na stronie projektu znajdziesz <a href=\"http://prestonhunt.com/story/110\">informację, jak złożyć darowiznę</a>."
-, t_license:        "Bezpłatny do użytku domowego lub w celach dydaktyczno-naukowych, z wyłączeniem używania w firmach i innych instytucjach. <a href=\"\">więcej o licencji</a>"
-, t_fontfamily1:     'Czcionka:'
-, t_fontfamily2:     'Czcionka:'
-, t_fontfamily3:     'Czcionka:'
-, t_fontsize1:       'Rozmiar czcionki:'
-, t_fontsize2:       'Rozmiar czcionki:'
-, t_fontsize3:       'Rozmiar czcionki:'
-, t_fontcolor1:      'Kolor czcionki:'
-, t_fontcolor2:      'Kolor czcionki:'
-, t_fontcolor3:      'Kolor czcionki:'
-, t_background:  		'Obraz tła'
-, t_background_help: 'Zostanie wyskalowane do 130x67 pixelów'
-, t_date2: 				 	 'Data'
-, t_time2: 				 	 'Godzina'
-, t_label2: 			 	 'Tekst'
-, t_swap_labels:     'Zamień datę i dolny tekst'
-, t_sun_colors:      'Tonuj zegar w nocy o:'
-, t_dim_disabled:    '(Opcja tonowania nie jest dostępna w tej strefie czasowej.)'
-, t_tab1:            'Ogólne'
-, t_tab2:            'Wygląd'
-, t_tab3:            'O gadżecie'
-  //'t_tab4:            'Tło'
-, t_copyright:       'Copyright 2009-2012 Preston Hunt'
-, t_auto_check:      'Informuj, kiedy będzie dostępna nowsza wersja'
-, t_update:          "Dostępna jest nowsza wersja Presto's Clock <a href=\"http://prestonhunt.com/go/sidebarclock\">Aktualizuj teraz !</a>"
-, t_languagename:    'Polski'
-, t_backup_settings: "Przenoszenie ustawień:"
-, t_backup:          "Zapisz ustawienia w schowku"
-, t_restore:         "Przywróć ustawienia ze schowka"
-, t_sunset_opacity:  "procent"
-, t_settings_copied:   "Skopiowano ustawienia do schowka!"
-, t_settings_loaded:   "Wgrano nowe ustawienia ze schowka!"
-, t_settings_invalid:  "Schowek nie zawierał właściwych ustawień!"
-, t_title:             "Zegar Prestona"
+{ daysLong           : ["Niedziela", "Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Sobota"]
+, daysShort          : ["Ni", "Pn", "Wt", "Śr", "Cz", "Pt", "So"]
+, monthsLong         : ["Styczeń", "Luty", "Marzec", "Kwiecień", "Maj", "Czerwiec", "Lipiec", "Sierpień", "Wrzesień", "Październik", "Listopad", "Grudzień"]
+, monthsShort        : ["Sty", "Lut", "Mar", "Kwi", "Maj", "Cze", "Lip", "Sie", "Wrz", "Paź", "Lis", "Gru"]
+, defaultDateFormat  : "D d M"
+, defaultTimeFormat  : "H:i"
+, t_dateformat       : 'Format daty:'
+, t_timeformat       : 'Format godziny:'
+, t_timezone         : 'Strefa czasu:'
+, t_localtime        : 'Czas lokalny'
+, t_bottomlabel      : 'Tekst:'
+, t_optional         : '(opcjonalnie)'
+, t_examples         : 'Przykłady:'
+, t_date             : 'Data:'
+, t_time             : 'Godzina:'
+, t_label            : 'Tekst:'
+, t_dateexamples     : 'D d M = Sob Kwi 07<br>l/j n = Sobota 7/4'
+, t_timeexamples     : 'g:i a = 5:44 pm<br>H:i = 17:44'
+, t_labelexamples    : 'Warszawa, GMT+1'
+, t_formathelp       : '<a href="http://us.php.net/manual/pl/function.date.php">Więcej o formacie</a>'
+, t_formathelplong   : '<a href="http://us.php.net/manual/pl/function.date.php">Więcej o formacie</a> (nieobsługiwane: T, e, o, u)'
+, t_version          : 'Wersja xxVER (xxDATE)'
+, t_about            : 'O tym gadżecie'
+, t_translateby      : 'Przetłumaczył na polski Dariusz Bodzęta & Marcin Michalak'
+, t_language         : 'Język:'
+, t_charity          : "Zegar Preston'a jest oprogramowaniem charityware-darowiznowym. Jeśli Ci się podoba, pomyśl o darowiźnie dla mniej szczęśliwych tego świata. Na stronie projektu znajdziesz <a href=\"http://prestonhunt.com/story/110\">informację, jak złożyć darowiznę</a>."
+, t_license          : "Bezpłatny do użytku domowego lub w celach dydaktyczno-naukowych, z wyłączeniem używania w firmach i innych instytucjach. <a href=\"\">więcej o licencji</a>"
+, t_fontfamily1      : 'Czcionka:'
+, t_fontfamily2      : 'Czcionka:'
+, t_fontfamily3      : 'Czcionka:'
+, t_fontsize1        : 'Rozmiar czcionki:'
+, t_fontsize2        : 'Rozmiar czcionki:'
+, t_fontsize3        : 'Rozmiar czcionki:'
+, t_fontcolor1       : 'Kolor czcionki:'
+, t_fontcolor2       : 'Kolor czcionki:'
+, t_fontcolor3       : 'Kolor czcionki:'
+, t_background       : 'Obraz tła'
+, t_background_help  : 'Zostanie wyskalowany do 130x67 pixelów'
+, t_date2            : 'Data'
+, t_time2            : 'Godzina'
+, t_label2           : 'Tekst'
+, t_swap_labels      : 'Zamień datę i dolny tekst'
+, t_sun_colors       : 'Tonuj zegar w nocy o:'
+, t_dim_disabled     : '(Opcja tonowania nie jest dostępna w tej strefie czasowej.)'
+, t_tab1             : 'Ustawienia'
+, t_tab2             : 'Wygląd'
+, t_tab3             : 'O gadżecie'
+, t_tab4             : 'Tło'
+, t_copyright        : 'Copyright 2009-2012 Preston Hunt'
+, t_auto_check       : 'Informuj, kiedy będzie dostępna nowsza wersja'
+, t_update           : "Dostępna jest nowsza wersja Presto's Clock <a href=\"http://prestonhunt.com/go/sidebarclock\">Aktualizuj teraz !</a>"
+, t_languagename     : 'Polski'
+, t_backup_settings  : "Przenoszenie ustawień:"
+, t_backup           : "Zapisz ustawienia w schowku"
+, t_restore          : "Przywróć ustawienia ze schowka"
+, t_sunset_opacity   : "procent"
+, t_settings_copied  : "Skopiowano ustawienia do schowka!"
+, t_settings_loaded  : "Wgrano nowe ustawienia ze schowka!"
+, t_settings_invalid : "Schowek nie zawierał właściwych ustawień!"
+, t_title            : "Zegar Prestona"
+, t_numerals         : "Rodzaj cyfr:"
 },
 
 // Dutch translation by Edwin Walstra <ewalstra@xs4all.nl>
