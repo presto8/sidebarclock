@@ -71,6 +71,7 @@ zones['America/Eastern Time'] = 'America/New_York'
 zones['America/Central Time'] = 'America/Chicago'
 zones['America/Mountain Time'] = 'America/Denver'
 zones['America/Pacific Time'] = 'America/Los_Angeles'
+zones['America/Portland Oregon'] = 'America/Los_Angeles'
 zones['Europe/Central European Time'] = 'Europe/Zurich'
 
 output = []

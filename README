@@ -9,7 +9,13 @@ government use. Please see the license information for details.
 
 RELEASE HISTORY
 
-1.55 2012-05-16 Added Gaelic (thanks April McCabe!)
+1.56 Moved "swap date" button to first tab. Enabled dimming for:
+America/Pacific Time, America/Portland Oregon, Asia/New Delhi, Asia/India.
+Added America/Portland Oregon as a city. Added transparent background (thanks
+to Jose Correia Antunes and Francisco de Castro for providing the transparent
+background image). Upgraded time zone definitions to 2012d.
+
+1.55 2012-05-16 Added Irish Gaelic (thanks April McCabe!)
 
 1.54 2012-04-28 Added support for different numbering systems (such as
 Devanagari). Thanks to Robert Lozyniak for the idea and for the code to convert

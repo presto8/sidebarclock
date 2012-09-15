@@ -86,6 +86,7 @@ en:
 , t_settings_invalid : "Clipboard does not contain valid settings."
 , t_title            : "Presto's Clock"
 , t_numerals         : "Numeral system:"
+, t_transparent_back : "Use transparent background"
 },
 
 // Russian translation by Denis Baumgaertner <denco@freenet.de>
@@ -333,6 +334,7 @@ en:
   't_tab2':            'Appearance',
   't_tab3':            'About',
   't_copyright':       'Copyright 2009-2012 Preston Hunt'
+, t_sun_colors       : "Dim clock at night by"
 },
 
 // Italian translation by Mirko Mazzacano <michy91@alice.it>

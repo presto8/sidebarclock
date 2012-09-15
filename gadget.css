@@ -34,5 +34,5 @@ ul { list-style: none; margin: 0; }
 
 .small_date { font-size: 0.5em; }
 
-#dimcontrol, #dimdisabled { margin-left: 1em; }
+#dimcontrol, #dimdisabled, #swaplabels { margin-left: 1em; }
 #sunset_opacity { width: 25px; }

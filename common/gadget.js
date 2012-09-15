@@ -23,6 +23,7 @@ var G =
     , sunset_opacity: null
     , updatecheck: null
     , background_file: null
+    , use_transparent_background: false
 
     , gDatefontfamily: null
     , gDatefontsize: null
@@ -71,6 +72,10 @@ function readSettings() {
     setLocale();
 
     imgBackground.src = G.background_file;
+
+    if ( G.use_transparent_background ) {
+        imgBackground.src = "images/background-transparent-130x67.png";
+    }
 
     var illegal_opacity = G.sunset_opacity < 0 || G.sunset_opacity > 100;
     if ( illegal_opacity ) {
