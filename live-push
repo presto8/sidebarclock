@@ -1,8 +1,8 @@
-# 
+#
 # Replace xxVER and xxDATE
 #
-VERSION=1.57
-DATE=2012-09-25
+VERSION=1.58
+DATE=2012-11-03
 TMPDIR=/tmp/prestosidebarclock-$DATE-$VERSION-$$
 TAG=live_push_$DATE
 
@@ -18,12 +18,12 @@ make -C common
 MODIFIED=$(hg status $FILES | wc -l)
 
 # =====
-echo Checking CSS files...
-grep \.css MANIFEST | xargs -L1 csslint
-  if [ $? -ne 0 ]; then
-  echo Correct CSS errors and commit before proceeding
-  exit 1
-fi
+#echo Checking CSS files...
+#grep \.css MANIFEST | xargs -L1 csslint
+#  if [ $? -ne 0 ]; then
+#  echo Correct CSS errors and commit before proceeding
+#  exit 1
+#fi
 
 # =====
 echo Copying source directory to temp directory

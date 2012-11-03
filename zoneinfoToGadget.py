@@ -87,6 +87,6 @@ for gmt in range(-12,13):
 
 combined = before_gmt_output + output
 
-print "var tzdata = { "
-print ",\n".join( combined )
-print "};"
+print("var tzdata = { ")
+print(",\n".join( combined ))
+print("};")
