@@ -189,53 +189,83 @@ en:
   "t_languagename":    "Български"
 },
 
-// Spanish translation by Tom <getkresh@yahoo.ca>
-'es': {
-	'daysLong':    ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"],
-	'daysShort':   ["D", "L", "M", "X", "J", "V", "S"],
-	'monthsShort': ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"],
-	'monthsLong':  ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"],
-	'defaultDateFormat': "D M d",
-	'defaultTimeFormat': "H:i",
+// First Spanish translation by Tom <getkresh@yahoo.ca>
+// Updated Spanish translation by Alex Covarrubias <alex.covarrubias@gmail.com>
+es:
+// Do not change the order of the days or months!
+{ daysLong           : ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"]
+, daysShort          : ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sab"]
+, monthsLong         : ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
+, monthsShort        : ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
+, am                 : "am"
+, pm                 : "pm"
 
-	't_dateformat':    'Formato de fecha:',
-	't_timeformat':    'Formato de hora:',
-	't_timezone':      'Zona horaria:',
-	't_localtime':     'Hora local',
-	't_bottomlabel':   'Etiqueta:',
-	't_optional':      '(opcional)',
-	't_examples':      'Ejemplos:',
-	't_date':          'Fecha:',
-	't_time':          'Hora:',
-	't_label':         'Etiqueta:',
-	't_dateexamples':  'D M d = L abr 07<br>n/j l = 4/7 sábado',
-	't_timeexamples':  'H:i = 17:44',
-	't_labelexamples': 'CET, Madrid, Paris, GMT+1',
-	't_formathelp':    '<a href="http://us.php.net/manual/es/function.date.php">Ayuda con el formato</a>',
-	't_formathelplong':'<a href="http://us.php.net/manual/es/function.date.php">Ayuda con el formato</a> (no posibles: T, e, o, u)',
-	't_version':       'Versión xxVER (xxDATE)',
-	't_about':         'Acerca de este gadget',
-	't_translateby':   'Traducción en español por Lucía y Tom',
-	't_language':      'Idioma:',
-	't_charity':        "Presto's Clock is Charityware. If you like it, please consider a donation to the less fortunate of the world. See the project page for <a href=\"http://prestonhunt.com/story/110\">information on how to donate</a>.",
-	't_fontfamily1':     'Font:', // TODO
-	't_fontfamily2':     'Font:', // TODO
-	't_fontfamily3':     'Font:', // TODO
-	't_fontsize1':       'Font size:', // TODO
-	't_fontsize2':       'Font size:', // TODO
-	't_fontsize3':       'Font size:', // TODO
-	't_fontcolor1':      'Font color:', // TODO
-	't_fontcolor2':      'Font color:', // TODO
-	't_fontcolor3':      'Font color:', // TODO
-  't_background':  		 'Background image', // TODO
-	't_date2': 				 	 'Datum',
-	't_time2': 				 	 'Hora',
-	't_label2': 			 	 'Etiqueta',
-	't_swap_labels':     'Swap date and bottom label', // TODO
-  't_tab1':            'General', // TODO
-  't_tab2':            'Apariencia', // TODO
-  't_tab3':            'Sobre', // TODO
-  't_copyright':       'Copyright 2009-2012 Preston Hunt'
+// Update these with the correct format for your country
+, defaultDateFormat  : "l d M"
+, defaultTimeFormat  : "H:i"
+
+, t_dateformat       : "Formato de fecha:"
+, t_timeformat       : "Formato de hora:"
+, t_timezone         : "Zona horaria:"
+, t_localtime        : "Hora local"
+, t_bottomlabel      : "Etiqueta:"
+, t_optional         : "(opcional)"
+, t_examples         : "Ejemplos:"
+, t_date             : "Fecha:"
+, t_time             : "Hora:"
+, t_label            : "Etiqueta:"
+// Please translate the examples as well
+, t_dateexamples     : "D M d = Sáb Abr 07<br>n/j l = 4/7 Sábado"
+, t_timeexamples     : "g:i a = 5:44 pm<br>H:i = 17:44"
+// Replace Portland with a major city in your country or known to speakers of the language
+, t_labelexamples    : "Madrid, España, GMT+1"
+, t_formathelp       : "<a href=http://us.php.net/manual/en/function.date.php>Ayuda de formatos</a>"
+, t_formathelplong   : "<a href=http://us.php.net/manual/en/function.date.php>Format help</a> (no soportados: T, e, o, u)"
+// Don't modify xxVER or xxDATE
+, t_version          : "Versión xxVER (xxDATE)"
+, t_about            : "Acerca de este gadget"
+// If you want credit for translation, translate "<Language name> translation by <your name>"
+, t_translateby      : "Covarrubias"
+, t_language         : "Idioma:"
+, t_charity          : "Presto's Clock es Charityware. Si le gusta, considere una donación a los menos afortunados del mundo. Vaya a la página del proyecto <a href=\"http://prestonhunt.com/story/110\">para ver información de cómo donar</a>."
+, t_license          : "Gratis para uso personal o educacional. Se requiere licencia para uso comercial o gubernamental. Por favor vea la <a href=\"\">información de licencia</a> para más detalles."
+, t_fontfamily1      : "Fuente:"
+, t_fontfamily2      : "Fuente:"
+, t_fontfamily3      : "Fuente:"
+, t_fontsize1        : "Tamaño Fuente:"
+, t_fontsize2        : "Tamaño Fuente:"
+, t_fontsize3        : "Tamaño Fuente:"
+, t_fontcolor1       : "Color Fuente:"
+, t_fontcolor2       : "Color Fuente:"
+, t_fontcolor3       : "Color Fuente:"
+, t_background       : "Imagen de fondo"
+, t_background_help  : "Se ajustará a 130x67 pixels"
+, t_date2            : "Fecha"
+, t_time2            : "Hora"
+, t_label2           : "Etiqueta"
+, t_swap_labels      : "Intercambiar Fecha y etiqueta inferior"
+, t_sun_colors       : "Oscurecer reloj de noche un"
+, t_dim_disabled     : "(Oscurecer no está disponible para esta zona horaria.)"
+, t_tab1             : "General"
+, t_tab2             : "Apariencia"
+, t_tab3             : "Acerca de"
+  //'t_tab4:            "Fondo"
+, t_copyright        : "Copyright 2009-2012 Preston Hunt"
+, t_auto_check       : "Notifíqueme cuando estén disponibles nuevas versiones del reloj"
+, t_update           : "Hay disponible una nueva versión de Presto's Clock. <a href=\"http://prestonhunt.com/go/sidebarclock\">¡Actualícese ahora!</a>"
+// Replace English with the name of your language in your language
+, t_languagename     : "Español"
+
+, t_backup_settings  : "Configuración de Copia de Seguridad"
+, t_backup           : "Copiar configuración al portapapeles"
+, t_restore          : "Restaurar configuración del portapapeles"
+, t_sunset_opacity   : "porciento"
+, t_settings_copied  : "¡Configuración copiada al portapapeles!"
+, t_settings_loaded  : "¡Configuración cargada desde el portapapeles!"
+, t_settings_invalid : "El portapapeles no contiene una configuración válida."
+, t_title            : "Presto's Clock"
+, t_numerals         : "Sistema numeral:"
+, t_transparent_back : "Usar fondo transparente"
 },
 
 // Danish translation by Dennis Boffy <adidas.lover2000@yahoo.com>
