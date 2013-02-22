@@ -39,6 +39,8 @@ var G =
 
     , locale: null
     , numerals: null
+    
+    , double_size: false
     };
 
 var L = null;
@@ -49,6 +51,8 @@ var gLabel = null;
 var gOpacity = 100;
 var gNow = null;
 var gGmtOffset = null;
+var gGadgetWidth;
+var gGadgetHeight;
 
 function alert( mesg ) {
     /*jsl:ignore*/
@@ -71,11 +75,8 @@ function readSettings() {
     settingsRegistryToG();
     setLocale();
 
-    imgBackground.src = G.background_file;
-
-    if ( G.use_transparent_background ) {
-        imgBackground.src = "images/background-transparent-130x67.png";
-    }
+    adjustGadgetSize();
+    adjustGadgetBackground();
 
     var illegal_opacity = G.sunset_opacity < 0 || G.sunset_opacity > 100;
     if ( illegal_opacity ) {
@@ -98,8 +99,9 @@ function setDefaults() {
 
     System.Gadget.Settings.write( "sunset_opacity", 30 );
     System.Gadget.Settings.write( "updatecheck", true );
+    System.Gadget.Settings.write( "double_size", false );
 
-    System.Gadget.Settings.write( "background_file", 'images/background-black.png' );
+    System.Gadget.Settings.write( "background_file", '' );
 
     var elements = [ 'gDate', 'gTime', 'gLabel' ];
     for ( var el in elements ) {
@@ -293,8 +295,8 @@ function displayGadget() {
 }
 
 function adjustPositions() {
-    var maxWidth = 130;
-    var maxHeight = 67;
+    var maxWidth = gGadgetWidth;
+    var maxHeight = gGadgetHeight;
 
     // Horizontal center
     gDate.left = ( maxWidth - gDate.width ) / 2;
@@ -336,7 +338,7 @@ function workingadjustTimeToFit() {
         return;
     }
 
-    var maxWidth = 130;
+    var maxWidth = gGadgetWidth;
     var maxHeight = getProperTimeHeight();
 
     var newFontSize = Math.floor( gTime.fontSize * maxWidth / gTime.width );
@@ -349,15 +351,15 @@ function workingadjustTimeToFit() {
 }
 
 function adjustTimeToFit() {
-    adjustToFit( gTime, G.gTimefontsize, 130, getProperTimeHeight() );
+    adjustToFit( gTime, G.gTimefontsize, gGadgetWidth, getProperTimeHeight() );
 }
 
 function adjustDateToFit() {
-    adjustToFit( gDate, G.gDatefontsize, 130, 16 );
+    adjustToFit( gDate, G.gDatefontsize, gGadgetWidth, 16 );
 }
 
 function adjustLabelToFit() {
-    adjustToFit( gLabel, G.gLabelfontsize, 130, 16 );
+    adjustToFit( gLabel, G.gLabelfontsize, gGadgetWidth, 16 );
 }
 
 function adjustToFit( obj, size, maxWidth, maxHeight ) {
@@ -376,7 +378,7 @@ function adjustToFit( obj, size, maxWidth, maxHeight ) {
 }
 
 function getProperTimeHeight() {
-    var height = 67;
+    var height = gGadgetHeight;
     if ( gLabel.value.length ) height -= gLabel.height - 5;
     if ( gDate.value.length ) height -= gDate.height - 5;
     return height;
@@ -500,6 +502,30 @@ function changeLocale( newlocale ) {
 
 function changeNumerals( newvalue ) {
     G.numerals = newvalue;
+}
+
+function adjustGadgetSize() {
+    gGadgetWidth = 130;
+    gGadgetHeight = 67;
+
+    if ( G.double_size ) {
+        gGadgetWidth *= 2;
+        gGadgetHeight *= 2;
+    }
+}
+
+function adjustGadgetBackground() {
+    // If user specififed a background, use it and exit
+    if ( G.background_file !== '' ) {
+        imgBackground.src = G.background_file;
+        return;
+    }
+
+    // Use default background, black or transparent, and with correct size
+    // Format is background-C-WxH.png, where C is "black" or "transparent" and W and H are numbers.
+    var trans = G.use_transparent_background ? "transparent" : "black";
+    var size = gGadgetWidth + "x" + gGadgetHeight;
+    imgBackground.src = "images/background-" + trans + "-" + size + ".png";
 }
 
 function displaySettings() {

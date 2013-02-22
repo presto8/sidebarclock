@@ -9,6 +9,9 @@ government use. Please see the license information for details.
 
 RELEASE HISTORY
 
+1.60 2013-02-22 Added double size clock mode (thanks Sarah Danks for the
+motivation!). Updated time zone definitions to 2012j.
+
 1.59 2012-11-14 Updated Spanish translation (thanks Alex Covarrubias!)
 
 1.58 2012-11-03 Updated time zone definitions to 2012h.
