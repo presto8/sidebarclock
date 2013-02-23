@@ -47,8 +47,8 @@ ZIP=../prestosidebarclock-$VERSION.gadget
 
 # =====
 PWD=$(pwd)
-echo Final gadget is at: $PWD/$ZIP
-echo mv -f $PWD/$ZIP ~
+mv -f $PWD/$ZIP ~
+echo Final gadget is at: ~/$ZIP
 
 # 
 # Check if any diffs need to be committed.  If so, warn user

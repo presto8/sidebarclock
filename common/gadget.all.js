@@ -4453,7 +4453,7 @@ ga:
 /*
  * JavaScript code for Presto's Sidebar Clock
  *
- *   Copyright (c) 2011-2012, Preston Hunt <me@prestonhunt.com>
+ *   Copyright (c) 2011-2013, Preston Hunt <me@prestonhunt.com>
  *   All rights reserved.
  *
  * Non-localized javascript
@@ -4491,8 +4491,6 @@ var G =
 
     , locale: null
     , numerals: null
-    
-    , double_size: false
     };
 
 var L = null;
@@ -4503,8 +4501,9 @@ var gLabel = null;
 var gOpacity = 100;
 var gNow = null;
 var gGmtOffset = null;
-var gGadgetWidth;
-var gGadgetHeight;
+var gGadgetWidth = 130;
+var gGadgetHeight = 67;
+var gMaxLabelHeight = 16;
 
 function alert( mesg ) {
     /*jsl:ignore*/
@@ -4527,8 +4526,7 @@ function readSettings() {
     settingsRegistryToG();
     setLocale();
 
-    adjustGadgetSize();
-    adjustGadgetBackground();
+    set_background();
 
     var illegal_opacity = G.sunset_opacity < 0 || G.sunset_opacity > 100;
     if ( illegal_opacity ) {
@@ -4551,7 +4549,6 @@ function setDefaults() {
 
     System.Gadget.Settings.write( "sunset_opacity", 30 );
     System.Gadget.Settings.write( "updatecheck", true );
-    System.Gadget.Settings.write( "double_size", false );
 
     System.Gadget.Settings.write( "background_file", '' );
 
@@ -4564,12 +4561,34 @@ function setDefaults() {
     }
 }
 
+function set_gadget_size(w, h) {
+    gGadgetWidth = w;
+    gGadgetHeight = h;
+    document.body.style.width = gGadgetWidth;
+    document.body.style.height = gGadgetHeight;
+    set_background();
+}
+
+function dock_gadget() {
+    set_gadget_size(130, 67);
+    gMaxLabelHeight = 16;
+    displayGadget();
+}
+
+function undock_gadget() {
+    set_gadget_size(260, 134);
+    gMaxLabelHeight = 32;
+    displayGadget();
+}
+
 function startup() {
     alert( "Entering startup()" );
 
     System.Gadget.settingsUI = "settings.html";
     System.Gadget.onSettingsClosed = afterSettingsClosed;
     System.Gadget.visibilityChanged = checkVisibility;
+    System.Gadget.onDock = dock_gadget;
+    System.Gadget.onUndock = undock_gadget;
 
     readSettings();
 
@@ -4739,79 +4758,60 @@ function displayGadget() {
         gTime.value = devadigits( gTime.value ); 
     }
 
-    adjustTimeToFit();
-    adjustDateToFit();
-    adjustLabelToFit();
+    adjustToFit( gTime, G.gTimefontsize, gGadgetWidth, getProperTimeHeight() );
+    adjustToFit( gDate, G.gDatefontsize, gGadgetWidth, gMaxLabelHeight );
+    adjustToFit( gLabel, G.gLabelfontsize, gGadgetWidth, gMaxLabelHeight );
 
-    adjustPositions();
+    if (G.swaplabels) {
+        adjustPositions(gLabel, G.gLabelfontsize, gDate, G.gDatefontsize);
+    } else {
+        adjustPositions(gDate, G.gDatefontsize, gLabel, G.gLabelfontsize);
+    }
 }
 
-function adjustPositions() {
-    var maxWidth = gGadgetWidth;
-    var maxHeight = gGadgetHeight;
+function adjustPositions(top, topfontsize, bot, botfontsize) {
+    var topMargin = 0.03*gGadgetHeight;
+    var botMargin = 0.02*gGadgetHeight;
+    var availHeight = gGadgetHeight;
+
+    var timeHeight = 0.65 * availHeight;
+    var topHeight = (availHeight - timeHeight)/2;
+    var botHeight = topHeight;
+
+    var padding = 0.03 * availHeight;
+    var timeOffset = padding;
+
+    // Do we have a top? If not, add the space budget to the time area
+    if (top.value.length === 0) {
+        timeHeight += topHeight;
+        topHeight = 0;
+        timeOffset = 1*padding;
+    }
+
+    // Same for bottom
+    if (bot.value.length === 0) {
+        timeHeight += botHeight;
+        botHeight = 0;
+    }
+
+    // If we have top and bottom, decrease padding size
+    if (botHeight > 0 && topHeight > 0) {
+        timeHeight += 4*padding;
+        timeOffset = 4*padding;
+    }
+
+    adjustToFit( gTime, G.gTimefontsize, gGadgetWidth, timeHeight );
+    adjustToFit( top, topfontsize, gGadgetWidth, topHeight*1.4 );
+    adjustToFit( bot, botfontsize, gGadgetWidth, botHeight*1.4 );
 
     // Horizontal center
-    gDate.left = ( maxWidth - gDate.width ) / 2;
-    gLabel.left = ( maxWidth - gLabel.width ) / 2;
-    gTime.left = ( maxWidth - gTime.width ) / 2;
+    top.left = ( gGadgetWidth - top.width ) / 2;
+    bot.left = ( gGadgetWidth - bot.width ) / 2;
+    gTime.left = ( gGadgetWidth - gTime.width ) / 2;
 
-    // Normal display
-    var gTop = gDate;
-    var gBottom = gLabel;
-
-    if ( G.swaplabels ) {
-        gTop = gLabel;
-        gBottom = gDate;
-    }
-
-    // Adjust tops
-    gTop.top = 5;
-    gBottom.top = 47;
-
-    // Now the trickiest to adjust, the time position
-    // Start off directly in the middle
-    gTime.top = ( maxHeight - gTime.height ) / 2;
-
-    var topOnly = gTop.value.length && ! gBottom.value.length;
-    var bottomOnly = ! gTop.value.length && gBottom.value.length;
-
-    if ( topOnly ) {
-        // Adjust down if there is no bottom field
-        gTime.top += ( gTop.height - 5 ) / 2;
-    } else if ( bottomOnly ) {
-        // Adjust up if there is no top field
-        gTime.top -= ( gBottom.height - 5 ) / 2;
-    }
-}
-
-function workingadjustTimeToFit() {
-    if ( G.gTimefontsize != 'Auto' ) {
-        gTime.fontsize = G.gTimefontsize;
-        return;
-    }
-
-    var maxWidth = gGadgetWidth;
-    var maxHeight = getProperTimeHeight();
-
-    var newFontSize = Math.floor( gTime.fontSize * maxWidth / gTime.width );
-    if ( newFontSize > 100 ) newFontSize = 12;
-    gTime.fontsize = newFontSize;
-
-    if ( gTime.height > maxHeight ) {
-        gTime.fontsize *= maxHeight / gTime.height;
-    }
-}
-
-function adjustTimeToFit() {
-    adjustToFit( gTime, G.gTimefontsize, gGadgetWidth, getProperTimeHeight() );
-}
-
-function adjustDateToFit() {
-    adjustToFit( gDate, G.gDatefontsize, gGadgetWidth, 16 );
-}
-
-function adjustLabelToFit() {
-    adjustToFit( gLabel, G.gLabelfontsize, gGadgetWidth, 16 );
+    top.top = topMargin + (topHeight ? padding : 0);
+    gTime.top = top.top + topHeight + (timeHeight - gTime.height)/2 - timeOffset;
+    bot.top = gGadgetHeight - botMargin - padding - bot.height;
 }
 
 function adjustToFit( obj, size, maxWidth, maxHeight ) {
@@ -4956,17 +4956,7 @@ function changeNumerals( newvalue ) {
     G.numerals = newvalue;
 }
 
-function adjustGadgetSize() {
-    gGadgetWidth = 130;
-    gGadgetHeight = 67;
-
-    if ( G.double_size ) {
-        gGadgetWidth *= 2;
-        gGadgetHeight *= 2;
-    }
-}
-
-function adjustGadgetBackground() {
+function set_background() {
     // If user specififed a background, use it and exit
     if ( G.background_file !== '' ) {
         imgBackground.src = G.background_file;
@@ -4978,6 +4968,8 @@ function adjustGadgetBackground() {
     var trans = G.use_transparent_background ? "transparent" : "black";
     var size = gGadgetWidth + "x" + gGadgetHeight;
     imgBackground.src = "images/background-" + trans + "-" + size + ".png";
+    imgBackground.style.width = gGadgetWidth;
+    imgBackground.style.height = gGadgetHeight;
 }
 
 function displaySettings() {

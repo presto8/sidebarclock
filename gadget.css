@@ -1,8 +1,6 @@
 * { font-family: Segoe UI; }
 
-#imgBackground { width: 100%; height: 100%; }
-
-body#gadget { width: 130px; height: 67px; color: #ffffff; font-size: 10px; margin: 0; padding: 0; }
+body#gadget { color: #ffffff; font-size: 10px; margin: 0; padding: 0; }
 body#gadget a { text-decoration: none; color: #ffffff; }
 body#settings { width: 310px; height: 450px; margin-top: 0; margin-left: 0; }
 body#settings * { font-size: 12px; }
@@ -31,8 +29,6 @@ ul { list-style: none; margin: 0; }
 }
 
 .link { text-decoration: underline; color: #3366bb; cursor: pointer; }
-
-.small_date { font-size: 0.5em; }
 
 #dimcontrol, #dimdisabled, #swaplabels { margin-left: 1em; }
 #sunset_opacity { width: 25px; }
