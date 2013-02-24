@@ -4758,10 +4758,6 @@ function displayGadget() {
         gTime.value = devadigits( gTime.value ); 
     }
 
-    adjustToFit( gTime, G.gTimefontsize, gGadgetWidth, getProperTimeHeight() );
-    adjustToFit( gDate, G.gDatefontsize, gGadgetWidth, gMaxLabelHeight );
-    adjustToFit( gLabel, G.gLabelfontsize, gGadgetWidth, gMaxLabelHeight );
-
     if (G.swaplabels) {
         adjustPositions(gLabel, G.gLabelfontsize, gDate, G.gDatefontsize);
     } else {
@@ -4828,13 +4824,6 @@ function adjustToFit( obj, size, maxWidth, maxHeight ) {
     if ( obj.height > maxHeight ) {
         obj.fontsize *= maxHeight / obj.height;
     }
-}
-
-function getProperTimeHeight() {
-    var height = gGadgetHeight;
-    if ( gLabel.value.length ) height -= gLabel.height - 5;
-    if ( gDate.value.length ) height -= gDate.height - 5;
-    return height;
 }
 
 function getFormValue( variablename ) {
