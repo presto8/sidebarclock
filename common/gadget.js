@@ -365,8 +365,8 @@ function adjustToFit( obj, size, maxWidth, maxHeight ) {
         return;
     }
 
-    var newFontSize = Math.floor( obj.fontSize * maxWidth / obj.width );
-    if ( newFontSize > 100 ) newFontSize = 12;
+    var newFontSize = obj.fontSize * maxWidth / obj.width;
+    if ( newFontSize > 500 ) newFontSize = 12;
     obj.fontsize = newFontSize;
 
     if ( obj.height > maxHeight ) {

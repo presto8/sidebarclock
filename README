@@ -9,6 +9,9 @@ government use. Please see the license information for details.
 
 RELEASE HISTORY
 
+1.62 2013-02-27 Fixed font size in large mode when label is less than 5
+characters (thanks Paul Botos!).
+
 1.61 2013-02-26 Paste settings now handles background image correctly (thanks
 Paul Botos!)
 
