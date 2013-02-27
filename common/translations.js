@@ -71,7 +71,7 @@ en:
 , t_tab2             : "Appearance"
 , t_tab3             : "About"
   //'t_tab4:            "Background"
-, t_copyright        : "Copyright 2009-2012 Preston Hunt"
+, t_copyright        : "Copyright 2009-2013 Preston Hunt"
 , t_auto_check       : "Notify when new versions of the clock are available"
 , t_update           : "A newer version of Presto's Clock is available. <a href=\"http://prestonhunt.com/go/sidebarclock\">Update now!</a>"
 // Replace English with the name of your language in your language
@@ -136,7 +136,7 @@ en:
 't_tab1':            'Общее', 
 't_tab2':            'Настройки',
 't_tab3':            'О программе',
-'t_copyright':       'Copyright 2009-2012 Preston Hunt',
+'t_copyright':       'Copyright 2009-2013 Preston Hunt',
 't_languagename':    'Русский'
 },
 
@@ -185,7 +185,7 @@ en:
   "t_tab1":            "Настройки",
   "t_tab2":            "Външност",
   "t_tab3":            "За програмата",
-  "t_copyright":       "Copyright 2009-2012 Preston Hunt",
+  "t_copyright":       "Copyright 2009-2013 Preston Hunt",
   "t_languagename":    "Български"
 },
 
@@ -250,7 +250,7 @@ es:
 , t_tab2             : "Apariencia"
 , t_tab3             : "Acerca de"
   //'t_tab4:            "Fondo"
-, t_copyright        : "Copyright 2009-2012 Preston Hunt"
+, t_copyright        : "Copyright 2009-2013 Preston Hunt"
 , t_auto_check       : "Notifíqueme cuando estén disponibles nuevas versiones del reloj"
 , t_update           : "Hay disponible una nueva versión de Presto's Clock. <a href=\"http://prestonhunt.com/go/sidebarclock\">¡Actualícese ahora!</a>"
 // Replace English with the name of your language in your language
@@ -314,7 +314,7 @@ es:
   't_tab1':            'General',
   't_tab2':            'Appearance',
   't_tab3':            'About',
-  't_copyright':       'Copyright 2009-2012 Preston Hunt'
+  't_copyright':       'Copyright 2009-2013 Preston Hunt'
 },
 
 // French translation by Erik Vandevoorde <erik.vdvoorde@gmail.com>
@@ -363,7 +363,7 @@ es:
   't_tab1':            'General',
   't_tab2':            'Appearance',
   't_tab3':            'About',
-  't_copyright':       'Copyright 2009-2012 Preston Hunt'
+  't_copyright':       'Copyright 2009-2013 Preston Hunt'
 , t_sun_colors       : "Dim clock at night by"
 },
 
@@ -413,7 +413,7 @@ es:
   't_tab1':            'General',
   't_tab2':            'Apperance',
   't_tab3':            'About',
-  't_copyright':       'Copyright 2009-2012 Preston Hunt'
+  't_copyright':       'Copyright 2009-2013 Preston Hunt'
 },
 
 // Polish translation by Marcin Michalak <marcin.michalak@gmail.com> and Dariusz Bodzęta <darek334@gazeta.pl>
@@ -466,7 +466,7 @@ pl:
 , t_tab2             : 'Wygląd'
 , t_tab3             : 'O gadżecie'
 , t_tab4             : 'Tło'
-, t_copyright        : 'Copyright 2009-2012 Preston Hunt'
+, t_copyright        : 'Copyright 2009-2013 Preston Hunt'
 , t_auto_check       : 'Informuj, kiedy będzie dostępna nowsza wersja'
 , t_update           : "Dostępna jest nowsza wersja Presto's Clock <a href=\"http://prestonhunt.com/go/sidebarclock\">Aktualizuj teraz !</a>"
 , t_languagename     : 'Polski'
@@ -527,7 +527,7 @@ pl:
   't_tab1':            'General',
   't_tab2':            'Apperance',
   't_tab3':            'About',
-  't_copyright':       'Copyright 2009-2012 Preston Hunt'
+  't_copyright':       'Copyright 2009-2013 Preston Hunt'
 },
 
 // Swedish translation by Jari Tammisto <jari@bildagenturen.se>
@@ -576,7 +576,7 @@ pl:
   't_tab1':            'Allmän',
   't_tab2':            'Utseende',
   't_tab3':            'Om',
-  't_copyright':       'Copyright 2009-2012 Preston Hunt'
+  't_copyright':       'Copyright 2009-2013 Preston Hunt'
 },
 
 // Czech translation by Jan Pintr <jan.pintr@gmail.com>
@@ -625,7 +625,7 @@ pl:
   't_tab1':            'Všeobecný',
   't_tab2':            'Vzhled',
   't_tab3':            'Info',
-  't_copyright':       'Copyright 2009-2012 Preston Hunt',
+  't_copyright':       'Copyright 2009-2013 Preston Hunt',
 	't_languagename':    'Čeština'
 },
 
@@ -675,7 +675,7 @@ pl:
   't_tab1':            'Einstellungen',
   't_tab2':            'Darstellung',
   't_tab3':            'Über',
-  't_copyright':       'Copyright 2009-2012 Preston Hunt'
+  't_copyright':       'Copyright 2009-2013 Preston Hunt'
 },
 
 // Ukrainian translation by mr.gorka <mr.gorka@gmail.com>
@@ -724,7 +724,7 @@ pl:
   't_tab1':            'Загально', 
   't_tab2':            'Зовнішній вигляд',
   't_tab3':            'Про',
-  't_copyright':       'Авторське право 2009-2012 Preston Hunt'
+  't_copyright':       'Авторське право 2009-2013 Preston Hunt'
 },
 
 // Hungarian translation by Nagy László <nalaszi@gmail.com>
@@ -773,7 +773,7 @@ pl:
   't_tab1':            'Általános', 
   't_tab2':            'Megjelenés',
   't_tab3':            'Rólunk',
-  't_copyright':       'Szerzõi Jog: 2009-2012 Preston Hunt'
+  't_copyright':       'Szerzõi Jog: 2009-2013 Preston Hunt'
 },
 
 // Portuguese translation by Mateus Scherer Cardoso <matschcar@terra.com.br>
@@ -820,7 +820,7 @@ pl:
   t_tab1:               "Geral",
   t_tab2:               "Aparência",
   t_tab3:               "Sobre",
-  t_copyright:          "Copyright 2009-2012 Preston Hunt",
+  t_copyright:          "Copyright 2009-2013 Preston Hunt",
   t_update:             'Uma nova versão do Presto\'s Clock está disponível. <a href="http://prestonhunt.com/go/sidebarclock">Atualize agora!</a>',
   t_languagename:       "Português"
 },
@@ -872,7 +872,7 @@ pl:
   't_tab1':            'Општо', 
   't_tab2':            'Изглеd',
   't_tab3':            'Информации',
-  't_copyright':       'Copyright 2009-2012 Preston Hunt',
+  't_copyright':       'Copyright 2009-2013 Preston Hunt',
   't_update':          "Достапна е понова верзија од Presto's Clock. <a href=\"http://prestonhunt.com/go/sidebarclock\">Превземете ја!</a>",
   't_languagename':    'Mакедонски'
 },
@@ -925,7 +925,7 @@ pl:
   't_tab1':            'Algemeen', 
   't_tab2':            'Voorkoms',
   't_tab3':            'Inligting',
-  't_copyright':       'Kopiereg 2009-2012 Preston Hunt',
+  't_copyright':       'Kopiereg 2009-2013 Preston Hunt',
   't_update':          "1n Nuwer weergawe van die Presto's Clock is hier beskikbaar. <a href=\"http://prestonhunt.com/go/sidebarclock\">Update now!</a>",
   't_languagename':    'Afrikaans'
 },
@@ -977,7 +977,7 @@ pl:
   't_tab1':            'Bendri', 
   't_tab2':            'Nustatymai',
   't_tab3':            'Apie programą',
-  't_copyright':       'Copyright 2009-2012 Preston Hunt',
+  't_copyright':       'Copyright 2009-2013 Preston Hunt',
   't_update':          "Galima naujesnė Presto's Clock versija. <a href=\"http://prestonhunt.com/go/sidebarclock\">Atnaujinti!</a>",
   // Replace English with the name of your language in your language
   't_languagename':    'Lietuvių'
@@ -1033,7 +1033,7 @@ pl:
   't_tab1':            'Osnovno', 
   't_tab2':            'Izgled',
   't_tab3':            'O programu',
-  't_copyright':       'Avtorske pravice 2009-2012 Preston Hunt',
+  't_copyright':       'Avtorske pravice 2009-2013 Preston Hunt',
   't_update':          "Novejša različica programa Presto's Clock je dosegljiva. <a href=\"http://prestonhunt.com/go/sidebarclock\">Update now!</a>",
   't_languagename':    'Slovenščina'
 },
@@ -1084,7 +1084,7 @@ pl:
   't_tab1':            'Opšte', 
   't_tab2':            'Izgled',
   't_tab3':            'Info',
-  't_copyright':       'Autorsko pravo 2009-2012 Preston Hunt'
+  't_copyright':       'Autorsko pravo 2009-2013 Preston Hunt'
 },
 
 // Marathi
@@ -1201,7 +1201,7 @@ pl:
   't_tab1':            '常规', 
   't_tab2':            '显示',
   't_tab3':            '关于',
-  't_copyright':       '版权 2009-2012 Preston Hunt',
+  't_copyright':       '版权 2009-2013 Preston Hunt',
   't_update':          "Presto's Clock 版本更新. <a href=\"http://prestonhunt.com/go/sidebarclock\">立即更新!</a>",
   // Replace English with the name of your language in your language
   't_languagename':    '简体中文'
@@ -1260,7 +1260,7 @@ pl:
   't_tab2':            'Aspekto',
   't_tab3':            'Pri tio ĉi',
   't_tab4':            'Fono',
-  't_copyright':       'Tio ĉi estas kopirajta 2009-2012 Preston Hunt',
+  't_copyright':       'Tio ĉi estas kopirajta 2009-2013 Preston Hunt',
   't_auto_check':      'Sciigas min kiam novaj versioj de la horloĝo estas havebla',
   't_update':          "Pli nova versio de Presto's Clock estas havebla. <a href=\"http://prestonhunt.com/go/sidebarclock\">Akiras la ĝisdatigon nun!</a>",
   // Replace Esperanto with the name of your language in your language
@@ -1329,7 +1329,7 @@ pl:
   't_tab2':            'Aparença',
   't_tab3':            'En quant a',
   //'t_tab4':            'Background',
-  't_copyright':       'Copyright 2009-2012 Preston Hunt',
+  't_copyright':       'Copyright 2009-2013 Preston Hunt',
   't_auto_check':      'Notificar quan les noves versions del rellotge estiguin disponibles',
   't_update':          "Una nova versió del rellotge Presto està disponible. <a href=\"http://prestonhunt.com/go/sidebarclock\">Actualitza ara</a>",
   // Put the name of your language in your language (e.g., "German" is "Deutsch")
@@ -1397,7 +1397,7 @@ pl:
 	't_tab2':           'Utseende',
 	't_tab3':           'Om',
 	't_tab4':           'Bakgrund',
-	't_copyright':      'Copyright 2009-2012 Preston Hunt',
+	't_copyright':      'Copyright 2009-2013 Preston Hunt',
 	't_update':         "En nyere versjon av Presto's Clock er tilgjengelig. <a href=\"http://prestonhunt.com/go/sidebarclock\">Oppdater nå!</a>",
 
   // Replace English with the name of your language in your language
@@ -1465,7 +1465,7 @@ pl:
   't_tab2':            'Aspect',
   't_tab3':            'Despre',
   //'t_tab4':            'Fundal',
-  't_copyright':       'Copyright 2009-2012 Preston Hunt',
+  't_copyright':       'Copyright 2009-2013 Preston Hunt',
   't_auto_check':      'Anunță-mă când apare o vesiune nouă',
   't_update':          "O nouă versiune este disponibilă. <a href=\"http://prestonhunt.com/go/sidebarclock\">Actualizează acum!</a>",
   // Replace the word below with the name of your language in your language
@@ -1534,7 +1534,7 @@ ga:
 , t_tab2:            "Cuma"
 , t_tab3:            "Eolas"
   //'t_tab4:            "Cúlra"
-, t_copyright:       "Cóipcheart 2009-2012 Preston Hunt"
+, t_copyright:       "Cóipcheart 2009-2013 Preston Hunt"
 , t_auto_check:      "Cuir in iúl dom nuair a bhionns leaganacha nua ar fáil"
 , t_update:          "Tá leagan nua ar fáil. <a href=\"http://prestonhunt.com/go/sidebarclock\">Nuashonraigh anois!</a>"
   // Replace English with the name of your language in your language
