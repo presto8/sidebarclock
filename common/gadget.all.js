@@ -5155,6 +5155,10 @@ function loadIniFile() {
         return;
     }
 
+    if ( new_G.background_file == "images/background-black.png" ) {
+        new_G.background_file = "";
+    }
+
     G = new_G;
     GToForm();
     setBackupStatus( L.t_settings_loaded );
