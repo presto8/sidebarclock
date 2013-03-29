@@ -1,8 +1,8 @@
 #
 # Replace xxVER and xxDATE
 #
-VERSION=1.63
-DATE=2013-02-28
+VERSION=1.64
+DATE=2013-03-29
 TMPDIR=/tmp/prestosidebarclock-$DATE-$VERSION-$$
 TAG=live_push_$DATE
 
@@ -41,13 +41,13 @@ done
 
 # =====
 echo Creating final zip/gadget file
-ZIP=../prestosidebarclock-$VERSION.gadget
-#7z a -tzip $ZIP *
-7z a -tzip $ZIP $FILES
+TMPDIR=$(mktemp -d)
+ZIP=prestosidebarclock-$VERSION.gadget
+7z a -tzip $TMPDIR/$ZIP $FILES
 
 # =====
 PWD=$(pwd)
-mv -f $PWD/$ZIP ~
+mv -f $TMPDIR/$ZIP ~
 echo Final gadget is at: ~/$ZIP
 
 # 
