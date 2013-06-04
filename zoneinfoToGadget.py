@@ -74,6 +74,10 @@ zones['America/Pacific Time'] = 'America/Los_Angeles'
 zones['America/Portland Oregon'] = 'America/Los_Angeles'
 zones['America/St Pierre'] = 'America/Miquelon'
 zones['Europe/Central European Time'] = 'Europe/Zurich'
+zones['Europe/Central European Time'] = 'Europe/Zurich'
+zones['UTC-05:00/Eastern Time (US & Canada)'] = 'America/New_York'
+zones['UTC-08:00/Pacific Time (US & Canada)'] = 'America/Los_Angeles'
+#zones['UTC-10:00/Hawaii'] = 'America/Honolulu'
 
 output = []
 for label in sorted( zones.keys() ):

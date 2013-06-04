@@ -9,6 +9,9 @@ government use. Please see the license information for details.
 
 RELEASE HISTORY
 
+1.65 2013-06-03 Fixed gadget size and formatting when installing (or rebooting)
+into the undocked state. Thanks Ken!
+
 1.64 2013-03-29 Updated tzinfo to 2013b. Added America/St_Pierre time zone
 (thanks Paul Kronsteiner!).
 

@@ -4526,7 +4526,7 @@ function setLocale() {
     L = translations[ G.locale ];
 }
 
-function readSettings() {
+function read_settings() {
     settingsRegistryToG();
     setLocale();
 
@@ -4585,6 +4585,14 @@ function undock_gadget() {
     displayGadget();
 }
 
+function check_dock_state() {
+    if (System.Gadget.docked) {
+        dock_gadget();
+    } else {
+        undock_gadget();
+    }
+}
+
 function startup() {
     alert( "Entering startup()" );
 
@@ -4594,11 +4602,11 @@ function startup() {
     System.Gadget.onDock = dock_gadget;
     System.Gadget.onUndock = undock_gadget;
 
-    readSettings();
+    read_settings();
 
     if ( ! G.mainTimeFormat ) {
         setDefaults();
-        readSettings();
+        read_settings();
     }
 
     gDate = imgBackground.addTextObject("", "Segoe UI", 11, "white", 0, 0 );
@@ -4606,11 +4614,12 @@ function startup() {
     gLabel = imgBackground.addTextObject("", "Segoe UI", 11, "white", 0, 0 );
 
     updateFonts();
+    check_dock_state();
     updateGadget();
 }
 
 function afterSettingsClosed() {
-    readSettings();
+    read_settings();
     updateFonts();
     adjustOpacityByCurrentTime();
 
