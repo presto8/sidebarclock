@@ -2991,6 +2991,84 @@ en:
 , t_transparent_back : "Use transparent background"
 },
 
+// Korean translation by Seungbeom Kim <musiphil@bawi.org>
+ko:
+// Do not change the order of the days or months!
+{ daysLong           : ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"]
+, daysShort          : ["일", "월", "화", "수", "목", "금", "토"]
+, monthsLong         : ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"]
+, monthsShort        : ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
+, am                 : "오전"
+, pm                 : "오후"
+
+// Update these with the correct format for your country
+, defaultDateFormat  : "m/d D"
+, defaultTimeFormat  : "a h:i"
+
+, t_dateformat       : "날짜 형식:"
+, t_timeformat       : "시각 형식:"
+, t_timezone         : "시간대:"
+, t_localtime        : "지방시"
+, t_bottomlabel      : "아래 문구:"
+, t_optional         : "(생략 가능)"
+, t_examples         : "예제:"
+, t_date             : "날짜:"
+, t_time             : "시각:"
+, t_label            : "문구:"
+// Please translate the examples as well
+, t_dateexamples     : "m/d D = 04/07 토<br>n월 j일 l = 4월 7일 토요일"
+, t_timeexamples     : "a g:i = 오후 5:44<br>H:i = 17:44"
+// Replace Portland with a major city in your country or known to speakers of the language
+, t_labelexamples    : "서울, 동경, UTC+09"
+, t_formathelp       : "<a href=http://us.php.net/manual/en/function.date.php>서식 도움말</a>"
+, t_formathelplong   : "<a href=http://us.php.net/manual/en/function.date.php>서식 도움말</a> (T, e, o, u는 미지원)"
+// Don't modify xxVER or xxDATE
+, t_version          : "버전 xxVER (xxDATE)"
+, t_about            : "이 가젯에 대하여"
+// If you want credit for translation, translate "<Language name> translation by <your name>"
+, t_translateby      : "한국어 번역: 김승범"
+, t_language         : "언어:"
+, t_charity          : "Presto's Clock은 자선웨어(charityware)입니다. 마음에 드시면, 세상의 불우한 이들에게 기부하는 것을 고려해 주시기 바랍니다. <a href=\"http://prestonhunt.com/story/110\">기부하는 방법에 대한 정보</a>는 프로젝트 페이지를 참조하세요."
+, t_license          : "개인용이나 교육용으로는 무료입니다. 상업용이나 관공서용으로는 라이선스가 필요합니다. 더 자세한 것은 <a href=\"\">라이선스 정보</a>를 참조하세요."
+, t_fontfamily1      : "글꼴:"
+, t_fontfamily2      : "글꼴:"
+, t_fontfamily3      : "글꼴:"
+, t_fontsize1        : "글꼴 크기:"
+, t_fontsize2        : "글꼴 크기:"
+, t_fontsize3        : "글꼴 크기:"
+, t_fontcolor1       : "글꼴 색상:"
+, t_fontcolor2       : "글꼴 색상:"
+, t_fontcolor3       : "글꼴 색상:"
+, t_background       : "배경 그림"
+, t_background_help  : "크기는 130x67 픽셀로 조정됩니다."
+, t_date2            : "날짜"
+, t_time2            : "시각"
+, t_label2           : "문구"
+, t_swap_labels      : "날짜와 아래 문구 맞바꿈"
+, t_sun_colors       : "야간에 시계를 어둡게 함"
+, t_dim_disabled     : "(선택된 이 시간대에서는 어둡게 하기가 불가능합니다.)"
+, t_tab1             : "일반"
+, t_tab2             : "모양"
+, t_tab3             : "정보"
+  //'t_tab4:            "배경"
+, t_copyright        : "저작권 2009-2013 Preston Hunt"
+, t_auto_check       : "새 버전이 나오면 알림"
+, t_update           : "Presto's Clock 새 버전이 나왔습니다. <a href=\"http://prestonhunt.com/go/sidebarclock\">지금 업데이트하세요!</a>"
+// Replace English with the name of your language in your language (e.g., German = Deutsch)
+, t_languagename     : "한국어"
+
+, t_backup_settings  : "설정 백업"
+, t_backup           : "설정을 클립보드에 백업합니다."
+, t_restore          : "설정을 클립보드로부터 복원합니다."
+, t_sunset_opacity   : "퍼센트"
+, t_settings_copied  : "설정을 클립보드에 복사했습니다."
+, t_settings_loaded  : "설정을 클립보드로부터 읽어들였습니다."
+, t_settings_invalid : "클립보드에 올바른 설정이 없습니다."
+, t_title            : "Presto's Clock"
+, t_numerals         : "기수법:"
+, t_transparent_back : "투명 배경 사용"
+},
+
 // Russian translation by Denis Baumgaertner <denco@freenet.de>
 'ru': {
 // Do not change the order of the days or months!
