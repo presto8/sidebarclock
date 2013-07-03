@@ -2967,7 +2967,10 @@ en:
 , t_time2            : "Time"
 , t_label2           : "Label"
 , t_swap_labels      : "Swap date and bottom label"
-, t_sun_colors       : "Dim clock at night by"
+// Put the text that comes before the dimming percent entry box
+, t_dim_before       : "Dim clock at night by"
+// Put the text that comes after the dimming percent entry box
+, t_dim_after   : "percent"
 , t_dim_disabled     : "(Dimming is not available for this time zone selection.)"
 , t_tab1             : "General"
 , t_tab2             : "Appearance"
@@ -2982,7 +2985,6 @@ en:
 , t_backup_settings  : "Backup settings"
 , t_backup           : "Backup settings to clipboard"
 , t_restore          : "Restore settings from clipboard"
-, t_sunset_opacity   : "percent"
 , t_settings_copied  : "Settings copied to clipboard!"
 , t_settings_loaded  : "Settings loaded from clipboard!"
 , t_settings_invalid : "Clipboard does not contain valid settings."
@@ -3045,7 +3047,8 @@ ko:
 , t_time2            : "시각"
 , t_label2           : "문구"
 , t_swap_labels      : "날짜와 아래 문구 맞바꿈"
-, t_sun_colors       : "야간에 시계를 어둡게 함"
+, t_dim_before       : "야간에 시계를"
+, t_dim_after        : "퍼센트만큼 어둡게 함"
 , t_dim_disabled     : "(선택된 이 시간대에서는 어둡게 하기가 불가능합니다.)"
 , t_tab1             : "일반"
 , t_tab2             : "모양"
@@ -3060,7 +3063,6 @@ ko:
 , t_backup_settings  : "설정 백업"
 , t_backup           : "설정을 클립보드에 백업합니다."
 , t_restore          : "설정을 클립보드로부터 복원합니다."
-, t_sunset_opacity   : "퍼센트"
 , t_settings_copied  : "설정을 클립보드에 복사했습니다."
 , t_settings_loaded  : "설정을 클립보드로부터 읽어들였습니다."
 , t_settings_invalid : "클립보드에 올바른 설정이 없습니다."
@@ -3224,7 +3226,7 @@ es:
 , t_time2            : "Hora"
 , t_label2           : "Etiqueta"
 , t_swap_labels      : "Intercambiar fecha y etiqueta inferior"
-, t_sun_colors       : "Oscurecer reloj de noche en un"
+, t_dim_before       : "Oscurecer reloj de noche en un"
 , t_dim_disabled     : "(Oscurecer no está disponible para esta zona horaria.)"
 , t_tab1             : "General"
 , t_tab2             : "Apariencia"
@@ -3239,7 +3241,7 @@ es:
 , t_backup_settings  : "Configuración de Copia de Seguridad"
 , t_backup           : "Copiar configuración al portapapeles"
 , t_restore          : "Restaurar configuración del portapapeles"
-, t_sunset_opacity   : "porciento"
+, t_dim_after   : "porciento"
 , t_settings_copied  : "¡Configuración copiada al portapapeles!"
 , t_settings_loaded  : "¡Configuración cargada desde el portapapeles!"
 , t_settings_invalid : "El portapapeles no contiene una configuración válida."
@@ -3344,7 +3346,7 @@ es:
   't_tab2':            'Appearance',
   't_tab3':            'About',
   't_copyright':       'Copyright 2009-2013 Preston Hunt'
-, t_sun_colors       : "Dim clock at night by"
+, t_dim_before       : "Dim clock at night by"
 },
 
 // Italian translation by Mirko Mazzacano <michy91@alice.it>
@@ -3440,7 +3442,7 @@ pl:
 , t_time2            : 'Godzina'
 , t_label2           : 'Tekst'
 , t_swap_labels      : 'Zamień datę i dolny tekst'
-, t_sun_colors       : 'Tonuj zegar w nocy o:'
+, t_dim_before       : 'Tonuj zegar w nocy o:'
 , t_dim_disabled     : '(Opcja tonowania nie jest dostępna w tej strefie czasowej.)'
 , t_tab1             : 'Ustawienia'
 , t_tab2             : 'Wygląd'
@@ -3453,7 +3455,7 @@ pl:
 , t_backup_settings  : "Przenoszenie ustawień:"
 , t_backup           : "Zapisz ustawienia w schowku"
 , t_restore          : "Przywróć ustawienia ze schowka"
-, t_sunset_opacity   : "procent"
+, t_dim_after   : "procent"
 , t_settings_copied  : "Skopiowano ustawienia do schowka!"
 , t_settings_loaded  : "Wgrano nowe ustawienia ze schowka!"
 , t_settings_invalid : "Schowek nie zawierał właściwych ustawień!"
@@ -4235,7 +4237,7 @@ pl:
 	't_time2': 				 	 'Tempo',
 	't_label2': 			 	 'Etikedo',
 	't_swap_labels':     'Interŝanĝu dato kun malsupra etikedo',
-	't_sun_colors':      'Obskurigu horloĝon ĉe nokto (beta-ekzaminanta)',
+	't_dim_before':      'Obskurigu horloĝon ĉe nokto (beta-ekzaminanta)',
   't_tab1':            'Vulgara informo', 
   't_tab2':            'Aspekto',
   't_tab3':            'Pri tio ĉi',
@@ -4249,7 +4251,7 @@ pl:
   't_backup_settings': "Rezervaj fiksoj",
   't_backup':          "Rezervaj fiksoj al clipboard",
   't_restore':         "Restarigas fiksojn de *clipboard",
-  't_sunset_opacity':  "Procento obskurigi horloĝon ĉe sunsubiro"
+  't_dim_after':  "Procento obskurigi horloĝon ĉe sunsubiro"
 },
 
 // Catalan translation by Enric Montorio i Puig <enric.mon2@gmail.com>
@@ -4303,7 +4305,7 @@ pl:
 	't_time2': 				 	 'Hora',
 	't_label2': 			 	 'Etiqueta',
 	't_swap_labels':     "Bescanvi, la data a baix i l'etiqueta amunt",
-	't_sun_colors':      'Atenua el rellotge a la nit',
+	't_dim_before':      'Atenua el rellotge a la nit',
   't_dim_disabled':    '(La atenuació no està disponible per aquesta selecció de zona horària.)',
   't_tab1':            'General', 
   't_tab2':            'Aparença',
@@ -4318,7 +4320,7 @@ pl:
   't_backup_settings': "configuració de còpia de seguretat",
   't_backup':          "Configuració de còpia de seguretat al porta-retalls",
   't_restore':         "Restaurar la configuració des del porta-retalls",
-  't_sunset_opacity':  "per cent"
+  't_dim_after':  "per cent"
 },
 
 // Norwegian translation by Tom Ryan Svart <sydox86@gmail.com>
@@ -4439,7 +4441,7 @@ pl:
 	't_time2': 				 	 'Ora',
 	't_label2': 			 	 'Eticheta',
 	't_swap_labels':     'Inversează data cu eticheta',
-	't_sun_colors':      'Noaptea se reduce lumina ceasului cu',
+	't_dim_before':      'Noaptea se reduce lumina ceasului cu',
   't_dim_disabled':    '(Reducerea luminii ceasului nu este disponibilă pentru acest fus orar.)',
   't_tab1':            'General', 
   't_tab2':            'Aspect',
@@ -4454,7 +4456,7 @@ pl:
   't_backup_settings': "Salvează setările",
   't_backup':          "Salvează setările în clipboard",
   't_restore':         "Restaurează setările din clipboard",
-  't_sunset_opacity':  "procente"
+  't_dim_after':  "procente"
 },
 
 // Irish Gaelic translation by April McCabe
@@ -4508,7 +4510,7 @@ ga:
 , t_time2: 				 	 "Am"
 , t_label2: 			 	 "Lipéad"
 , t_swap_labels:     "Aistrigh an dáta agus an bunlipéad"
-, t_sun_colors:      "Maolaigh an solas atá ag teacht as scaileán an chlog"
+, t_dim_before:      "Maolaigh an solas atá ag teacht as scaileán an chlog"
 , t_dim_disabled:    "(Níl sé ar fáil don amchrios seo.)"
 , t_tab1:            "Ginearalta"
 , t_tab2:            "Cuma"
@@ -4523,7 +4525,7 @@ ga:
 , t_backup_settings: "Socruithe Cúltaca"
 , t_backup:          "Cóipeáil na socruithe cúltaca chuig an ngreamchlár"
 , t_restore:         "Aischur na socruithe cúltaca ón ngreamchlár"
-, t_sunset_opacity:  "faoin gcéad"
+, t_dim_after:  "faoin gcéad"
 , t_settings_copied:   "Chóipeáil na sochruithe chuig an ngreamchlár!"
 , t_settings_loaded:   "Bhí na socruithe lódáilte!"
 , t_settings_invalid:  "Ní bhfuarthas na socruithe ceart sa ngreamchlár."

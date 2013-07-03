@@ -89,7 +89,7 @@ function get_string( id ) {
         't_time2': 				 	 _("Time"),
         't_label2': 			 	 _("Label"),
         't_swap_labels':     _("Swap date and bottom label"),
-        't_sun_colors':      _("Dim clock at night (beta)"),
+        't_dim_before':      _("Dim clock at night (beta)"),
         't_tab1':            _("General"), 
         't_tab2':            _("Appearance"),
         't_tab3':            _("About"),
