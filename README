@@ -9,6 +9,9 @@ government use. Please see the license information for details.
 
 RELEASE HISTORY
 
+1.67 2013-07-08 Fix position of "swap bottom label" checkbox on settings page
+(thanks Seungbeom Kim!)
+
 1.66 2013-07-02 Added Korean translation (thanks Seungbeom Kim!). Changed
 selection name for Arabic numerals to "01234..." and Devanagari to the
 respective values in that script.
