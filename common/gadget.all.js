@@ -2993,6 +2993,86 @@ en:
 , t_transparent_back : "Use transparent background"
 },
 
+// Basque translation by Unai Garcia Vara <garciavaraunai@gmail.com>
+eu:
+// Do not change the order of the days or months!
+{ daysLong           : ["Igandea", "Astelehena", "Asteartea", "Asteazkena", "Osteguna", "Ostirala", "Larunbata"]
+, daysShort          : ["Iga", "Asl", "Asr", "Asz", "Osg", "Osr", "Lar"]
+, monthsLong         : ["Urtarrila", "Otsaila", "Martxoa", "Apirila", "Maiatza", "Ekaina", "Uztaila", "Abuztua", "Iraila", "Urria", "Azaroa", "Abendua"]
+, monthsShort        : ["Urt", "Ots", "Mar", "Api", "Mai", "Eka", "Uzt", "Abu", "Ira", "Urr", "Aza", "Abe"]
+, am                 : "am"
+, pm                 : "pm"
+
+// Update these with the correct format for your country
+, defaultDateFormat  : "Y F j"
+, defaultTimeFormat  : "h:i a"
+
+, t_dateformat       : "Data formatua:"
+, t_timeformat       : "Ordu formatua:"
+, t_timezone         : "Ordu eremua:"
+, t_localtime        : "Ordu lokala"
+, t_bottomlabel      : "Azpiko etiketa:"
+, t_optional         : "(aukerakoa)"
+, t_examples         : "Adibidez:"
+, t_date             : "Data:"
+, t_time             : "Ordua:"
+, t_label            : "Label:"
+// Please translate the examples as well
+, t_dateexamples     : "Y F j = 2013 otsila 14<br>n/j l = 4/7 Larunbata"
+, t_timeexamples     : "h:i = 16:42 pm<br>H:i = 17:44"
+// Replace Portland with a major city in your country or known to speakers of the language
+, t_labelexamples    : "Bilbao, Donostia, GMT+1"
+, t_formathelp       : "<a href=http://us.php.net/manual/en/function.date.php>Laguntza</a>"
+, t_formathelplong   : "<a href=http://us.php.net/manual/en/function.date.php>Laguntza</a> (Ezin dira erabili: T, e, o, u)"
+// Don't modify xxVER or xxDATE
+, t_version          : "Bertsioa: xxVER (xxDATE)"
+, t_about            : "Gadget honi buruz"
+// If you want credit for translation, translate "<Euskera> translation by <Unai García>"
+, t_translateby      : ""
+, t_language         : "Hizkuntza:"
+, t_charity          : "Presto's Clock karitate merkantzia da. Gustokoa baduzu, kontsidera ezazu donazio bat egitea behrtsuenentzat. Ikusi web-oriialdea <a href=\"http://prestonhunt.com/story/110\">informatzeko edota donazioak egiteko.</a>."
+, t_license          : "Informazio askea.</a> Gehiago jakin nahi baduzu."
+, t_fontfamily1      : "Letra-iturria:"
+, t_fontfamily2      : "Letra:"
+, t_fontfamily3      : "Letra:"
+, t_fontsize1        : "Letra tamaina:"
+, t_fontsize2        : "Letra tamaina:"
+, t_fontsize3        : "Font size:"
+, t_fontcolor1       : "Font color:"
+, t_fontcolor2       : "Font color:"
+, t_fontcolor3       : "Font color:"
+, t_background       : "Atzekalde irudia:"
+, t_background_help  : "130x67 pixelera aldatuko da."
+, t_date2            : "Data"
+, t_time2            : "Ordua"
+, t_label2           : "Etiketa"
+, t_swap_labels      : "Trukatu data eta etiketa tokiak."
+// Put the text that comes before the dimming percent entry box
+, t_dim_before       : "Ilundu gauez erlojuak"
+// Put the text that comes after the dimming percent entry box
+, t_dim_after   : "portzentaia"
+, t_dim_disabled     : "(Ordu eremu hoentan ezin da iluntze funtzioa ezarri)"
+, t_tab1             : "General"
+, t_tab2             : "Itxura"
+, t_tab3             : "Buruz"
+  //'t_tab4:            "Atzealdea"
+, t_copyright        : "Eskubideak 2009-2013 Preston Hunt"
+, t_auto_check       : "Jakinarazi bertsio berri bat dagoenean"
+, t_update           : "Presto's Clock-eko bertsio berri bat dago. <a href=\"http://prestonhunt.com/go/sidebarclock\">Update now!</a>"
+// Replace English with the name of your language in your language
+, t_languagename     : "Euskera"
+
+, t_backup_settings  : "Segurtasun kopia konfiguratu"
+, t_backup           : "Kopiatu konfigurazioa paperzorroan"
+, t_restore          : "Berriztapen konfigurazioa kopiatu paperzorroan"
+, t_settings_copied  : "Konfigurazioa kopiatu da paperzorrora!"
+, t_settings_loaded  : "Konfigurazioa kargatu da paperzorrotik"
+, t_settings_invalid : "Paperzorroan ez dago konfiguraziorik"
+, t_title            : "Presto's Clock"
+, t_numerals         : "Zenbaki sistema:"
+, t_transparent_back : "Atzealde gardena jarri"
+},
+
 // Korean translation by Seungbeom Kim <musiphil@bawi.org>
 ko:
 // Do not change the order of the days or months!
