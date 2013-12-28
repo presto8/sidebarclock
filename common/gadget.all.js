@@ -2998,7 +2998,7 @@ eu:
 // Do not change the order of the days or months!
 { daysLong           : ["Igandea", "Astelehena", "Asteartea", "Asteazkena", "Osteguna", "Ostirala", "Larunbata"]
 , daysShort          : ["Iga", "Asl", "Asr", "Asz", "Osg", "Osr", "Lar"]
-, monthsLong         : ["Urtarrila", "Otsaila", "Martxoa", "Apirila", "Maiatza", "Ekaina", "Uztaila", "Abuztua", "Iraila", "Urria", "Azaroa", "Abendua"]
+, monthsLong         : ["Urtarrilak", "Otsailak", "Martxoak", "Apirilak", "Maiatzak", "Ekainak", "Uztailak", "Abuztuak", "Irailak", "Urriak", "Azaroak", "Abenduak"]
 , monthsShort        : ["Urt", "Ots", "Mar", "Api", "Mai", "Eka", "Uzt", "Abu", "Ira", "Urr", "Aza", "Abe"]
 , am                 : "am"
 , pm                 : "pm"
@@ -3012,13 +3012,13 @@ eu:
 , t_timezone         : "Ordu eremua:"
 , t_localtime        : "Ordu lokala"
 , t_bottomlabel      : "Azpiko etiketa:"
-, t_optional         : "(aukerakoa)"
+, t_optional         : "(hautazkoa)"
 , t_examples         : "Adibidez:"
 , t_date             : "Data:"
 , t_time             : "Ordua:"
-, t_label            : "Label:"
+, t_label            : "Etiketa"
 // Please translate the examples as well
-, t_dateexamples     : "Y F j = 2013 otsila 14<br>n/j l = 4/7 Larunbata"
+, t_dateexamples     : "Y F j = 2013 otsailak 14<br>n/j l = 4/7 Larunbata"
 , t_timeexamples     : "h:i = 16:42 pm<br>H:i = 17:44"
 // Replace Portland with a major city in your country or known to speakers of the language
 , t_labelexamples    : "Bilbao, Donostia, GMT+1"
@@ -3030,17 +3030,17 @@ eu:
 // If you want credit for translation, translate "<Euskera> translation by <Unai García>"
 , t_translateby      : ""
 , t_language         : "Hizkuntza:"
-, t_charity          : "Presto's Clock karitate merkantzia da. Gustokoa baduzu, kontsidera ezazu donazio bat egitea behrtsuenentzat. Ikusi web-oriialdea <a href=\"http://prestonhunt.com/story/110\">informatzeko edota donazioak egiteko.</a>."
+, t_charity          : "Presto's Clock karitate merkantzia da. Gustokoa baduzu, kontsidera ezazu donazio bat egitea behartsuenentzat. Ikusi web-orrialdea <a href=\"http://prestonhunt.com/story/110\">informatzeko edota donazioak egiteko.</a>."
 , t_license          : "Informazio askea.</a> Gehiago jakin nahi baduzu."
-, t_fontfamily1      : "Letra-iturria:"
-, t_fontfamily2      : "Letra:"
-, t_fontfamily3      : "Letra:"
+, t_fontfamily1      : "Letra iturria:"
+, t_fontfamily2      : "Letra iturria:"
+, t_fontfamily3      : "Letra iturria:"
 , t_fontsize1        : "Letra tamaina:"
 , t_fontsize2        : "Letra tamaina:"
-, t_fontsize3        : "Font size:"
-, t_fontcolor1       : "Font color:"
-, t_fontcolor2       : "Font color:"
-, t_fontcolor3       : "Font color:"
+, t_fontsize3        : "Letra tamaina:"
+, t_fontcolor1       : "Letra kolorea:"
+, t_fontcolor2       : "Letra kolorea:"
+, t_fontcolor3       : "Letra kolorea:"
 , t_background       : "Atzekalde irudia:"
 , t_background_help  : "130x67 pixelera aldatuko da."
 , t_date2            : "Data"
@@ -3052,7 +3052,7 @@ eu:
 // Put the text that comes after the dimming percent entry box
 , t_dim_after   : "portzentaia"
 , t_dim_disabled     : "(Ordu eremu hoentan ezin da iluntze funtzioa ezarri)"
-, t_tab1             : "General"
+, t_tab1             : "Orokorra"
 , t_tab2             : "Itxura"
 , t_tab3             : "Buruz"
   //'t_tab4:            "Atzealdea"
