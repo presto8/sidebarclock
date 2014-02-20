@@ -9,6 +9,8 @@ government use. Please see the license information for details.
 
 RELEASE HISTORY
 
+1.70 2014-02-20 Updated tzinfo to 2013.9.
+
 1.69 2013-12-28 Added Basque (Euskera) language, thanks Unai Garcia Vara!
 
 1.68 2013-11-07 Updated tzinfo to 2013.8.
