@@ -9,6 +9,8 @@ government use. Please see the license information for details.
 
 RELEASE HISTORY
 
+1.74 2014-09-17 Updated tzdata to 2014.7.
+
 1.73 2014-07-05 Added Eastern European Time and Nicosia to time zone list.
 Updated tzdata to 2014.4.
 

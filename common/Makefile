@@ -1,4 +1,4 @@
-files = json2.js formatDate.js tzdata-2014.4_json.js sun.js latlon_json.js \
+files = json2.js formatDate.js tzdata-2014.7_json.js sun.js latlon_json.js \
 	Gettext.js translations.js \
 	gadget.js
 
