@@ -1,8 +1,9 @@
-files = json2.js formatDate.js tzdata-2016.7_json.js sun.js latlon_json.js \
+files = json2.js formatDate.js tzdata-2017.2_json.js sun.js latlon_json.js \
 	Gettext.js translations.js \
 	gadget.js
 
-all: jslint gadget.all.js tags
+#all: jslint gadget.all.js tags
+all: gadget.all.js tags
 
 jslint:
 	jsl -conf jsl.conf
