@@ -1,8 +1,10 @@
+#!/usr/bin/env bash
+
 #
 # Replace xxVER and xxDATE
 #
-VERSION=1.80
-DATE=2017-06-04
+VERSION=1.81
+DATE=2017-11-04
 TMPDIR=/tmp/prestosidebarclock-$DATE-$VERSION-$$
 TAG=live_push_$DATE
 
