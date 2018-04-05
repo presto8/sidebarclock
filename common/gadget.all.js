@@ -835,6 +835,15 @@ formatDate = function (input,time,offsetmins) {
 			*/
         },
 
+        K : function () {
+            // pad with leading zeros
+            var s = this.J() + "";
+            while (s.length < 3) {
+                s = "0" + s;
+            }
+            return s;
+        },
+
         Z : function () {
             // Timezone offset in seconds
             return (date.getTimezoneOffset () * -60);
