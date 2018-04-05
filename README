@@ -9,6 +9,8 @@ government use. Please see the license information for details.
 
 RELEASE HISTORY
 
+1.83 2018-04-05 Updated tzinfo to 2018.3.
+
 1.82 2017-11-22 Added "K" format switch, same as "J" with leading zeroes.
 
 1.81 2017-11-04 updated tzinfo to 2017.3.
