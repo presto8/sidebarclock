@@ -3,8 +3,8 @@
 #
 # Replace xxVER and xxDATE
 #
-VERSION=1.86
-DATE=2019-09-30
+VERSION=1.87
+DATE=2020-04-04
 TMPDIR=/tmp/prestosidebarclock-$DATE-$VERSION-$$
 TAG=live_push_$DATE
 

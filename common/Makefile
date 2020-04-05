@@ -1,4 +1,4 @@
-files = tzdata-2019.2-1_json.js \
+files = tzdata-2019c_json.js \
 		json2.js formatDate.js sun.js latlon_json.js \
 		Gettext.js translations.js \
 		gadget.js
