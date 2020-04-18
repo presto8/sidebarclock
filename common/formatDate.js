@@ -346,13 +346,8 @@ formatDate = function (input,time,offsetmins) {
         },
 
         J : function () {
-			return this.z() + 1;
-			/*
             // Julian date - day of the year, one indexed! 1 through 367
-            var t = new Date("January 1 " + this.Y() + " 00:00:00");
-            var diff = date.getTime() - t.getTime();
-            return 1 + Math.floor(diff/1000/60/60/24);
-			*/
+            return this.z() + 1;
         },
 
         K : function () {
