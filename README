@@ -9,6 +9,10 @@ government use. Please see the license information for details.
 
 RELEASE HISTORY
 
+1.89 2020-11-17 Updated tzdata to 2020.4.
+
+1.88 2020-04-14 Fixed bug introduced in 1.86.
+
 1.87 2020-04-04 Updated tzdata to 2019c
 
 1.86 2019-09-30 Updated tzinfo to 2019.2.
