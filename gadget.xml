@@ -21,4 +21,6 @@
             <platform minPlatformVersion="0.3" />
         </host>
     </hosts>
+
+    <autoscaleDPI>true</autoscaleDPI>
 </gadget>
