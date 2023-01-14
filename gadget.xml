@@ -12,7 +12,7 @@
     <description>Elegantly displays date and time with optional time zone information.</description>
     <icons>
     <icon height="128" width="128" src="images/prestosidebarclock_icon.png"/>
-    </icons>    
+    </icons>
 
     <hosts>
         <host name="sidebar">
