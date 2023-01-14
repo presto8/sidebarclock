@@ -1,4 +1,4 @@
-files = tzdata-2020.4.js \
+files = tzdata-2202.7-1.js \
 		json2.js formatDate.js sun.js latlon_json.js \
 		Gettext.js translations.js \
 		gadget.js
