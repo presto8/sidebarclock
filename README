@@ -9,6 +9,8 @@ government use. Please see the license information for details.
 
 RELEASE HISTORY
 
+1.90 2023-01-14 Added autoscaleDPI to fix blurry gadget on high DPI monitors. Updated tzdata to 2202.7-1.
+
 1.89 2020-11-17 Updated tzdata to 2020.4.
 
 1.88 2020-04-14 Fixed bug introduced in 1.86.
